@@ -1,0 +1,102 @@
+Nome caso d’uso :
+	Registrazione nel sistema
+Attori :
+	Utente
+Descrizione :
+	Procedura di inserimento dei dati dell’utente per registrarsi nel
+	sistema
+Sequenza di eventi :
+	L’utente inserisce i suoi dati
+Post condizioni:
+	Il sistema registra l’utente con i dati inseriti
+Sequenza Alternativa :
+	Se i dati inseriti non sono validi il sistema non effettua la
+	registrazione
+-------------------------------------------------------------------------
+Nome caso d’uso :
+	Visualizzazione profilo
+Attori :
+	Utente
+Descrizione :
+	Sono visualizzati i dati anagrafici, il saldo punti della tessera 
+	fedeltà e stato delle spese
+Sequenza di eventi :
+	L’utente accede alla sua area dedicata
+Pre condizioni: 
+	L’utente deve essere registrato ed aver fatto il login 	nel sistema	
+-------------------------------------------------------------------------
+Nome caso d’uso :
+	Modifica profilo
+Attori :
+	Utente
+Descrizione :
+	Procedura di modifica dei dati dell’utente
+Sequenza di eventi :
+	L’utente seleziona i dati che vuole cambiare e li modifica
+Pre condizioni:
+	L’utente deve essere registrato ed aver fatto il login
+	nel sistema poi accede all’area dedicata	
+Post condizioni:
+	Il sistema registra i nuovi dati inseriti dall’utente
+Sequenza Alternativa :
+	Se i dati inseriti non sono validi il sistema non effettua la
+	modifica
+-------------------------------------------------------------------------
+Nome caso d’uso :
+	Creazione ordine
+Attori :
+	Utente
+Descrizione :
+	Operazione che permette di predisporre un carrello vuoto che in
+	seguito verrà utilizzato per gli acquisti
+Pre condizioni:
+	L’utente deve essere registrato ed aver fatto il login 	nel sistema
+------------------------------------------------------------------------
+Nome caso d’uso :
+	Modifica carrello
+Attori :
+	Utente
+Descrizione :
+	Procedura di aggiunta e rimozione dei prodotti dal carrello
+Sequenza di eventi :
+	L’utente seleziona 
+Pre condizioni:
+	L’utente deve essere registrato ed aver fatto il login
+	nel sistema poi accede all’area dedicata	
+Post condizioni:
+	Il sistema registra i nuovi dati inseriti dall’utente
+Sequenza Alternativa :
+	Se i dati inseriti non sono validi il sistema non effettua la
+	modifica
+-------------------------------------------------------------------------
+Nome caso d’uso :
+	Gestione carrello
+Attori :
+	Utente
+Scopo e Descrizione sintetica :
+	Il sistema permette all’utente di gestire il proprio carrello della spesa.
+	L’utente può visualizzare il proprio carrello,
+	inserire prodotti e togliere i prodotti già inseriti, confermare l’ordine e
+	specificare una modalità di pagamento  
+Sequenza di eventi :
+	Questo caso d’uso viene attivato quando l’utente vuole modificare il
+	proprio carrello.
+	1. L’utente sceglie la funzione richiesta
+	2. Uno dei seguenti casi d’uso viene utilizzato:
+		-Modifica al carrello(aggiungere e togliere prodotti)
+		-Visualizzazione carrello
+		-Conferma ordine: che comprende anche la scelta di un metodo di pagamento
+			con carta di credito, con paypal o alla consegna
+			inserendo per ciascuno le credenziali o il domicilio.  
+Pre condizioni:
+	L’utente deve essere registrato ed aver fatto il login 	nel sistema 
+Post-condizioni:
+	Se le operazioni di modifica vanno a buon fine lo stato del carrello viene modificato,
+	altrimenti il contenuto del carrello rimane invariato.
+	Se il pagamento va a buon fine l’acquisto viene fatto, altrimenti l’acquisto
+	non viene effettuato.
+Sequenza Alternativa :
+	-Se prodotto non è disponibile
+	-Se durante la conferma il prodotto non è disponibile, viene visualizzato un
+		messaggio di errore per informare l’utente che il prodotto non è disponibile
+------------------------------------------------------------------------

@@ -1,0 +1,56 @@
+Nome caso d’uso :
+	Autenticazione
+Attori :
+	Responsabile reparto
+Descrizione :
+	Procedura di autenticazione del responsabile di reparto
+Sequenza di eventi :
+	L’utente inserisce i dati necessari per l'autenticazione
+Post condizioni:
+	Il respinsabile deve essere registrato nel sistema
+Sequenza Alternativa :
+	Se i dati inseriti non sono validi il sistema non effettua
+	l'autenticazione
+-------------------------------------------------------------------------
+Nome caso d’uso :
+	Visualizzazione stato spese
+Attori :
+	Responsabile reparto
+Descrizione :
+	
+Sequenza di eventi :
+	L’utente accede alla sua area dedicata
+Pre condizioni: 
+
+-------------------------------------------------------------------------
+Nome caso d’uso :
+	Gestione carrello
+Attori :
+	Utente
+Scopo e Descrizione sintetica :
+	Il sistema permette all’utente di gestire il proprio carrello della spesa.
+	L’utente può visualizzare il proprio carrello,
+	inserire prodotti e togliere i prodotti già inseriti, confermare l’ordine e
+	specificare una modalità di pagamento  
+Sequenza di eventi :
+	Questo caso d’uso viene attivato quando l’utente vuole modificare il
+	proprio carrello.
+	1. L’utente sceglie la funzione richiesta
+	2. Uno dei seguenti casi d’uso viene utilizzato:
+		-Modifica al carrello(aggiungere e togliere prodotti)
+		-Visualizzazione carrello
+		-Conferma ordine: che comprende anche la scelta di un metodo di pagamento
+			con carta di credito, con paypal o alla consegna
+			inserendo per ciascuno le credenziali o il domicilio.  
+Pre condizioni:
+	L’utente deve essere registrato ed aver fatto il login 	nel sistema 
+Post-condizioni:
+	Se le operazioni di modifica vanno a buon fine lo stato del carrello viene modificato,
+	altrimenti il contenuto del carrello rimane invariato.
+	Se il pagamento va a buon fine l’acquisto viene fatto, altrimenti l’acquisto
+	non viene effettuato.
+Sequenza Alternativa :
+	-Se prodotto non è disponibile
+	-Se durante la conferma il prodotto non è disponibile, viene visualizzato un
+		messaggio di errore per informare l’utente che il prodotto non è disponibile
+------------------------------------------------------------------------
