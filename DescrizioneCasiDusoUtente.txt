@@ -53,23 +53,6 @@ Pre condizioni:
 	L’utente deve essere registrato ed aver fatto il login 	nel sistema
 ------------------------------------------------------------------------
 Nome caso d’uso :
-	Modifica carrello
-Attori :
-	Utente
-Descrizione :
-	Procedura di aggiunta e rimozione dei prodotti dal carrello
-Sequenza di eventi :
-	L’utente seleziona 
-Pre condizioni:
-	L’utente deve essere registrato ed aver fatto il login
-	nel sistema poi accede all’area dedicata	
-Post condizioni:
-	Il sistema registra i nuovi dati inseriti dall’utente
-Sequenza Alternativa :
-	Se i dati inseriti non sono validi il sistema non effettua la
-	modifica
--------------------------------------------------------------------------
-Nome caso d’uso :
 	Gestione carrello
 Attori :
 	Utente
@@ -85,9 +68,11 @@ Sequenza di eventi :
 	2. Uno dei seguenti casi d’uso viene utilizzato:
 		-Modifica al carrello(aggiungere e togliere prodotti)
 		-Visualizzazione carrello
-		-Conferma ordine: che comprende anche la scelta di un metodo di pagamento
-			con carta di credito, con paypal o alla consegna
-			inserendo per ciascuno le credenziali o il domicilio.  
+		-Conferma ordine:
+			comprende la scelta di un metodo di pagamento
+			(carta di credito, paypal, consegna a domicilio)
+			inserendo per ciascuno le credenziali e il domicilio.
+			Infine viene richiesta la data e l'ora di consegna della spesa.
 Pre condizioni:
 	L’utente deve essere registrato ed aver fatto il login 	nel sistema 
 Post-condizioni:
@@ -96,7 +81,20 @@ Post-condizioni:
 	Se il pagamento va a buon fine l’acquisto viene fatto, altrimenti l’acquisto
 	non viene effettuato.
 Sequenza Alternativa :
-	-Se prodotto non è disponibile
-	-Se durante la conferma il prodotto non è disponibile, viene visualizzato un
-		messaggio di errore per informare l’utente che il prodotto non è disponibile
+	Se durante la conferma il prodotto non è disponibile, viene visualizzato un
+	messaggio di errore per informare l’utente che il prodotto non è disponibile.
+	Se i dati inseriti non sono validi il sistema non effettua modifiche.
 ------------------------------------------------------------------------
+Nome caso d’uso :
+	Visualizzazione catalogo
+Attori :
+	Utente
+Descrizione :
+	Il sistema permette di visualizzare tutti i prodotti disponibili, e ordinarli:
+	-in modo crescente e decrescente per prezzo
+	-in ordine alfabetico per marca
+Sequenza di eventi :
+	L’utente accede all'area dedicata
+-------------------------------------------------------------------------
+
+
