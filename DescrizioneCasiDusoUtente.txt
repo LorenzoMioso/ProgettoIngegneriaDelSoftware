@@ -44,7 +44,20 @@ Sequenza Alternativa :
 	Se l'email è già stata inserita nel sistema,
 	il sistema ne richiede una diversa
 -------------------------------------------------------------------------
-
+Nome caso d’uso :
+	Autenticazione
+Attori :
+	Utente
+Descrizione :
+	Procedura di autenticazione dell'utente
+Sequenza di eventi 
+	L’utente inserisce i dati necessari per l'autenticazione
+Post condizioni:
+	l'utente deve essere registrato nel sistema
+Sequenza Alternativa :
+	Se i dati inseriti non sono validi il sistema non effettua
+	l'autenticazione
+-------------------------------------------------------------------------
 Nome caso d’uso :
 	Gestione carrello
 Attori :
