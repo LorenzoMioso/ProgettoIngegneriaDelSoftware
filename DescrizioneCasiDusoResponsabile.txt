@@ -24,7 +24,7 @@ Descrizione :
 Pre condizioni:
 	Il responsabile di reparto aver fatto il login nel sistema
 Sequenza di eventi :
-	L’utente accede all'area dedicata
+	Il responsabile accede all'area dedicata
 -------------------------------------------------------------------------
 Nome caso d’uso :
 	Gestione prodotti
@@ -38,7 +38,7 @@ Descrizione :
 Pre condizioni:
 	Il responsabile di reparto aver fatto il login nel sistema
 Sequenza di eventi :
-	L’utente accede all'area dedicata
+	Il responsabile accede all'area dedicata
 Sequenza Alternativa :
 	Se i dati inseriti non sono validi il sistema non effettua modifiche
 -------------------------------------------------------------------------
