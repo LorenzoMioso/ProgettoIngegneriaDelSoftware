@@ -79,11 +79,6 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_-9DE4IsCEeq5QM7-TIugHQ" name="immagine" visibility="private" type="_9vUtgIsCEeq5QM7-TIugHQ"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_mZnhcIr5Eeq5QM7-TIugHQ" name="Utente">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_oiVhcIr5Eeq5QM7-TIugHQ" name="id" visibility="private">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7rRrwIr6Eeq5QM7-TIugHQ" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7rZnkIr6Eeq5QM7-TIugHQ" value="1"/>
-    </ownedAttribute>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_G7_LAIr7Eeq5QM7-TIugHQ" name="nome" visibility="private">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
@@ -207,7 +202,6 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_bR-k8IvFEeqaBrNxzxQkSw" value="1"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bSfiUIvFEeqaBrNxzxQkSw" value="1"/>
     </ownedAttribute>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_ScpREIvHEeqaBrNxzxQkSw" name="getNome"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_3jpq0IvFEeqaBrNxzxQkSw" memberEnd="_3jrgAIvFEeqaBrNxzxQkSw _3jsuIIvFEeqaBrNxzxQkSw">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_3jq48IvFEeqaBrNxzxQkSw" source="org.eclipse.papyrus">
