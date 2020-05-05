@@ -1,3 +1,31 @@
+------------------------------------------------------------------------
+Nome caso d’uso :
+	Gestione profilo
+Attori :
+	Utente
+Scopo e Descrizione sintetica :
+	Il sistema permette all’utente di gestire il proprio profilo.
+	L’utente può visualizzare e modificare il proprio profilo.
+	
+Sequenza di eventi :
+	Questo caso d’uso viene attivato quando l’utente vuole modificare o visualizzare il
+	proprio profilo.
+	1. L’utente sceglie la funzione richiesta
+	2. Uno dei seguenti casi d’uso viene utilizzato:
+		-Modifica profilo:
+			comprende la modifica dell'anagrafica
+		-Visualizzazione profilo
+			comprende la visualizzazione dell'anagrafica, 
+			delle spese effettuate e l'attuale saldo punti della tessera.
+Pre condizioni:
+	L’utente deve essere registrato ed aver fatto il login 	nel sistema 
+Post-condizioni:
+	Se le operazioni di modifica vanno a buon fine lo stato del profilo viene modificato,
+	altrimenti il profilo rimane invariato.
+
+Sequenza Alternativa :
+	Se i dati inseriti non sono validi il sistema non effettua modifiche.
+------------------------------------------------------------------------
 Nome caso d’uso :
 	Registrazione nel sistema
 Attori :
@@ -6,52 +34,17 @@ Descrizione :
 	Procedura di inserimento dei dati dell’utente per registrarsi nel
 	sistema
 Sequenza di eventi :
-	L’utente inserisce i suoi dati
+	L’utente inserisce i suoi dati relativi all'anagrafica,
+	scelta di metodo di pagamento preferito, email e password. 
 Post condizioni:
 	Il sistema registra l’utente con i dati inseriti
 Sequenza Alternativa :
 	Se i dati inseriti non sono validi il sistema non effettua la
 	registrazione
+	Se l'email è già stata inserita nel sistema,
+	il sistema ne richiede una diversa
 -------------------------------------------------------------------------
-Nome caso d’uso :
-	Visualizzazione profilo
-Attori :
-	Utente
-Descrizione :
-	Sono visualizzati i dati anagrafici, il saldo punti della tessera 
-	fedeltà e stato delle spese
-Sequenza di eventi :
-	L’utente accede alla sua area dedicata
-Pre condizioni: 
-	L’utente deve essere registrato ed aver fatto il login 	nel sistema	
--------------------------------------------------------------------------
-Nome caso d’uso :
-	Modifica profilo
-Attori :
-	Utente
-Descrizione :
-	Procedura di modifica dei dati dell’utente
-Sequenza di eventi :
-	L’utente seleziona i dati che vuole cambiare e li modifica
-Pre condizioni:
-	L’utente deve essere registrato ed aver fatto il login
-	nel sistema poi accede all’area dedicata	
-Post condizioni:
-	Il sistema registra i nuovi dati inseriti dall’utente
-Sequenza Alternativa :
-	Se i dati inseriti non sono validi il sistema non effettua la
-	modifica
--------------------------------------------------------------------------
-Nome caso d’uso :
-	Creazione ordine
-Attori :
-	Utente
-Descrizione :
-	Operazione che permette di predisporre un carrello vuoto che in
-	seguito verrà utilizzato per gli acquisti
-Pre condizioni:
-	L’utente deve essere registrato ed aver fatto il login 	nel sistema
-------------------------------------------------------------------------
+
 Nome caso d’uso :
 	Gestione carrello
 Attori :
