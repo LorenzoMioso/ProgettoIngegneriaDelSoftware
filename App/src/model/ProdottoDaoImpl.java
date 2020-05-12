@@ -3,21 +3,23 @@ package model;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-//sela
-public class ProdottoDaoImpl extends ConnectionDb implements ProdottoDao {
+
+public class ProdottoDaoImpl implements ProdottoDao {
+
+    ConnectionDb db = ConnectionDb.getInstance();
 
     @Override
     public List<Prodotto> getAllProdotto() throws SQLException {
         List<Prodotto> catalogo = new ArrayList<Prodotto>();
-        super.doQuery("select * from Prodotto");
-        while (resultSet.next()) {
+        db.doQuery("select * from Prodotto");
+        while (db.getResultSet().next()) {
             catalogo.add(new Prodotto(
-                    resultSet.getInt(1),
-                    resultSet.getString(2),
-                    resultSet.getString(3),
-                    resultSet.getString(4),
-                    resultSet.getInt(5),
-                    resultSet.getInt(6)));
+                    db.getResultSet().getInt(1),
+                    db.getResultSet().getString(2),
+                    db.getResultSet().getString(3),
+                    db.getResultSet().getString(4),
+                    db.getResultSet().getInt(5),
+                    db.getResultSet().getInt(6)));
         }
         return catalogo;
     }
@@ -34,7 +36,7 @@ public class ProdottoDaoImpl extends ConnectionDb implements ProdottoDao {
 
     @Override
     public void createProdotto() throws SQLException {
-        doQuery("CREATE TABLE `Prodotto` (\n"
+        db.doQuery("CREATE TABLE `Prodotto` (\n"
                 + "  `id` int(11) NOT NULL AUTO_INCREMENT,\n"
                 + "  `nome` text NOT NULL,\n"
                 + "  `marca` text NOT NULL,\n"
@@ -47,13 +49,13 @@ public class ProdottoDaoImpl extends ConnectionDb implements ProdottoDao {
 
     @Override
     public void insertProdotto(Prodotto prodotto) throws SQLException {
-        doQuery("INSERT INTO `Prodotto` (`id`, `nome`, `marca`, `reparto`, `quantità`, `prezzo`) VALUES "
+        db.doQuery("INSERT INTO `Prodotto` (`id`, `nome`, `marca`, `reparto`, `quantità`, `prezzo`) VALUES "
                 + "(NULL, '" + prodotto.getNome() + "', '" + prodotto.getMarca() + "', '" + prodotto.getReparto() + "', '" + prodotto.getQuantità() + "', '" + prodotto.getPrezzo() + "'),");
     }
 
     @Override
     public void fillTableProdotto() throws SQLException {
-        doQuery("INSERT INTO `Prodotto` (`id`, `nome`, `marca`, `reparto`, `quantità`, `prezzo`) VALUES "
+        db.doQuery("INSERT INTO `Prodotto` (`id`, `nome`, `marca`, `reparto`, `quantità`, `prezzo`) VALUES "
                 + "(NULL, 'carota', 'sela', 'verdura', '30', '2'),"
                 + "(NULL, 'insalata', 'sela', 'verdura', '100', '2'),"
                 + "(NULL, 'cipolla', 'sela', 'verdura', '30', '2');");

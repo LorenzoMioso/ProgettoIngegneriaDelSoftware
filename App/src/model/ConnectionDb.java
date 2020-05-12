@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class ConnectionDb {
+public class ConnectionDb {   //ConnectionDb utilizza il pattern singleton
 
     private static ConnectionDb instance = new ConnectionDb();
     private String url = "jdbc:mysql://localhost:3306/";
@@ -15,11 +15,11 @@ public class ConnectionDb {
     private String password = "lore";
     private Connection connection = null;
     private Statement statement = null;
-    protected ResultSet resultSet = null;
+    private ResultSet resultSet = null;
 
     private ConnectionDb() {
     }
-
+        
     public static ConnectionDb getInstance() {
         return instance;
     }
@@ -29,6 +29,10 @@ public class ConnectionDb {
         this.statement = connection.createStatement();
         this.resultSet = statement.executeQuery(query);
         connection.close();
+    }
+
+    public ResultSet getResultSet() {
+        return resultSet;
     }
 
 }
