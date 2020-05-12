@@ -3,7 +3,7 @@ package model;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+//sela
 public class ProdottoDaoImpl extends ConnectionDb implements ProdottoDao {
 
     @Override
