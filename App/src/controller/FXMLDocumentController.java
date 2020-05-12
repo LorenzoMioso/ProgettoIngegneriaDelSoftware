@@ -15,14 +15,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import model.Catalogo;
-import model.Fetcher;
+import model.ConnectionDb;
 
 /**
  *
  * @author lore
  */
 public class FXMLDocumentController implements Initializable {
-    Fetcher f = new Fetcher();
+    ConnectionDb f = new ConnectionDb();
     Catalogo c = new Catalogo();
     
     @FXML
