@@ -51,7 +51,8 @@ public class UtenteDaoImpl implements UtenteDao{
     @Override
     public void insertUtente(Utente utente) throws SQLException {
         db.doQuery("INSERT INTO `Prodotto` (`email`, `nome`, `cognome`, `città`, `comune`, `via`, `nCivico`, `CAP`, `telefono`, `pagamentoPreferito`, `password`) VALUES `"
-                + "(NULL, '" + utente.getEmail() + "', '" + utente.getNome() + "', '" + utente.getCognome() + "', '" + utente.getCitta() + "', '" + utente.getComune() + "'),");
+                + "(NULL, '" + utente.getEmail() + "', '" + utente.getNome() + "', '" + utente.getCognome() + "', '" + utente.getCitta() + "', '" + utente.getComune() +"', '" + utente.getVia()+ "', '" + 
+                utente.getnCivico()+ "', '" + utente.getCAP()+ "', '" + utente.getTelefono()+ "', '" + utente.getPagamentoPreferito()+ "', '" + utente.getPassword() +"')");
     
     }
 

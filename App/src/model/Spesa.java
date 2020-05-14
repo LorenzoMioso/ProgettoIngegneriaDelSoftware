@@ -12,6 +12,7 @@ public class Spesa {
     private int costoTot;
     private int saldoPunti;
     private String pagamento;
-    public Prodotto[] prodotto;
+    private Prodotto[] prodotto;
+    
     private String stato;
 };

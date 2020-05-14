@@ -11,6 +11,7 @@ public class ProdottoDaoImpl implements ProdottoDao {
     public ProdottoDaoImpl(){
         db = ConnectionDb.getInstance();
     }
+    
     @Override
     public List<Prodotto> getAllProdotto() throws SQLException {
         List<Prodotto> catalogo = new ArrayList<>();
@@ -22,7 +23,9 @@ public class ProdottoDaoImpl implements ProdottoDao {
                     db.getResultSet().getString(3),
                     db.getResultSet().getString(4),
                     db.getResultSet().getInt(5),
-                    db.getResultSet().getInt(6)));
+                    db.getResultSet().getDouble(6),
+                    db.getResultSet().getInt(7),
+                    db.getResultSet().getInt(8)));
         }
         return catalogo;
     }
@@ -34,7 +37,8 @@ public class ProdottoDaoImpl implements ProdottoDao {
 
     @Override
     public void updateProdotto(Prodotto prodotto) throws SQLException {
-       db.doQuery("UPDATE `Prodotto` SET `nome`=["+ prodotto.getNome() +"],`marca`=["+ prodotto.getMarca() +"],`prezzo`=["+ prodotto.getPrezzo() +"] WHERE id ='"+ prodotto.getId() +"'");
+       db.doQuery("UPDATE `Prodotto` SET `nome`=["+ prodotto.getNome() +"],`marca`=["+ prodotto.getMarca() +"],"
+               + "`stock`=["+ prodotto.getStock() +"],`peso`=["+ prodotto.getPeso() +"], `nPezzi`=["+ prodotto.getNPezzi() +"],`prezzo`=["+ prodotto.getPrezzo() +"] WHERE id ='"+ prodotto.getId() +"'");
     }
 
     @Override
@@ -53,8 +57,9 @@ public class ProdottoDaoImpl implements ProdottoDao {
 
     @Override
     public void insertProdotto(Prodotto prodotto) throws SQLException {
-        db.doQuery("INSERT INTO `Prodotto` (`id`, `nome`, `marca`, `reparto`, `quantità`, `prezzo`) VALUES "
-                + "(NULL, '" + prodotto.getNome() + "', '" + prodotto.getMarca() + "', '" + prodotto.getReparto() + "', '" + prodotto.getQuantità() + "', '" + prodotto.getPrezzo() + "'),");
+        db.doQuery("INSERT INTO `Prodotto` (`id`, `nome`, `marca`, `reparto`, `stock`, `peso`,`nPezzi`,`prezzo`) VALUES "
+                + "(NULL, '" + prodotto.getNome() + "', '" + prodotto.getMarca() + "', '" + prodotto.getReparto() + "', '" + prodotto.getStock() +
+               "', '" + prodotto.getPeso() + "', '" + prodotto.getNPezzi() +"', '" + prodotto.getPrezzo() + "'),");
     }
     
     @Override
