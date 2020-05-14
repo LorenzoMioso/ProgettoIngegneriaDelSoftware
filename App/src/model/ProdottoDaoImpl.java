@@ -6,11 +6,14 @@ import java.util.List;
 
 public class ProdottoDaoImpl implements ProdottoDao {
 
-    ConnectionDb db = ConnectionDb.getInstance();
-
+    private ConnectionDb db;
+    
+    public ProdottoDaoImpl(){
+        db = ConnectionDb.getInstance();
+    }
     @Override
     public List<Prodotto> getAllProdotto() throws SQLException {
-        List<Prodotto> catalogo = new ArrayList<Prodotto>();
+        List<Prodotto> catalogo = new ArrayList<>();
         db.doQuery("select * from Prodotto");
         while (db.getResultSet().next()) {
             catalogo.add(new Prodotto(
@@ -25,13 +28,13 @@ public class ProdottoDaoImpl implements ProdottoDao {
     }
 
     @Override
-    public Prodotto getProdotto(int rollNo) {
+    public Prodotto getProdotto(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void updateProdotto(Prodotto prodotto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void updateProdotto(Prodotto prodotto) throws SQLException {
+       db.doQuery("UPDATE `Prodotto` SET `nome`=["+ prodotto.getNome() +"],`marca`=["+ prodotto.getMarca() +"],`prezzo`=["+ prodotto.getPrezzo() +"] WHERE id ='"+ prodotto.getId() +"'");
     }
 
     @Override
@@ -46,19 +49,26 @@ public class ProdottoDaoImpl implements ProdottoDao {
                 + "  UNIQUE KEY `id` (`id`)\n"
                 + ") ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1	");
     }
+    
 
     @Override
     public void insertProdotto(Prodotto prodotto) throws SQLException {
         db.doQuery("INSERT INTO `Prodotto` (`id`, `nome`, `marca`, `reparto`, `quantità`, `prezzo`) VALUES "
                 + "(NULL, '" + prodotto.getNome() + "', '" + prodotto.getMarca() + "', '" + prodotto.getReparto() + "', '" + prodotto.getQuantità() + "', '" + prodotto.getPrezzo() + "'),");
     }
-
+    
     @Override
     public void fillTableProdotto() throws SQLException {
         db.doQuery("INSERT INTO `Prodotto` (`id`, `nome`, `marca`, `reparto`, `quantità`, `prezzo`) VALUES "
                 + "(NULL, 'carota', 'sela', 'verdura', '30', '2'),"
                 + "(NULL, 'insalata', 'sela', 'verdura', '100', '2'),"
                 + "(NULL, 'cipolla', 'sela', 'verdura', '30', '2');");
+    }
+
+
+    @Override
+    public void deleteProdotto(Prodotto prodotto) throws SQLException {
+        db.doQuery("DELETE FROM `Prodotto` WHERE id = '" + prodotto.getId() +"'");
     }
 
 }
