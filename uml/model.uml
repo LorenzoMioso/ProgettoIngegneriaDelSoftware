@@ -202,6 +202,7 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_bR-k8IvFEeqaBrNxzxQkSw" value="1"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bSfiUIvFEeqaBrNxzxQkSw" value="1"/>
     </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_ScpREIvHEeqaBrNxzxQkSw" name="getNome"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_3jpq0IvFEeqaBrNxzxQkSw" memberEnd="_3jrgAIvFEeqaBrNxzxQkSw _3jsuIIvFEeqaBrNxzxQkSw">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_3jq48IvFEeqaBrNxzxQkSw" source="org.eclipse.papyrus">
@@ -218,6 +219,13 @@
     <ownedEnd xmi:type="uml:Property" xmi:id="_AonrQIvGEeqaBrNxzxQkSw" name="prodotto" type="_9HSTkIr2Eeq5QM7-TIugHQ" association="_AomdIIvGEeqaBrNxzxQkSw">
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LHgE8IvGEeqaBrNxzxQkSw" value="*"/>
     </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_qr4H0JH_EeqXI94WKrbbqQ" name="Quantità" memberEnd="_qwoE8JH_EeqXI94WKrbbqQ _qwqhMJH_EeqXI94WKrbbqQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qwm20JH_EeqXI94WKrbbqQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qwm20ZH_EeqXI94WKrbbqQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_qwoE8JH_EeqXI94WKrbbqQ" name="spesa" type="_MXEwEIu-EeqaBrNxzxQkSw" association="_qr4H0JH_EeqXI94WKrbbqQ"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_qwqhMJH_EeqXI94WKrbbqQ" name="prodotto" type="_9HSTkIr2Eeq5QM7-TIugHQ" association="_qr4H0JH_EeqXI94WKrbbqQ"/>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_vZ1kwIr5Eeq5QM7-TIugHQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_vZ4oEIr5Eeq5QM7-TIugHQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
