@@ -11,14 +11,14 @@ public class InitProdotto {
 
     public void createProdotto() throws SQLException {
         db.doQuery("CREATE TABLE `Prodotto` (\n"
-                + "  `id` int(11) NOT NULL AUTO_INCREMENT,\n"
+                + "  `id` int(11) NOT NULL AUTO_INCREMENT ,\n"
                 + "  `nome` text NOT NULL,\n"
                 + "  `marca` text NOT NULL,\n"
                 + "  `reparto` text NOT NULL,\n"
                 + "  `quantità` int(11) NOT NULL,\n"
                 + "  `prezzo` int(11) NOT NULL,\n"
-                + "  UNIQUE KEY `id` (`id`)\n"
-                + ") AUTO_INCREMENT=1 DEFAULT CHARSET=latin1	");
+                + "  PRIMARY KEY `id` (`id`)\n"
+                + ") ");
     }
 
     public void fillTableProdotto() throws SQLException {
