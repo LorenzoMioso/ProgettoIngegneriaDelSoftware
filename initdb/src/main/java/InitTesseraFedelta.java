@@ -14,6 +14,7 @@ public class InitTesseraFedelta { //TODO riferimento a utente
                 + "  `id` int(11) NOT NULL AUTO_INCREMENT ,\n"
                 + "  `dataEmissione` date NOT NULL,\n"
                 + "  `punti` int(11) NOT NULL,\n"
+                + "  `utente` text NOT NULL FOREIGN KEY REFERENCES Utente (email)"
                 + "  PRIMARY KEY `id` (`id`)\n"
                 + ") ");
     }

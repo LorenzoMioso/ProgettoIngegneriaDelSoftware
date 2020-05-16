@@ -23,6 +23,7 @@ public class InitUtente {
                 + "  `comune` text NOT NULL,\n"
                 + "  `CAP` int(11) NOT NULL,\n"
                 + "  `password` text NOT NULL,\n"
+                + "  `pagamentoPreferito` text NOT NULL FOREIGN KEY REFERENCES Pagamento (tipologia)\n"
                 + "  PRIMARY KEY `email` (`email`)\n"
                 + ") ");
     }

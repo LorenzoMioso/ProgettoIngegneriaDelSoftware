@@ -11,12 +11,12 @@ public class InitReparto {
 
     public void createReparto() throws SQLException {
         db.doQuery("CREATE TABLE `Reparto` (\n"
-                + "  `nome` text NOT NULL,\n"
+                + "  `nome` text NOT NULL\n"
                 + "  PRIMARY KEY `nome`\n) ");
     }
 
     public void fillTableReparto() throws SQLException {
-        db.doQuery("INSERT INTO `Prodotto` (`nome`) VALUES "
+        db.doQuery("INSERT INTO `Reparto` (`nome`) VALUES "
                 + "('Frutta e Verdura'),"
                 + "('Pasta e Pane'),"
                 + "('Dolci e Biscotti'),"

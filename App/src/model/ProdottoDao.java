@@ -11,13 +11,13 @@ public interface ProdottoDao {
 
     public void updateProdotto(Prodotto prodotto) throws SQLException;
 
-    public void createProdotto() throws SQLException;
+    
 
  
     public void deleteProdotto(Prodotto prodotto) throws SQLException;
 
     public void insertProdotto(Prodotto prodotto) throws SQLException;
 
-    public void fillTableProdotto() throws SQLException;
+   
    
 }

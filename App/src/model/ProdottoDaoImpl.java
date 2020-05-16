@@ -22,7 +22,7 @@ public class ProdottoDaoImpl implements ProdottoDao {
                     db.getResultSet().getString(2),
                     db.getResultSet().getString(3),
                     db.getResultSet().getString(4),
-                    db.getResultSet().getInt(5),
+                    db.getResultSet().getBoolean(5),
                     db.getResultSet().getDouble(6),
                     db.getResultSet().getInt(7),
                     db.getResultSet().getInt(8)));
@@ -38,38 +38,19 @@ public class ProdottoDaoImpl implements ProdottoDao {
     @Override
     public void updateProdotto(Prodotto prodotto) throws SQLException {
        db.doQuery("UPDATE `Prodotto` SET `nome`=["+ prodotto.getNome() +"],`marca`=["+ prodotto.getMarca() +"],"
-               + "`stock`=["+ prodotto.getStock() +"],`peso`=["+ prodotto.getPeso() +"], `nPezzi`=["+ prodotto.getNPezzi() +"],`prezzo`=["+ prodotto.getPrezzo() +"] WHERE id ='"+ prodotto.getId() +"'");
+               + "`inVendita`=["+ prodotto.getInVendita()+"],`peso`=["+ prodotto.getPeso() +"], `nPezzi`=["+ prodotto.getNPezzi() +"],`prezzo`=["+ prodotto.getPrezzo() +"] WHERE id ='"+ prodotto.getId() +"'");
     }
 
-    @Override
-    public void createProdotto() throws SQLException {
-        db.doQuery("CREATE TABLE `Prodotto` (\n"
-                + "  `id` int(11) NOT NULL AUTO_INCREMENT,\n"
-                + "  `nome` text NOT NULL,\n"
-                + "  `marca` text NOT NULL,\n"
-                + "  `reparto` text NOT NULL,\n"
-                + "  `quantità` int(11) NOT NULL,\n"
-                + "  `prezzo` int(11) NOT NULL,\n"
-                + "  UNIQUE KEY `id` (`id`)\n"
-                + ") ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1	");
-    }
+
     
 
     @Override
     public void insertProdotto(Prodotto prodotto) throws SQLException {
-        db.doQuery("INSERT INTO `Prodotto` (`id`, `nome`, `marca`, `reparto`, `stock`, `peso`,`nPezzi`,`prezzo`) VALUES "
-                + "(NULL, '" + prodotto.getNome() + "', '" + prodotto.getMarca() + "', '" + prodotto.getReparto() + "', '" + prodotto.getStock() +
+        db.doQuery("INSERT INTO `Prodotto` (`id`, `nome`, `marca`, `reparto`, `inVendita`, `peso`,`nPezzi`,`prezzo`) VALUES "
+                + "(NULL, '" + prodotto.getNome() + "', '" + prodotto.getMarca() + "', '" + prodotto.getReparto() + "', '" + prodotto.getInVendita()+
                "', '" + prodotto.getPeso() + "', '" + prodotto.getNPezzi() +"', '" + prodotto.getPrezzo() + "'),");
     }
     
-    @Override
-    public void fillTableProdotto() throws SQLException {
-        db.doQuery("INSERT INTO `Prodotto` (`id`, `nome`, `marca`, `reparto`, `quantità`, `prezzo`) VALUES "
-                + "(NULL, 'carota', 'sela', 'verdura', '30', '2'),"
-                + "(NULL, 'insalata', 'sela', 'verdura', '100', '2'),"
-                + "(NULL, 'cipolla', 'sela', 'verdura', '30', '2');");
-    }
-
 
     @Override
     public void deleteProdotto(Prodotto prodotto) throws SQLException {

@@ -22,8 +22,8 @@ public class InitResponsabileReparto { //TODO riferimento a reparto
                 + "  `nCivico` text NOT NULL,\n"
                 + "  `comune` text NOT NULL,\n"
                 + "  `comuneDiNascita` text NOT NULL,\n"
-                + "  `ruolo` text NOT NULL,\n"
-                + "  `password` text NOT NULL,\n"
+                + "  `ruolo` text NOT NULL FOREIGN KEY REFERENCES Reparto (nome),\n"
+                + "  `password` text NOT NULL\n"
                 + "  PRIMARY KEY `id` (`id`)\n"
                 + ") ");
     }

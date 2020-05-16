@@ -6,17 +6,17 @@ public class Prodotto {
     private String nome;
     private String marca;
     private String reparto;
-    private int stock;
+    private boolean inVendita;
     private double peso;
     private int nPezzi;
     private int prezzo;
 
-    public Prodotto(int id, String nome, String marca, String reparto, int stock, double peso, int nPezzi, int prezzo) {
+    public Prodotto(int id, String nome, String marca, String reparto, boolean inVendita, double peso, int nPezzi, int prezzo) {
         this.id = id;
         this.nome = nome;
         this.marca = marca;
         this.reparto = reparto;
-        this.stock = stock;
+        this.inVendita = inVendita;
         this.prezzo = prezzo;
         
     }
@@ -44,8 +44,8 @@ public class Prodotto {
     public void setnPezzi(int nPezzi) {
         this.nPezzi = nPezzi;
     }
-    public int getStock() {
-        return stock;
+    public boolean getInVendita() {
+        return inVendita;
     }
 
     public int getPrezzo() {
@@ -54,7 +54,7 @@ public class Prodotto {
 
     @Override
     public String toString() {
-        return "Prodotto{" + "id=" + id + ", nome=" + nome + ", marca=" + marca + ", reparto=" + reparto + ", quantit\u00e0=" + stock + ", prezzo=" + prezzo + '}';
+        return "Prodotto{" + "id=" + id + ", nome=" + nome + ", marca=" + marca + ", reparto=" + reparto + ", quantit\u00e0=" + inVendita + ", prezzo=" + prezzo + '}';
     }
 
     String getPeso() {
