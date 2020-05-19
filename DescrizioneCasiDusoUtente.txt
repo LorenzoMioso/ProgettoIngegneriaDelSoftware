@@ -52,7 +52,7 @@ Descrizione :
 	Procedura di autenticazione dell'utente
 Sequenza di eventi 
 	L’utente inserisce i dati necessari per l'autenticazione
-Post condizioni:
+Pre-condizioni:
 	l'utente deve essere registrato nel sistema
 Sequenza Alternativa :
 	Se i dati inseriti non sono validi il sistema non effettua
