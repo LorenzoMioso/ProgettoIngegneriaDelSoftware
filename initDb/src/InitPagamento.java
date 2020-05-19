@@ -10,9 +10,7 @@ public class InitPagamento {
     }
 
     public void createPagamento() throws SQLException {
-        db.doQuery("CREATE TABLE `Pagamento` (\n"
-                + "  `tipologia` text NOT NULL\n"
-                + "  PRIMARY KEY `tipologia`\n) ");
+        db.doQuery("CREATE TABLE `Pagamento` ( `tipologia` varchar(100) NOT NULL , PRIMARY KEY (`tipologia`)) ENGINE=InnoDB");
     }
 
     public void fillTablePagamento() throws SQLException {

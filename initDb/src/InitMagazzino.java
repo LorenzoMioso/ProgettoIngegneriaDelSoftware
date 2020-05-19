@@ -12,8 +12,8 @@ public class InitMagazzino {
     public void createMagazzino() throws SQLException {
         db.doQuery("CREATE TABLE `Magazzino` (\n"
                 + "  `idProdotto` int(11) NOT NULL FOREIGN KEY REFERENCES Prodotto (id),\n"
-                + "  `disponibilità` int (11) NOT NULL\n"
-                + "  PRIMARY KEY `idProdotto`\n) ");
+                + "  `disponibilità` int (11) NOT NULL,\n"
+                + "  PRIMARY KEY `idProdotto`\n) ENGINE=InnoDB");
     }
 
     public void fillTableMagazzino() throws SQLException {

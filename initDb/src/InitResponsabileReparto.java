@@ -23,9 +23,9 @@ public class InitResponsabileReparto { //TODO riferimento a reparto
                 + "  `comune` text NOT NULL,\n"
                 + "  `comuneDiNascita` text NOT NULL,\n"
                 + "  `ruolo` text NOT NULL FOREIGN KEY REFERENCES Reparto (nome),\n"
-                + "  `password` text NOT NULL\n"
+                + "  `password` text NOT NULL,\n"
                 + "  PRIMARY KEY `id` (`id`)\n"
-                + ") ");
+                + ") ENGINE=InnoDB");
     }
 
     public void fillTableResponsabileReparto() throws SQLException {

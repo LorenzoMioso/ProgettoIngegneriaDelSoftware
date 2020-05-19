@@ -32,9 +32,9 @@ public class InitSpesa {
                 + "  `costoTot` double NOT NULL,\n" 
                 + "  `saldoPunti` int(11) NOT NULL,\n"
                 + "  `pagamento` text NOT NULL FOREIGN KEY REFERENCES Pagamento(tipologia),\n"
-                + "  `utente` text NOT NULL FOREIGN KEY REFERENCES Utente(email)\n"
+                + "  `utente` text NOT NULL FOREIGN KEY REFERENCES Utente(email),\n"
                 + "  PRIMARY KEY `id` (`id`)\n"
-                + ") ");
+                + ")ENGINE=InnoDB ");
     }
 
     public void fillTableSpesa() throws SQLException {

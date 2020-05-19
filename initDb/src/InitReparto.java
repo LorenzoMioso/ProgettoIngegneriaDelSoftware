@@ -11,8 +11,8 @@ public class InitReparto {
 
     public void createReparto() throws SQLException {
         db.doQuery("CREATE TABLE `Reparto` (\n"
-                + "  `nome` text NOT NULL\n"
-                + "  PRIMARY KEY `nome`\n) ");
+                + "  `nome` varchar(100) NOT NULL,\n"
+                + "  PRIMARY KEY (`nome`)) ENGINE=InnoDB");
     }
 
     public void fillTableReparto() throws SQLException {
