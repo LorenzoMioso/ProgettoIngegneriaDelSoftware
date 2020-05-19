@@ -10,13 +10,13 @@ public class InitTesseraFedelta { //TODO riferimento a utente
     }
 
     public void createTesseraFedelta() throws SQLException {
-        db.doQuery("CREATE TABLE `ResponsabileReparto` (\n"
-                + "  `id` int(11) NOT NULL AUTO_INCREMENT ,\n"
-                + "  `dataEmissione` date NOT NULL,\n"
-                + "  `punti` int(11) NOT NULL,\n"
-                + "  `utente` varchar(100) NOT NULL"
-                + "  PRIMARY KEY `id` (`id`),\n"
-                 + " CONSTRAINT `fk_tessera_utente` FOREIGN KEY(utente) REFERENCES Utente(email)),\n"
+        db.doQuery("CREATE TABLE `TesseraFedelta` (\n"
+                + " `id` int(11) NOT NULL AUTO_INCREMENT ,\n"
+                + " `dataEmissione` date NOT NULL,\n"
+                + " `punti` int(11) NOT NULL,\n"
+                + " `utente` varchar(100) NOT NULL,"
+                + "  PRIMARY KEY `id`(`id`),\n"
+                + "  CONSTRAINT `fk_tessera_utente` FOREIGN KEY(utente) REFERENCES Utente(email)\n"
                 + ")ENGINE=InnoDB ");
     }
 

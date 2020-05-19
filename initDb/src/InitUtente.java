@@ -10,7 +10,7 @@ public class InitUtente {
     }
 
     public void createUtente() throws SQLException {
-        db.doQuery("CREATE TABLE ResponsabileReparto( "
+        db.doQuery("CREATE TABLE Utente( "
                 + "email varchar(100) NOT NULL,"
                 + "nome varchar(100) NOT NULL,"
                 + "cognome varchar(100) NOT NULL,"

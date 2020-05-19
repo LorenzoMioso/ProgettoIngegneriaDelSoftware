@@ -1,8 +1,5 @@
 
-import java.sql.Date;
 import java.sql.SQLException;
-import java.sql.Time;
-
 
 public class InitSpesa {
 
@@ -19,15 +16,13 @@ public class InitSpesa {
                 + "  dataConsegna DATE NOT NULL,\n"
                 + "  oraInizio TIME NOT NULL,\n"
                 + "  oraFine TIME NOT NULL,\n"
-                + "  costoTot double NOT NULL,\n" 
+                + "  costoTot double NOT NULL,\n"
                 + "  saldoPunti int(11) NOT NULL,\n"
                 + "  pagamento varchar(100) NOT NULL,\n"
                 + "  utente varchar(100) NOT NULL,\n"
-                + "  PRIMARY KEY id (id),\n"
-                + "  KEY 1 (pagamento),\n"
-                + "  KEY 2 (utente),\n"
-                + "  CONSTRAINT 1 FOREIGN KEY(pagamento) REFERENCES Pagamento(tipologia),\n"
-                + "  CONSTRAINT 2 FOREIGN KEY(utente) REFERENCES Utente(email)\n"
+                + "  PRIMARY KEY `id`(`id`),\n"
+                + "  CONSTRAINT `fk_spesa_pagamento` FOREIGN KEY(pagamento) REFERENCES Pagamento(tipologia),\n"
+                + "  CONSTRAINT `fk_spesa_utente` FOREIGN KEY(utente) REFERENCES Utente(email)\n"
                 + ")ENGINE=InnoDB ");
     }
 
