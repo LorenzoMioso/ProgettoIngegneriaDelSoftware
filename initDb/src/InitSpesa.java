@@ -5,17 +5,7 @@ import java.sql.Time;
 
 
 public class InitSpesa {
-     private int id;
-    private Date dataConsegna;
-    private Time oraInizio;
-    private Time oraFine;
-    private int costoTot;
-    private int saldoPunti;
-    private String pagamento;
-    
-    
-    private String stato;    
-    
+
     private ConnectionDb db;
 
     public InitSpesa() {
@@ -31,9 +21,11 @@ public class InitSpesa {
                 + "  `oraFine` TIME NOT NULL,\n"
                 + "  `costoTot` double NOT NULL,\n" 
                 + "  `saldoPunti` int(11) NOT NULL,\n"
-                + "  `pagamento` text NOT NULL FOREIGN KEY REFERENCES Pagamento(tipologia),\n"
-                + "  `utente` text NOT NULL FOREIGN KEY REFERENCES Utente(email),\n"
-                + "  PRIMARY KEY `id` (`id`)\n"
+                + "  `pagamento` varchar(100) NOT NULL ,\n"
+                + "  `utente` varchar(100) NOT NULL ,\n"
+                + "  PRIMARY KEY `id` (`id`),\n"
+                + "  CONSTRAIN `fk_spesa_pagamento` FOREIGN KEY(pagamento) REFERENCES Pagamento(tipologia),\n"
+                + "  CONSTRAIN `fk_spesa_utente` FOREIGN KEY(utente) REFERENCES Utente(email)),\n"
                 + ")ENGINE=InnoDB ");
     }
 

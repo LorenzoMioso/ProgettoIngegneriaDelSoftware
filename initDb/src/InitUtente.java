@@ -11,20 +11,21 @@ public class InitUtente {
 
     public void createUtente() throws SQLException {
         db.doQuery("CREATE TABLE `ResponsabileReparto` (\n"
-                + "  `email` text NOT NULL ,\n"
-                + "  `nome` text NOT NULL,\n"
-                + "  `cognome` text NOT NULL,\n"
-                + "  `citta` text NOT NULL,\n"
+                + "  `email` varchar(100) NOT NULL ,\n"
+                + "  `nome` varchar(100) NOT NULL,\n"
+                + "  `cognome` varchar(100) NOT NULL,\n"
+                + "  `citta` varchar(100) NOT NULL,\n"
                 + "  `telefono` int(11) NOT NULL,\n"
-                + "  `matricola` text NOT NULL,\n"
+                + "  `matricola` varchar(100) NOT NULL,\n"
                 + "  `dataNascita` date NOT NULL,\n"
-                + "  `via` text NOT NULL,\n"
-                + "  `nCivico` text NOT NULL,\n"
-                + "  `comune` text NOT NULL,\n"
+                + "  `via` varchar(100) NOT NULL,\n"
+                + "  `nCivico` varchar(100) NOT NULL,\n"
+                + "  `comune` varchar(100) NOT NULL,\n"
                 + "  `CAP` int(11) NOT NULL,\n"
-                + "  `password` text NOT NULL,\n"
-                + "  `pagamentoPreferito` text NOT NULL FOREIGN KEY REFERENCES Pagamento (tipologia),\n"
+                + "  `password` varchar(100) NOT NULL,\n"
+                + "  `pagamentoPreferito` varchar(100) NOT NULL ,\n"
                 + "  PRIMARY KEY `email` (`email`)\n"
+                 + "  CONSTRAIN `fk_utente_pagamento` FOREIGN KEY(pagamentoPreferito) REFERENCES Pagamento(tipologia)),\n"
                 + ") ENGINE=InnoDB");
     }
 
