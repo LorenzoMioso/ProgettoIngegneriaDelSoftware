@@ -21,8 +21,8 @@ public class Main {
         InitMagazzino im = new InitMagazzino();
         im.createMagazzino();
 
-        InitResponsabileReparto iresp = new InitResponsabileReparto();
-        iresp.createResponsabileReparto();
+        //InitResponsabileReparto iresp = new InitResponsabileReparto();
+        //iresp.createResponsabileReparto();
 
         InitSpesa ispe = new InitSpesa();
         ispe.createSpesa();

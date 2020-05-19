@@ -24,8 +24,8 @@ public class InitResponsabileReparto { //TODO riferimento a reparto
                 + "  `comuneDiNascita` varchar(100) NOT NULL,\n"
                 + "  `ruolo` varchar(100) NOT NULL ,\n"
                 + "  `password` varchar(100) NOT NULL,\n"
-                + "  PRIMARY KEY `id` (`id`)\n"
-                +"   CONSTRAINT 'fk_responsabile_reparto'FOREIGN KEY (ruolo) REFERENCES Reparto (nome)\n"
+                + "  PRIMARY KEY `id` (`id`),\n"
+                +"   CONSTRAINT `fk_responsabile_reparto` FOREIGN KEY(ruolo) REFERENCES Reparto(nome)\n"
                 + ") ENGINE=InnoDB");
     }
 
