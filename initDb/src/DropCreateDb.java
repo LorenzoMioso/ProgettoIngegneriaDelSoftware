@@ -5,11 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class ConnectionDb {
+public class DropCreateDb {
 
-    private static ConnectionDb instance = new ConnectionDb();
     private String url = "jdbc:mysql://localhost:3306/";
-    private String dbname = "Spesa";
     private String username = "root";
     //private String password = "astuci0";
     private String password = "lore";
@@ -17,22 +15,13 @@ public class ConnectionDb {
     private Statement statement = null;
     private ResultSet resultSet = null;
 
-    ConnectionDb() {
-    }
-        
-    public static ConnectionDb getInstance() {
-        return instance;
-    }
-
-    public void doQuery(String query) throws SQLException {
-        this.connection = DriverManager.getConnection(url + dbname, username, password);
+    DropCreateDb() throws SQLException {
+        this.connection = DriverManager.getConnection(url, username, password);
         this.statement = connection.createStatement();
+        String query = "DROP DATABASE Spesa";
+        this.resultSet = statement.executeQuery(query);
+        query = "CREATE DATABASE Spesa";
         this.resultSet = statement.executeQuery(query);
         connection.close();
     }
-
-    public ResultSet getResultSet() {
-        return resultSet;
-    }
-
 }

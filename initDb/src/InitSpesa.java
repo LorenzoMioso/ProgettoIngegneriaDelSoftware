@@ -24,8 +24,8 @@ public class InitSpesa {
                 + "  `pagamento` varchar(100) NOT NULL ,\n"
                 + "  `utente` varchar(100) NOT NULL ,\n"
                 + "  PRIMARY KEY `id` (`id`),\n"
-                + "  CONSTRAIN `fk_spesa_pagamento` FOREIGN KEY(pagamento) REFERENCES Pagamento(tipologia),\n"
-                + "  CONSTRAIN `fk_spesa_utente` FOREIGN KEY(utente) REFERENCES Utente(email)),\n"
+                + "  CONSTRAINT `fk_spesa_pagamento` FOREIGN KEY(pagamento) REFERENCES Pagamento(tipologia),\n"
+                + "  CONSTRAINT `fk_spesa_utente` FOREIGN KEY(utente) REFERENCES Utente(email)),\n"
                 + ")ENGINE=InnoDB ");
     }
 

@@ -1,3 +1,5 @@
 /.metadata/
 /bin/
 /initdb/target/
+/initDb/build/
+/initDb/nbproject/private/

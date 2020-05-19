@@ -10,23 +10,7 @@ public class InitUtente {
     }
 
     public void createUtente() throws SQLException {
-        db.doQuery("CREATE TABLE `ResponsabileReparto` (\n"
-                + "  `email` varchar(100) NOT NULL ,\n"
-                + "  `nome` varchar(100) NOT NULL,\n"
-                + "  `cognome` varchar(100) NOT NULL,\n"
-                + "  `citta` varchar(100) NOT NULL,\n"
-                + "  `telefono` int(11) NOT NULL,\n"
-                + "  `matricola` varchar(100) NOT NULL,\n"
-                + "  `dataNascita` date NOT NULL,\n"
-                + "  `via` varchar(100) NOT NULL,\n"
-                + "  `nCivico` varchar(100) NOT NULL,\n"
-                + "  `comune` varchar(100) NOT NULL,\n"
-                + "  `CAP` int(11) NOT NULL,\n"
-                + "  `password` varchar(100) NOT NULL,\n"
-                + "  `pagamentoPreferito` varchar(100) NOT NULL ,\n"
-                + "  PRIMARY KEY `email` (`email`)\n"
-                 + "  CONSTRAIN `fk_utente_pagamento` FOREIGN KEY(pagamentoPreferito) REFERENCES Pagamento(tipologia)),\n"
-                + ") ENGINE=InnoDB");
+        db.doQuery("CREATE TABLE ResponsabileReparto( email VARCHAR(100) NOT NULL, nome VARCHAR(100) NOT NULL, cognome VARCHAR(100) NOT NULL, citta VARCHAR(100) NOT NULL, telefono INT(11) NOT NULL, matricola VARCHAR(100) NOT NULL, dataNascita DATE NOT NULL, via VARCHAR(100) NOT NULL, nCivico VARCHAR(100) NOT NULL, comune VARCHAR(100) NOT NULL, CAP INT(11) NOT NULL, PASSWORD VARCHAR(100) NOT NULL, pagamentoPreferito VARCHAR(100) NOT NULL, PRIMARY KEY email(email), CONSTRAINT fk_utente_pagamento FOREIGN KEY(pagamentoPreferito) REFERENCES Pagamento(tipologia) ) ENGINE = INNODB ");
     }
 
     public void fillTableResponsabileReparto() throws SQLException {

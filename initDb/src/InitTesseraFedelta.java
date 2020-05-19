@@ -16,7 +16,7 @@ public class InitTesseraFedelta { //TODO riferimento a utente
                 + "  `punti` int(11) NOT NULL,\n"
                 + "  `utente` varchar(100) NOT NULL"
                 + "  PRIMARY KEY `id` (`id`),\n"
-                 + " CONSTRAIN `fk_tessera_utente` FOREIGN KEY(utente) REFERENCES Utente(email)),\n"
+                 + " CONSTRAINT `fk_tessera_utente` FOREIGN KEY(utente) REFERENCES Utente(email)),\n"
                 + ")ENGINE=InnoDB ");
     }
 

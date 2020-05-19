@@ -4,7 +4,7 @@ import java.sql.SQLException;
 public class Main {
 
     public static void main(String[] args) throws SQLException {
-        //DropTables dropTables = new DropTables();
+        DropCreateDb dcdb = new DropCreateDb();
         
         InitPagamento ip = new InitPagamento();
         ip.createPagamento();
