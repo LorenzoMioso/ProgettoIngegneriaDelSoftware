@@ -21,5 +21,10 @@ public class InitTesseraFedelta { //TODO riferimento a utente
     }
 
     public void fillTableTesseraFedelta() throws SQLException {
+        db.doQuery("INSERT INTO `TesseraFedelta` (`id`, `dataEmissione`, `punti`, `utente`) VALUES "
+                + "(NULL,STR_TO_DATE('24/03/2020', '%d/%m/%Y'),'3000','mrossi@gmail.com'),"
+                + "(NULL,STR_TO_DATE('01/02/2019', '%d/%m/%Y'),'7000','mstella@gmail.com');");
+
+    
     }
 }

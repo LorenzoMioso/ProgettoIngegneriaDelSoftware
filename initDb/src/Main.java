@@ -8,6 +8,7 @@ public class Main {
         
         InitPagamento ip = new InitPagamento();
         ip.createPagamento();
+        ip.fillTablePagamento();
 
         InitReparto irep = new InitReparto();
         irep.createReparto();
@@ -17,7 +18,8 @@ public class Main {
 
         InitUtente iut = new InitUtente();
         iut.createUtente();
-
+        iut.fillTableUtente();
+        
         InitMagazzino im = new InitMagazzino();
         im.createMagazzino();
 
@@ -29,6 +31,7 @@ public class Main {
 
         InitTesseraFedelta ites = new InitTesseraFedelta();
         ites.createTesseraFedelta();
+        ites.fillTableTesseraFedelta();
 
         InitProdottoComprato ipc = new InitProdottoComprato();
         ipc.createProdottoComprato();
