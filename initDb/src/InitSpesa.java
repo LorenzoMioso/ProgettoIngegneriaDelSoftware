@@ -27,9 +27,6 @@ public class InitSpesa {
     }
 
     public void fillTableSpesa() throws SQLException {
-        db.doQuery("INSERT INTO Spesa (id, nome, marca, reparto, stock, peso,nPezzi, prezzo) VALUES "
-                + "(NULL, 'carota', 'sela', 'verdura', '20', '500', '20', '2'),"
-                + "(NULL, 'insalata', 'sela', 'verdura', '50', '200', '1', '2'),"
-                + "(NULL, 'cipolla', 'sela', 'verdura', '20', '500', '10',, '2');");
+        db.doQuery("");
     }
 }
