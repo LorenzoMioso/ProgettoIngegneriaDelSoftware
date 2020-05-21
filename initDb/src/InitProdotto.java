@@ -3,6 +3,13 @@ import java.sql.SQLException;
 
 public class InitProdotto {
 
+    /*
+    File f=new File("c:/pho001.gif");
+    int size=(int) f.length();
+    FileInputStream fis=new FileInputStream(f);
+    pstmt.setBinaryStream(3,fis,size);
+    int i=pstmt.executeUpdate();
+     */
     private ConnectionDb db;
 
     public InitProdotto() {
@@ -14,6 +21,7 @@ public class InitProdotto {
                 + " `id` INT(11) NOT NULL AUTO_INCREMENT,\n"
                 + " `nome` varchar(100) NOT NULL,\n"
                 + " `marca` varchar(100) NOT NULL,\n"
+                + " `immagine` longblob,\n"
                 + " `reparto` varchar(100) NOT NULL ,\n"
                 + " `inVendita` BOOLEAN NOT NULL DEFAULT TRUE,\n"
                 + " `peso` DOUBLE NOT NULL,\n"
