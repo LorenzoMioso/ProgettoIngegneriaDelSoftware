@@ -17,13 +17,20 @@ public class InitReparto {
 
     public void fillTableReparto() throws SQLException {
         db.doQuery("INSERT INTO `Reparto` (`nome`) VALUES "
-                + "('Frutta e Verdura'),"
-                + "('Pasta e Pane'),"
-                + "('Dolci e Biscotti'),"
-                + "('Uova e Latticini'),"
-                + "('Salumeria'),"
-                + "('Acqua e Bibite'),"
+                + "('Panetteria'),"
+                + "('Pasticceria'),"
+                + "('Pastificio'),"
+                + "('Sughi e Salse'),"
+                + "('Latteria'),"
+                + "('Macelleria'),"
                 + "('Pescheria'),"
+                + "('Gastronomia'),"
+                + "('Surgelati'),"
+                + "('Frutta'),"
+                + "('Verdura'),"
+                + "('Devande'),"
+                + "('Vini e Liquori'),"
+                + "('Oli e aceti'),"
                 + "('Scatolame');");
     }
 }
