@@ -16,9 +16,9 @@ public class InitProdotto {
                 + " `marca` varchar(100) NOT NULL,\n"
                 + " `reparto` varchar(100) NOT NULL ,\n"
                 + " `inVendita` BOOLEAN NOT NULL DEFAULT TRUE,\n"
-                + " `peso` DOUBLE(11) NOT NULL,\n"
+                + " `peso` DOUBLE NOT NULL,\n"
                 + " `nPezzi` INT(11) NOT NULL,\n"
-                + " `prezzo` DOUBLE(11) NOT NULL,\n"
+                + " `prezzo` DOUBLE NOT NULL,\n"
                 + " PRIMARY KEY `id`(`id`),\n"
                 + " CONSTRAINT `fk_prodotto_reparto` FOREIGN KEY (`reparto`) REFERENCES Reparto(`nome`)\n"
                 + ")ENGINE=InnoDB");

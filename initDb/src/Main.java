@@ -9,13 +9,16 @@ public class Main {
         InitPagamento ip = new InitPagamento();
         ip.createPagamento();
         ip.fillTablePagamento();
+        
 
         InitReparto irep = new InitReparto();
         irep.createReparto();
+        irep.fillTableReparto();
 
         InitProdotto iprod = new InitProdotto();
         iprod.createProdotto();
-
+        //iprod.fillTableProdotto();
+        
         InitUtente iut = new InitUtente();
         iut.createUtente();
         iut.fillTableUtente();
@@ -25,6 +28,7 @@ public class Main {
 
         InitResponsabileReparto iresp = new InitResponsabileReparto();
         iresp.createResponsabileReparto();
+        iresp.fillTableResponsabileReparto();
 
         InitSpesa ispe = new InitSpesa();
         ispe.createSpesa();

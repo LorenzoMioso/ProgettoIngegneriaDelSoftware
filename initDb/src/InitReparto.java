@@ -28,7 +28,7 @@ public class InitReparto {
                 + "('Surgelati'),"
                 + "('Frutta'),"
                 + "('Verdura'),"
-                + "('Devande'),"
+                + "('Bevande'),"
                 + "('Vini e Liquori'),"
                 + "('Oli e aceti'),"
                 + "('Scatolame');");
