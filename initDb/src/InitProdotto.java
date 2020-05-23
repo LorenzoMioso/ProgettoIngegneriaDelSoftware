@@ -1,15 +1,13 @@
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class InitProdotto {
 
-    /*
-    File f=new File("c:/pho001.gif");
-    int size=(int) f.length();
-    FileInputStream fis=new FileInputStream(f);
-    pstmt.setBinaryStream(3,fis,size);
-    int i=pstmt.executeUpdate();
-     */
+   
     private ConnectionDb db;
 
     public InitProdotto() {
@@ -32,8 +30,8 @@ public class InitProdotto {
                 + ") ENGINE=InnoDB");
     }
 
-    public void fillTableProdotto() throws SQLException {
-        db.doQuery("INSERT INTO `Prodotto` (`id`, `nome`, `marca`, `reparto`, `inVendita`, `peso`,`nPezzi`, `prezzo`) VALUES "
+    public void fillTableProdotto() throws SQLException, FileNotFoundException {
+        db.doQuery("INSERT INTO `Prodotto` (`id`, `nome`, `marca`,`immagine`, `reparto`, `inVendita`, `peso`,`nPezzi`, `prezzo`) VALUES "
                 + "(NULL, 'Pane', 'marca', NULL, 'Panetteria', '1', '1000', '5', '2'),"
                 + "(NULL, 'Focaccia', 'marca', NULL, 'Panetteria', '1', '1000', '5', '2'),"
                 + "(NULL, 'Schiacciatine', 'marca', NULL, 'Panetteria', '1', '1000', '5', '2'),"
@@ -102,10 +100,29 @@ public class InitProdotto {
                 + "(NULL, 'Mais', 'marca', NULL, 'Scatolame', '1', '1000', '5', '2'),"
                 + "(NULL, 'Olive nere', 'marca', NULL, 'Scatolame', '1', '1000', '5', '2'),"
                 + "(NULL, 'Dado minestra', 'marca', NULL, 'Scatolame', '1', '1000', '5', '2')");
+            fillImage();
     }   
-    public void fillImage(){
+    public void fillImage() throws SQLException, FileNotFoundException{
+        //int id = 48;
+        String query;
+        File image;
+        int size;
+        PreparedStatement pstmt;
+        FileInputStream fis;
+        for(int id = 1; id < 3; id++){ 
+            query = String.format("UPDATE Prodotto set immagine = ? WHERE id = %d", id);
+            image = new File(String.format("../images/%d.jpg", id));
+            size = (int) image.length();
+
+            fis=new FileInputStream(image);
+           
+            pstmt = db.getPreparedStatement(query);
+            pstmt.setBinaryStream(1,fis,size);
+            pstmt.executeUpdate();
+
+        }
         
-    
+      
     
     }
 }

@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class ConnectionDb {
 
-    private static ConnectionDb instance = new ConnectionDb();
+    private static  ConnectionDb instance = new ConnectionDb();
     private String url = "jdbc:mysql://localhost:3306/";
     private String dbname = "Spesa";
     private String username = "root";
@@ -19,8 +19,8 @@ public class ConnectionDb {
     private PreparedStatement pstmt = null;
     private ResultSet resultSet = null;
 
-    public ConnectionDb() throws SQLException {
-        this.connection = DriverManager.getConnection(url + dbname, username, password);
+    public ConnectionDb(){
+        
     }
         
     public static ConnectionDb getInstance() {
@@ -28,7 +28,7 @@ public class ConnectionDb {
     }
 
     public void doQuery(String query) throws SQLException {
-        
+        this.connection = DriverManager.getConnection(url + dbname, username, password);
         this.statement = connection.createStatement();
         
         this.resultSet = statement.executeQuery(query);
@@ -40,6 +40,7 @@ public class ConnectionDb {
     }
 
     public PreparedStatement getPreparedStatement(String query) throws SQLException {
+        this.connection = DriverManager.getConnection(url + dbname, username, password);
         this.pstmt = connection.prepareStatement(query);
         
         return pstmt;
