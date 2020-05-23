@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class InitProdotto {
@@ -103,23 +104,31 @@ public class InitProdotto {
             fillImage();
     }   
     public void fillImage() throws SQLException, FileNotFoundException{
-        //int id = 48;
         String query;
         File image;
         int size;
         PreparedStatement pstmt;
         FileInputStream fis;
-        for(int id = 1; id < 3; id++){ 
+        //conto quanti sono i prodotti in Prodotto
+        db.doQuery("SELECT COUNT(*) AS rowcount from Prodotto");
+        ResultSet rset = db.getResultSet();
+        rset.next();
+        int numeroProdotti = rset.getInt("rowcount");
+        rset.close();
+        //System.out.println("Numero di prodotti = "+ numeroProdotti);
+        //per ogni prodotto aggiungo la sua immagine
+        for(int id = 1; id <= numeroProdotti; id++){ 
             query = String.format("UPDATE Prodotto set immagine = ? WHERE id = %d", id);
             image = new File(String.format("../images/%d.jpg", id));
-            size = (int) image.length();
+            if(image.exists()){
+                size = (int) image.length();
+                fis=new FileInputStream(image);
+                pstmt = db.getPreparedStatement(query);
+                pstmt.setBinaryStream(1,fis,size);
+                pstmt.executeUpdate();
 
-            fis=new FileInputStream(image);
-           
-            pstmt = db.getPreparedStatement(query);
-            pstmt.setBinaryStream(1,fis,size);
-            pstmt.executeUpdate();
-
+            }
+            
         }
         
       
