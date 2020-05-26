@@ -21,11 +21,12 @@ public class ProdottoDaoImpl implements ProdottoDao {
                     db.getResultSet().getInt(1),
                     db.getResultSet().getString(2),
                     db.getResultSet().getString(3),
-                    db.getResultSet().getString(4),
-                    db.getResultSet().getBoolean(5),
-                    db.getResultSet().getDouble(6),
-                    db.getResultSet().getInt(7),
-                    db.getResultSet().getInt(8)));
+                    db.getResultSet().getBlob(4),
+                    db.getResultSet().getString(5),
+                    db.getResultSet().getBoolean(6),
+                    db.getResultSet().getDouble(7),
+                    db.getResultSet().getInt(8),
+                    db.getResultSet().getDouble(9)));
         }
         return catalogo;
     }

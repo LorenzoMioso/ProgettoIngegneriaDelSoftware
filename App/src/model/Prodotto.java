@@ -1,20 +1,24 @@
 package model;
 
+import java.sql.Blob;
+
 public class Prodotto {
 
     private int id;
     private String nome;
     private String marca;
     private String reparto;
+    private Blob immagine;
     private boolean inVendita;
     private double peso;
     private int nPezzi;
-    private int prezzo;
+    private double prezzo;
 
-    public Prodotto(int id, String nome, String marca, String reparto, boolean inVendita, double peso, int nPezzi, int prezzo) {
+    public Prodotto(int id, String nome, String marca, Blob immagine, String reparto, boolean inVendita, double peso, int nPezzi, double prezzo) {
         this.id = id;
         this.nome = nome;
         this.marca = marca;
+        this.immagine = immagine;
         this.reparto = reparto;
         this.inVendita = inVendita;
         this.prezzo = prezzo;
@@ -48,7 +52,7 @@ public class Prodotto {
         return inVendita;
     }
 
-    public int getPrezzo() {
+    public double getPrezzo() {
         return prezzo;
     }
 
