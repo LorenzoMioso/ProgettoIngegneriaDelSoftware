@@ -56,18 +56,24 @@ public class Prodotto {
         return prezzo;
     }
 
+    public Blob getImmagine() {
+        return immagine;
+    }
+
+    public boolean isInVendita() {
+        return inVendita;
+    }
+
+    public double getPeso() {
+        return peso;
+    }
+
     @Override
     public String toString() {
         return "Prodotto{" + "id=" + id + ", nome=" + nome + ", marca=" + marca + ", reparto=" + reparto + ", quantit\u00e0=" + inVendita + ", prezzo=" + prezzo + '}';
     }
 
-    String getPeso() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    String getNPezzi() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 };
 

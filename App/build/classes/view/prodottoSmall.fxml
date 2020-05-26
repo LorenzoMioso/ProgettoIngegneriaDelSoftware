@@ -7,8 +7,8 @@
 
 <Pane prefHeight="400.0" prefWidth="304.0" style="-fx-border-width: 10; -fx-background-color: yellow;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProdottoSmallController">
    <children>
-      <ImageView fitHeight="205.0" fitWidth="200.0" layoutX="52.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="64.0" layoutY="312.0" text="Label" />
+      <ImageView fx:id = "immagineProdotto" fitHeight="205.0" fitWidth="200.0" layoutX="52.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id = "nomeProdotto" layoutX="64.0" layoutY="312.0" text="Label" />
       <Button layoutX="190.0" layoutY="307.0" mnemonicParsing="false" text="Button" />
    </children>
 </Pane>

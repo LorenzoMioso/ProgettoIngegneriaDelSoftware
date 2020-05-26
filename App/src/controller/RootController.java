@@ -3,6 +3,8 @@ package controller;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
+import model.*;
 
 public class RootController implements Initializable {
 
@@ -21,13 +24,27 @@ public class RootController implements Initializable {
     TilePane tilepane;
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb){
+        ProdottoDaoImpl prodottoDaoImpl = new ProdottoDaoImpl();
+        List <Prodotto> productList = null;
         try {
-            URL urlFile = new File("src/view/prodottoSmall.fxml").toURI().toURL();
-            Node prodottoSmall = FXMLLoader.load(urlFile);
-            Node prodottoSmall1 = FXMLLoader.load(urlFile);
-            tilepane.getChildren().add(prodottoSmall);
-            tilepane.getChildren().add(prodottoSmall1);
+            productList= prodottoDaoImpl.getAllProdotto();
+        } catch (SQLException ex) {
+            Logger.getLogger(RootController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            for(Prodotto p: productList){
+                URL urlFile = new File("src/view/prodottoSmall.fxml").toURI().toURL();
+                FXMLLoader fxmlLoader = new FXMLLoader(urlFile);
+                Node prodottoSmall = FXMLLoader.load(urlFile);
+                tilepane.getChildren().add(prodottoSmall);
+                
+                ProdottoSmallController controller = fxmlLoader.<ProdottoSmallController>getController();
+                controller.setProdotto(p);
+               
+            }
+            
+            
         } catch (IOException ex) {
             Logger.getLogger(RootController.class.getName()).log(Level.SEVERE, null, ex);
         }

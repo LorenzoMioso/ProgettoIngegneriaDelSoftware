@@ -39,7 +39,7 @@ public class ProdottoDaoImpl implements ProdottoDao {
     @Override
     public void updateProdotto(Prodotto prodotto) throws SQLException {
        db.doQuery("UPDATE `Prodotto` SET `nome`=["+ prodotto.getNome() +"],`marca`=["+ prodotto.getMarca() +"],"
-               + "`inVendita`=["+ prodotto.getInVendita()+"],`peso`=["+ prodotto.getPeso() +"], `nPezzi`=["+ prodotto.getNPezzi() +"],`prezzo`=["+ prodotto.getPrezzo() +"] WHERE id ='"+ prodotto.getId() +"'");
+               + "`inVendita`=["+ prodotto.getInVendita()+"],`peso`=["+ prodotto.getPeso() +"], `nPezzi`=["+ prodotto.getnPezzi()+"],`prezzo`=["+ prodotto.getPrezzo() +"] WHERE id ='"+ prodotto.getId() +"'");
     }
 
 
@@ -49,7 +49,7 @@ public class ProdottoDaoImpl implements ProdottoDao {
     public void insertProdotto(Prodotto prodotto) throws SQLException {
         db.doQuery("INSERT INTO `Prodotto` (`id`, `nome`, `marca`, `reparto`, `inVendita`, `peso`,`nPezzi`,`prezzo`) VALUES "
                 + "(NULL, '" + prodotto.getNome() + "', '" + prodotto.getMarca() + "', '" + prodotto.getReparto() + "', '" + prodotto.getInVendita()+
-               "', '" + prodotto.getPeso() + "', '" + prodotto.getNPezzi() +"', '" + prodotto.getPrezzo() + "'),");
+               "', '" + prodotto.getPeso() + "', '" + prodotto.getnPezzi() +"', '" + prodotto.getPrezzo() + "'),");
     }
     
 
