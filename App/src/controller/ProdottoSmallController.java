@@ -1,8 +1,6 @@
-
 package controller;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -26,16 +24,14 @@ public class ProdottoSmallController implements Initializable {
     Label nomeProdotto;
     @FXML
     ImageView immagineProdotto;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        
-        
     }
-    public void setProdotto(Prodotto p){
+
+    public void setProdotto(Prodotto p) {
         this.prodotto = p;
         nomeProdotto.setText("" + prodotto.getNome());
-       
         Blob aBlob = prodotto.getImmagine();
         InputStream is = null;
         BufferedImage imag = null;
@@ -47,11 +43,8 @@ public class ProdottoSmallController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(ProdottoSmallController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         Image image = SwingFXUtils.toFXImage(imag, null);;
-        
         immagineProdotto.setImage(image);
-    
     }
 
 }

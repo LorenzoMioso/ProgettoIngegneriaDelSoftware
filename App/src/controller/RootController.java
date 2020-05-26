@@ -24,28 +24,21 @@ public class RootController implements Initializable {
     TilePane tilepane;
 
     @Override
-    public void initialize(URL url, ResourceBundle rb){
+    public void initialize(URL url, ResourceBundle rb) {
         ProdottoDaoImpl prodottoDaoImpl = new ProdottoDaoImpl();
-        List <Prodotto> productList = null;
+        List<Prodotto> productList = null;
         try {
-            productList= prodottoDaoImpl.getAllProdotto();
-        } catch (SQLException ex) {
-            Logger.getLogger(RootController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            for(Prodotto p: productList){
+            productList = prodottoDaoImpl.getAllProdotto();
+            for (Prodotto p : productList) {
                 URL urlFile = new File("src/view/prodottoSmall.fxml").toURI().toURL();
-                FXMLLoader fxmlLoader = new FXMLLoader(urlFile);
-                Node prodottoSmall = FXMLLoader.load(urlFile);
+                FXMLLoader loader = new FXMLLoader(urlFile);
+                Node prodottoSmall = (Node) loader.load();
+                ProdottoSmallController ctrl = loader.getController();
                 tilepane.getChildren().add(prodottoSmall);
-                
-                ProdottoSmallController controller = fxmlLoader.<ProdottoSmallController>getController();
-                controller.setProdotto(p);
-               
             }
-            
-            
         } catch (IOException ex) {
+            Logger.getLogger(RootController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
             Logger.getLogger(RootController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
