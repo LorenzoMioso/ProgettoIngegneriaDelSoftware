@@ -35,6 +35,7 @@ public class RootController implements Initializable {
                 Node prodottoSmall = (Node) loader.load();
                 ProdottoSmallController ctrl = loader.getController();
                 tilepane.getChildren().add(prodottoSmall);
+                ctrl.setProdotto(p);
             }
         } catch (IOException ex) {
             Logger.getLogger(RootController.class.getName()).log(Level.SEVERE, null, ex);

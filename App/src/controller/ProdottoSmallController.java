@@ -19,6 +19,7 @@ import javax.imageio.ImageIO;
 import model.Prodotto;
 
 public class ProdottoSmallController implements Initializable {
+
     private Prodotto prodotto;
     @FXML
     Label nomeProdotto;
@@ -30,21 +31,23 @@ public class ProdottoSmallController implements Initializable {
     }
 
     public void setProdotto(Prodotto p) {
-        this.prodotto = p;
-        nomeProdotto.setText("" + prodotto.getNome());
-        Blob aBlob = prodotto.getImmagine();
-        InputStream is = null;
-        BufferedImage imag = null;
         try {
-            is = aBlob.getBinaryStream(0, aBlob.length());
-            imag = ImageIO.read(is);
+            this.prodotto = p;
+            nomeProdotto.setText("" + prodotto.getNome());
+            if (p.getImmagine() != null) {
+                Blob aBlob = prodotto.getImmagine();
+                InputStream is = null;
+                BufferedImage imag = null;
+                is = aBlob.getBinaryStream(1, aBlob.length());
+                imag = ImageIO.read(is);
+                Image image = SwingFXUtils.toFXImage(imag, null);;
+                immagineProdotto.setImage(image);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ProdottoSmallController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(ProdottoSmallController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Image image = SwingFXUtils.toFXImage(imag, null);;
-        immagineProdotto.setImage(image);
     }
 
 }
