@@ -11,11 +11,11 @@
    <children>
       <ImageView fx:id="immagineProdotto" fitHeight="205.0" fitWidth="200.0" layoutX="52.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="nomeProdotto" layoutX="52.0" layoutY="282.0" prefHeight="15.0" prefWidth="141.0" text="nome" />
-      <Button fx:id="carrello" layoutX="152.0" layoutY="361.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="98.0" style="" text="">
+      <Button fx:id="carrello" layoutX="152.0" layoutY="361.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="98.0" style="-fx-background-color: GreenYellow;" text="">
         <graphic>
             <ImageView fitHeight="24.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../designImages/shopping_cart-black-19dp/2x/baselinge_shopping_cart_black_18dp.png" />
+                  <Image url="@../../../designImages/shopping_cart-white-18dp%20(2)/2x/outline_shopping_cart_white_18dp.png" />
                </image>
             </ImageView>
                

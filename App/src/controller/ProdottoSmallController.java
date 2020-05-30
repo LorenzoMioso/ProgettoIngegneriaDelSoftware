@@ -27,11 +27,11 @@ public class ProdottoSmallController implements Initializable {
     @FXML
     Label nomeProdotto;
     @FXML
-    Label marca;
+    Label marcaProdotto;
     @FXML
     Label prezzo;
     @FXML
-    Label peso;
+    Label pesoProdotto;
     @FXML
     ImageView immagineProdotto;
 
@@ -45,10 +45,8 @@ public class ProdottoSmallController implements Initializable {
 
     public void setProdotto(Prodotto p) {
         try {
-            FileInputStream input;
-            input = new FileInputStream("../designImages/shopping_cart-white-18dp.svg");
-            Image image = new Image(input);
-            carrello.setGraphic(new ImageView(image));
+            
+            
             this.prodotto = p;
             nomeProdotto.setText("" + prodotto.getNome());
             if (p.getImmagine() != null) {
