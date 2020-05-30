@@ -25,6 +25,17 @@ public class RootController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        //Start register view
+        try {
+            URL urlFile = new File("src/view/register.fxml").toURI().toURL();
+            FXMLLoader loader = new FXMLLoader(urlFile);
+            Node register = (Node) loader.load();
+            RegisterController ctrl = loader.getController();
+            stackpane.getChildren().add(register);
+        } catch (IOException ex) {
+            Logger.getLogger(RootController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        /*//Start catalogo view
         ProdottoDaoImpl prodottoDaoImpl = new ProdottoDaoImpl();
         List<Prodotto> productList = null;
         try {
@@ -42,6 +53,7 @@ public class RootController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(RootController.class.getName()).log(Level.SEVERE, null, ex);
         }
+         */
 
     }
 

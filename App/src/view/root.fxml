@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.TilePane?>
 
-<StackPane id="stackpane" fx:id="stackpane" prefHeight="500" prefWidth="800" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RootController">
+<StackPane id="stackpane" fx:id="stackpane" prefHeight="500" prefWidth="800" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.RootController">
    <children>
       <ScrollPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
          <content>

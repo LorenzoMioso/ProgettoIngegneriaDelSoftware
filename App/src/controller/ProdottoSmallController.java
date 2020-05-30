@@ -45,8 +45,6 @@ public class ProdottoSmallController implements Initializable {
 
     public void setProdotto(Prodotto p) {
         try {
-            
-            
             this.prodotto = p;
             nomeProdotto.setText("" + prodotto.getNome());
             if (p.getImmagine() != null) {
