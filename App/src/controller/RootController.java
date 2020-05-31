@@ -14,7 +14,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
-import model.*;
+import model.Prodotto;
+import model.ProdottoDaoImpl;
 
 public class RootController implements Initializable {
 
@@ -26,6 +27,7 @@ public class RootController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //Start register view
+        /*
         try {
             URL urlFile = new File("src/view/register.fxml").toURI().toURL();
             FXMLLoader loader = new FXMLLoader(urlFile);
@@ -34,9 +36,9 @@ public class RootController implements Initializable {
             stackpane.getChildren().add(register);
         } catch (IOException ex) {
             Logger.getLogger(RootController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
         //Start catalogo view
-        /*
+
         ProdottoDaoImpl prodottoDaoImpl = new ProdottoDaoImpl();
         List<Prodotto> productList = null;
         try {
@@ -53,7 +55,7 @@ public class RootController implements Initializable {
             Logger.getLogger(RootController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(RootController.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }
 
     }
 
