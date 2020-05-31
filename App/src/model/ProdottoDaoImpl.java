@@ -15,7 +15,7 @@ public class ProdottoDaoImpl implements ProdottoDao {
     @Override
     public List<Prodotto> getAllProdotto() throws SQLException {
         List<Prodotto> catalogo = new ArrayList<>();
-        db.doQuery("select * from Prodotto");
+        db.doQuery("select * from Prodotto where inVendita = 1");
         while (db.getResultSet().next()) {
             catalogo.add(new Prodotto(
                     db.getResultSet().getInt(1),

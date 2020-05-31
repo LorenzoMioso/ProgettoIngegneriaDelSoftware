@@ -21,6 +21,8 @@ public class Prodotto {
         this.immagine = immagine;
         this.reparto = reparto;
         this.inVendita = inVendita;
+        this.peso = peso;
+        this.nPezzi = nPezzi;
         this.prezzo = prezzo;
         
     }
@@ -70,7 +72,7 @@ public class Prodotto {
 
     @Override
     public String toString() {
-        return "Prodotto{" + "id=" + id + ", nome=" + nome + ", marca=" + marca + ", reparto=" + reparto + ", quantit\u00e0=" + inVendita + ", prezzo=" + prezzo + '}';
+        return "Prodotto{" + "id=" + id + ", nome=" + nome + ", marca=" + marca + ", reparto=" + reparto + ", inVendita= " + inVendita + ", peso= " + peso +", nPezzi= " + nPezzi +", prezzo=" + prezzo + '}';
     }
 
 

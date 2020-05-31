@@ -7,10 +7,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane prefHeight="400.0" prefWidth="300.0" style="-fx-border-width: 10; -fx-background-color: white;" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.ProdottoSmallController">
+<Pane prefHeight="400.0" prefWidth="300.0" style="-fx-border-width: 10; -fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProdottoSmallController">
    <children>
       <ImageView fx:id="immagineProdotto" fitHeight="205.0" fitWidth="200.0" layoutX="52.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="nomeProdotto" layoutX="52.0" layoutY="282.0" prefHeight="15.0" prefWidth="141.0" text="nome" />
+      <Label fx:id="nomeProdotto" layoutX="52.0" layoutY="267.0" prefHeight="15.0" prefWidth="141.0" text="nome" />
       <Button fx:id="carrello" layoutX="152.0" layoutY="361.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="98.0" style="-fx-background-color: GreenYellow;" text="">
         <graphic>
             <ImageView fitHeight="24.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
@@ -21,9 +21,11 @@
                
         </graphic>
  </Button>
-      <Label fx:id="marcaProdotto" layoutX="52.0" layoutY="255.0" prefHeight="15.0" prefWidth="141.0" text="marca" />
-      <Label fx:id="pesoProdotto" layoutX="52.0" layoutY="310.0" prefHeight="15.0" prefWidth="141.0" text="peso" />
-      <Spinner fx:id="quantità" layoutX="52.0" layoutY="361.0" prefHeight="37.0" prefWidth="98.0" />
-      <Label fx:id="prezzo" layoutX="158.0" layoutY="329.0" prefHeight="16.0" prefWidth="73.0" text="prezzo" />
+      <Label fx:id="marcaProdotto" layoutX="52.0" layoutY="243.0" prefHeight="15.0" prefWidth="141.0" text="marca" />
+      <Label fx:id="pesoProdotto" layoutX="52.0" layoutY="290.0" prefHeight="15.0" prefWidth="141.0" text="peso" />
+      <Spinner fx:id="quantità" editable="true" layoutX="52.0" layoutY="361.0" prefHeight="37.0" prefWidth="98.0" styleClass="Spinner.STYLE_CLASS_SPLIT_ARROWS_HORIZONTAL" />
+      <Label fx:id="prezzo" layoutX="158.0" layoutY="332.0" prefHeight="16.0" prefWidth="73.0" text="prezzo" />
+      <Label fx:id="numeroPezzi" layoutX="52.0" layoutY="313.0" text="numeroPezzi" />
+      
    </children>
 </Pane>
