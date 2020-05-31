@@ -1,26 +1,25 @@
-
 package model;
 
-public class Utente {
-        private String email;
-	private String nome;
-	private String cognome;
-	
-	private String citta;
-	private int telefono;
-	
-	private String via;
-	private String nCivico;
-        private int CAP;
-	private String password;
-	private String pagamentoPreferito;
-	private String comune;
-        private boolean isLogged = false;
-        
-    public Utente(String email, String password){
+public class Utente extends Autenticabile {
+
+    private String email;
+    private String nome;
+    private String cognome;
+    private String citta;
+    private int telefono;
+    private String via;
+    private String nCivico;
+    private int CAP;
+    private String pagamentoPreferito;
+    private String comune;
+    private String password;
+
+    public Utente(String email, String password) {
         this.email = email;
         this.password = password;
     }
+    
+
     public Utente(String nome, String cognome, int CAP, String citta, int telefono, String email, String via, String nCivico, String password, String pagamentoPreferito, String comune) {
         this.nome = nome;
         this.cognome = cognome;
@@ -33,7 +32,6 @@ public class Utente {
         this.password = password;
         this.pagamentoPreferito = pagamentoPreferito;
         this.comune = comune;
-        this.isLogged = false;
     }
 
     public String getNome() {
@@ -128,6 +126,5 @@ public class Utente {
     public String toString() {
         return "Utente{" + "nome=" + nome + ", cognome=" + cognome + ", CAP=" + CAP + ", citta=" + citta + ", telefono=" + telefono + ", email=" + email + ", via=" + via + ", nCivico=" + nCivico + ", password=" + password + ", pagamentoPreferito=" + pagamentoPreferito + ", comune=" + comune + '}';
     }
-        
-        
+
 };

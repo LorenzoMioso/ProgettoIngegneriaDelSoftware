@@ -1,15 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
-/**
- *
- * @author elisa
- */
 public abstract class Autenticabile {
-    private String username;
-    private int hashPassword;
+
+    private boolean isLogged = false;
+
+    public boolean isIsLogged() {
+        return isLogged;
+    }
+
+    public void setIsLogged(boolean isLogged) {
+        this.isLogged = isLogged;
+    }
+
 }
