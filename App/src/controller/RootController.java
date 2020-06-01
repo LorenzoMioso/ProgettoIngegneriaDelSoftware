@@ -37,9 +37,18 @@ public class RootController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(RootController.class.getName()).log(Level.SEVERE, null, ex);
         }*/
+        try {
+            URL urlFile = new File("src/view/fullRegister.fxml").toURI().toURL();
+            FXMLLoader loader = new FXMLLoader(urlFile);
+            Node register = (Node) loader.load();
+            FullRegisterController ctrl = loader.getController();
+            stackpane.getChildren().add(register);
+        } catch (IOException ex) {
+            Logger.getLogger(RootController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         //Start catalogo view
 
-        ProdottoDaoImpl prodottoDaoImpl = new ProdottoDaoImpl();
+        /*ProdottoDaoImpl prodottoDaoImpl = new ProdottoDaoImpl();
         List<Prodotto> productList = null;
         try {
             productList = prodottoDaoImpl.getAllProdotto();
@@ -55,7 +64,7 @@ public class RootController implements Initializable {
             Logger.getLogger(RootController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(RootController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
 
     }
 

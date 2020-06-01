@@ -17,13 +17,17 @@ public class UtenteDaoImpl implements UtenteDao, AutenticabileDao {
     }
 
     @Override
-    public void updateUtente(Utente utente) throws SQLException {
-        db.doQuery("UPDATE `Utente` SET `email`=[" + utente.getEmail() + "],`nome`=[" + utente.getNome() + "],`cognome`=[" + utente.getCognome()
-                + "],`città`=[" + utente.getCitta() + "],`comune`=[" + utente.getComune()
-                + "],`via`=[" + utente.getVia() + "],`nCivico`=[" + utente.getnCivico() + "],`CAP`=[" + utente.getCAP() + "],`telefono`=["
-                + utente.getTelefono() + "] ,`pagamentoPreferito`=[" + utente.getPagamentoPreferito() + "] ,`password`=[" + utente.getPassword()
+  public void updateUtente(Utente utente) throws SQLException {
+        db.doQuery("UPDATE Utente SET nome=[" + utente.getNome()
+                + "],cognome=[" + utente.getCognome()
+                + "],città=[" + utente.getCitta()
+                + "],comune=[" + utente.getComune()
+                + "],via=[" + utente.getVia()
+                + "],nCivico=[" + utente.getnCivico()
+                + "],CAP=[" + utente.getCAP()
+                + "],telefono=[" + utente.getTelefono()
+                + "],pagamentoPreferito=[" + utente.getPagamentoPreferito()
                 + "]WHERE email ='" + utente.getEmail() + "'");
-
     }
 
     @Override

@@ -20,6 +20,7 @@ public class RegisterController implements Initializable {
 
     UtenteDaoImpl utenteDaoImpl;
     Utente utente = null;
+    //campi di register.fxml
     @FXML
     TextField email;
     @FXML
@@ -30,6 +31,10 @@ public class RegisterController implements Initializable {
     Label result;
     @FXML
     Button register;
+   
+    
+    
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -38,25 +43,34 @@ public class RegisterController implements Initializable {
 
     @FXML
     public void handleMouseClick(MouseEvent evt) throws SQLException {
-        String regex = "^[\\w!#$%&'+/=?`{|}~^-]+(?:\\.[\\w!#$%&'+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(email.getText());
+        String regexEmail = "^[\\w!#$%&'+/=?`{|}~^-]+(?:\\.[\\w!#$%&'+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+        String regexPassword= "/^[a-zA-Z0-9\\_\\*\\-\\+\\!\\?\\,\\:\\;\\.\\xE0\\xE8\\xE9\\xF9\\xF2\\xEC\\x27]{6,12}/";
+        Pattern patternEmail = Pattern.compile(regexEmail);
+        Pattern patternPassword = Pattern.compile(regexPassword);
+        Matcher matcher = patternEmail.matcher(email.getText());
+        Matcher matcherPwd = patternEmail.matcher(password.getText());
         if (matcher.matches()) {
             if (!password.getText().equals("")) {
-                if (password.getText().equals(reenterPassword.getText())) {
-                    if (utenteDaoImpl.isRegistered(email.getText())) {
-                        result.setText("Email già utilizzata");
-                        result.setTextFill(Color.web("red"));
+                if(matcherPwd.matches()){
+                
+                    if (password.getText().equals(reenterPassword.getText())) {
+                        if (utenteDaoImpl.isRegistered(email.getText())) {
+                            result.setText("Email già utilizzata");
+                            result.setTextFill(Color.web("red"));
+                        } else {
+                            utente = utenteDaoImpl.register(email.getText(), password.getText());
+                            result.setText("Registrazione effettuata");
+                            result.setTextFill(Color.web("green"));
+                        }
                     } else {
-                        utente = utenteDaoImpl.register(email.getText(), password.getText());
-                        result.setText("Registrazione effettuata");
-                        result.setTextFill(Color.web("green"));
+                        result.setText("Le password non coincidono");
+                        result.setTextFill(Color.web("red"));
                     }
-                } else {
-                    result.setText("Le password non coincidono");
+                }else{
+                    result.setText("Password non valida! La password deve avere min 6, max 12 di caratteri, numeri, _ * – + ! ? , : ; . e lettere accentate");
                     result.setTextFill(Color.web("red"));
-                }
-            } else {
+                } 
+            }else {
                 result.setText("Devi inserire una password");
                 result.setTextFill(Color.web("red"));
             }
@@ -66,4 +80,5 @@ public class RegisterController implements Initializable {
         }
         result.setVisible(true);
     }
+    
 }
