@@ -27,7 +27,7 @@ public class RootController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //Start login view
-        
+        /*
         try {
             URL urlFile = new File("src/view/login.fxml").toURI().toURL();
             FXMLLoader loader = new FXMLLoader(urlFile);
@@ -36,7 +36,7 @@ public class RootController implements Initializable {
             stackpane.getChildren().add(login);
         } catch (IOException ex) {
             Logger.getLogger(RootController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
 
         //Start register view
         /*
@@ -66,7 +66,8 @@ public class RootController implements Initializable {
         
         //Start catalogo view
 
-        /*ProdottoDaoImpl prodottoDaoImpl = new ProdottoDaoImpl();
+        
+        ProdottoDaoImpl prodottoDaoImpl = new ProdottoDaoImpl();
         List<Prodotto> productList = null;
         try {
             productList = prodottoDaoImpl.getAllProdotto();
@@ -82,7 +83,7 @@ public class RootController implements Initializable {
             Logger.getLogger(RootController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(RootController.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }
     }
 
 }
