@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 public interface AutenticabileDao {
 
-    public boolean login(String username, String password) throws SQLException;
+    public Autenticabile login(String username, String password) throws SQLException;
 
     public void logout(Autenticabile autenticabile);
 

@@ -1,37 +1,56 @@
 package model;
 
+import java.sql.Date;
+
 public class Utente extends Autenticabile {
 
     private String email;
+    private String password;
     private String nome;
     private String cognome;
-    private String citta;
-    private int telefono;
+    private Date dataNascita;
     private String via;
     private String nCivico;
-    private int CAP;
-    private String pagamentoPreferito;
+    private String citta;
     private String comune;
-    private String password;
+    private int CAP;
+    private String telefono;
+    private String pagamentoPreferito;
 
     public Utente(String email, String password) {
         this.email = email;
         this.password = password;
     }
-    
 
-    public Utente(String nome, String cognome, int CAP, String citta, int telefono, String email, String via, String nCivico, String password, String pagamentoPreferito, String comune) {
+    public Utente(String email, String password, String nome, String cognome, Date dataNascita, String via, String nCivico, String citta, String comune, int CAP, String telefono, String pagamentoPreferito) {
+        this.email = email;
+        this.password = password;
         this.nome = nome;
         this.cognome = cognome;
-        this.CAP = CAP;
-        this.citta = citta;
-        this.telefono = telefono;
-        this.email = email;
+        this.dataNascita = dataNascita;
         this.via = via;
         this.nCivico = nCivico;
-        this.password = password;
-        this.pagamentoPreferito = pagamentoPreferito;
+        this.citta = citta;
         this.comune = comune;
+        this.CAP = CAP;
+        this.telefono = telefono;
+        this.pagamentoPreferito = pagamentoPreferito;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getNome() {
@@ -50,36 +69,12 @@ public class Utente extends Autenticabile {
         this.cognome = cognome;
     }
 
-    public int getCAP() {
-        return CAP;
+    public Date getDataNascita() {
+        return dataNascita;
     }
 
-    public void setCAP(int CAP) {
-        this.CAP = CAP;
-    }
-
-    public String getCitta() {
-        return citta;
-    }
-
-    public void setCitta(String citta) {
-        this.citta = citta;
-    }
-
-    public int getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setDataNascita(Date dataNascita) {
+        this.dataNascita = dataNascita;
     }
 
     public String getVia() {
@@ -98,20 +93,12 @@ public class Utente extends Autenticabile {
         this.nCivico = nCivico;
     }
 
-    public String getPassword() {
-        return password;
+    public String getCitta() {
+        return citta;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPagamentoPreferito() {
-        return pagamentoPreferito;
-    }
-
-    public void setPagamentoPreferito(String pagamentoPreferito) {
-        this.pagamentoPreferito = pagamentoPreferito;
+    public void setCitta(String citta) {
+        this.citta = citta;
     }
 
     public String getComune() {
@@ -122,9 +109,33 @@ public class Utente extends Autenticabile {
         this.comune = comune;
     }
 
+    public int getCAP() {
+        return CAP;
+    }
+
+    public void setCAP(int CAP) {
+        this.CAP = CAP;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getPagamentoPreferito() {
+        return pagamentoPreferito;
+    }
+
+    public void setPagamentoPreferito(String pagamentoPreferito) {
+        this.pagamentoPreferito = pagamentoPreferito;
+    }
+
     @Override
     public String toString() {
-        return "Utente{" + "nome=" + nome + ", cognome=" + cognome + ", CAP=" + CAP + ", citta=" + citta + ", telefono=" + telefono + ", email=" + email + ", via=" + via + ", nCivico=" + nCivico + ", password=" + password + ", pagamentoPreferito=" + pagamentoPreferito + ", comune=" + comune + '}';
+        return "Utente{" + "email=" + email + ", password=" + password + ", nome=" + nome + ", cognome=" + cognome + ", dataNascita=" + dataNascita + ", via=" + via + ", nCivico=" + nCivico + ", citta=" + citta + ", comune=" + comune + ", CAP=" + CAP + ", telefono=" + telefono + ", pagamentoPreferito=" + pagamentoPreferito + '}';
     }
 
 };

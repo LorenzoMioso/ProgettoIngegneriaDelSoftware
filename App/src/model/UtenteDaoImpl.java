@@ -12,35 +12,50 @@ public class UtenteDaoImpl implements UtenteDao, AutenticabileDao {
     }
 
     @Override
-    public Utente getUtente(int id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-  public void updateUtente(Utente utente) throws SQLException {
+    public void updateUtente(Utente utente) throws SQLException {
         db.doQuery("UPDATE Utente SET nome = '" + utente.getNome()
-                + "', cognome = '" + utente.getCognome()
-                + "', citta = '" + utente.getCitta()
-                + "',telefono = '" + utente.getTelefono()
+                + "',cognome = '" + utente.getCognome()
+                + "',dataNascita = '" + utente.getDataNascita()
                 + "',via = '" + utente.getVia()
                 + "',nCivico = '" + utente.getnCivico()
+                + "',citta = '" + utente.getCitta()
                 + "',comune = '" + utente.getComune()
                 + "',CAP = '" + utente.getCAP()
+                + "',telefono = '" + utente.getTelefono()
                 + "',pagamentoPreferito = '" + utente.getPagamentoPreferito()
-                + "'WHERE email = 'username'");
+                + "'WHERE email = '" + utente.getEmail() + "'");
+        System.out.println(utente.toString());
     }
 
     @Override
-    public void insertUtente(Utente utente) throws SQLException {
-        db.doQuery("INSERT INTO `Utente` (`email`, `nome`, `cognome`, `città`, `comune`, `via`, `nCivico`, `CAP`, `telefono`, `pagamentoPreferito`, `password`) VALUES `"
-                + "(NULL, '" + utente.getEmail() + "', '" + utente.getNome() + "', '" + utente.getCognome() + "', '" + utente.getCitta() + "', '" + utente.getComune() + "', '" + utente.getVia() + "', '"
-                + utente.getnCivico() + "', '" + utente.getCAP() + "', '" + utente.getTelefono() + "', '" + utente.getPagamentoPreferito() + "', '" + utente.getPassword() + "')");
-
-    }
-
-    @Override
-    public boolean login(String username, String password) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Utente login(String username, String password) throws SQLException {
+        Utente u = null;
+        if (isRegistered(username) == true) {
+            //controllo password 
+            db.doQuery("select password from Utente WHERE email ='" + username + "'");
+            db.getResultSet().next();
+            String psw = db.getResultSet().getString(1);
+            if (psw.equals(password)) {
+                // fatch utente se la password è corretta
+                db.doQuery("select * from Utente WHERE email ='" + username + "'");
+                db.getResultSet().next();
+                u = new Utente(
+                        db.getResultSet().getString(1),
+                        db.getResultSet().getString(2),
+                        db.getResultSet().getString(3),
+                        db.getResultSet().getString(4),
+                        db.getResultSet().getDate(5),
+                        db.getResultSet().getString(6),
+                        db.getResultSet().getString(7),
+                        db.getResultSet().getString(8),
+                        db.getResultSet().getString(9),
+                        db.getResultSet().getInt(10),
+                        db.getResultSet().getString(11),
+                        db.getResultSet().getString(12));
+                u.setIsLogged(true);
+            }
+        }
+        return u;
     }
 
     @Override
@@ -64,7 +79,11 @@ public class UtenteDaoImpl implements UtenteDao, AutenticabileDao {
         db.doQuery("SELECT CASE WHEN EXISTS ( SELECT * FROM `Utente` WHERE `email` = '" + username + "' ) THEN 1 ELSE 0 END as retVal");
         ResultSet resSet = db.getResultSet();
         resSet.next();
-        return resSet.getBoolean("retVal");
+        System.out.println("retval: " + resSet.getInt("retVal"));
+        if (resSet.getInt("retVal") == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
-
 }
