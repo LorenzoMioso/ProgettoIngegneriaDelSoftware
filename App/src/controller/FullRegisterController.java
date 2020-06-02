@@ -3,13 +3,18 @@ package controller;
 import javafx.scene.paint.Color;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -41,22 +46,29 @@ public class FullRegisterController implements Initializable {
     Label fullresult;
     @FXML
     Button fullregister;
-    
+    @FXML
+    ComboBox pagamento;
     
     
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         utenteDaoImpl = new UtenteDaoImpl();
-        utente = new Utente("ciao@gmail.com", "ciao");
-    }
+        utente = new Utente("mrossi@gmail.com", "1234");
+        pagamento.getItems().removeAll(pagamento.getItems());
+        pagamento.getItems().addAll("carta di credito", "paypal", "alla consegna");
+       
 
+
+    }
+    
    
     @FXML
     public void fullRegisterMouseClick(MouseEvent evt ) throws SQLException{
-        Pattern nomeP = Pattern.compile("/^([a-zA-Z\\xE0\\xE8\\xE9\\xF9\\xF2\\xEC\\x27]\\s?)+$/");
-        Pattern capP = Pattern.compile("/^\\d{5}$/");
-        Pattern telefonoP = Pattern.compile("/(?([0-9]{3}))?([ .-]?)([0-9]{3})\\2([0-9]{4})/");
+        
+        Pattern nomeP = Pattern.compile("^([a-zA-Z\\xE0\\xE8\\xE9\\xF9\\xF2\\xEC\\x27]\\s?)+$");
+        Pattern capP = Pattern.compile("^\\d{5}$");
+        Pattern telefonoP = Pattern.compile("(0{1}[1-9]{1,3})[\\s|.|-]?(\\d{4,})");
         Matcher matcherNome = nomeP.matcher(nome.getText());
         Matcher matcherCognome = nomeP.matcher(cognome.getText());
         Matcher matcherVia = nomeP.matcher(via.getText());
@@ -72,18 +84,26 @@ public class FullRegisterController implements Initializable {
                         if(matcherCittà.matches()){
                             if(matcherCap.matches()){
                                 if(matcherTelefono.matches()){
-                                    fullresult.setText("La registrazione completa è stata effettuata!");
-                                    fullresult.setTextFill(Color.web("green"));
-                                    utente.setNome(nome.getText());
-                                    utente.setCognome(cognome.getText());
-                                    utente.setVia(via.getText());
-                                    utente.setnCivico(ncivico.getText());
-                                    utente.setComune(comune.getText());
-                                    utente.setCitta(città.getText());
-                                    utente.setCAP(Integer.parseInt(cap.getText()));
-                                    utente.setTelefono(Integer.parseInt(telefono.getText()));
-                                    utenteDaoImpl.updateUtente(utente);
-                                    System.out.println("update utente fatto");
+                                    if(pagamento.getSelectionModel().isEmpty() != true){
+                                        fullresult.setText("La registrazione completa è stata effettuata!");
+                                        fullresult.setTextFill(Color.web("green"));
+                                        utente.setNome(nome.getText());
+                                        utente.setCognome(cognome.getText());
+                                        utente.setVia(via.getText());
+                                        utente.setnCivico(ncivico.getText());
+                                        utente.setComune(comune.getText());
+                                        utente.setCitta(città.getText());
+                                        utente.setCAP(Integer.parseInt(cap.getText()));
+                                        utente.setTelefono(Integer.parseInt(telefono.getText()));
+                                        utente.setPagamentoPreferito(pagamento.getSelectionModel().getSelectedItem().toString());
+                                        utenteDaoImpl.updateUtente(utente);
+                                        System.out.println("update utente fatto");
+
+                                    }else{
+                                        fullresult.setText("Pagamento non selezionato!");
+                                        fullresult.setTextFill(Color.web("red"));
+
+                                    }
                                     
                                 }else{
                                     fullresult.setText("Numero di telefono non valido!");
@@ -118,7 +138,7 @@ public class FullRegisterController implements Initializable {
         
         }
         
-            
+        fullresult.setVisible(true);
         
         
     

@@ -18,16 +18,16 @@ public class UtenteDaoImpl implements UtenteDao, AutenticabileDao {
 
     @Override
   public void updateUtente(Utente utente) throws SQLException {
-        db.doQuery("UPDATE Utente SET nome=[" + utente.getNome()
-                + "],cognome=[" + utente.getCognome()
-                + "],città=[" + utente.getCitta()
-                + "],comune=[" + utente.getComune()
-                + "],via=[" + utente.getVia()
-                + "],nCivico=[" + utente.getnCivico()
-                + "],CAP=[" + utente.getCAP()
-                + "],telefono=[" + utente.getTelefono()
-                + "],pagamentoPreferito=[" + utente.getPagamentoPreferito()
-                + "]WHERE email ='" + utente.getEmail() + "'");
+        db.doQuery("UPDATE Utente SET nome = '" + utente.getNome()
+                + "', cognome = '" + utente.getCognome()
+                + "', citta = '" + utente.getCitta()
+                + "',telefono = '" + utente.getTelefono()
+                + "',via = '" + utente.getVia()
+                + "',nCivico = '" + utente.getnCivico()
+                + "',comune = '" + utente.getComune()
+                + "',CAP = '" + utente.getCAP()
+                + "',pagamentoPreferito = '" + utente.getPagamentoPreferito()
+                + "'WHERE email = 'username'");
     }
 
     @Override

@@ -12,8 +12,8 @@ public class ConnectionDb {   //ConnectionDb utilizza il pattern singleton
     private String url = "jdbc:mysql://localhost:3306/";
     private String dbname = "Spesa";
     private String username = "root";
-    //private String password = "astuci0";
-    private String password = "lore";
+    private String password = "astuci0";
+    //private String password = "lore";
     private Connection connection = null;
     private Statement statement = null;
     private ResultSet resultSet = null;
