@@ -35,8 +35,8 @@
             </ScrollPane>
             <MenuButton fx:id="userOperation" mnemonicParsing="false" text="MenuButton" GridPane.columnIndex="2">
               <items>
-                <MenuItem mnemonicParsing="false" onAction="#login" text="Login" />
-                <MenuItem mnemonicParsing="false" onAction="#register" text="Register" />
+                <MenuItem mnemonicParsing="false" onAction="#showLogin" text="Login" />
+                <MenuItem mnemonicParsing="false" onAction="#showRegister" text="Register" />
               </items>
             </MenuButton>
          </children>

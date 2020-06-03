@@ -36,20 +36,28 @@ public class RootController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //Start login view
-        
+        stackpane.getChildren().
+    }
 
-        //Start register view
-        
-        
-        
-        //Start full register  view
-        
-        
-        
-        //Start catalogo view
+    public StackPane getStackpane() {
+        return stackpane;
+    }
 
-        
+    public GridPane getCatalogo() {
+        return catalogo;
+    }
+
+    public void showLogin(ActionEvent e) {
+        catalogo.setVisible(false);
+        startLoginView();
+    }
+
+    public void showRegister(ActionEvent e) {
+        catalogo.setVisible(false);
+        startRegisterView();
+    }
+
+    public void startCatalogoView() {
         ProdottoDaoImpl prodottoDaoImpl = new ProdottoDaoImpl();
         List<Prodotto> productList = null;
         try {
@@ -67,31 +75,9 @@ public class RootController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(RootController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
 
-    public StackPane getStackpane() {
-        return stackpane;
-    }
-
-    public GridPane getCatalogo() {
-        return catalogo;
-    }
-    
-    public void showLogin(ActionEvent e){
-        catalogo.setVisible(false);
-        startLoginView();
-        
-    }
-    
-    public void showRegister(ActionEvent e) {
-
-        catalogo.setVisible(false);
-        startRegisterView();
-
-    }
-    public void startLoginView(){
-        
+    public void startLoginView() {
         try {
             URL urlFile = new File("src/view/login.fxml").toURI().toURL();
             FXMLLoader loader = new FXMLLoader(urlFile);
@@ -102,11 +88,8 @@ public class RootController implements Initializable {
             Logger.getLogger(RootController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-   
 
     public void startRegisterView() {
-       
         try {
             URL urlFile = new File("src/view/register.fxml").toURI().toURL();
             FXMLLoader loader = new FXMLLoader(urlFile);
@@ -117,8 +100,8 @@ public class RootController implements Initializable {
             Logger.getLogger(RootController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void startFullRegisterView(){
-        
+
+    public void startFullRegisterView() {
         try {
             URL urlFile = new File("src/view/fullRegister.fxml").toURI().toURL();
             FXMLLoader loader = new FXMLLoader(urlFile);
@@ -129,5 +112,4 @@ public class RootController implements Initializable {
             Logger.getLogger(RootController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 }
