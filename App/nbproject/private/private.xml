@@ -5,11 +5,13 @@
         <group>
             <file>file:/home/elisa/Documents/UNIVR/II%20Anno/Ingegneria%20del%20sw/Progetto%20Mioso_Zanella/ProgettoIngegneriaDelSoftware/App/src/controller/ProdottoSmallController.java</file>
             <file>file:/home/elisa/Documents/UNIVR/II%20Anno/Ingegneria%20del%20sw/Progetto%20Mioso_Zanella/ProgettoIngegneriaDelSoftware/App/src/controller/RegisterController.java</file>
+            <file>file:/home/elisa/Documents/UNIVR/II%20Anno/Ingegneria%20del%20sw/Progetto%20Mioso_Zanella/ProgettoIngegneriaDelSoftware/App/src/model/ConnectionDb.java</file>
             <file>file:/home/elisa/Documents/UNIVR/II%20Anno/Ingegneria%20del%20sw/Progetto%20Mioso_Zanella/ProgettoIngegneriaDelSoftware/App/src/model/UtenteDaoImpl.java</file>
             <file>file:/home/elisa/Documents/UNIVR/II%20Anno/Ingegneria%20del%20sw/Progetto%20Mioso_Zanella/ProgettoIngegneriaDelSoftware/App/src/controller/FullRegisterController.java</file>
             <file>file:/home/elisa/Documents/UNIVR/II%20Anno/Ingegneria%20del%20sw/Progetto%20Mioso_Zanella/ProgettoIngegneriaDelSoftware/App/src/controller/RootController.java</file>
             <file>file:/home/elisa/Documents/UNIVR/II%20Anno/Ingegneria%20del%20sw/Progetto%20Mioso_Zanella/ProgettoIngegneriaDelSoftware/App/src/view/prodottoSmall.fxml</file>
             <file>file:/home/elisa/Documents/UNIVR/II%20Anno/Ingegneria%20del%20sw/Progetto%20Mioso_Zanella/ProgettoIngegneriaDelSoftware/App/src/model/Utente.java</file>
+            <file>file:/home/elisa/Documents/UNIVR/II%20Anno/Ingegneria%20del%20sw/Progetto%20Mioso_Zanella/ProgettoIngegneriaDelSoftware/App/src/view/fullRegister.fxml</file>
         </group>
     </open-files>
 </project-private>

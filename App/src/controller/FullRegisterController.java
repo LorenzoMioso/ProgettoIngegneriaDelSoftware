@@ -18,7 +18,7 @@ import model.Utente;
 import model.UtenteDaoImpl;
 
 public class FullRegisterController implements Initializable {
-
+    
     UtenteDaoImpl utenteDaoImpl;
     Utente utente = null;
     //campi di fullRegister.fxml
@@ -49,6 +49,7 @@ public class FullRegisterController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         utenteDaoImpl = new UtenteDaoImpl();
         utente = new Utente("mrossi@gmail.com", "1234");
         pagamento.getItems().addAll("carta di credito", "paypal", "alla consegna");

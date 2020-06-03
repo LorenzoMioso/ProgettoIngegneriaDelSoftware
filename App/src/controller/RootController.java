@@ -8,10 +8,16 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import model.Prodotto;
@@ -22,46 +28,23 @@ public class RootController implements Initializable {
     @FXML
     StackPane stackpane;
     @FXML
+    GridPane catalogo;
+    @FXML
     TilePane tilepane;
+    @FXML
+    MenuButton userOperation;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //Start login view
-        /*
-        try {
-            URL urlFile = new File("src/view/login.fxml").toURI().toURL();
-            FXMLLoader loader = new FXMLLoader(urlFile);
-            Node login = (Node) loader.load();
-            LoginController ctrl = loader.getController();
-            stackpane.getChildren().add(login);
-        } catch (IOException ex) {
-            Logger.getLogger(RootController.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        
 
         //Start register view
-        /*
-        try {
-            URL urlFile = new File("src/view/register.fxml").toURI().toURL();
-            FXMLLoader loader = new FXMLLoader(urlFile);
-            Node register = (Node) loader.load();
-            RegisterController ctrl = loader.getController();
-            stackpane.getChildren().add(register);
-        } catch (IOException ex) {
-            Logger.getLogger(RootController.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        
         
         
         //Start full register  view
-        /*
-        try {
-            URL urlFile = new File("src/view/fullRegister.fxml").toURI().toURL();
-            FXMLLoader loader = new FXMLLoader(urlFile);
-            Node register = (Node) loader.load();
-            FullRegisterController ctrl = loader.getController();
-            stackpane.getChildren().add(register);
-        } catch (IOException ex) {
-            Logger.getLogger(RootController.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        
         
         
         //Start catalogo view
@@ -82,6 +65,67 @@ public class RootController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(RootController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
+            Logger.getLogger(RootController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+
+    public StackPane getStackpane() {
+        return stackpane;
+    }
+
+    public GridPane getCatalogo() {
+        return catalogo;
+    }
+    
+    public void showLogin(ActionEvent e){
+        catalogo.setVisible(false);
+        startLoginView();
+        
+    }
+    
+    public void showRegister(ActionEvent e) {
+
+        catalogo.setVisible(false);
+        startRegisterView();
+
+    }
+    public void startLoginView(){
+        
+        try {
+            URL urlFile = new File("src/view/login.fxml").toURI().toURL();
+            FXMLLoader loader = new FXMLLoader(urlFile);
+            Node login = (Node) loader.load();
+            LoginController ctrl = loader.getController();
+            stackpane.getChildren().add(login);
+        } catch (IOException ex) {
+            Logger.getLogger(RootController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+   
+
+    public void startRegisterView() {
+       
+        try {
+            URL urlFile = new File("src/view/register.fxml").toURI().toURL();
+            FXMLLoader loader = new FXMLLoader(urlFile);
+            Node register = (Node) loader.load();
+            RegisterController ctrl = loader.getController();
+            stackpane.getChildren().add(register);
+        } catch (IOException ex) {
+            Logger.getLogger(RootController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void startFullRegisterView(){
+        
+        try {
+            URL urlFile = new File("src/view/fullRegister.fxml").toURI().toURL();
+            FXMLLoader loader = new FXMLLoader(urlFile);
+            Node register = (Node) loader.load();
+            FullRegisterController ctrl = loader.getController();
+            stackpane.getChildren().add(register);
+        } catch (IOException ex) {
             Logger.getLogger(RootController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

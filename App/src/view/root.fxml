@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.TilePane?>
 
-<StackPane id="stackpane" fx:id="stackpane" prefHeight="500" prefWidth="800" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="controller.RootController">
+<StackPane id="stackpane" fx:id="stackpane" prefHeight="500" prefWidth="800" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RootController">
    <children>
-      <GridPane>
+      <GridPane fx:id="catalogo">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="574.0" minWidth="10.0" prefWidth="563.0" />
@@ -33,10 +33,10 @@
                   <TilePane id="tilepane" fx:id="tilepane" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-hgap: 10; -fx-vgap: 10;" />
                </content>
             </ScrollPane>
-            <MenuButton mnemonicParsing="false" text="MenuButton" GridPane.columnIndex="2">
+            <MenuButton fx:id="userOperation" mnemonicParsing="false" text="MenuButton" GridPane.columnIndex="2">
               <items>
-                <MenuItem mnemonicParsing="false" text="Login" />
-                <MenuItem mnemonicParsing="false" text="Register" />
+                <MenuItem mnemonicParsing="false" onAction="#showLogin" text="Login" />
+                <MenuItem mnemonicParsing="false" onAction="#showRegister" text="Register" />
               </items>
             </MenuButton>
          </children>

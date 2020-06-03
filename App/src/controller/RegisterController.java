@@ -61,6 +61,7 @@ public class RegisterController implements Initializable {
                             utente = utenteDaoImpl.register(email.getText(), password.getText());
                             result.setText("Registrazione effettuata");
                             result.setTextFill(Color.web("green"));
+                            
                         }
                     } else {
                         result.setText("Le password non coincidono");
