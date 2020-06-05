@@ -9,5 +9,5 @@ import net.snortum.javafx.multiscenefxml.Main;
  * @version 2018-06-06
  */
 public enum SceneName {
-	MAIN, SCENE1, SCENE2, SCENE3, ROOT, LOGIN, REGISTER, FULLREGISTER, CATALOG;
+     ROOT, LOGIN, REGISTER, FULLREGISTER, CATALOG;
 }

@@ -17,11 +17,6 @@ import net.snortum.javafx.multiscenefxml.util.FxmlInfo;
  */
 public class Main extends Application {
 	
-	private static final String MAIN_FXML = "/view/main-view.fxml";
-	private static final String SCENE_ONE_FXML = "/view/scene-one.fxml";
-	private static final String SCENE_TWO_FXML = "/view/scene-two.fxml";
-	private static final String SCENE_THREE_FXML = "/view/scene-three.fxml";
-        
         private static final String ROOT_FXML = "/view/root.fxml";
 	private static final String LOGIN_FXML = "/view/login.fxml";
 	private static final String REGISTER_FXML = "/view/register.fxml";
@@ -40,12 +35,6 @@ public class Main extends Application {
 	@Override
 	public void start(Stage stage) {
 		
-		scenes.put(SceneName.MAIN, new FxmlInfo(MAIN_FXML, SceneName.MAIN, stage));
-		scenes.put(SceneName.SCENE1, new FxmlInfo(SCENE_ONE_FXML, SceneName.SCENE1, stage));
-		scenes.put(SceneName.SCENE2, new FxmlInfo(SCENE_TWO_FXML, SceneName.SCENE2, stage));
-		scenes.put(SceneName.SCENE3, new FxmlInfo(SCENE_THREE_FXML, SceneName.SCENE3, stage));
-                
-                
                 scenes.put(SceneName.ROOT, new FxmlInfo(ROOT_FXML, SceneName.ROOT, stage));
 		scenes.put(SceneName.LOGIN, new FxmlInfo(LOGIN_FXML, SceneName.LOGIN, stage));
 		scenes.put(SceneName.REGISTER, new FxmlInfo(REGISTER_FXML, SceneName.REGISTER, stage));

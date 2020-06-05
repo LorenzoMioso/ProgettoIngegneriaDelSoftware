@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Spinner?>
-<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane prefHeight="400.0" prefWidth="300.0" style="-fx-border-width: 10; -fx-background-color: white;"  xmlns:fx="http://javafx.com/fxml" fx:controller="net.snortum.javafx.multiscenefxml.controller.ProdottoSmallController">
+<Pane prefHeight="400.0" prefWidth="300.0" style="-fx-border-width: 10; -fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.snortum.javafx.multiscenefxml.controller.ProdottoSmallController">
    <children>
       <ImageView fx:id="immagineProdotto" fitHeight="205.0" fitWidth="200.0" layoutX="52.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="nomeProdotto" layoutX="52.0" layoutY="267.0" prefHeight="15.0" prefWidth="141.0" text="nome" />
-      <Button fx:id="carrello" layoutX="152.0" layoutY="361.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="98.0" style="-fx-background-color: GreenYellow;" text="">
+      <!--<ToggleButton fx:id="carrello" layoutX="152.0" layoutY="361.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="98.0" style="-fx-background-color: GreenYellow;" text=""/>
         <graphic>
             <ImageView fitHeight="24.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../designImages/shopping_cart-white-18dp%20(2)/2x/outline_shopping_cart_white_18dp.png" />
+                  <Image url="@../../../designImages/shopping_cart-black-18dp/2x/baseline_shopping_cart_black_18dp.png" />
                </image>
             </ImageView>
                
         </graphic>
- </Button>
+          </ToggleButton>
+        -->
+      
       <Label fx:id="marcaProdotto" layoutX="52.0" layoutY="243.0" prefHeight="15.0" prefWidth="141.0" text="marca" />
       <Label fx:id="pesoProdotto" layoutX="52.0" layoutY="290.0" prefHeight="15.0" prefWidth="141.0" text="peso" />
       <Spinner fx:id="quantità" editable="true" layoutX="52.0" layoutY="361.0" prefHeight="37.0" prefWidth="98.0" styleClass="Spinner.STYLE_CLASS_SPLIT_ARROWS_HORIZONTAL" />
       <Label fx:id="prezzo" layoutX="158.0" layoutY="332.0" prefHeight="16.0" prefWidth="73.0" text="prezzo" />
       <Label fx:id="numeroPezzi" layoutX="52.0" layoutY="313.0" text="numeroPezzi" />
+      <ToggleButton fx:id="carrello" layoutX="152.0" layoutY="361.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="98.0" stylesheets="@prodottoSmall.css" />
       
    </children>
 </Pane>

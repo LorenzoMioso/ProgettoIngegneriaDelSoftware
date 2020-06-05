@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javax.imageio.ImageIO;
@@ -48,8 +49,8 @@ public class ProdottoSmallController implements Initializable {
     Spinner quantità;
 
     @FXML
-    Button carrello;
-
+    ToggleButton carrello;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         SpinnerValueFactory<Integer> factory = new SpinnerValueFactory.IntegerSpinnerValueFactory(MIN_VALUE, MAX_VALUE, INITIAL_VALUE, STEP);

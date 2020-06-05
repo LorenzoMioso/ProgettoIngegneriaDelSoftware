@@ -11,9 +11,9 @@ public class ConnectionDb {
     private static  ConnectionDb instance = new ConnectionDb();
     private String url = "jdbc:mysql://localhost:3306/";
     private String dbname = "Spesa";
-    private String username = "root";
-    private String password = "astuci0";
-    //private String password = "lore";
+    private String username = "spesa";
+    private String password = "spesa";
+    
     private Connection connection = null;
     private Statement statement = null;
     private PreparedStatement pstmt = null;
