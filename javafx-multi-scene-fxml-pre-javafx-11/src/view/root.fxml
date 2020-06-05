@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml" fx:controller="net.snortum.javafx.multiscenefxml.controller.RootController">
+   <children>
+      <SplitPane dividerPositions="0.2" layoutX="194.0" layoutY="102.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="598.0" prefWidth="150.0">
+               <children>
+                  <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleOnActionCatalog" prefHeight="26.0" prefWidth="128.0" text="Catalogo" />
+                  <Button layoutX="14.0" layoutY="49.0" mnemonicParsing="false" onAction="#handleOnActionLogin" prefHeight="26.0" prefWidth="128.0" text="Login" />
+                  <Button layoutX="14.0" layoutY="84.0" mnemonicParsing="false" onAction="#handleOnActionRegister" prefHeight="26.0" prefWidth="128.0" text="Register" />
+                  <Button layoutX="14.0" layoutY="119.0" mnemonicParsing="false" onAction="#handleOnActionFullRegister" prefHeight="26.0" prefWidth="128.0" text="FullRegister" />
+               </children>
+            </AnchorPane>
+          <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="598.0" prefWidth="578.0" />
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
