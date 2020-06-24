@@ -6,7 +6,7 @@ public class Main {
 
     public static void main(String[] args) throws SQLException, FileNotFoundException {
         DropCreateDb dcdb = new DropCreateDb();
-        
+
         InitPagamento ip = new InitPagamento();
         ip.createPagamento();
         ip.fillTablePagamento();
@@ -14,6 +14,14 @@ public class Main {
         InitReparto irep = new InitReparto();
         irep.createReparto();
         irep.fillTableReparto();
+        
+        InitTipo itip = new InitTipo();
+        itip.createTipo();
+        itip.fillTableTipo();
+
+        InitCaratteristica icar = new InitCaratteristica();
+        icar.createCaratteristica();
+        icar.fillTableCaratteristica();
 
         InitProdotto iprod = new InitProdotto();
         iprod.createProdotto();
@@ -22,7 +30,7 @@ public class Main {
         InitUtente iut = new InitUtente();
         iut.createUtente();
         iut.fillTableUtente();
-        
+
         InitMagazzino im = new InitMagazzino();
         im.createMagazzino();
         im.fillTableMagazzino();
@@ -34,12 +42,15 @@ public class Main {
         InitTesseraFedelta ites = new InitTesseraFedelta();
         ites.createTesseraFedelta();
         ites.fillTableTesseraFedelta();
-        
+
         InitSpesa ispe = new InitSpesa();
         ispe.createSpesa();
 
         InitProdottoComprato ipc = new InitProdottoComprato();
         ipc.createProdottoComprato();
+        
+        InitCaratteristicaProdotto icp = new InitCaratteristicaProdotto();
+        icp.createCaratteristicaProdotto();
 
     }
 }

@@ -1,10 +1,10 @@
 package net.snortum.javafx.multiscenefxml.model;
 
-public class Reparto {
+public class Caratteristica {
 
     private String nome;
 
-    public Reparto(String nome) {
+    public Caratteristica(String nome) {
         this.nome = nome;
     }
 
@@ -16,4 +16,9 @@ public class Reparto {
         this.nome = nome;
     }
 
-};
+    @Override
+    public String toString() {
+        return "Caratteristica{" + "nome=" + nome + '}';
+    }
+
+}

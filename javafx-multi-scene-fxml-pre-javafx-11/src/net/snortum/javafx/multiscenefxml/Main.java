@@ -42,7 +42,7 @@ public class Main extends Application {
                 scenes.put(SceneName.CATALOG, new FxmlInfo(CATALOG_FXML, SceneName.CATALOG, stage));
 		
 		// getScene() will load the FXML file the first time
-		stage.setScene(scenes.get(SceneName.ROOT).getScene()); 
+		stage.setScene(scenes.get(SceneName.CATALOG).getScene()); 
 		stage.setTitle("Multi-Scene Demo");
 		stage.show();
 	}
