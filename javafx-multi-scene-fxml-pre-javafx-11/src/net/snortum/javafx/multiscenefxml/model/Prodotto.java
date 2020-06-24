@@ -15,18 +15,20 @@ public class Prodotto {
     private int nPezzi;
     private double prezzo;
 
-    public Prodotto(int id, String nome, String marca, String reparto, String tipo, Blob immagine, boolean inVendita, double peso, int nPezzi, double prezzo) {
+    public Prodotto(int id, String nome, String marca, Blob immagine, String reparto, String tipo, boolean inVendita, double peso, int nPezzi, double prezzo) {
         this.id = id;
         this.nome = nome;
         this.marca = marca;
+        this.immagine = immagine;
         this.reparto = reparto;
         this.tipo = tipo;
-        this.immagine = immagine;
         this.inVendita = inVendita;
         this.peso = peso;
         this.nPezzi = nPezzi;
         this.prezzo = prezzo;
     }
+
+    
 
     public int getId() {
         return id;
