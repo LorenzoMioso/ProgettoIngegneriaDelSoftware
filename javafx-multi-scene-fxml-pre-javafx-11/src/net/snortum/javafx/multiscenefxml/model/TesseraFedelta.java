@@ -7,10 +7,12 @@ public class TesseraFedelta {
     private int id;
     private Date dataEmissione;
     private int punti;
-    public TesseraFedelta(int id, Date dataEmissione, int punti) {
+    private Utente utente;
+    public TesseraFedelta(int id, Date dataEmissione, int punti, Utente utente) {
         this.id = id;
         this.dataEmissione = dataEmissione;
         this.punti = punti;
+        this.utente = utente;
     }
 
     public int getId() {
@@ -36,4 +38,13 @@ public class TesseraFedelta {
     public void setPunti(int punti) {
         this.punti = punti;
     }
+
+    public Utente getUtente() {
+        return utente;
+    }
+
+    public void setUtente(Utente utente) {
+        this.utente = utente;
+    }
+    
 };
