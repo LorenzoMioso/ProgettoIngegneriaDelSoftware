@@ -11,11 +11,13 @@ public class InitCaratteristicaProdotto {
 
     public void createCaratteristicaProdotto() throws SQLException {
         db.doQuery("CREATE TABLE `CaratteristicaProdotto` (\n"
-                + " `idProdotto` int(11) NOT NULL,\n"
-                + " `nomeCaratteristica` varchar(100) NOT NULL,\n"
+                + " `idProdotto` int(11) NOT NULL ,\n"
+                + " `nomeCaratteristica` varchar(100) NOT NULL ,\n"
                 + " PRIMARY KEY (`nomeCaratteristica` ,`idProdotto`),\n"
-                + " CONSTRAINT `fk_CaratteristicaProdotto_caratteristica` FOREIGN KEY (nomeCaratteristica) REFERENCES Caratteristica(nome),\n"
-                + " CONSTRAINT `fk_CaratteristicaProdotto_prodotto` FOREIGN KEY (idProdotto) REFERENCES Prodotto(id)\n"
+                + " KEY `fk_CaratteristicaProdotto_prodotto` (`idProdotto`),\n"
+                + " KEY `fk_CaratteristicaProdotto_caratteristica` (`nomeCaratteristica`),\n"
+                + " CONSTRAINT `fk_CaratteristicaProdotto_caratteristica` FOREIGN KEY (`nomeCaratteristica`) REFERENCES `Caratteristica` (`nome`),\n"
+                + " CONSTRAINT `fk_CaratteristicaProdotto_prodotto` FOREIGN KEY (`idProdotto`) REFERENCES `Prodotto` (`id`)\n"
                 + ") ENGINE=InnoDB");
     }
 

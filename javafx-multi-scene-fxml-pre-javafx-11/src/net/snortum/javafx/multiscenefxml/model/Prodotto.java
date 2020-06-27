@@ -1,6 +1,7 @@
 package net.snortum.javafx.multiscenefxml.model;
 
 import java.sql.Blob;
+import java.util.Comparator;
 
 public class Prodotto {
 
@@ -8,20 +9,20 @@ public class Prodotto {
     private String nome;
     private String marca;
     private Blob immagine;
-    private String reparto;
     private String tipo;
+    private String reparto;
     private boolean inVendita;
     private double peso;
     private int nPezzi;
     private double prezzo;
 
-    public Prodotto(int id, String nome, String marca, String reparto, String tipo, Blob immagine, boolean inVendita, double peso, int nPezzi, double prezzo) {
+    public Prodotto(int id, String nome, String marca, Blob immagine, String tipo, String reparto, boolean inVendita, double peso, int nPezzi, double prezzo) {
         this.id = id;
         this.nome = nome;
         this.marca = marca;
-        this.reparto = reparto;
-        this.tipo = tipo;
         this.immagine = immagine;
+        this.tipo = tipo;
+        this.reparto = reparto;
         this.inVendita = inVendita;
         this.peso = peso;
         this.nPezzi = nPezzi;
@@ -52,6 +53,14 @@ public class Prodotto {
         this.marca = marca;
     }
 
+    public Blob getImmagine() {
+        return immagine;
+    }
+
+    public void setImmagine(Blob immagine) {
+        this.immagine = immagine;
+    }
+
     public String getReparto() {
         return reparto;
     }
@@ -66,14 +75,6 @@ public class Prodotto {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
-    }
-
-    public Blob getImmagine() {
-        return immagine;
-    }
-
-    public void setImmagine(Blob immagine) {
-        this.immagine = immagine;
     }
 
     public boolean isInVendita() {
@@ -110,7 +111,22 @@ public class Prodotto {
 
     @Override
     public String toString() {
-        return "Prodotto{" + "id=" + id + ", nome=" + nome + ", marca=" + marca + ", reparto=" + reparto + ", tipo=" + tipo + ", immagine=" + immagine + ", inVendita=" + inVendita + ", peso=" + peso + ", nPezzi=" + nPezzi + ", prezzo=" + prezzo + '}';
+        return "Prodotto{" + "id=" + id + ", nome=" + nome + ", marca=" + marca + ", immagine=" + immagine + ", reparto=" + reparto + ", tipo=" + tipo + ", inVendita=" + inVendita + ", peso=" + peso + ", nPezzi=" + nPezzi + ", prezzo=" + prezzo + '}';
     }
+
+    public static Comparator<Prodotto> prezzoComparator = new Comparator<Prodotto>() {
+        @Override
+        public int compare(Prodotto p1, Prodotto p2) {
+            return (p1.getPrezzo() < p2.getPrezzo() ? -1
+                    : (p1.getPrezzo() == p2.getPrezzo() ? 0 : 1));
+        }
+    };
+
+    public static Comparator<Prodotto> marcaComparator = new Comparator<Prodotto>() {
+        @Override
+        public int compare(Prodotto p1, Prodotto p2) {
+            return p1.getMarca().compareTo(p2.getMarca());
+        }
+    };
 
 };

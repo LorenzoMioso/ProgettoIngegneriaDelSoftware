@@ -31,6 +31,11 @@ public class LoginController implements Stageable {
     @FXML
     Button login;
 
+    @Override
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
     @FXML
     public void loginMouseClick(MouseEvent evt) throws SQLException {
         if (!email.getText().equals("")) {
@@ -62,11 +67,6 @@ public class LoginController implements Stageable {
 
     @FXML
     private void handleOnActionBack(ActionEvent event) {
-        stage.setScene(Main.getScenes().get(SceneName.ROOT).getScene());
-    }
-
-    @Override
-    public void setStage(Stage stage) {
-        this.stage = stage;
+        stage.setScene(Main.getScenes().get(SceneName.CATALOG).getScene());
     }
 }

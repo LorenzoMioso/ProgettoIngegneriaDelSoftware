@@ -15,8 +15,10 @@ public class InitProdottoComprato {
                 + " `idProdotto` int(11) NOT NULL,\n"
                 + " `quantitàProdotto` int (11) NOT NULL,\n"
                 + " PRIMARY KEY (`idSpesa` ,`idProdotto`),\n"
-                + " CONSTRAINT `fk_prodottoComprato_spesa` FOREIGN KEY (idSpesa) REFERENCES Spesa(id),\n"
-                + " CONSTRAINT `fk_prodottoComprato_prodotto` FOREIGN KEY (idProdotto) REFERENCES Prodotto(id)\n"
+                + " KEY `fk_prodottoComprato_prodotto` (`idProdotto`),\n"
+                + " KEY `fk_prodottoComprato_spesa` (`idSpesa`),\n"
+                + " CONSTRAINT `fk_prodottoComprato_prodotto` FOREIGN KEY (`idProdotto`) REFERENCES `Prodotto` (`id`),\n"
+                + " CONSTRAINT `fk_prodottoComprato_spesa` FOREIGN KEY (`idSpesa`) REFERENCES `Spesa` (`id`)"
                 + ") ENGINE=InnoDB");
     }
 
