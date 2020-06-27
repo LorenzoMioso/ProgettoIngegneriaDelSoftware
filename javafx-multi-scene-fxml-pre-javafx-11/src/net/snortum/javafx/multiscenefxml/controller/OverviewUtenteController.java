@@ -5,25 +5,33 @@
  */
 package net.snortum.javafx.multiscenefxml.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import net.snortum.javafx.multiscenefxml.model.Spesa;
+import net.snortum.javafx.multiscenefxml.model.SpesaDaoImpl;
 import net.snortum.javafx.multiscenefxml.model.Stageable;
 import net.snortum.javafx.multiscenefxml.model.TesseraFedelta;
 import net.snortum.javafx.multiscenefxml.model.TesseraFedeltaDaoImpl;
@@ -41,6 +49,8 @@ public class OverviewUtenteController  implements Stageable, Initializable{
     private Utente utente = null;
     private TesseraFedeltaDaoImpl  fedeltaDaoImpl = null;
     private TesseraFedelta tf = null;
+    private SpesaDaoImpl spesaDaoImpl = null;
+    private List <Spesa> speseList;
     /**
      *
      * @param stage
@@ -113,6 +123,11 @@ public class OverviewUtenteController  implements Stageable, Initializable{
     ComboBox comboPagamento;
     @FXML
     Label result;
+    //elementi di del pane di spese
+    @FXML
+    ScrollPane speseScrollPane;
+    @FXML
+    VBox speseVBox;
     @Override
     public void setStage(Stage stage) {
          this.stage = stage;
@@ -125,6 +140,7 @@ public class OverviewUtenteController  implements Stageable, Initializable{
         //aggiungo gli item alla comboBox
         comboPagamento.getItems().setAll("Carta di Credito", "PayPal", "Alla consegna");
         fedeltaDaoImpl = new TesseraFedeltaDaoImpl();
+        spesaDaoImpl = new SpesaDaoImpl();
     }
     @FXML
     public void handleMouseClickProfilo(MouseEvent event){
@@ -147,8 +163,18 @@ public class OverviewUtenteController  implements Stageable, Initializable{
         labelSaldoPunti.setText("" + tf.getPunti());
     }
     @FXML
-    public void handleMouseClickSpese(MouseEvent event){
+    public void handleMouseClickSpese(MouseEvent event) throws SQLException, IOException{
         managePane("spese");
+        speseList = spesaDaoImpl.getAllSpesaByUtente(utente);
+        for(Spesa s: speseList){
+             URL urlFile = getClass().getResource("/view/spesaItem.fxml");
+            FXMLLoader loader = new FXMLLoader(urlFile);
+            Node prodottoSmall = loader.load();
+            SpesaItemController ctrl = loader.getController();
+            speseVBox.getChildren().add(prodottoSmall);
+            ctrl.setSpesa(s);
+        }
+        
     }
     @FXML
     public void handleMouseClickModificaProfilo(MouseEvent event){
