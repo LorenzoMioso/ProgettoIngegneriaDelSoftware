@@ -57,7 +57,32 @@ public class UtenteDaoImpl implements UtenteDao, AutenticabileDao {
         }
         return u;
     }
+    
+    @Override
+    public Utente getUtente(String email) throws SQLException{
+         Utente u = null;
+        if (isRegistered(email) == true) {
+            //controllo password 
+            db.doQuery("select password from Utente WHERE email ='" + email + "'");
+            db.getResultSet().next();
+            u = new Utente(
+                    db.getResultSet().getString(1),
+                    db.getResultSet().getString(2),
+                    db.getResultSet().getString(3),
+                    db.getResultSet().getString(4),
+                    db.getResultSet().getDate(5),
+                    db.getResultSet().getString(6),
+                    db.getResultSet().getString(7),
+                    db.getResultSet().getString(8),
+                    db.getResultSet().getString(9),
+                    db.getResultSet().getInt(10),
+                    db.getResultSet().getString(11),
+                    db.getResultSet().getString(12));
+            u.setIsLogged(true);
 
+        }
+        return u;
+    }
     @Override
     public void logout(Autenticabile autenticabile) {
         autenticabile.setIsLogged(false);

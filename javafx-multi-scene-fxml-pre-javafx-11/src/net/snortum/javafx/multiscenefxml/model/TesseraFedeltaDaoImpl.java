@@ -13,13 +13,26 @@ public class TesseraFedeltaDaoImpl {
     public TesseraFedelta getTesseraFedelta(int id) throws SQLException {
         TesseraFedelta tesseraFedelta;
         db.doQuery("select * from TesseraFedelta WHERE id = '" + id + "'");
+     
+        UtenteDaoImpl utentedaoImpl = new UtenteDaoImpl();
+        
+        Utente utente = utentedaoImpl.getUtente(db.getResultSet().getString(4));
         tesseraFedelta = new TesseraFedelta(
                 db.getResultSet().getInt(1),
                 db.getResultSet().getDate(2),
-                db.getResultSet().getInt(3));
+                db.getResultSet().getInt(3),
+                utente);
         return tesseraFedelta;
     }
-
+    public TesseraFedelta getTesseraFromUser(Utente u) throws SQLException{
+        db.doQuery("select * from TesseraFedelta where utente = '"+ u.getEmail() +"'");
+        TesseraFedelta tesseraFedelta = new TesseraFedelta(
+                db.getResultSet().getInt(1),
+                db.getResultSet().getDate(2),
+                db.getResultSet().getInt(3),
+                u);
+        return tesseraFedelta;
+    }
     public void deleteTesseraFedelta(TesseraFedelta tesseraFedelta) throws SQLException {
         db.doQuery("DELETE FROM `TesseraFedelta` WHERE id = '" + tesseraFedelta.getId() + "'");
     }

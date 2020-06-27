@@ -20,6 +20,7 @@ public class InitSpesa {
                 + "  saldoPunti int(11) NOT NULL,\n"
                 + "  pagamento varchar(100) NOT NULL,\n"
                 + "  utente varchar(100) NOT NULL,\n"
+                + "  stato varchar(100) NOT NULL,\n"
                 + "  PRIMARY KEY `id`(`id`),\n"
                 + "  CONSTRAINT `fk_spesa_pagamento` FOREIGN KEY(pagamento) REFERENCES Pagamento(tipologia),\n"
                 + "  CONSTRAINT `fk_spesa_utente` FOREIGN KEY(utente) REFERENCES Utente(email)\n"

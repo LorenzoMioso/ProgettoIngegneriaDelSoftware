@@ -1,11 +1,14 @@
 package net.snortum.javafx.multiscenefxml.controller;
 
 
+import java.net.URL;
 import javafx.scene.paint.Color;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -18,7 +21,7 @@ import net.snortum.javafx.multiscenefxml.model.Stageable;
 import net.snortum.javafx.multiscenefxml.model.Utente;
 import net.snortum.javafx.multiscenefxml.model.UtenteDaoImpl;
 
-public class FullRegisterController implements Stageable {
+public class FullRegisterController implements Stageable, Initializable {
 
     private Stage stage;
     UtenteDaoImpl utenteDaoImpl;
@@ -48,6 +51,7 @@ public class FullRegisterController implements Stageable {
     ComboBox pagamento;
     @FXML
     DatePicker data;
+    
 
     public void fullRegisterMouseClick(MouseEvent evt) throws SQLException {
         Pattern nomeP = Pattern.compile("^([a-zA-Z\\xE0\\xE8\\xE9\\xF9\\xF2\\xEC\\x27]\\s?)+$");
@@ -129,5 +133,10 @@ public class FullRegisterController implements Stageable {
     @Override
     public void setStage(Stage stage) {
         this.stage = stage;
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        pagamento.getItems().setAll("Carta di Credito", "PayPal", "Alla consegna");
     }
 }
