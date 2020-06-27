@@ -12,10 +12,6 @@ public class CaratteristicaDaoImpl implements CaratteristicaDao {
         db = ConnectionDb.getInstance();
     }
 
-    /**
-     *
-     * @return @throws SQLException
-     */
     @Override
     public List<Caratteristica> getAllCaratteristica() throws SQLException {
         List<Caratteristica> caratteristiche = new ArrayList<Caratteristica>();

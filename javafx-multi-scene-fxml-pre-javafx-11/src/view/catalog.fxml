@@ -6,6 +6,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,9 +17,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.TilePane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.snortum.javafx.multiscenefxml.controller.CatalogController">
+<AnchorPane prefHeight="700.0" prefWidth="900.0"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.snortum.javafx.multiscenefxml.controller.CatalogController">
     <children>
-        <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+        <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="585.0" prefWidth="890.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
             <center>
                 <ScrollPane GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                     <BorderPane.margin>
@@ -33,7 +35,7 @@
                 </ScrollPane>               
             </center>
             <left>
-                <GridPane BorderPane.alignment="CENTER">
+                <GridPane prefWidth="160.0" BorderPane.alignment="CENTER">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
                     </columnConstraints>
@@ -53,23 +55,46 @@
                         <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
-                    <children>
-                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Bevande" GridPane.rowIndex="1" />
-                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Frutta" GridPane.rowIndex="2" />
-                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Gastronomia" GridPane.rowIndex="3" />
-                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Latteria" GridPane.rowIndex="4" />
-                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Macelleria" GridPane.rowIndex="5" />
-                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Oli e aceti" GridPane.rowIndex="6" />
-                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Panetteria" GridPane.rowIndex="7" />
-                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Pasticceria" GridPane.rowIndex="8" />
-                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Pescheria" GridPane.rowIndex="9" />
-                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Scatolame" GridPane.rowIndex="10" />
-                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Sughi e Salse" GridPane.rowIndex="11" />
-                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Surgelati" GridPane.rowIndex="12" />
-                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Verdura" GridPane.rowIndex="13" />
-                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Vini e Liquori" GridPane.rowIndex="14" />
+                    <children>                     
+                        <ToggleButton fx:id="repartoBevande" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#handleMouseClickReparto" text="Bevande" GridPane.rowIndex="1">
+                            <toggleGroup>
+                                <ToggleGroup fx:id="groupReparto" />
+                            </toggleGroup>
+                        </ToggleButton>
+                        <ToggleButton fx:id="repartoFrutta" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#handleMouseClickReparto" text="Frutta" toggleGroup="$groupReparto" GridPane.rowIndex="2" />
+                        <ToggleButton fx:id="repartoGastronomia" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#handleMouseClickReparto" text="Gastronomia" toggleGroup="$groupReparto" GridPane.rowIndex="3" />
+                        <ToggleButton fx:id="repartoLatteria" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#handleMouseClickReparto" text="Latteria" toggleGroup="$groupReparto" GridPane.rowIndex="4" />
+                        <ToggleButton fx:id="repartoMacelleria" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#handleMouseClickReparto" text="Macelleria" toggleGroup="$groupReparto" GridPane.rowIndex="5" />
+                        <ToggleButton fx:id="repartoOlieAceti" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#handleMouseClickReparto" text="Oli e aceti" toggleGroup="$groupReparto" GridPane.rowIndex="6" />
+                        <ToggleButton fx:id="repartoPanetteria" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#handleMouseClickReparto" text="Panetteria" toggleGroup="$groupReparto" GridPane.rowIndex="7" />
+                        <ToggleButton fx:id="repartoPasticceria" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#handleMouseClickReparto" text="Pasticceria" toggleGroup="$groupReparto" GridPane.rowIndex="8" />
+                        <ToggleButton fx:id="repartoPescheria" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#handleMouseClickReparto" text="Pescheria" toggleGroup="$groupReparto" GridPane.rowIndex="9" />
+                        <ToggleButton fx:id="repartoScatolame" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#handleMouseClickReparto" text="Scatolame" toggleGroup="$groupReparto" GridPane.rowIndex="10" />
+                        <ToggleButton fx:id="repartoSughieSalse" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#handleMouseClickReparto" text="Sughi e Salse" toggleGroup="$groupReparto" GridPane.rowIndex="11" />
+                        <ToggleButton fx:id="repartoSurgelati" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#handleMouseClickReparto" text="Surgelati" toggleGroup="$groupReparto" GridPane.rowIndex="12" />
+                        <ToggleButton fx:id="repartoVerdura" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#handleMouseClickReparto" text="Verdura" toggleGroup="$groupReparto" GridPane.rowIndex="13" />
+                        <ToggleButton fx:id="repartoVinieLiquori" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#handleMouseClickReparto" text="Vini e Liquori" toggleGroup="$groupReparto" GridPane.rowIndex="14" />
+                        <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Reparti" />
+                        <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Ordina per:" GridPane.rowIndex="15" />
+                        <ToggleButton fx:id="prezzoCrescente" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#handleMouseClickPrezzo" text="Prezzo crescente" GridPane.rowIndex="16">
+                            <toggleGroup>
+                                <ToggleGroup fx:id="groupPrezzo" />
+                            </toggleGroup>
+                        </ToggleButton>
+                        <ToggleButton fx:id="prezzoDecrescente" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#handleMouseClickPrezzo" text="Prezzo decrescente" toggleGroup="$groupPrezzo" GridPane.rowIndex="17" />    
+                        <ToggleButton fx:id="marcaCrescente" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#handleMouseClickMarca" text="Marca crescente" GridPane.rowIndex="18">
+                            <toggleGroup>
+                                <ToggleGroup fx:id="groupMarca" />
+                            </toggleGroup>
+                        </ToggleButton>                        
+                        <ToggleButton fx:id="marcaDecrescente" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#handleMouseClickMarca" text="Marca decrescente" toggleGroup="$groupMarca" GridPane.rowIndex="19" />    
                     </children>
                     <opaqueInsets>
                         <Insets />
@@ -84,7 +109,7 @@
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="350.0" minWidth="350.0" prefWidth="350.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="330.0" minWidth="330.0" prefWidth="330.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
                     </columnConstraints>
@@ -92,9 +117,9 @@
                         <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" GridPane.columnIndex="3" />
-                        <TextField maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="641.0" GridPane.columnIndex="2" />
-                        <ComboBox fx:id="combobox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="157.0" promptText="Cerca per:" GridPane.columnIndex="1" />
+                        <Button fx:id="cerca" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleMouseClickCerca" GridPane.columnIndex="3" />
+                        <TextField fx:id="searchBar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="641.0" GridPane.columnIndex="2" />
+                        <ComboBox fx:id="combobox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="178.0" promptText="Cerca per:" GridPane.columnIndex="1" />
                     </children>
                 </GridPane>
             </top>
