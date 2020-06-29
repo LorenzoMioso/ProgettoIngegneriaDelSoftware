@@ -44,16 +44,16 @@ public class CartItemController implements Stageable, Initializable {
         sessionStorage = Main.getSessioStorage();
     }
 
-    public void setCartItem(Prodotto p, int n){
+    public void setCartItem(Prodotto p, int n) {
         this.prodotto = p;
         this.numeroProdotto = n;
     }
 
     public void showCartItem() throws IOException, SQLException {
-        URL urlFile = getClass().getResource("/view/prodottoSmall.fxml");
+        URL urlFile = getClass().getResource("/view/prodottoSmallWithoutButton.fxml");
         FXMLLoader loader = new FXMLLoader(urlFile);
         Node prodottoSmall = loader.load();
-        ProdottoSmallController ctrl = loader.getController();
+        ProdottoSmallWithoutButtonController ctrl = loader.getController();
         pane.getChildren().add(prodottoSmall);
         ctrl.setProdotto(prodotto);
         ctrl.showProdotto();

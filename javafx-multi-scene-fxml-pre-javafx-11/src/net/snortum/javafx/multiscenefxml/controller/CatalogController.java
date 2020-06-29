@@ -95,11 +95,19 @@ public class CatalogController implements Stageable, Initializable {
         prodottoDaoImpl = new ProdottoDaoImpl();
         try {
             showAllProductSmall();
-        } catch (SQLException ex) {
-            Logger.getLogger(CatalogController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
+        } catch (SQLException | IOException ex) {
             Logger.getLogger(CatalogController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        //        Platform.runLater(() -> {
+//            try {
+//                addProdotti();
+//            } catch (SQLException ex) {
+//                Logger.getLogger(CatalogController.class.getName()).log(Level.SEVERE, null, ex);
+//            } catch (IOException ex) {
+//                Logger.getLogger(CatalogController.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        });
+        
         //        Platform.runLater(() -> {
 //            try {
 //                addProdotti();

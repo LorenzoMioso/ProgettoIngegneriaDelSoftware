@@ -39,19 +39,17 @@ public class CartController implements Stageable, Initializable {
         sessionStorage = Main.getSessioStorage();
         try {
             showItems();
-        } catch (IOException ex) {
-            Logger.getLogger(CartController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (IOException | SQLException ex) {
             Logger.getLogger(CartController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     public void showItems() throws IOException, SQLException {
         vbox.getChildren().clear();
-//        System.out.println("Carrello:");
-//        for (Map.Entry<Prodotto, Integer> entry : sessionStorage.getCarrello().getProdotti().entrySet()) {
-//            System.out.println("Prodotto " + entry.getKey() + " Quantità: " + entry.getValue());
-//        }
+        System.out.println("Carrello:");
+        for (Map.Entry<Prodotto, Integer> entry : sessionStorage.getCarrello().getProdotti().entrySet()) {
+            System.out.println("Prodotto " + entry.getKey() + " Quantità: " + entry.getValue());
+        }
         for (Map.Entry<Prodotto, Integer> entry : sessionStorage.getCarrello().getProdotti().entrySet()) {
             URL urlFile = getClass().getResource("/view/cartItem.fxml");
             FXMLLoader loader = new FXMLLoader(urlFile);
@@ -63,5 +61,4 @@ public class CartController implements Stageable, Initializable {
         }
         prezzoTotale.setText(String.valueOf(sessionStorage.getCarrello().getPrezzoTot()));
     }
-
 }
