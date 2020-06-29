@@ -36,7 +36,7 @@ public class CartController implements Stageable, Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        sessionStorage = Main.getSessioStorage();
+        sessionStorage = Main.getSessionStorage();
         try {
             showItems();
         } catch (IOException | SQLException ex) {

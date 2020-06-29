@@ -52,7 +52,7 @@ public class ProdottoSmallController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        sessionStorage = Main.getSessioStorage();
+        sessionStorage = Main.getSessionStorage();
         SpinnerValueFactory<Integer> factory = new SpinnerValueFactory.IntegerSpinnerValueFactory(MIN_VALUE, MAX_VALUE, INITIAL_VALUE, STEP);
         quantità.setValueFactory(factory);
         quantità.setEditable(true);

@@ -23,7 +23,9 @@ public class Main extends Application {
     private static final String FULLREGISTER_FXML = "/view/fullRegister.fxml";
     private static final String CATALOG_FXML = "/view/catalog.fxml";
     private static final String CART_FXML = "/view/cart.fxml";
-
+    private static final String OVERVIEWUTENTE_FXML = "/view/overviewUtente.fxml";
+    private static final String PRODUCTLIST_FXML = "/view/productList.fxml";
+    
     private static Map<SceneName, FxmlInfo> scenes = new HashMap<>();
 
     private static SessionStorage sessioStorage = new SessionStorage();
@@ -40,9 +42,11 @@ public class Main extends Application {
         scenes.put(SceneName.FULLREGISTER, new FxmlInfo(FULLREGISTER_FXML, SceneName.FULLREGISTER, stage));
         scenes.put(SceneName.CATALOG, new FxmlInfo(CATALOG_FXML, SceneName.CATALOG, stage));
         scenes.put(SceneName.CART, new FxmlInfo(CART_FXML, SceneName.CART, stage));
-
+        scenes.put(SceneName.OVERVIEWUTENTE, new FxmlInfo(OVERVIEWUTENTE_FXML, SceneName.OVERVIEWUTENTE, stage));
+        scenes.put(SceneName.PRODUCTLIST, new FxmlInfo(PRODUCTLIST_FXML, SceneName.PRODUCTLIST, stage));
         // getScene() will load the FXML file the first time
-        stage.setScene(scenes.get(SceneName.CATALOG).getScene());
+        //stage.setScene(scenes.get(SceneName.CATALOG).getScene());
+        stage.setScene(scenes.get(SceneName.OVERVIEWUTENTE).getScene());
         stage.setTitle("Multi-Scene Demo");
         stage.show();
     }
@@ -54,7 +58,7 @@ public class Main extends Application {
         return scenes;
     }
 
-    public static SessionStorage getSessioStorage() {
+    public static SessionStorage getSessionStorage() {
         return sessioStorage;
     }
 

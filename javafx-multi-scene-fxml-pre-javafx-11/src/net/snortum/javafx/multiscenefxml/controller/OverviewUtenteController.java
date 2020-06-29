@@ -30,6 +30,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import net.snortum.javafx.multiscenefxml.Main;
+import net.snortum.javafx.multiscenefxml.model.SessionStorage;
 import net.snortum.javafx.multiscenefxml.model.Spesa;
 import net.snortum.javafx.multiscenefxml.model.SpesaDaoImpl;
 import net.snortum.javafx.multiscenefxml.model.Stageable;
@@ -45,6 +47,7 @@ import net.snortum.javafx.multiscenefxml.model.UtenteDaoImpl;
 public class OverviewUtenteController  implements Stageable, Initializable{
     
     private Stage stage;
+    private SessionStorage sessionStorage;
     private UtenteDaoImpl utenteDaoImpl;
     private Utente utente = null;
     private TesseraFedeltaDaoImpl  fedeltaDaoImpl = null;
@@ -135,6 +138,8 @@ public class OverviewUtenteController  implements Stageable, Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        sessionStorage = Main.getSessionStorage();
+        utente = (Utente) sessionStorage.getUtente();
         //all' inizio rendo visibile profilo
         profilo.setVisible(true);
         //aggiungo gli item alla comboBox
@@ -167,7 +172,7 @@ public class OverviewUtenteController  implements Stageable, Initializable{
         managePane("spese");
         speseList = spesaDaoImpl.getAllSpesaByUtente(utente);
         for(Spesa s: speseList){
-             URL urlFile = getClass().getResource("/view/spesaItem.fxml");
+             URL urlFile = getClass().getResource("/view/SpesaItem.fxml");
             FXMLLoader loader = new FXMLLoader(urlFile);
             Node prodottoSmall = loader.load();
             SpesaItemController ctrl = loader.getController();
@@ -296,5 +301,10 @@ public class OverviewUtenteController  implements Stageable, Initializable{
                 
         }
     }
-    
+    public void handleMouseClickLogOut(MouseEvent evt){
+        
+    }
+    public void handleMouseClickBack(MouseEvent evt){
+        
+    }
 }
