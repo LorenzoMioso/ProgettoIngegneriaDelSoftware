@@ -24,10 +24,10 @@ public class CartItemController implements Stageable, Initializable {
     private Stage stage;
     private Prodotto prodotto;
     private int numeroProdotto;
-    private static final int MIN_VALUE = 1;
+    private static final int MIN_VALUE = -10;
     private static final int MAX_VALUE = 10;
     private static final int STEP = 1;
-    private static final int INITIAL_VALUE = 1;
+    private static final int INITIAL_VALUE = 0;
 
     @FXML
     Pane pane;
@@ -55,10 +55,10 @@ public class CartItemController implements Stageable, Initializable {
         Node prodottoSmall = loader.load();
         ProdottoSmallWithoutButtonController ctrl = loader.getController();
         pane.getChildren().add(prodottoSmall);
-        ctrl.setProdotto(prodotto);
+        ctrl.setProdotto(prodotto, numeroProdotto);
         ctrl.showProdotto();
         //set spinner value
-        SpinnerValueFactory<Integer> factory = new SpinnerValueFactory.IntegerSpinnerValueFactory(MIN_VALUE, MAX_VALUE, numeroProdotto, STEP);
+        SpinnerValueFactory<Integer> factory = new SpinnerValueFactory.IntegerSpinnerValueFactory(MIN_VALUE, MAX_VALUE, INITIAL_VALUE, STEP);
         quantità.setValueFactory(factory);
         quantità.setEditable(true);
     }
@@ -66,5 +66,10 @@ public class CartItemController implements Stageable, Initializable {
     @FXML
     private void handleMouseClickRemoveItem(MouseEvent event) {
         sessionStorage.getCarrello().removeProdotto(prodotto);
+    }
+
+    @FXML
+    private void handleMouseClickModifyItem(MouseEvent event) {
+
     }
 }

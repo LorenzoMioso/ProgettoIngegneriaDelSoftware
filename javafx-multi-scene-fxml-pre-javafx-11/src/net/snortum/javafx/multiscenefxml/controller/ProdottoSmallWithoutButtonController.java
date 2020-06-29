@@ -28,6 +28,7 @@ public class ProdottoSmallWithoutButtonController implements Initializable {
 
     private SessionStorage sessionStorage;
     private Prodotto prodotto;
+    private int nProdotto;
 
     @FXML
     Label nomeProdotto;
@@ -42,17 +43,16 @@ public class ProdottoSmallWithoutButtonController implements Initializable {
     @FXML
     ImageView immagineProdotto;
     @FXML
-    Spinner quantità;
-    @FXML
-    ToggleButton carrello;
+    Label quantitàProdotto;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         sessionStorage = Main.getSessioStorage();
     }
 
-    public void setProdotto(Prodotto p) {
+    public void setProdotto(Prodotto p, int n) {
         this.prodotto = p;
+        this.nProdotto = n;
     }
 
     public void showProdotto() throws SQLException, IOException {
@@ -61,6 +61,7 @@ public class ProdottoSmallWithoutButtonController implements Initializable {
         prezzo.setText("" + prodotto.getPrezzo());
         pesoProdotto.setText("" + prodotto.getPeso());
         numeroPezzi.setText("" + prodotto.getnPezzi());
+        quantitàProdotto.setText(String.valueOf(nProdotto));
 
         if (prodotto.getImmagine() != null) {
             Blob aBlob = prodotto.getImmagine();
@@ -71,11 +72,6 @@ public class ProdottoSmallWithoutButtonController implements Initializable {
             Image image1 = SwingFXUtils.toFXImage(imag, null);
             immagineProdotto.setImage(image1);
         }
-    }
-
-    public void handleMouseAddToCart() {
-        sessionStorage.getCarrello().putProdotto(prodotto, (Integer) quantità.getValue());
-        System.out.println("Aggiunto " + prodotto + "\nQuantità: " + (Integer) quantità.getValue());
     }
 
 }
