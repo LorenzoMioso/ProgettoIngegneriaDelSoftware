@@ -70,6 +70,11 @@ public class CartItemController implements Stageable, Initializable {
 
     @FXML
     private void handleMouseClickModifyItem(MouseEvent event) {
-
+        //TODO fare controllo per impedire di settare un numero di prodotti negativo
+        System.out.println("Old Prodotto " + prodotto + " Quantità: " + numeroProdotto);
+        sessionStorage.getCarrello().removeProdotto(prodotto);
+        setCartItem(prodotto, numeroProdotto + (int) quantità.getValue());
+        sessionStorage.getCarrello().putProdotto(prodotto, numeroProdotto);
+        System.out.println("New Prodotto " + prodotto + " Quantità: " + numeroProdotto);
     }
 }

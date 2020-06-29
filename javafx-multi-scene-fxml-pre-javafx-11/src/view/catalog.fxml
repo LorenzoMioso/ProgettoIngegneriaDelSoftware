@@ -140,7 +140,18 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleMouseClickCart" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleMouseClickCart" GridPane.columnIndex="1" GridPane.rowIndex="1" >
+                            <graphic>
+                                <ImageView fitHeight="23.0" fitWidth="23.0" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/baseline_shopping_cart_black_18dp.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <GridPane.margin>
+                                <Insets />
+                            </GridPane.margin>
+                        </Button>
                         <Button alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleMouseClickLogin" GridPane.columnIndex="1" GridPane.rowIndex="3">
                             <graphic>
                                 <ImageView fitHeight="23.0" fitWidth="23.0" preserveRatio="true">
