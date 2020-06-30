@@ -44,9 +44,10 @@ public class Main extends Application {
         scenes.put(SceneName.CART, new FxmlInfo(CART_FXML, SceneName.CART, stage));
         scenes.put(SceneName.OVERVIEWUTENTE, new FxmlInfo(OVERVIEWUTENTE_FXML, SceneName.OVERVIEWUTENTE, stage));
         scenes.put(SceneName.PRODUCTLIST, new FxmlInfo(PRODUCTLIST_FXML, SceneName.PRODUCTLIST, stage));
+        
         // getScene() will load the FXML file the first time
         //stage.setScene(scenes.get(SceneName.CATALOG).getScene());
-        stage.setScene(scenes.get(SceneName.OVERVIEWUTENTE).getScene());
+        stage.setScene(scenes.get(SceneName.CATALOG).getScene());
         stage.setTitle("Multi-Scene Demo");
         stage.show();
     }

@@ -31,6 +31,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import net.snortum.javafx.multiscenefxml.Main;
+import net.snortum.javafx.multiscenefxml.model.SceneName;
 import net.snortum.javafx.multiscenefxml.model.SessionStorage;
 import net.snortum.javafx.multiscenefxml.model.Spesa;
 import net.snortum.javafx.multiscenefxml.model.SpesaDaoImpl;
@@ -305,6 +306,6 @@ public class OverviewUtenteController  implements Stageable, Initializable{
         
     }
     public void handleMouseClickBack(MouseEvent evt){
-        
+           stage.setScene(Main.getScenes().get(SceneName.CATALOG).getScene());
     }
 }

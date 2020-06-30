@@ -146,6 +146,10 @@ public class CatalogController implements Stageable, Initializable {
     private void handleMouseClickRegister(MouseEvent event) {
         stage.setScene(Main.getScenes().get(SceneName.REGISTER).getScene());
     }
+        @FXML
+    private void handleMouseClickOverviewUtente(MouseEvent event) {
+        stage.setScene(Main.getScenes().get(SceneName.OVERVIEWUTENTE).getScene());
+    }
 
     @FXML
     private void handleMouseClickCart(MouseEvent event) {
