@@ -19,10 +19,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 1ac4cd991635b0c382fdc9f27f2bbc5ccbdb4936
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="853.0" prefWidth="1057.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.snortum.javafx.multiscenefxml.controller.OverviewUtenteController">
    <children>
       <VBox prefHeight="576.0" prefWidth="210.0">
