@@ -15,11 +15,12 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import net.snortum.javafx.multiscenefxml.Main;
+import net.snortum.javafx.multiscenefxml.model.ObserverCarrello;
 import net.snortum.javafx.multiscenefxml.model.Prodotto;
 import net.snortum.javafx.multiscenefxml.model.SessionStorage;
 import net.snortum.javafx.multiscenefxml.model.Stageable;
 
-public class CartController implements Stageable, Initializable {
+public class CartController extends ObserverCarrello implements Stageable, Initializable {
 
     private SessionStorage sessionStorage;
     private Stage stage;
@@ -37,6 +38,7 @@ public class CartController implements Stageable, Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         sessionStorage = Main.getSessionStorage();
+        sessionStorage.getCarrello().attach(this);
         try {
             showItems();
         } catch (IOException | SQLException ex) {
@@ -45,6 +47,7 @@ public class CartController implements Stageable, Initializable {
     }
 
     public void showItems() throws IOException, SQLException {
+        sessionStorage = Main.getSessionStorage();
         vbox.getChildren().clear();
         System.out.println("Carrello:");
         for (Map.Entry<Prodotto, Integer> entry : sessionStorage.getCarrello().getProdotti().entrySet()) {
@@ -60,5 +63,14 @@ public class CartController implements Stageable, Initializable {
             ctrl.showCartItem();
         }
         prezzoTotale.setText(String.valueOf(sessionStorage.getCarrello().getPrezzoTot()));
+    }
+
+    @Override
+    public void update() {
+        try {
+            showItems();
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(CartController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

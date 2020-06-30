@@ -18,17 +18,18 @@ import javafx.event.ActionEvent;
 
 import net.snortum.javafx.multiscenefxml.Main;
 import net.snortum.javafx.multiscenefxml.model.SceneName;
+import net.snortum.javafx.multiscenefxml.model.SessionStorage;
 import net.snortum.javafx.multiscenefxml.model.Stageable;
 import net.snortum.javafx.multiscenefxml.model.Utente;
 import net.snortum.javafx.multiscenefxml.model.UtenteDaoImpl;
 
-public class RegisterController implements Stageable {
+public class RegisterController implements Stageable, Initializable {
 
     private Stage stage;
-
+    private SessionStorage sessionStorage;
     UtenteDaoImpl utenteDaoImpl;
     Utente utente = null;
-    //campi di register.fxml
+
     @FXML
     TextField email;
     @FXML
@@ -39,6 +40,13 @@ public class RegisterController implements Stageable {
     Label result;
     @FXML
     Button register;
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        sessionStorage = Main.getSessionStorage();
+        utenteDaoImpl = new UtenteDaoImpl();
+        utente = (Utente) sessionStorage.getUtente();
+    }
 
     public void handleMouseClick(MouseEvent evt) throws SQLException {
         String regexEmail = "^[\\w!#$%&'+/=?`{|}~^-]+(?:\\.[\\w!#$%&'+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
@@ -57,6 +65,7 @@ public class RegisterController implements Stageable {
                             result.setTextFill(Color.web("red"));
                         } else {
                             utente = utenteDaoImpl.register(email.getText(), password.getText());
+                            sessionStorage.setUtente(utente);
                             result.setText("Registrazione effettuata");
                             result.setTextFill(Color.web("green"));
 

@@ -17,13 +17,11 @@ import javafx.stage.Stage;
 import net.snortum.javafx.multiscenefxml.Main;
 import net.snortum.javafx.multiscenefxml.model.SceneName;
 import net.snortum.javafx.multiscenefxml.model.SessionStorage;
-import net.snortum.javafx.multiscenefxml.model.SpesaDaoImpl;
 import net.snortum.javafx.multiscenefxml.model.Stageable;
-import net.snortum.javafx.multiscenefxml.model.TesseraFedeltaDaoImpl;
 import net.snortum.javafx.multiscenefxml.model.Utente;
 import net.snortum.javafx.multiscenefxml.model.UtenteDaoImpl;
 
-public class LoginController implements Stageable , Initializable{
+public class LoginController implements Stageable, Initializable {
 
     private Stage stage;
     private SessionStorage sessionStorage;
@@ -42,23 +40,25 @@ public class LoginController implements Stageable , Initializable{
     public void setStage(Stage stage) {
         this.stage = stage;
     }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         sessionStorage = Main.getSessionStorage();
         utenteDaoImpl = new UtenteDaoImpl();
         utente = (Utente) sessionStorage.getUtente();
     }
+
     @FXML
     public void loginMouseClick(MouseEvent evt) throws SQLException {
         if (!email.getText().equals("")) {
             if (!password.getText().equals("")) {
                 if (utenteDaoImpl.isRegistered(email.getText()) == true) {
                     utente = utenteDaoImpl.login(email.getText(), password.getText());
-                    sessionStorage.setUtente(utente);
                     if (utente != null) {
                         result.setText("Login riuscito");
                         result.setTextFill(Color.web("green"));
-                        utenteDaoImpl.updateUtente(utente);
+                        sessionStorage.setUtente(utente);
+                        stage.setScene(Main.getScenes().get(SceneName.CATALOG).getScene());
                     } else {
                         result.setText("Password errata");
                         result.setTextFill(Color.web("red"));

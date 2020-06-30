@@ -7,8 +7,6 @@ import java.net.URL;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -52,7 +50,7 @@ public class ProdottoSmallController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        sessionStorage = Main.getSessionStorage();
+        sessionStorage = Main.getSessionStorage();      
         SpinnerValueFactory<Integer> factory = new SpinnerValueFactory.IntegerSpinnerValueFactory(MIN_VALUE, MAX_VALUE, INITIAL_VALUE, STEP);
         quantità.setValueFactory(factory);
         quantità.setEditable(true);

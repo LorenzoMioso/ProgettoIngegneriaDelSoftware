@@ -17,6 +17,14 @@ public class SessionStorage {
         this.utente = utente;
     }
 
+    public boolean isLogged() {
+        return utente.isIsLogged();
+    }
+
+    public void logOut() {
+        this.utente.setIsLogged(false);
+    }
+
     public Carrello getCarrello() {
         return carrello;
     }

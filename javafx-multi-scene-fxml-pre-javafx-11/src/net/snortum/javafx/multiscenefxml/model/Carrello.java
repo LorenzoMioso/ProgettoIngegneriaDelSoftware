@@ -1,44 +1,62 @@
 package net.snortum.javafx.multiscenefxml.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Carrello {
 
-    private HashMap<Prodotto, Integer> Prodotti;
+    private List<ObserverCarrello> observers;
+    private HashMap<Prodotto, Integer> prodotti;
     private int prezzoTot;
 
     public Carrello() {
-        Prodotti = new HashMap<Prodotto, Integer>();
-        prezzoTot = 0;
+        this.observers = new ArrayList<>();
+        this.prodotti = new HashMap<Prodotto, Integer>();
+        this.prezzoTot = 0;
     }
 
     public void putProdotto(Prodotto p, int n) {
-        Prodotti.put(p, n);
+        prodotti.put(p, n);
         updatePrezzoTot();
+        notifyAllObservers();
     }
 
     public void removeProdotto(Prodotto p) {
-        Prodotti.remove(p);
+        prodotti.remove(p);
         updatePrezzoTot();
+        notifyAllObservers();
     }
 
     public HashMap<Prodotto, Integer> getProdotti() {
-        return Prodotti;
+        return prodotti;
     }
 
     public void setProdotti(HashMap<Prodotto, Integer> Prodotti) {
-        this.Prodotti = Prodotti;
+        this.prodotti = Prodotti;
+        notifyAllObservers();
     }
 
     private void updatePrezzoTot() {
-        for (Map.Entry<Prodotto, Integer> entry : Prodotti.entrySet()) {
+        prezzoTot = 0;
+        for (Map.Entry<Prodotto, Integer> entry : prodotti.entrySet()) {
             prezzoTot += entry.getKey().getPrezzo() * entry.getValue();
         }
     }
 
     public int getPrezzoTot() {
         return prezzoTot;
+    }
+
+    public void attach(ObserverCarrello observer) {
+        this.observers.add(observer);
+    }
+
+    public void notifyAllObservers() {
+        for (ObserverCarrello observer : observers) {
+            observer.update();
+        }
     }
 
 }
