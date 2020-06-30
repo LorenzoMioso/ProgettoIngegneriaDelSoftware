@@ -41,7 +41,7 @@ public class CartItemController implements Stageable, Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        sessionStorage = Main.getSessioStorage();
+        sessionStorage = Main.getSessionStorage();
     }
 
     public void setCartItem(Prodotto p, int n) {

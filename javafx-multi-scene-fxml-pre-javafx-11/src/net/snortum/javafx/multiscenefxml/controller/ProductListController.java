@@ -17,13 +17,14 @@ import javafx.stage.Stage;
 import net.snortum.javafx.multiscenefxml.Main;
 import net.snortum.javafx.multiscenefxml.model.Prodotto;
 import net.snortum.javafx.multiscenefxml.model.SessionStorage;
+import net.snortum.javafx.multiscenefxml.model.Spesa;
 import net.snortum.javafx.multiscenefxml.model.Stageable;
 
-public class CartController implements Stageable, Initializable {
+public class ProductListController implements Stageable, Initializable {
 
     private SessionStorage sessionStorage;
     private Stage stage;
-
+    private Spesa spesa;
     @FXML
     VBox vbox;
     @FXML
@@ -33,31 +34,31 @@ public class CartController implements Stageable, Initializable {
     public void setStage(Stage stage) {
         this.stage = stage;
     }
-
+    
+    public void setSpesa(Spesa spesa){
+            this.spesa = spesa;
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         sessionStorage = Main.getSessionStorage();
         try {
             showItems();
         } catch (IOException | SQLException ex) {
-            Logger.getLogger(CartController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductListController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     public void showItems() throws IOException, SQLException {
         vbox.getChildren().clear();
-        System.out.println("Carrello:");
-        for (Map.Entry<Prodotto, Integer> entry : sessionStorage.getCarrello().getProdotti().entrySet()) {
-            System.out.println("Prodotto " + entry.getKey() + " Quantità: " + entry.getValue());
-        }
-        for (Map.Entry<Prodotto, Integer> entry : sessionStorage.getCarrello().getProdotti().entrySet()) {
-            URL urlFile = getClass().getResource("/view/cartItem.fxml");
+       
+        for (Map.Entry<Prodotto, Integer> entry : spesa.getProdotti().entrySet()) {
+            URL urlFile = getClass().getResource("/view/prodottoSmallWithoutButton.fxml");
             FXMLLoader loader = new FXMLLoader(urlFile);
-            Node cartItem = loader.load();
-            CartItemController ctrl = loader.getController();
-            vbox.getChildren().add(cartItem);
-            ctrl.setCartItem(entry.getKey(), entry.getValue());
-            ctrl.showCartItem();
+            Node prodottoSmallWithoutButton = loader.load();
+            ProdottoSmallWithoutButtonController ctrl = loader.getController();
+            vbox.getChildren().add(prodottoSmallWithoutButton);
+            ctrl.setProdotto(entry.getKey(), entry.getValue());
+            ctrl.showProdotto();
         }
         prezzoTotale.setText(String.valueOf(sessionStorage.getCarrello().getPrezzoTot()));
     }

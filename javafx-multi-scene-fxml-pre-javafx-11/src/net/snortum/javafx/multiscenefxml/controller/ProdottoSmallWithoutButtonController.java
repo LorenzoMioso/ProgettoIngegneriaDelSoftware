@@ -42,7 +42,7 @@ public class ProdottoSmallWithoutButtonController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        sessionStorage = Main.getSessioStorage();
+        sessionStorage = Main.getSessionStorage();
     }
 
     public void setProdotto(Prodotto p, int n) {
@@ -69,4 +69,5 @@ public class ProdottoSmallWithoutButtonController implements Initializable {
         }
     }
 
+    
 }

@@ -8,12 +8,16 @@ package net.snortum.javafx.multiscenefxml.controller;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import net.snortum.javafx.multiscenefxml.model.Prodotto;
 import net.snortum.javafx.multiscenefxml.model.Spesa;
 
 /**
@@ -43,7 +47,13 @@ public class SpesaItemController implements Initializable{
         dataConsegna.setText("" + spesa.getDataConsegna());
         prezzoTotale.setText("" + spesa.getCostoTot());
     }
-    public void handleMouseClickBtnArticoli(MouseEvent evt){
+    public void handleMouseClickBtnArticoli(MouseEvent evt) throws IOException{
         
+        URL urlFile = getClass().getResource("/view/productList.fxml");
+        FXMLLoader loader = new FXMLLoader(urlFile);
+        Node productList = loader.load();
+        ProductListController ctrl = loader.getController();
+        ctrl.setSpesa(spesa);
+
     }
 }

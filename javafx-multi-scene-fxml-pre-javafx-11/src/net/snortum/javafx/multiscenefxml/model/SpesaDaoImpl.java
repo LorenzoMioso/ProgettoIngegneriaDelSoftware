@@ -7,7 +7,9 @@ package net.snortum.javafx.multiscenefxml.model;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -27,7 +29,7 @@ public class SpesaDaoImpl implements SpesaDao{
        
         int i = 0 ;
         while (db.getResultSet().next()) {
-            List <Prodotto> spesa = new ArrayList <>();
+            Map <Prodotto, Integer> spesa = new HashMap <>();
             spese.add(new Spesa(
                     db.getResultSet().getInt(1),
                     db.getResultSet().getTimestamp(2),
@@ -40,18 +42,18 @@ public class SpesaDaoImpl implements SpesaDao{
                     u,
                     db.getResultSet().getString(10), spesa));
             //devo avere l'id della spesa per fare la query all'interno di prodottoComprato
-            db.doQuery("select * from ProdottoComprato where idSpesa = '" + spese.get(i).getId() +"'");
+            db.doQuery("select * from ProdottoComprato PC JOIN Prodotto P ON PC.idProdotto = P.id where PC.idSpesa = '" + spese.get(i).getId() +"'");
             while(db.getResultSet().next()){
-                spesa.add(new Prodotto(db.getResultSet().getInt(1),
-                    db.getResultSet().getString(2),
-                    db.getResultSet().getString(3),
-                    db.getResultSet().getBlob(4),
+                spesa.put(new Prodotto(db.getResultSet().getInt(4),
                     db.getResultSet().getString(5),
                     db.getResultSet().getString(6),
-                    db.getResultSet().getBoolean(7),
-                    db.getResultSet().getDouble(8),
-                    db.getResultSet().getInt(9),
-                    db.getResultSet().getDouble(10)));
+                    db.getResultSet().getBlob(7),
+                    db.getResultSet().getString(8),
+                    db.getResultSet().getString(9),
+                    db.getResultSet().getBoolean(10),
+                    db.getResultSet().getDouble(11),
+                    db.getResultSet().getInt(12),
+                    db.getResultSet().getDouble(13)), db.getResultSet().getInt(3));
             
             
             }
