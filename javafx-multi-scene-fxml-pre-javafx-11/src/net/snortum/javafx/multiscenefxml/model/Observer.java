@@ -2,7 +2,7 @@ package net.snortum.javafx.multiscenefxml.model;
 
 public abstract class Observer {
 
-    protected Object object;
+    protected Subject subject;
 
     public abstract void update();
 }

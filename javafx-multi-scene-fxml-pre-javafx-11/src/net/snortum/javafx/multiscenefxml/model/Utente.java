@@ -30,11 +30,13 @@ public class Utente extends Autenticabile {
         this.CAP = 0;
         this.telefono = null;
         this.pagamentoPreferito = null;
+        notifyAllObservers();
     }
 
     public Utente(String email, String password) {
         this.email = email;
         this.password = password;
+        notifyAllObservers();
     }
 
     public Utente(String email, String password, String nome, String cognome, Date dataNascita, String via, String nCivico, String citta, String comune, int CAP, String telefono, String pagamentoPreferito) {
@@ -50,6 +52,7 @@ public class Utente extends Autenticabile {
         this.CAP = CAP;
         this.telefono = telefono;
         this.pagamentoPreferito = pagamentoPreferito;
+        notifyAllObservers();
     }
 
     public String getEmail() {
@@ -57,7 +60,9 @@ public class Utente extends Autenticabile {
     }
 
     public void setEmail(String email) {
+       
         this.email = email;
+        notifyAllObservers();
     }
 
     public String getPassword() {
@@ -65,7 +70,9 @@ public class Utente extends Autenticabile {
     }
 
     public void setPassword(String password) {
+        
         this.password = password;
+        notifyAllObservers();
     }
 
     public String getNome() {
@@ -73,7 +80,9 @@ public class Utente extends Autenticabile {
     }
 
     public void setNome(String nome) {
+       
         this.nome = nome;
+        notifyAllObservers();
     }
 
     public String getCognome() {
@@ -81,7 +90,9 @@ public class Utente extends Autenticabile {
     }
 
     public void setCognome(String cognome) {
+      
         this.cognome = cognome;
+        notifyAllObservers();
     }
 
     public Date getDataNascita() {
@@ -89,7 +100,9 @@ public class Utente extends Autenticabile {
     }
 
     public void setDataNascita(Date dataNascita) {
+        
         this.dataNascita = dataNascita;
+        notifyAllObservers();
     }
 
     public String getVia() {
@@ -97,7 +110,9 @@ public class Utente extends Autenticabile {
     }
 
     public void setVia(String via) {
+      
         this.via = via;
+        notifyAllObservers();
     }
 
     public String getnCivico() {
@@ -106,6 +121,7 @@ public class Utente extends Autenticabile {
 
     public void setnCivico(String nCivico) {
         this.nCivico = nCivico;
+        notifyAllObservers();
     }
 
     public String getCitta() {
@@ -114,6 +130,7 @@ public class Utente extends Autenticabile {
 
     public void setCitta(String citta) {
         this.citta = citta;
+        notifyAllObservers();
     }
 
     public String getComune() {
@@ -122,6 +139,7 @@ public class Utente extends Autenticabile {
 
     public void setComune(String comune) {
         this.comune = comune;
+        notifyAllObservers();
     }
 
     public int getCAP() {
@@ -130,6 +148,7 @@ public class Utente extends Autenticabile {
 
     public void setCAP(int CAP) {
         this.CAP = CAP;
+        notifyAllObservers();
     }
 
     public String getTelefono() {
@@ -138,6 +157,7 @@ public class Utente extends Autenticabile {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+        notifyAllObservers();
     }
 
     public String getPagamentoPreferito() {
@@ -146,6 +166,7 @@ public class Utente extends Autenticabile {
 
     public void setPagamentoPreferito(String pagamentoPreferito) {
         this.pagamentoPreferito = pagamentoPreferito;
+        notifyAllObservers();
     }
 
     @Override

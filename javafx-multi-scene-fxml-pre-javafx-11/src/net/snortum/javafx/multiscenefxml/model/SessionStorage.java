@@ -1,6 +1,6 @@
 package net.snortum.javafx.multiscenefxml.model;
 
-public class SessionStorage {
+public class SessionStorage extends Subject{
 
     Autenticabile utente;
     Carrello carrello;
@@ -17,6 +17,7 @@ public class SessionStorage {
 
     public void setUtente(Autenticabile utente) {
         this.utente = utente;
+        notifyAllObservers();
     }
 
     public boolean isLogged() {
@@ -27,6 +28,7 @@ public class SessionStorage {
         this.carrello = new Carrello();
         this.utente = new Utente();
         this.utente.setIsLogged(false);
+        notifyAllObservers();
     }
 
     public Carrello getCarrello() {
@@ -35,6 +37,7 @@ public class SessionStorage {
 
     public void setCarrello(Carrello carrello) {
         this.carrello = carrello;
+        notifyAllObservers();
     }
 
 }

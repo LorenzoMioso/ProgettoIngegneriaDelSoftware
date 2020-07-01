@@ -5,14 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Carrello {
+public class Carrello extends Subject{
 
-    private List<Observer> observers;
+    
     private HashMap<Prodotto, Integer> prodotti;
     private int prezzoTot;
 
     public Carrello() {
-        this.observers = new ArrayList<>();
+        
         this.prodotti = new HashMap<Prodotto, Integer>();
         this.prezzoTot = 0;
     }
@@ -47,16 +47,6 @@ public class Carrello {
 
     public int getPrezzoTot() {
         return prezzoTot;
-    }
-
-    public void attach(Observer observer) {
-        this.observers.add(observer);
-    }
-
-    public void notifyAllObservers() {
-        for (Observer observer : observers) {
-            observer.update();
-        }
     }
 
 }

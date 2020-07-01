@@ -31,6 +31,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import net.snortum.javafx.multiscenefxml.Main;
+import net.snortum.javafx.multiscenefxml.model.Observer;
 import net.snortum.javafx.multiscenefxml.model.SceneName;
 import net.snortum.javafx.multiscenefxml.model.SessionStorage;
 import net.snortum.javafx.multiscenefxml.model.Spesa;
@@ -45,7 +46,7 @@ import net.snortum.javafx.multiscenefxml.model.UtenteDaoImpl;
  *
  * @author elisa
  */
-public class OverviewUtenteController implements Stageable, Initializable {
+public class OverviewUtenteController extends Observer implements Stageable, Initializable {
 
     private Stage stage;
     private SessionStorage sessionStorage;
@@ -143,7 +144,10 @@ public class OverviewUtenteController implements Stageable, Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         sessionStorage = Main.getSessionStorage();
+       
         utente = (Utente) sessionStorage.getUtente();
+        sessionStorage.getUtente().attach(this);
+        sessionStorage.attach(this);
         nomeCognome.setText(utente.getNome() + " " + utente.getCognome());
         //all' inizio rendo visibile profilo
         setProfiloView();
@@ -170,6 +174,7 @@ public class OverviewUtenteController implements Stageable, Initializable {
     @FXML
     public void handleMouseClickProfilo(MouseEvent event) {
         managePane("profilo");
+        System.out.println(""+ utente);
         labelNome.setText(utente.getNome());
         labelCognome.setText(utente.getCognome());
         labelData.setText(utente.getDataNascita().toString());
@@ -338,5 +343,13 @@ public class OverviewUtenteController implements Stageable, Initializable {
 
     public void handleMouseClickBack(MouseEvent evt) {
         stage.setScene(Main.getScenes().get(SceneName.CATALOG).getScene());
+    }
+
+    @Override
+    public void update() {
+        System.out.println("Called update");
+        sessionStorage = Main.getSessionStorage();
+        utente = (Utente) sessionStorage.getUtente();
+        setProfiloView();
     }
 }
