@@ -93,7 +93,7 @@ public class CatalogController implements Stageable, Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        sessionStorage = new SessionStorage();
+        sessionStorage = Main.getSessionStorage();
         combobox.getItems().addAll("Caratteristiche", "Marca", "Tipo");
         prodottoDaoImpl = new ProdottoDaoImpl();
         try {
@@ -110,7 +110,7 @@ public class CatalogController implements Stageable, Initializable {
 //                Logger.getLogger(CatalogController.class.getName()).log(Level.SEVERE, null, ex);
 //            }
 //        });
-        
+
         //        Platform.runLater(() -> {
 //            try {
 //                addProdotti();
@@ -149,10 +149,12 @@ public class CatalogController implements Stageable, Initializable {
     private void handleMouseClickRegister(MouseEvent event) {
         stage.setScene(Main.getScenes().get(SceneName.REGISTER).getScene());
     }
-        @FXML
+
+    @FXML
     private void handleMouseClickOverviewUtente(MouseEvent event) {
-        if(sessionStorage.isLogged() == true )
+        if (sessionStorage.isLogged() == true) {
             stage.setScene(Main.getScenes().get(SceneName.OVERVIEWUTENTE).getScene());
+        }
     }
 
     @FXML

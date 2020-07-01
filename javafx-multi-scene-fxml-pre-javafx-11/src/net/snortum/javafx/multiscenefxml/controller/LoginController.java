@@ -55,10 +55,11 @@ public class LoginController implements Stageable, Initializable {
                 if (utenteDaoImpl.isRegistered(email.getText()) == true) {
                     utente = utenteDaoImpl.login(email.getText(), password.getText());
                     if (utente != null) {
-                        result.setText("Login riuscito");
-                        result.setTextFill(Color.web("green"));
                         sessionStorage.setUtente(utente);
+                        email.setText("");
+                        password.setText("");
                         stage.setScene(Main.getScenes().get(SceneName.CATALOG).getScene());
+
                     } else {
                         result.setText("Password errata");
                         result.setTextFill(Color.web("red"));

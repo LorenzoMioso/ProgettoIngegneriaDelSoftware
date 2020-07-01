@@ -45,16 +45,16 @@ import net.snortum.javafx.multiscenefxml.model.UtenteDaoImpl;
  *
  * @author elisa
  */
-public class OverviewUtenteController  implements Stageable, Initializable{
-    
+public class OverviewUtenteController implements Stageable, Initializable {
+
     private Stage stage;
     private SessionStorage sessionStorage;
     private UtenteDaoImpl utenteDaoImpl;
     private Utente utente = null;
-    private TesseraFedeltaDaoImpl  fedeltaDaoImpl = null;
+    private TesseraFedeltaDaoImpl fedeltaDaoImpl = null;
     private TesseraFedelta tf = null;
     private SpesaDaoImpl spesaDaoImpl = null;
-    private List <Spesa> speseList;
+    private List<Spesa> speseList;
     /**
      *
      * @param stage
@@ -69,7 +69,7 @@ public class OverviewUtenteController  implements Stageable, Initializable{
     ToggleButton btnSpese;
     @FXML
     ToggleButton btnModificaProfilo;
-     @FXML
+    @FXML
     ToggleButton btnLogOut;
     @FXML
     ToggleButton btnBack;
@@ -134,9 +134,10 @@ public class OverviewUtenteController  implements Stageable, Initializable{
     ScrollPane speseScrollPane;
     @FXML
     VBox speseVBox;
+
     @Override
     public void setStage(Stage stage) {
-         this.stage = stage;
+        this.stage = stage;
     }
 
     @Override
@@ -151,7 +152,8 @@ public class OverviewUtenteController  implements Stageable, Initializable{
         fedeltaDaoImpl = new TesseraFedeltaDaoImpl();
         spesaDaoImpl = new SpesaDaoImpl();
     }
-    public void setProfiloView(){
+
+    public void setProfiloView() {
         managePane("profilo");
         labelNome.setText(utente.getNome());
         labelCognome.setText(utente.getCognome());
@@ -159,13 +161,14 @@ public class OverviewUtenteController  implements Stageable, Initializable{
         labelVia.setText(utente.getVia());
         labelNCivico.setText(utente.getnCivico());
         labelComune.setText(utente.getComune());
-        labelCittà.setText(utente.getCitta());        
+        labelCittà.setText(utente.getCitta());
         labelCap.setText("" + utente.getCAP());
         labelTelefono.setText(utente.getTelefono());
         labelPagamentoPreferito.setText(utente.getPagamentoPreferito());
     }
+
     @FXML
-    public void handleMouseClickProfilo(MouseEvent event){
+    public void handleMouseClickProfilo(MouseEvent event) {
         managePane("profilo");
         labelNome.setText(utente.getNome());
         labelCognome.setText(utente.getCognome());
@@ -173,39 +176,42 @@ public class OverviewUtenteController  implements Stageable, Initializable{
         labelVia.setText(utente.getVia());
         labelNCivico.setText(utente.getnCivico());
         labelComune.setText(utente.getComune());
-        labelCittà.setText(utente.getCitta());        
+        labelCittà.setText(utente.getCitta());
         labelCap.setText("" + utente.getCAP());
         labelTelefono.setText(utente.getTelefono());
         labelPagamentoPreferito.setText(utente.getPagamentoPreferito());
     }
+
     @FXML
-    public void handleMouseClickSaldoPunti(MouseEvent event) throws SQLException{
+    public void handleMouseClickSaldoPunti(MouseEvent event) throws SQLException {
         managePane("saldoPunti");
         tf = fedeltaDaoImpl.getTesseraFromUser(utente);
         labelSaldoPunti.setText("" + tf.getPunti());
     }
+
     @FXML
-    public void handleMouseClickSpese(MouseEvent event) throws SQLException, IOException{
+    public void handleMouseClickSpese(MouseEvent event) throws SQLException, IOException {
         managePane("spese");
         speseList = spesaDaoImpl.getAllSpesaByUtente(utente);
-        for(Spesa s: speseList){
-             URL urlFile = getClass().getResource("/view/SpesaItem.fxml");
+        for (Spesa s : speseList) {
+            URL urlFile = getClass().getResource("/view/SpesaItem.fxml");
             FXMLLoader loader = new FXMLLoader(urlFile);
             Node prodottoSmall = loader.load();
             SpesaItemController ctrl = loader.getController();
             speseVBox.getChildren().add(prodottoSmall);
             ctrl.setSpesa(s);
         }
-        
+
     }
+
     @FXML
-    public void handleMouseClickModificaProfilo(MouseEvent event){
+    public void handleMouseClickModificaProfilo(MouseEvent event) {
         managePane("modificaProfilo");
         textNome.setText(utente.getNome());
         textCognome.setText(utente.getCognome());
         LocalDate localDate = Instant.ofEpochMilli(utente.getDataNascita().getTime())
-                            .atZone(ZoneId.systemDefault())
-                            .toLocalDate();
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
         datePickerNascita.setValue(localDate);
         textVia.setText(utente.getVia());
         textNCivico.setText(utente.getnCivico());
@@ -216,8 +222,9 @@ public class OverviewUtenteController  implements Stageable, Initializable{
         comboPagamento.setValue(utente.getPagamentoPreferito());
         nomeCognome.setText(utente.getNome() + " " + utente.getCognome());
     }
+
     @FXML
-    public void handleMouseClickModifica(MouseEvent event){
+    public void handleMouseClickModifica(MouseEvent event) {
         Pattern nomeP = Pattern.compile("^([a-zA-Z\\xE0\\xE8\\xE9\\xF9\\xF2\\xEC\\x27]\\s?)+$");
         Pattern capP = Pattern.compile("^\\d{5}$");
         Pattern telefonoP = Pattern.compile("(0{1}[1-9]{1,3})[\\s|.|-]?(\\d{4,})");
@@ -251,8 +258,7 @@ public class OverviewUtenteController  implements Stageable, Initializable{
                                         utente.setPagamentoPreferito((String) comboPagamento.getValue());
                                         nomeCognome.setText(utente.getNome() + " " + utente.getCognome());
                                         sessionStorage.setUtente(utente);
-                                    }
-                                    else {
+                                    } else {
                                         result.setText("Pagamento non selezionato!");
                                         result.setTextFill(Color.web("red"));
 
@@ -290,10 +296,11 @@ public class OverviewUtenteController  implements Stageable, Initializable{
             result.setTextFill(Color.web("red"));
         }
         result.setVisible(true);
-                                
+
     }
+
     private void managePane(String pane) {
-        switch(pane){
+        switch (pane) {
             case "profilo":
                 profilo.setVisible(true);
                 saldoPunti.setVisible(false);
@@ -317,19 +324,19 @@ public class OverviewUtenteController  implements Stageable, Initializable{
                 saldoPunti.setVisible(false);
                 spese.setVisible(false);
                 modificaProfilo.setVisible(true);
-                break; 
-                
+                break;
+
         }
     }
-    public void handleMouseClickLogOut(MouseEvent evt){
+
+    public void handleMouseClickLogOut(MouseEvent evt) {
         sessionStorage.logOut();
         utente = (Utente) sessionStorage.getUtente();
-       
         stage.setScene(Main.getScenes().get(SceneName.CATALOG).getScene());
-    
-    
+
     }
-    public void handleMouseClickBack(MouseEvent evt){
+
+    public void handleMouseClickBack(MouseEvent evt) {
         stage.setScene(Main.getScenes().get(SceneName.CATALOG).getScene());
     }
 }

@@ -6,7 +6,9 @@ public class SessionStorage {
     Carrello carrello;
 
     public SessionStorage() {
-        carrello = new Carrello();
+        this.carrello = new Carrello();
+        this.utente = new Utente();
+        this.utente.setIsLogged(false);
     }
 
     public Autenticabile getUtente() {
@@ -22,9 +24,9 @@ public class SessionStorage {
     }
 
     public void logOut() {
+        this.carrello = new Carrello();
+        this.utente = new Utente();
         this.utente.setIsLogged(false);
-        this.utente = null;
-        this.carrello = null;
     }
 
     public Carrello getCarrello() {

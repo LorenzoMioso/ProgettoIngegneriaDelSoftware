@@ -17,6 +17,21 @@ public class Utente extends Autenticabile {
     private String telefono;
     private String pagamentoPreferito;
 
+    public Utente() {
+        this.email = null;
+        this.password = null;
+        this.nome = null;
+        this.cognome = null;
+        this.dataNascita = null;
+        this.via = null;
+        this.nCivico = null;
+        this.citta = null;
+        this.comune = null;
+        this.CAP = 0;
+        this.telefono = null;
+        this.pagamentoPreferito = null;
+    }
+
     public Utente(String email, String password) {
         this.email = email;
         this.password = password;
