@@ -15,7 +15,7 @@ public class TesseraFedeltaDaoImpl {
         db.doQuery("select * from TesseraFedelta WHERE id = '" + id + "'");
      
         UtenteDaoImpl utentedaoImpl = new UtenteDaoImpl();
-        
+        db.getResultSet().next();
         Utente utente = utentedaoImpl.getUtente(db.getResultSet().getString(4));
         tesseraFedelta = new TesseraFedelta(
                 db.getResultSet().getInt(1),
@@ -26,6 +26,7 @@ public class TesseraFedeltaDaoImpl {
     }
     public TesseraFedelta getTesseraFromUser(Utente u) throws SQLException{
         db.doQuery("select * from TesseraFedelta where utente = '"+ u.getEmail() +"'");
+        db.getResultSet().next();
         TesseraFedelta tesseraFedelta = new TesseraFedelta(
                 db.getResultSet().getInt(1),
                 db.getResultSet().getDate(2),

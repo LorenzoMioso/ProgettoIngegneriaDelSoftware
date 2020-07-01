@@ -60,6 +60,8 @@ public class OverviewUtenteController  implements Stageable, Initializable{
      * @param stage
      */
     @FXML
+    Label nomeCognome;
+    @FXML
     ToggleButton btnProfilo;
     @FXML
     ToggleButton btnSaldoPunti;
@@ -141,12 +143,26 @@ public class OverviewUtenteController  implements Stageable, Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         sessionStorage = Main.getSessionStorage();
         utente = (Utente) sessionStorage.getUtente();
+        nomeCognome.setText(utente.getNome() + " " + utente.getCognome());
         //all' inizio rendo visibile profilo
-        profilo.setVisible(true);
+        setProfiloView();
         //aggiungo gli item alla comboBox
         comboPagamento.getItems().setAll("Carta di Credito", "PayPal", "Alla consegna");
         fedeltaDaoImpl = new TesseraFedeltaDaoImpl();
         spesaDaoImpl = new SpesaDaoImpl();
+    }
+    public void setProfiloView(){
+        managePane("profilo");
+        labelNome.setText(utente.getNome());
+        labelCognome.setText(utente.getCognome());
+        labelData.setText(utente.getDataNascita().toString());
+        labelVia.setText(utente.getVia());
+        labelNCivico.setText(utente.getnCivico());
+        labelComune.setText(utente.getComune());
+        labelCittà.setText(utente.getCitta());        
+        labelCap.setText("" + utente.getCAP());
+        labelTelefono.setText(utente.getTelefono());
+        labelPagamentoPreferito.setText(utente.getPagamentoPreferito());
     }
     @FXML
     public void handleMouseClickProfilo(MouseEvent event){
@@ -198,6 +214,7 @@ public class OverviewUtenteController  implements Stageable, Initializable{
         textCap.setText("" + utente.getCAP());
         textTelefono.setText(utente.getTelefono());
         comboPagamento.setValue(utente.getPagamentoPreferito());
+        nomeCognome.setText(utente.getNome() + " " + utente.getCognome());
     }
     @FXML
     public void handleMouseClickModifica(MouseEvent event){
@@ -232,6 +249,8 @@ public class OverviewUtenteController  implements Stageable, Initializable{
                                         utente.setCAP(Integer.parseInt(textCap.getText()));
                                         utente.setTelefono(textTelefono.getText());
                                         utente.setPagamentoPreferito((String) comboPagamento.getValue());
+                                        nomeCognome.setText(utente.getNome() + " " + utente.getCognome());
+                                        sessionStorage.setUtente(utente);
                                     }
                                     else {
                                         result.setText("Pagamento non selezionato!");
