@@ -15,12 +15,12 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import net.snortum.javafx.multiscenefxml.Main;
-import net.snortum.javafx.multiscenefxml.model.ObserverCarrello;
+import net.snortum.javafx.multiscenefxml.model.Observer;
 import net.snortum.javafx.multiscenefxml.model.Prodotto;
 import net.snortum.javafx.multiscenefxml.model.SessionStorage;
 import net.snortum.javafx.multiscenefxml.model.Stageable;
 
-public class CartController extends ObserverCarrello implements Stageable, Initializable {
+public class CartController extends Observer implements Stageable, Initializable {
 
     private SessionStorage sessionStorage;
     private Stage stage;
@@ -73,4 +73,5 @@ public class CartController extends ObserverCarrello implements Stageable, Initi
             Logger.getLogger(CartController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
 }

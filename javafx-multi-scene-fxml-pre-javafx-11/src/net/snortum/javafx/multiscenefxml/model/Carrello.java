@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class Carrello {
 
-    private List<ObserverCarrello> observers;
+    private List<Observer> observers;
     private HashMap<Prodotto, Integer> prodotti;
     private int prezzoTot;
 
@@ -49,12 +49,12 @@ public class Carrello {
         return prezzoTot;
     }
 
-    public void attach(ObserverCarrello observer) {
+    public void attach(Observer observer) {
         this.observers.add(observer);
     }
 
     public void notifyAllObservers() {
-        for (ObserverCarrello observer : observers) {
+        for (Observer observer : observers) {
             observer.update();
         }
     }

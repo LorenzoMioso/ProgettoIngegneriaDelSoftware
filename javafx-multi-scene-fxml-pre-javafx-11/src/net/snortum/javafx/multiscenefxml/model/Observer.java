@@ -1,9 +1,8 @@
 package net.snortum.javafx.multiscenefxml.model;
 
-public abstract class ObserverCarrello {
+public abstract class Observer {
 
-    protected Carrello carrello;
+    protected Object object;
 
     public abstract void update();
-    
 }
