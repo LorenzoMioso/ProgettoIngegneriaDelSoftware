@@ -28,7 +28,6 @@ public class SessionStorage extends Subject{
         this.carrello = new Carrello();
         this.utente = new Utente();
         this.utente.setIsLogged(false);
-        notifyAllObservers();
     }
 
     public Carrello getCarrello() {

@@ -144,11 +144,10 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         sessionStorage = Main.getSessionStorage();
-       
         utente = (Utente) sessionStorage.getUtente();
         sessionStorage.getUtente().attach(this);
         sessionStorage.attach(this);
-        nomeCognome.setText(utente.getNome() + " " + utente.getCognome());
+        setNomeCognome();
         //all' inizio rendo visibile profilo
         setProfiloView();
         //aggiungo gli item alla comboBox
@@ -157,8 +156,13 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
         spesaDaoImpl = new SpesaDaoImpl();
     }
 
+    public void setNomeCognome() {
+        nomeCognome.setText(utente.getNome() + " " + utente.getCognome());
+    }
+
     public void setProfiloView() {
         managePane("profilo");
+        System.out.println("" + utente);
         labelNome.setText(utente.getNome());
         labelCognome.setText(utente.getCognome());
         labelData.setText(utente.getDataNascita().toString());
@@ -174,7 +178,7 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
     @FXML
     public void handleMouseClickProfilo(MouseEvent event) {
         managePane("profilo");
-        System.out.println(""+ utente);
+        System.out.println("" + utente);
         labelNome.setText(utente.getNome());
         labelCognome.setText(utente.getCognome());
         labelData.setText(utente.getDataNascita().toString());
@@ -199,7 +203,7 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
         managePane("spese");
         speseList = spesaDaoImpl.getAllSpesaByUtente(utente);
         for (Spesa s : speseList) {
-            URL urlFile = getClass().getResource("/view/SpesaItem.fxml");
+            URL urlFile = getClass().getResource("/view/spesaItem.fxml");
             FXMLLoader loader = new FXMLLoader(urlFile);
             Node prodottoSmall = loader.load();
             SpesaItemController ctrl = loader.getController();
@@ -225,7 +229,7 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
         textCap.setText("" + utente.getCAP());
         textTelefono.setText(utente.getTelefono());
         comboPagamento.setValue(utente.getPagamentoPreferito());
-        nomeCognome.setText(utente.getNome() + " " + utente.getCognome());
+        setNomeCognome();
     }
 
     @FXML
@@ -261,7 +265,7 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
                                         utente.setCAP(Integer.parseInt(textCap.getText()));
                                         utente.setTelefono(textTelefono.getText());
                                         utente.setPagamentoPreferito((String) comboPagamento.getValue());
-                                        nomeCognome.setText(utente.getNome() + " " + utente.getCognome());
+                                        setNomeCognome();
                                         sessionStorage.setUtente(utente);
                                     } else {
                                         result.setText("Pagamento non selezionato!");
@@ -336,9 +340,7 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
 
     public void handleMouseClickLogOut(MouseEvent evt) {
         sessionStorage.logOut();
-        utente = (Utente) sessionStorage.getUtente();
         stage.setScene(Main.getScenes().get(SceneName.CATALOG).getScene());
-
     }
 
     public void handleMouseClickBack(MouseEvent evt) {
@@ -350,6 +352,7 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
         System.out.println("Called update");
         sessionStorage = Main.getSessionStorage();
         utente = (Utente) sessionStorage.getUtente();
+        setNomeCognome();
         setProfiloView();
     }
 }

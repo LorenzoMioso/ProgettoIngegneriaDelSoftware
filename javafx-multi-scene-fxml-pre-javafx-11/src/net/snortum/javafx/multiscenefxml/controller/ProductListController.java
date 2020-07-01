@@ -34,23 +34,20 @@ public class ProductListController implements Stageable, Initializable {
     public void setStage(Stage stage) {
         this.stage = stage;
     }
-    
-    public void setSpesa(Spesa spesa){
-            this.spesa = spesa;
+
+    public void setSpesa(Spesa spesa) {
+        this.spesa = spesa;
     }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         sessionStorage = Main.getSessionStorage();
-        try {
-            showItems();
-        } catch (IOException | SQLException ex) {
-            Logger.getLogger(ProductListController.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
     public void showItems() throws IOException, SQLException {
         vbox.getChildren().clear();
-       
+        System.out.println("Spesa: " + spesa);
+        System.out.println("Prodotti: " + spesa.getProdotti());
         for (Map.Entry<Prodotto, Integer> entry : spesa.getProdotti().entrySet()) {
             URL urlFile = getClass().getResource("/view/prodottoSmallWithoutButton.fxml");
             FXMLLoader loader = new FXMLLoader(urlFile);
