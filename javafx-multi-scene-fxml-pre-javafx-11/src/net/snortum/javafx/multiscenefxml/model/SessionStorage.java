@@ -23,6 +23,8 @@ public class SessionStorage {
 
     public void logOut() {
         this.utente.setIsLogged(false);
+        this.utente = null;
+        this.carrello = null;
     }
 
     public Carrello getCarrello() {

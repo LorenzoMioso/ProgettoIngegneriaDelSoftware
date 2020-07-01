@@ -322,9 +322,14 @@ public class OverviewUtenteController  implements Stageable, Initializable{
         }
     }
     public void handleMouseClickLogOut(MouseEvent evt){
-        
+        sessionStorage.logOut();
+        utente = (Utente) sessionStorage.getUtente();
+       
+        stage.setScene(Main.getScenes().get(SceneName.CATALOG).getScene());
+    
+    
     }
     public void handleMouseClickBack(MouseEvent evt){
-           stage.setScene(Main.getScenes().get(SceneName.CATALOG).getScene());
+        stage.setScene(Main.getScenes().get(SceneName.CATALOG).getScene());
     }
 }

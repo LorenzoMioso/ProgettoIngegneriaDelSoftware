@@ -28,10 +28,12 @@ import net.snortum.javafx.multiscenefxml.model.ProductFilter;
 import net.snortum.javafx.multiscenefxml.model.ProductSorter;
 import net.snortum.javafx.multiscenefxml.model.Reparto;
 import net.snortum.javafx.multiscenefxml.model.SceneName;
+import net.snortum.javafx.multiscenefxml.model.SessionStorage;
 
 public class CatalogController implements Stageable, Initializable {
 
     private Stage stage;
+    private SessionStorage sessionStorage;
     ProdottoDaoImpl prodottoDaoImpl;
     List<Prodotto> productList;
     ProductFilter pFilter;
@@ -91,6 +93,7 @@ public class CatalogController implements Stageable, Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        sessionStorage = new SessionStorage();
         combobox.getItems().addAll("Caratteristiche", "Marca", "Tipo");
         prodottoDaoImpl = new ProdottoDaoImpl();
         try {
@@ -148,7 +151,8 @@ public class CatalogController implements Stageable, Initializable {
     }
         @FXML
     private void handleMouseClickOverviewUtente(MouseEvent event) {
-        stage.setScene(Main.getScenes().get(SceneName.OVERVIEWUTENTE).getScene());
+        if(sessionStorage.isLogged() == true )
+            stage.setScene(Main.getScenes().get(SceneName.OVERVIEWUTENTE).getScene());
     }
 
     @FXML
