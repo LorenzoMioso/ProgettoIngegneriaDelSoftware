@@ -28,6 +28,8 @@ public class InitSpesa {
     }
 
     public void fillTableSpesa() throws SQLException {
-        db.doQuery("");
+         db.doQuery("INSERT INTO `Spesa` (`id`, `dataOrdine`, `dataConsegna`,`oraInizio`, `oraFine`, `costoTot`, `saldoPunti`, `pagamento`,`utente`, `stato`) VALUES "
+                + "(NULL, NULL ,STR_TO_DATE('3/07/2020', '%d/%m/%Y'), '9:00:00', '12:00:00', '20', '20', 'Paypal', 'mrossi@gmail.com', 'In consegna')");
+        
     }
 }

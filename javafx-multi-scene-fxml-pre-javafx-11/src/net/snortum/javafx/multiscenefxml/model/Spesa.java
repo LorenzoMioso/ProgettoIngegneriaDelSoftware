@@ -33,7 +33,18 @@ public class Spesa {
         this.prodotti = prodotti;
     }
 
-    
+    public Spesa(){
+        this.id = 0;
+        this.dataOrdine = null;
+        this.dataConsegna = null;
+        this.oraInizio = null;
+        this.oraFine = null;
+        this.costoTot = 0.0;
+        this.saldoPunti = 0;
+        this.pagamento = "";
+        this.utente = null;
+        this.prodotti = null;
+    }
 
     
     public int getId() {
@@ -122,6 +133,11 @@ public class Spesa {
 
     public void setProdotti(Map<Prodotto, Integer> prodotti) {
         this.prodotti = prodotti;
+    }
+
+    @Override
+    public String toString() {
+        return "Spesa{" + "id=" + id + ", dataOrdine=" + dataOrdine + ", dataConsegna=" + dataConsegna + ", oraInizio=" + oraInizio + ", oraFine=" + oraFine + ", costoTot=" + costoTot + ", saldoPunti=" + saldoPunti + ", pagamento=" + pagamento + ", utente=" + utente + ", stato=" + stato + ", prodotti=" + prodotti + '}';
     }
 
    

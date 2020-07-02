@@ -45,12 +45,14 @@ public class Main {
 
         InitSpesa ispe = new InitSpesa();
         ispe.createSpesa();
+        ispe.fillTableSpesa();
 
         InitProdottoComprato ipc = new InitProdottoComprato();
         ipc.createProdottoComprato();
+        ipc.fillTableProdottoComprato();
         
         InitCaratteristicaProdotto icp = new InitCaratteristicaProdotto();
         icp.createCaratteristicaProdotto();
-
+        icp.fillTableCaratteristicaProdotto();
     }
 }

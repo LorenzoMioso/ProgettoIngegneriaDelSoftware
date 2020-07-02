@@ -12,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import net.snortum.javafx.multiscenefxml.Main;
 import net.snortum.javafx.multiscenefxml.model.SceneName;
+import net.snortum.javafx.multiscenefxml.model.SessionStorage;
 import net.snortum.javafx.multiscenefxml.model.Spesa;
 import net.snortum.javafx.multiscenefxml.model.Stageable;
 
@@ -19,6 +20,7 @@ public class SpesaItemController implements Stageable, Initializable {
 
     private Stage stage;
     private Spesa spesa;
+    private SessionStorage sessionStorage;
     @FXML
     private Label inCorsoConsegnata;
     @FXML
@@ -37,6 +39,7 @@ public class SpesaItemController implements Stageable, Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        sessionStorage = Main.getSessionStorage();
     }
 
     public void setSpesa(Spesa spesa) throws SQLException, IOException {
@@ -45,9 +48,11 @@ public class SpesaItemController implements Stageable, Initializable {
         dataAcquisto.setText("" + spesa.getDataOrdine());
         dataConsegna.setText("" + spesa.getDataConsegna());
         prezzoTotale.setText("" + spesa.getCostoTot());
+        sessionStorage.setSpesa(spesa);
     }
 
     public void handleMouseClickBtnArticoli(MouseEvent evt) throws IOException, SQLException {
+       
         Stage ItemListWindow = new Stage();
         ItemListWindow.setTitle("Prodotti comprati");
         ItemListWindow.setScene(Main.getScenes().get(SceneName.PRODUCTLIST).getScene());

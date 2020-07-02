@@ -22,6 +22,10 @@ public class InitCaratteristicaProdotto {
     }
 
     public void fillTableCaratteristicaProdotto() throws SQLException {
-        db.doQuery("");
+        db.doQuery("INSERT INTO `CaratteristicaProdotto` (`idProdotto`, `nomeCaratteristica`) VALUES "
+                + "('11', 'Senza Latte' ),"
+                + "('45', 'Bio'),"
+                + "('45', 'Vegan')");
+        
     }
 }

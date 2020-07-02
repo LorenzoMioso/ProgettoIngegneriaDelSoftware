@@ -1,14 +1,21 @@
 package net.snortum.javafx.multiscenefxml.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SessionStorage extends Subject{
 
-    Autenticabile utente;
-    Carrello carrello;
-
+    private Autenticabile utente;
+    private Carrello carrello;
+    private List<Spesa> speseList;
+    private Spesa spesa;
+    
     public SessionStorage() {
         this.carrello = new Carrello();
         this.utente = new Utente();
         this.utente.setIsLogged(false);
+        this.speseList = new ArrayList <>();
+        this.spesa = new Spesa();
     }
 
     public Autenticabile getUtente() {
@@ -39,4 +46,22 @@ public class SessionStorage extends Subject{
         notifyAllObservers();
     }
 
+    public List<Spesa> getSpeseList() {
+        return speseList;
+    }
+
+    public void setSpeseList(List<Spesa> speseList) {
+        this.speseList = speseList;
+    }
+
+    public Spesa getSpesa() {
+        return spesa;
+    }
+
+    public void setSpesa(Spesa spesa) {
+        this.spesa = spesa;
+    }
+
+    
+    
 }

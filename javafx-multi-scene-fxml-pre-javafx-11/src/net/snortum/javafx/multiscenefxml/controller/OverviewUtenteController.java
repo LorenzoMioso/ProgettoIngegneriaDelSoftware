@@ -201,7 +201,9 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
     @FXML
     public void handleMouseClickSpese(MouseEvent event) throws SQLException, IOException {
         managePane("spese");
+        
         speseList = spesaDaoImpl.getAllSpesaByUtente(utente);
+        sessionStorage.setSpeseList(speseList);
         for (Spesa s : speseList) {
             URL urlFile = getClass().getResource("/view/spesaItem.fxml");
             FXMLLoader loader = new FXMLLoader(urlFile);

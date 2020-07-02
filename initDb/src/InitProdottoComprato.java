@@ -23,6 +23,9 @@ public class InitProdottoComprato {
     }
 
     public void fillTableProdottoComprato() throws SQLException {
-        db.doQuery("");
+        db.doQuery("INSERT INTO `ProdottoComprato` (`idSpesa`, `idProdotto`, `quantitàProdotto`) VALUES "
+                + "('1', '5' , '3'),"
+                + "('1', '8', '2')");
+        
     }
 }
