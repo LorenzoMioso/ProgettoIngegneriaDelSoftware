@@ -7,6 +7,7 @@ package net.snortum.javafx.multiscenefxml.model;
 
 import java.util.Date;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -81,16 +82,17 @@ public class SpesaDaoImpl implements SpesaDao {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String dataConsegna = formatter.format(addDays(java.util.Calendar.getInstance().getTime(), 1));
         System.out.println("" + dataConsegna);
-        System.out.println("INSERT INTO `Spesa` (`id`, `dataOrdine`, `dataConsegna`,`oraInizio`, `oraFine`, `costoTot`, `saldoPunti`, `pagamento`,`utente`, `stato`) VALUES "
-                + "(NULL, NULL ,'" + dataConsegna + "', '9:00:00', '18:00:00', '" + spesa.getCostoTot() + "', '" + spesa.getSaldoPunti() + "', '" + spesa.getUtente().getPagamentoPreferito() + "', '" + spesa.getUtente().getEmail() + "', 'In preparazione');"
-                + "\nSELECT LAST_INSERT_ID();");
-        db.doQuery("INSERT INTO `Spesa` (`id`, `dataOrdine`, `dataConsegna`,`oraInizio`, `oraFine`, `costoTot`, `saldoPunti`, `pagamento`,`utente`, `stato`) VALUES "
-                + "(NULL, NULL ,'" + dataConsegna + "', '9:00:00', '18:00:00', '" + spesa.getCostoTot() + "', '" + spesa.getSaldoPunti() + "', '" + spesa.getUtente().getPagamentoPreferito() + "', '" + spesa.getUtente().getEmail() + "', 'In preparazione');"
-                + "\nSELECT LAST_INSERT_ID();");
-
-        db.getResultSet().next();
-        System.out.println(db.getResultSet().toString());
-        int id = db.getResultSet().getInt(1);
+//        System.out.println("INSERT INTO `Spesa` (`id`, `dataOrdine`, `dataConsegna`,`oraInizio`, `oraFine`, `costoTot`, `saldoPunti`, `pagamento`,`utente`, `stato`) VALUES "
+//                + "(NULL, NULL ,'" + dataConsegna + "', '9:00:00', '18:00:00', '" + spesa.getCostoTot() + "', '" + spesa.getSaldoPunti() + "', '" + spesa.getUtente().getPagamentoPreferito() + "', '" + spesa.getUtente().getEmail() + "', 'In preparazione');"
+//                + "\nSELECT LAST_INSERT_ID();");
+//        db.doQuery("INSERT INTO `Spesa` (`id`, `dataOrdine`, `dataConsegna`,`oraInizio`, `oraFine`, `costoTot`, `saldoPunti`, `pagamento`,`utente`, `stato`) VALUES "
+//                + "(NULL, NULL ,'" + dataConsegna + "', '9:00:00', '18:00:00', '" + spesa.getCostoTot() + "', '" + spesa.getSaldoPunti() + "', '" + spesa.getUtente().getPagamentoPreferito() + "', '" + spesa.getUtente().getEmail() + "', 'In preparazione');"
+//                + "\nSELECT LAST_INSERT_ID();");
+        int id = db.doSpecificQuery("INSERT INTO `Spesa` (`id`, `dataOrdine`, `dataConsegna`,`oraInizio`, `oraFine`, `costoTot`, `saldoPunti`, `pagamento`,`utente`, `stato`) VALUES "
+                + "(NULL, NULL ,'" + dataConsegna + "', '9:00:00', '18:00:00', '" + spesa.getCostoTot() + "', '" + spesa.getSaldoPunti() + "', '" + spesa.getUtente().getPagamentoPreferito() + "', '" + spesa.getUtente().getEmail() + "', 'In preparazione')");
+//        db.getResultSet().next();
+//        System.out.println(db.getResultSet().toString());
+//        int id = db.getResultSet().getInt(1);
         System.out.println("Id :" + id);
         spesa.setId(id);
 

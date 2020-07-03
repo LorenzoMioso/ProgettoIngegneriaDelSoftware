@@ -77,6 +77,9 @@ public class CartController extends Observer implements Stageable, Initializable
             Spesa s = new Spesa(sessionStorage.getCarrello().getPrezzoTot(), (int) sessionStorage.getCarrello().getPrezzoTot(), sessionStorage.getUtente(), sessionStorage.getCarrello().getProdotti());
             SpesaDaoImpl sdi = new SpesaDaoImpl();
             sdi.insertSpesa(s);
+            final Node source = (Node) event.getSource();
+            final Stage stage = (Stage) source.getScene().getWindow();
+            stage.close();
         }
     }
 

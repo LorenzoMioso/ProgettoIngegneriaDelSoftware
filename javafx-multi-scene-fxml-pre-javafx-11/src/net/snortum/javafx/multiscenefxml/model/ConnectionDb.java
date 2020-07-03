@@ -31,9 +31,39 @@ public class ConnectionDb {   //ConnectionDb utilizza il pattern singleton
         this.resultSet = statement.executeQuery(query);
         connection.close();
     }
-
+    public int doSpecificQuery(String query) throws SQLException{
+        this.connection = DriverManager.getConnection(url + dbname + multipleQueries, username, password);
+        this.statement =connection.createStatement(java.sql.ResultSet.TYPE_FORWARD_ONLY,
+                java.sql.ResultSet.CONCUR_UPDATABLE);
+        this.statement.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
+        int id = -1;
+        this.resultSet = this.statement.getGeneratedKeys();
+        if(resultSet.next())
+            id = resultSet.getInt(1);
+        return id;
+    }
     public ResultSet getResultSet() {
         return resultSet;
     }
 
+    public void setResultSet(ResultSet resultSet) {
+        this.resultSet = resultSet;
+    }
+
+    public Connection getConnection() {
+        return connection;
+    }
+
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+    }
+
+    public Statement getStatement() {
+        return statement;
+    }
+
+    public void setStatement(Statement statement) {
+        this.statement = statement;
+    }
+    
 }
