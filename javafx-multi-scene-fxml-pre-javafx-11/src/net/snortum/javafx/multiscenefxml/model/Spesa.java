@@ -46,6 +46,13 @@ public class Spesa {
         this.prodotti = null;
     }
 
+    public Spesa(double costoTot, int saldoPunti, Utente utente, Map<Prodotto, Integer> prodotti) {
+        this.costoTot = costoTot;
+        this.saldoPunti = saldoPunti;
+        this.utente = utente;
+        this.prodotti = prodotti;
+    }
+
     
     public int getId() {
         return id;

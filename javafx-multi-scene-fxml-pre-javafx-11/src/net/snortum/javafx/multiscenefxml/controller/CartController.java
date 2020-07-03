@@ -12,11 +12,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import net.snortum.javafx.multiscenefxml.Main;
 import net.snortum.javafx.multiscenefxml.model.Observer;
+import net.snortum.javafx.multiscenefxml.model.Spesa;
 import net.snortum.javafx.multiscenefxml.model.Prodotto;
+import net.snortum.javafx.multiscenefxml.model.SpesaDaoImpl;
+import net.snortum.javafx.multiscenefxml.model.SceneName;
 import net.snortum.javafx.multiscenefxml.model.SessionStorage;
 import net.snortum.javafx.multiscenefxml.model.Stageable;
 
@@ -63,6 +67,17 @@ public class CartController extends Observer implements Stageable, Initializable
             ctrl.showCartItem();
         }
         prezzoTotale.setText(String.valueOf(sessionStorage.getCarrello().getPrezzoTot()));
+    }
+
+    @FXML
+    private void handleMouseClickAcquista(MouseEvent event) throws SQLException {
+        if (sessionStorage.isLogged() == false) {
+            stage.setScene(Main.getScenes().get(SceneName.LOGIN).getScene());
+        } else {
+            Spesa s = new Spesa(sessionStorage.getCarrello().getPrezzoTot(), (int) sessionStorage.getCarrello().getPrezzoTot(), sessionStorage.getUtente(), sessionStorage.getCarrello().getProdotti());
+            SpesaDaoImpl sdi = new SpesaDaoImpl();
+            sdi.insertSpesa(s);
+        }
     }
 
     @Override

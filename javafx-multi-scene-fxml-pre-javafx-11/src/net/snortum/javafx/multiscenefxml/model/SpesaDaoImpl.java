@@ -5,8 +5,11 @@
  */
 package net.snortum.javafx.multiscenefxml.model;
 
+import java.util.Date;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,21 +18,22 @@ import java.util.Map;
  *
  * @author elisa
  */
-public class SpesaDaoImpl implements SpesaDao{
-     private ConnectionDb db;
+public class SpesaDaoImpl implements SpesaDao {
+
+    private ConnectionDb db;
 
     public SpesaDaoImpl() {
         db = ConnectionDb.getInstance();
     }
-    
+
     @Override
     public List<Spesa> getAllSpesaByUtente(Utente u) throws SQLException {
         List<Spesa> spese = new ArrayList<>();
-        db.doQuery("select * from Spesa where utente = '"+ u.getEmail() + "'");
-       
-        int i = 0 ;
+        db.doQuery("select * from Spesa where utente = '" + u.getEmail() + "'");
+
+        int i = 0;
         while (db.getResultSet().next()) {
-            Map <Prodotto, Integer> spesa = new HashMap <>();
+            Map<Prodotto, Integer> spesa = new HashMap<>();
             spese.add(new Spesa(
                     db.getResultSet().getInt(1),
                     db.getResultSet().getTimestamp(2),
@@ -42,26 +46,26 @@ public class SpesaDaoImpl implements SpesaDao{
                     u,
                     db.getResultSet().getString(10), spesa));
             //devo avere l'id della spesa per fare la query all'interno di prodottoComprato
-            db.doQuery("select * from ProdottoComprato PC JOIN Prodotto P ON PC.idProdotto = P.id where PC.idSpesa = '" + spese.get(i).getId() +"'");
-            while(db.getResultSet().next()){
+            db.doQuery("select * from ProdottoComprato PC JOIN Prodotto P ON PC.idProdotto = P.id where PC.idSpesa = '" + spese.get(i).getId() + "'");
+            while (db.getResultSet().next()) {
                 spesa.put(new Prodotto(db.getResultSet().getInt(4),
-                    db.getResultSet().getString(5),
-                    db.getResultSet().getString(6),
-                    db.getResultSet().getBlob(7),
-                    db.getResultSet().getString(8),
-                    db.getResultSet().getString(9),
-                    db.getResultSet().getBoolean(10),
-                    db.getResultSet().getDouble(11),
-                    db.getResultSet().getInt(12),
-                    db.getResultSet().getDouble(13)), db.getResultSet().getInt(3));
-            
-            
+                        db.getResultSet().getString(5),
+                        db.getResultSet().getString(6),
+                        db.getResultSet().getBlob(7),
+                        db.getResultSet().getString(8),
+                        db.getResultSet().getString(9),
+                        db.getResultSet().getBoolean(10),
+                        db.getResultSet().getDouble(11),
+                        db.getResultSet().getInt(12),
+                        db.getResultSet().getDouble(13)), db.getResultSet().getInt(3));
+
             }
             spese.get(i).setProdotti(spesa);
         }
-        
+
         return spese;
     }
+
     @Override
     public Spesa getSpesa(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -74,9 +78,33 @@ public class SpesaDaoImpl implements SpesaDao{
 
     @Override
     public void insertSpesa(Spesa spesa) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String dataConsegna = formatter.format(addDays(java.util.Calendar.getInstance().getTime(), 1));
+        System.out.println("" + dataConsegna);
+        System.out.println("INSERT INTO `Spesa` (`id`, `dataOrdine`, `dataConsegna`,`oraInizio`, `oraFine`, `costoTot`, `saldoPunti`, `pagamento`,`utente`, `stato`) VALUES "
+                + "(NULL, NULL ,'" + dataConsegna + "', '9:00:00', '18:00:00', '" + spesa.getCostoTot() + "', '" + spesa.getSaldoPunti() + "', '" + spesa.getUtente().getPagamentoPreferito() + "', '" + spesa.getUtente().getEmail() + "', 'In preparazione');"
+                + "\nSELECT LAST_INSERT_ID();");
+        db.doQuery("INSERT INTO `Spesa` (`id`, `dataOrdine`, `dataConsegna`,`oraInizio`, `oraFine`, `costoTot`, `saldoPunti`, `pagamento`,`utente`, `stato`) VALUES "
+                + "(NULL, NULL ,'" + dataConsegna + "', '9:00:00', '18:00:00', '" + spesa.getCostoTot() + "', '" + spesa.getSaldoPunti() + "', '" + spesa.getUtente().getPagamentoPreferito() + "', '" + spesa.getUtente().getEmail() + "', 'In preparazione');"
+                + "\nSELECT LAST_INSERT_ID();");
+
+        db.getResultSet().next();
+        System.out.println(db.getResultSet().toString());
+        int id = db.getResultSet().getInt(1);
+        System.out.println("Id :" + id);
+        spesa.setId(id);
+
+        for (Map.Entry<Prodotto, Integer> entry : spesa.getProdotti().entrySet()) {
+            db.doQuery("INSERT INTO `ProdottoComprato` (`idSpesa`, `idProdotto`, `quantitàProdotto`) VALUES "
+                    + "('" + spesa.getId() + "', '" + entry.getKey().getId() + "' , '" + entry.getValue() + "')");
+        }
     }
 
-    
-    
+    public static Date addDays(Date date, int days) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.DATE, days);
+        return (Date) cal.getTime();
+    }
+
 }

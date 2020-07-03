@@ -3,23 +3,23 @@ package net.snortum.javafx.multiscenefxml.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SessionStorage extends Subject{
+public class SessionStorage extends Subject {
 
     private Autenticabile utente;
     private Carrello carrello;
     private List<Spesa> speseList;
     private Spesa spesa;
-    
+
     public SessionStorage() {
         this.carrello = new Carrello();
         this.utente = new Utente();
         this.utente.setIsLogged(false);
-        this.speseList = new ArrayList <>();
+        this.speseList = new ArrayList<>();
         this.spesa = new Spesa();
     }
 
-    public Autenticabile getUtente() {
-        return utente;
+    public Utente getUtente() {
+        return (Utente) utente;
     }
 
     public void setUtente(Autenticabile utente) {
@@ -62,6 +62,4 @@ public class SessionStorage extends Subject{
         this.spesa = spesa;
     }
 
-    
-    
 }

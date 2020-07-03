@@ -13,19 +13,20 @@ public class ConnectionDb {   //ConnectionDb utilizza il pattern singleton
     private String dbname = "Spesa";
     private String username = "spesa";
     private String password = "spesa";
+    private String multipleQueries = "?allowMultiQueries=true";
     private Connection connection = null;
     private Statement statement = null;
     private ResultSet resultSet = null;
 
     private ConnectionDb() {
     }
-        
+
     public static ConnectionDb getInstance() {
         return instance;
     }
 
     public void doQuery(String query) throws SQLException {
-        this.connection = DriverManager.getConnection(url + dbname, username, password);
+        this.connection = DriverManager.getConnection(url + dbname + multipleQueries, username, password);
         this.statement = connection.createStatement();
         this.resultSet = statement.executeQuery(query);
         connection.close();

@@ -8,8 +8,8 @@ import java.util.Map;
 public class Carrello extends Subject{
 
     
-    private HashMap<Prodotto, Integer> prodotti;
-    private int prezzoTot;
+    private Map<Prodotto, Integer> prodotti;
+    private double prezzoTot;
 
     public Carrello() {
         
@@ -29,7 +29,7 @@ public class Carrello extends Subject{
         notifyAllObservers();
     }
 
-    public HashMap<Prodotto, Integer> getProdotti() {
+    public Map<Prodotto, Integer> getProdotti() {
         return prodotti;
     }
 
@@ -45,7 +45,7 @@ public class Carrello extends Subject{
         }
     }
 
-    public int getPrezzoTot() {
+    public double getPrezzoTot() {
         return prezzoTot;
     }
 

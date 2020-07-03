@@ -1,5 +1,8 @@
 package net.snortum.javafx.multiscenefxml;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,6 +11,7 @@ import javafx.stage.Stage;
 
 import net.snortum.javafx.multiscenefxml.model.SceneName;
 import net.snortum.javafx.multiscenefxml.model.SessionStorage;
+import static net.snortum.javafx.multiscenefxml.model.SpesaDaoImpl.addDays;
 import net.snortum.javafx.multiscenefxml.util.FxmlInfo;
 
 /**
@@ -25,7 +29,7 @@ public class Main extends Application {
     private static final String CART_FXML = "/view/cart.fxml";
     private static final String OVERVIEWUTENTE_FXML = "/view/overviewUtente.fxml";
     private static final String PRODUCTLIST_FXML = "/view/productList.fxml";
-    
+
     private static Map<SceneName, FxmlInfo> scenes = new HashMap<>();
 
     private static SessionStorage sessioStorage = new SessionStorage();
@@ -37,6 +41,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
 
+
         scenes.put(SceneName.LOGIN, new FxmlInfo(LOGIN_FXML, SceneName.LOGIN, stage));
         scenes.put(SceneName.REGISTER, new FxmlInfo(REGISTER_FXML, SceneName.REGISTER, stage));
         scenes.put(SceneName.FULLREGISTER, new FxmlInfo(FULLREGISTER_FXML, SceneName.FULLREGISTER, stage));
@@ -44,13 +49,14 @@ public class Main extends Application {
         scenes.put(SceneName.CART, new FxmlInfo(CART_FXML, SceneName.CART, stage));
         scenes.put(SceneName.OVERVIEWUTENTE, new FxmlInfo(OVERVIEWUTENTE_FXML, SceneName.OVERVIEWUTENTE, stage));
         scenes.put(SceneName.PRODUCTLIST, new FxmlInfo(PRODUCTLIST_FXML, SceneName.PRODUCTLIST, stage));
-        
+
         // getScene() will load the FXML file the first time
         //stage.setScene(scenes.get(SceneName.CATALOG).getScene());
         stage.setScene(scenes.get(SceneName.CATALOG).getScene());
         stage.setTitle("Multi-Scene Demo");
         stage.show();
     }
+
 
     /**
      * @return a Map of the {@link FxmlInfo} by {@link SceneName}
