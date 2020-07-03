@@ -6,6 +6,7 @@ import java.util.List;
 public class SessionStorage extends Subject {
 
     private Autenticabile utente;
+    private TesseraFedelta tesseraFedelta;
     private Carrello carrello;
     private List<Spesa> speseList;
     private Spesa spesa;
@@ -60,6 +61,16 @@ public class SessionStorage extends Subject {
 
     public void setSpesa(Spesa spesa) {
         this.spesa = spesa;
+        notifyAllObserversSpesa();
+    }
+
+    public TesseraFedelta getTesseraFedelta() {
+        return tesseraFedelta;
+    }
+
+    public void setTesseraFedelta(TesseraFedelta tesseraFedelta) {
+        this.tesseraFedelta = tesseraFedelta;
+        notifyAllObservers();
     }
 
 }

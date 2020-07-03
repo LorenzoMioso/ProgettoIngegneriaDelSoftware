@@ -5,6 +5,7 @@ import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
+
 public class Spesa {
 
     private int id;
@@ -17,9 +18,9 @@ public class Spesa {
     private String pagamento;
     private Utente utente;
     private String stato;
-    private Map <Prodotto, Integer> prodotti;
+    private Map<Prodotto, Integer> prodotti;
 
-    public Spesa(int id, Timestamp dataOrdine, Date dataConsegna, Time oraInizio, Time oraFine, double costoTot, int saldoPunti, String pagamento, Utente utente, String stato, Map <Prodotto, Integer> prodotti) {
+    public Spesa(int id, Timestamp dataOrdine, Date dataConsegna, Time oraInizio, Time oraFine, double costoTot, int saldoPunti, String pagamento, Utente utente, String stato, Map<Prodotto, Integer> prodotti) {
         this.id = id;
         this.dataOrdine = dataOrdine;
         this.dataConsegna = dataConsegna;
@@ -33,7 +34,7 @@ public class Spesa {
         this.prodotti = prodotti;
     }
 
-    public Spesa(){
+    public Spesa() {
         this.id = 0;
         this.dataOrdine = null;
         this.dataConsegna = null;
@@ -53,7 +54,6 @@ public class Spesa {
         this.prodotti = prodotti;
     }
 
-    
     public int getId() {
         return id;
     }
@@ -147,6 +147,4 @@ public class Spesa {
         return "Spesa{" + "id=" + id + ", dataOrdine=" + dataOrdine + ", dataConsegna=" + dataConsegna + ", oraInizio=" + oraInizio + ", oraFine=" + oraFine + ", costoTot=" + costoTot + ", saldoPunti=" + saldoPunti + ", pagamento=" + pagamento + ", utente=" + utente + ", stato=" + stato + ", prodotti=" + prodotti + '}';
     }
 
-   
-    
 };

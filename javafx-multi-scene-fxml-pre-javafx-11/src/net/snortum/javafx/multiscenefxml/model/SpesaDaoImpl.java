@@ -86,17 +86,9 @@ public class SpesaDaoImpl implements SpesaDao {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String dataConsegna = formatter.format(addDays(java.util.Calendar.getInstance().getTime(), 1));
         System.out.println("" + dataConsegna);
-//        System.out.println("INSERT INTO `Spesa` (`id`, `dataOrdine`, `dataConsegna`,`oraInizio`, `oraFine`, `costoTot`, `saldoPunti`, `pagamento`,`utente`, `stato`) VALUES "
-//                + "(NULL, NULL ,'" + dataConsegna + "', '9:00:00', '18:00:00', '" + spesa.getCostoTot() + "', '" + spesa.getSaldoPunti() + "', '" + spesa.getUtente().getPagamentoPreferito() + "', '" + spesa.getUtente().getEmail() + "', 'In preparazione');"
-//                + "\nSELECT LAST_INSERT_ID();");
-//        db.doQuery("INSERT INTO `Spesa` (`id`, `dataOrdine`, `dataConsegna`,`oraInizio`, `oraFine`, `costoTot`, `saldoPunti`, `pagamento`,`utente`, `stato`) VALUES "
-//                + "(NULL, NULL ,'" + dataConsegna + "', '9:00:00', '18:00:00', '" + spesa.getCostoTot() + "', '" + spesa.getSaldoPunti() + "', '" + spesa.getUtente().getPagamentoPreferito() + "', '" + spesa.getUtente().getEmail() + "', 'In preparazione');"
-//                + "\nSELECT LAST_INSERT_ID();");
         int id = db.doSpecificQuery("INSERT INTO `Spesa` (`id`, `dataOrdine`, `dataConsegna`,`oraInizio`, `oraFine`, `costoTot`, `saldoPunti`, `pagamento`,`utente`, `stato`) VALUES "
                 + "(NULL, NULL ,'" + dataConsegna + "', '9:00:00', '18:00:00', '" + spesa.getCostoTot() + "', '" + spesa.getSaldoPunti() + "', '" + spesa.getUtente().getPagamentoPreferito() + "', '" + spesa.getUtente().getEmail() + "', 'In preparazione')");
-//        db.getResultSet().next();
-//        System.out.println(db.getResultSet().toString());
-//        int id = db.getResultSet().getInt(1);
+
         System.out.println("Id :" + id);
         spesa.setId(id);
 
@@ -104,6 +96,9 @@ public class SpesaDaoImpl implements SpesaDao {
             db.doQuery("INSERT INTO `ProdottoComprato` (`idSpesa`, `idProdotto`, `quantitàProdotto`) VALUES "
                     + "('" + spesa.getId() + "', '" + entry.getKey().getId() + "' , '" + entry.getValue() + "')");
         }
+        
+        db.doQuery("UPDATE `TesseraFedelta` SET punti = punti + '" + spesa.getSaldoPunti() + "' WHERE utente = '" + spesa.getUtente().getEmail() + "'");
+
     }
 
     public static Date addDays(Date date, int days) {

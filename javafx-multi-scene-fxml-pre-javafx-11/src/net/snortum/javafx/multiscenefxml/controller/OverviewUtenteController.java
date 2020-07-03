@@ -13,6 +13,8 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.fxml.FXML;
@@ -154,6 +156,14 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
         comboPagamento.getItems().setAll("Carta di Credito", "PayPal", "Alla consegna");
         fedeltaDaoImpl = new TesseraFedeltaDaoImpl();
         spesaDaoImpl = new SpesaDaoImpl();
+
+        try {
+            tf = fedeltaDaoImpl.getTesseraFromUser(utente);
+        } catch (SQLException ex) {
+            Logger.getLogger(OverviewUtenteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        sessionStorage.setTesseraFedelta(tf);
     }
 
     public void setNomeCognome() {
@@ -194,7 +204,10 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
     @FXML
     public void handleMouseClickSaldoPunti(MouseEvent event) throws SQLException {
         managePane("saldoPunti");
-        tf = fedeltaDaoImpl.getTesseraFromUser(utente);
+        showSaldoPunti();
+    }
+
+    public void showSaldoPunti() throws SQLException {
         labelSaldoPunti.setText("" + tf.getPunti());
     }
 
@@ -355,5 +368,24 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
         utente = (Utente) sessionStorage.getUtente();
         setNomeCognome();
         setProfiloView();
+        try {
+            tf = fedeltaDaoImpl.getTesseraFromUser(utente);
+            showSaldoPunti();
+        } catch (SQLException ex) {
+            Logger.getLogger(OverviewUtenteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+//        sessionStorage.setTesseraFedelta(tf);
+    }
+
+    @Override
+    public void updateSpesa() {
+//        System.out.println("Called update");
+//        sessionStorage = Main.getSessionStorage();
+//        utente = (Utente) sessionStorage.getUtente();
+//        try {
+//            showSaldoPunti();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(OverviewUtenteController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 }

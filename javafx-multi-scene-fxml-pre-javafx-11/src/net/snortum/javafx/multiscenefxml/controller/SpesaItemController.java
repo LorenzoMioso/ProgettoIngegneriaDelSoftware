@@ -5,7 +5,9 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -52,6 +54,7 @@ public class SpesaItemController implements Stageable, Initializable {
 
     public void handleMouseClickBtnArticoli(MouseEvent evt) throws IOException, SQLException {
         sessionStorage.setSpesa(spesa);
+        System.out.println("Spesa cliccata: " + spesa.toString());
         Stage ItemListWindow = new Stage();
         ItemListWindow.setTitle("Prodotti comprati");
         ItemListWindow.setScene(Main.getScenes().get(SceneName.PRODUCTLIST).getScene());

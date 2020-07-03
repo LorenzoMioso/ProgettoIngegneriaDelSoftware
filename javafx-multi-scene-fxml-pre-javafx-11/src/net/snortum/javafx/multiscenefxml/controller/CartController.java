@@ -23,6 +23,8 @@ import net.snortum.javafx.multiscenefxml.model.SpesaDaoImpl;
 import net.snortum.javafx.multiscenefxml.model.SceneName;
 import net.snortum.javafx.multiscenefxml.model.SessionStorage;
 import net.snortum.javafx.multiscenefxml.model.Stageable;
+import net.snortum.javafx.multiscenefxml.model.TesseraFedeltaDaoImpl;
+import net.snortum.javafx.multiscenefxml.model.Utente;
 
 public class CartController extends Observer implements Stageable, Initializable {
 
@@ -76,10 +78,13 @@ public class CartController extends Observer implements Stageable, Initializable
         } else {
             Spesa s = new Spesa(sessionStorage.getCarrello().getPrezzoTot(), (int) sessionStorage.getCarrello().getPrezzoTot(), sessionStorage.getUtente(), sessionStorage.getCarrello().getProdotti());
             SpesaDaoImpl sdi = new SpesaDaoImpl();
+            TesseraFedeltaDaoImpl fedeltaDaoImpl = new TesseraFedeltaDaoImpl();
+            sessionStorage.setTesseraFedelta(fedeltaDaoImpl.getTesseraFromUser(sessionStorage.getUtente()));
             sdi.insertSpesa(s);
             final Node source = (Node) event.getSource();
             final Stage stage = (Stage) source.getScene().getWindow();
             stage.close();
+
         }
     }
 
@@ -90,6 +95,10 @@ public class CartController extends Observer implements Stageable, Initializable
         } catch (IOException | SQLException ex) {
             Logger.getLogger(CartController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @Override
+    public void updateSpesa() {
     }
 
 }

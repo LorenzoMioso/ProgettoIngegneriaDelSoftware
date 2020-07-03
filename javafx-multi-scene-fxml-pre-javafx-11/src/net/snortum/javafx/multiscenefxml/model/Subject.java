@@ -13,14 +13,23 @@ import java.util.List;
  * @author elisa
  */
 public class Subject {
-    private List <Observer> observers = new ArrayList <Observer>();
-    public void attach(Observer observer){
+
+    private List<Observer> observers = new ArrayList<Observer>();
+
+    public void attach(Observer observer) {
         observers.add(observer);
     }
-    public void notifyAllObservers(){
+
+    public void notifyAllObservers() {
         observers.forEach(o -> {
             o.update();
         });
     }
-    
+
+    public void notifyAllObserversSpesa() {
+        observers.forEach(o -> {
+            o.updateSpesa();
+        });
+    }
+
 }
