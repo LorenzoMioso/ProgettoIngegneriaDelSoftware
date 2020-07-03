@@ -48,11 +48,10 @@ public class SpesaItemController implements Stageable, Initializable {
         dataAcquisto.setText("" + spesa.getDataOrdine());
         dataConsegna.setText("" + spesa.getDataConsegna());
         prezzoTotale.setText("" + spesa.getCostoTot());
-        sessionStorage.setSpesa(spesa);
     }
 
     public void handleMouseClickBtnArticoli(MouseEvent evt) throws IOException, SQLException {
-       
+        sessionStorage.setSpesa(spesa);
         Stage ItemListWindow = new Stage();
         ItemListWindow.setTitle("Prodotti comprati");
         ItemListWindow.setScene(Main.getScenes().get(SceneName.PRODUCTLIST).getScene());

@@ -46,8 +46,11 @@ public class SpesaDaoImpl implements SpesaDao {
                     db.getResultSet().getString(8),
                     u,
                     db.getResultSet().getString(10), spesa));
+        }
+        for (Spesa s : spese) {
+            Map<Prodotto, Integer> spesa = new HashMap<>();
             //devo avere l'id della spesa per fare la query all'interno di prodottoComprato
-            db.doQuery("select * from ProdottoComprato PC JOIN Prodotto P ON PC.idProdotto = P.id where PC.idSpesa = '" + spese.get(i).getId() + "'");
+            db.doQuery("select * from ProdottoComprato PC JOIN Prodotto P ON PC.idProdotto = P.id where PC.idSpesa = '" + s.getId() + "'");
             while (db.getResultSet().next()) {
                 spesa.put(new Prodotto(db.getResultSet().getInt(4),
                         db.getResultSet().getString(5),
@@ -59,11 +62,12 @@ public class SpesaDaoImpl implements SpesaDao {
                         db.getResultSet().getDouble(11),
                         db.getResultSet().getInt(12),
                         db.getResultSet().getDouble(13)), db.getResultSet().getInt(3));
-
             }
-            spese.get(i).setProdotti(spesa);
+            s.setProdotti(spesa);
+            for (Map.Entry<Prodotto, Integer> entry : spesa.entrySet()) {
+                System.out.println("Prodotto " + entry.getKey() + " Quantità: " + entry.getValue());
+            }
         }
-
         return spese;
     }
 

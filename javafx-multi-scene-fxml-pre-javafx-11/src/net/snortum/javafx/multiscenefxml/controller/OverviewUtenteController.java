@@ -201,7 +201,7 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
     @FXML
     public void handleMouseClickSpese(MouseEvent event) throws SQLException, IOException {
         managePane("spese");
-        
+        speseVBox.getChildren().clear();
         speseList = spesaDaoImpl.getAllSpesaByUtente(utente);
         sessionStorage.setSpeseList(speseList);
         for (Spesa s : speseList) {
@@ -212,7 +212,6 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
             speseVBox.getChildren().add(prodottoSmall);
             ctrl.setSpesa(s);
         }
-
     }
 
     @FXML
