@@ -41,8 +41,7 @@ public class TesseraFedeltaDaoImpl {
     }
 
     public void insertTesseraFedelta(TesseraFedelta tesseraFedelta) throws SQLException {
-        db.doQuery("INSERT INTO `TesseraFedelta` (`id`, `dataEmissione`, `punti`) VALUES "
-                + "(NULL, '" + tesseraFedelta.getDataEmissione() + "', '" + tesseraFedelta.getPunti() + "'),");
-
+        db.doQuery("INSERT INTO `TesseraFedelta` (`id`, `dataEmissione`, `punti`,`utente`) VALUES "
+                + "(NULL, CURRENT_DATE() , '" + tesseraFedelta.getPunti() + "','" + tesseraFedelta.getUtente().getEmail() + "')");
     }
 }

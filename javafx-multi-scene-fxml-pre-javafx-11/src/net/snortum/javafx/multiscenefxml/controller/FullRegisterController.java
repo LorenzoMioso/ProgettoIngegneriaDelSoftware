@@ -1,9 +1,10 @@
 package net.snortum.javafx.multiscenefxml.controller;
 
-
 import java.net.URL;
 import javafx.scene.paint.Color;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -21,6 +22,9 @@ import net.snortum.javafx.multiscenefxml.model.SceneName;
 import net.snortum.javafx.multiscenefxml.model.SessionStorage;
 
 import net.snortum.javafx.multiscenefxml.model.Stageable;
+import net.snortum.javafx.multiscenefxml.model.TesseraFedelta;
+import net.snortum.javafx.multiscenefxml.model.TesseraFedeltaDao;
+import net.snortum.javafx.multiscenefxml.model.TesseraFedeltaDaoImpl;
 import net.snortum.javafx.multiscenefxml.model.Utente;
 import net.snortum.javafx.multiscenefxml.model.UtenteDaoImpl;
 
@@ -29,7 +33,9 @@ public class FullRegisterController implements Stageable, Initializable {
     private Stage stage;
     private SessionStorage sessionStorage;
     UtenteDaoImpl utenteDaoImpl;
+    TesseraFedeltaDaoImpl tesseraFedeltaDaoImpl;
     Utente utente = null;
+    private static final int ADULT_AGE = 18;
     //campi di fullRegister.fxml
     @FXML
     TextField nome;
@@ -55,7 +61,6 @@ public class FullRegisterController implements Stageable, Initializable {
     ComboBox pagamento;
     @FXML
     DatePicker data;
-    
 
     public void fullRegisterMouseClick(MouseEvent evt) throws SQLException {
         Pattern nomeP = Pattern.compile("^([a-zA-Z\\xE0\\xE8\\xE9\\xF9\\xF2\\xEC\\x27]\\s?)+$");
@@ -71,59 +76,62 @@ public class FullRegisterController implements Stageable, Initializable {
         Matcher matcherTelefono = telefonoP.matcher(telefono.getText());
         if (matcherNome.matches()) {
             if (matcherCognome.matches()) {
-                if (matcherVia.matches()) {
-                    if (matcherComune.matches()) {
-                        if (matcherCittà.matches()) {
-                            if (matcherCap.matches()) {
-                                if (matcherTelefono.matches()) {
-                                    if (pagamento.getSelectionModel().isEmpty() != true) {
-                                        utente.setNome(nome.getText());
-                                        utente.setCognome(cognome.getText());
-                                        utente.setVia(via.getText());
-                                        utente.setnCivico(ncivico.getText());
-                                        utente.setComune(comune.getText());
-                                        utente.setCitta(città.getText());
-                                        utente.setCAP(Integer.parseInt(cap.getText()));
-                                        utente.setTelefono(telefono.getText());
-                                        utente.setPagamentoPreferito(pagamento.getSelectionModel().getSelectedItem().toString());
-                                        utente.setDataNascita(java.sql.Date.valueOf(data.getValue()));
-                                        System.out.println(utente.toString());
-                                        utenteDaoImpl.updateUtente(utente);
-                                        fullresult.setText("La registrazione completa è stata effettuata!");
-                                        fullresult.setTextFill(Color.web("green"));
-                                        System.out.println("update utente fatto");
-                                        
-                                        stage.setScene(Main.getScenes().get(SceneName.CATALOG).getScene());
-
+                if (calculateAge(data.getValue(), java.time.LocalDate.now()) >= ADULT_AGE) {
+                    if (matcherVia.matches()) {
+                        if (matcherComune.matches()) {
+                            if (matcherCittà.matches()) {
+                                if (matcherCap.matches()) {
+                                    if (matcherTelefono.matches()) {
+                                        if (pagamento.getSelectionModel().isEmpty() != true) {
+                                            utente.setNome(nome.getText());
+                                            utente.setCognome(cognome.getText());
+                                            utente.setVia(via.getText());
+                                            utente.setnCivico(ncivico.getText());
+                                            utente.setComune(comune.getText());
+                                            utente.setCitta(città.getText());
+                                            utente.setCAP(Integer.parseInt(cap.getText()));
+                                            utente.setTelefono(telefono.getText());
+                                            utente.setPagamentoPreferito(pagamento.getSelectionModel().getSelectedItem().toString());
+                                            utente.setDataNascita(java.sql.Date.valueOf(data.getValue()));
+                                            System.out.println(utente.toString());
+                                            utenteDaoImpl.updateUtente(utente);
+                                            //nuova tessera
+                                            TesseraFedelta tesseraFedelta = new TesseraFedelta(utente);
+                                            tesseraFedeltaDaoImpl.insertTesseraFedelta(tesseraFedelta);
+                                            fullresult.setText("La registrazione completa è stata effettuata!");
+                                            fullresult.setTextFill(Color.web("green"));
+                                            System.out.println("update utente fatto");
+                                            stage.setScene(Main.getScenes().get(SceneName.CATALOG).getScene());
+                                        } else {
+                                            fullresult.setText("Pagamento non selezionato!");
+                                            fullresult.setTextFill(Color.web("red"));
+                                        }
                                     } else {
-                                        fullresult.setText("Pagamento non selezionato!");
+                                        fullresult.setText("Numero di telefono non valido!");
                                         fullresult.setTextFill(Color.web("red"));
-
                                     }
-
                                 } else {
-                                    fullresult.setText("Numero di telefono non valido!");
+                                    fullresult.setText("CAP non valido!");
                                     fullresult.setTextFill(Color.web("red"));
                                 }
                             } else {
-                                fullresult.setText("CAP non valido!");
+                                fullresult.setText("Città non valida!");
                                 fullresult.setTextFill(Color.web("red"));
                             }
+
                         } else {
-                            fullresult.setText("Città non valida!");
+                            fullresult.setText("Comune non valido!");
                             fullresult.setTextFill(Color.web("red"));
                         }
 
                     } else {
-                        fullresult.setText("Comune non valido!");
+                        fullresult.setText("Via non valida!");
                         fullresult.setTextFill(Color.web("red"));
                     }
-
                 } else {
-                    fullresult.setText("Via non valida!");
+                    fullresult.setText("Devi essere maggiorenne!");
                     fullresult.setTextFill(Color.web("red"));
                 }
-
             } else {
                 fullresult.setText("Cognome non valido!");
                 fullresult.setTextFill(Color.web("red"));
@@ -133,7 +141,6 @@ public class FullRegisterController implements Stageable, Initializable {
             fullresult.setTextFill(Color.web("red"));
         }
         fullresult.setVisible(true);
-
     }
 
     @Override
@@ -141,16 +148,21 @@ public class FullRegisterController implements Stageable, Initializable {
         this.stage = stage;
     }
 
-    /**
-     *
-     * @param location
-     * @param resources
-     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         pagamento.getItems().setAll("Carta di Credito", "PayPal", "Alla consegna");
         sessionStorage = Main.getSessionStorage();
         utenteDaoImpl = new UtenteDaoImpl();
+        tesseraFedeltaDaoImpl = new TesseraFedeltaDaoImpl();
         utente = (Utente) sessionStorage.getUtente();
+    }
+
+    public static int calculateAge(LocalDate birthDate, LocalDate currentDate) {
+        if ((birthDate != null) && (currentDate != null)) {
+            return Period.between(birthDate, currentDate).getYears();
+        } else {
+            return 0;
+        }
+
     }
 }

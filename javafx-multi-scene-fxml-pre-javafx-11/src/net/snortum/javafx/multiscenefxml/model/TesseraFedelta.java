@@ -1,6 +1,6 @@
 package net.snortum.javafx.multiscenefxml.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class TesseraFedelta {
 
@@ -13,6 +13,11 @@ public class TesseraFedelta {
         this.id = id;
         this.dataEmissione = dataEmissione;
         this.punti = punti;
+        this.utente = utente;
+    }
+
+    public TesseraFedelta(Utente utente) {
+        this.punti = 0;
         this.utente = utente;
     }
 
