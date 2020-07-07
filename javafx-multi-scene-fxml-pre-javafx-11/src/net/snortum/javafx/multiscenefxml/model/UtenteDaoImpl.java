@@ -25,6 +25,7 @@ public class UtenteDaoImpl implements UtenteDao, AutenticabileDao {
                 + "',pagamentoPreferito = '" + utente.getPagamentoPreferito()
                 + "'WHERE email = '" + utente.getEmail() + "'");
         System.out.println(utente.toString());
+        utente.setIsLogged(true);
     }
 
     @Override
@@ -94,7 +95,6 @@ public class UtenteDaoImpl implements UtenteDao, AutenticabileDao {
         if (isRegistered(username) == false) {
             db.doQuery("INSERT INTO `Utente` (`email`,`password`) VALUES ('" + username + "', '" + password + "')");
             u = new Utente(username, password);
-            u.setIsLogged(true);
         }
         return u;
     }

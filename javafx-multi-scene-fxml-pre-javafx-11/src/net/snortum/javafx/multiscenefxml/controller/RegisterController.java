@@ -70,6 +70,11 @@ public class RegisterController implements Stageable, Initializable {
                             sessionStorage.setUtente(utente);
                             result.setText("Registrazione effettuata");
                             result.setTextFill(Color.web("green"));
+                            //resetto i valori dei campi
+                            email.setText("");
+                            password.setText("");
+                            reenterPassword.setText("");
+                            result.setText("");
                             stage.setScene(Main.getScenes().get(SceneName.FULLREGISTER).getScene());
 
 
@@ -97,7 +102,7 @@ public class RegisterController implements Stageable, Initializable {
         stage.setScene(Main.getScenes().get(SceneName.FULLREGISTER).getScene());
     }
     
-    public void handleMouseClickBack(ActionEvent evt){
+    public void handleOnActionBack(ActionEvent evt){
         stage.setScene(Main.getScenes().get(SceneName.CATALOG).getScene());
     }
     @Override

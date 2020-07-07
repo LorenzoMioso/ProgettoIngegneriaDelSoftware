@@ -52,7 +52,7 @@ public class Main extends Application {
         // getScene() will load the FXML file the first time
         // stage.setScene(scenes.get(SceneName.CATALOG).getScene());
         stage.setScene(scenes.get(SceneName.CATALOG).getScene());
-        stage.setTitle("Multi-Scene Demo");
+        stage.setTitle("Spesa online");
         stage.show();
     }
 

@@ -65,7 +65,9 @@ public class FullRegisterController implements Stageable, Initializable {
     public void fullRegisterMouseClick(MouseEvent evt) throws SQLException {
         Pattern nomeP = Pattern.compile("^([a-zA-Z\\xE0\\xE8\\xE9\\xF9\\xF2\\xEC\\x27]\\s?)+$");
         Pattern capP = Pattern.compile("^\\d{5}$");
-        Pattern telefonoP = Pattern.compile("(0{1}[1-9]{1,3})[\\s|.|-]?(\\d{4,})");
+        Pattern telefonoFisso = Pattern.compile("(0{1}[1-9]{1,3})[\\s|.|-]?(\\d{4,})");
+        //Pattern telefonoP = Pattern.compile("^(2){1}(\\d{2}){1}[|\\s\\.|\\-]?(\\d{7,8}){1}");
+        Pattern telefonoP = Pattern.compile("^(([+]|00)39)?((3[1-6][0-9]))(\\d{7})$");
         Matcher matcherNome = nomeP.matcher(nome.getText());
         Matcher matcherCognome = nomeP.matcher(cognome.getText());
         Matcher matcherVia = nomeP.matcher(via.getText());
@@ -74,6 +76,7 @@ public class FullRegisterController implements Stageable, Initializable {
         Matcher matcherNCivico;
         Matcher matcherCap = capP.matcher(cap.getText());
         Matcher matcherTelefono = telefonoP.matcher(telefono.getText());
+        Matcher matcherTelefonoFisso = telefonoFisso.matcher(telefono.getText());
         if (matcherNome.matches()) {
             if (matcherCognome.matches()) {
                 if (calculateAge(data.getValue(), java.time.LocalDate.now()) >= ADULT_AGE) {
@@ -81,7 +84,7 @@ public class FullRegisterController implements Stageable, Initializable {
                         if (matcherComune.matches()) {
                             if (matcherCittà.matches()) {
                                 if (matcherCap.matches()) {
-                                    if (matcherTelefono.matches()) {
+                                    if (matcherTelefono.matches() || matcherTelefonoFisso.matches()) {
                                         if (pagamento.getSelectionModel().isEmpty() != true) {
                                             utente.setNome(nome.getText());
                                             utente.setCognome(cognome.getText());
@@ -95,12 +98,26 @@ public class FullRegisterController implements Stageable, Initializable {
                                             utente.setDataNascita(java.sql.Date.valueOf(data.getValue()));
                                             System.out.println(utente.toString());
                                             utenteDaoImpl.updateUtente(utente);
+                                            sessionStorage.setUtente(utente);
                                             //nuova tessera
                                             TesseraFedelta tesseraFedelta = new TesseraFedelta(utente);
                                             tesseraFedeltaDaoImpl.insertTesseraFedelta(tesseraFedelta);
                                             fullresult.setText("La registrazione completa è stata effettuata!");
                                             fullresult.setTextFill(Color.web("green"));
                                             System.out.println("update utente fatto");
+                                            //resetto i valori dei campi per inserimento successivo
+                                            nome.setText("");
+                                            cognome.setText("");
+                                            data.setValue(null);
+                                            via.setText("");
+                                            ncivico.setText("");
+                                            comune.setText("");
+                                            città.setText("");
+                                            cap.setText("");
+                                            telefono.setText("");
+                                            pagamento.setValue(null);
+                                            fullresult.setText("");
+                                            
                                             stage.setScene(Main.getScenes().get(SceneName.CATALOG).getScene());
                                         } else {
                                             fullresult.setText("Pagamento non selezionato!");
@@ -152,6 +169,7 @@ public class FullRegisterController implements Stageable, Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         pagamento.getItems().setAll("Carta di Credito", "PayPal", "Alla consegna");
         sessionStorage = Main.getSessionStorage();
+       
         utenteDaoImpl = new UtenteDaoImpl();
         tesseraFedeltaDaoImpl = new TesseraFedeltaDaoImpl();
         utente = (Utente) sessionStorage.getUtente();
