@@ -16,6 +16,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.DatePicker;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import net.snortum.javafx.multiscenefxml.Main;
+import net.snortum.javafx.multiscenefxml.model.SceneName;
+import net.snortum.javafx.multiscenefxml.model.SessionStorage;
 
 import net.snortum.javafx.multiscenefxml.model.Stageable;
 import net.snortum.javafx.multiscenefxml.model.Utente;
@@ -24,6 +27,7 @@ import net.snortum.javafx.multiscenefxml.model.UtenteDaoImpl;
 public class FullRegisterController implements Stageable, Initializable {
 
     private Stage stage;
+    private SessionStorage sessionStorage;
     UtenteDaoImpl utenteDaoImpl;
     Utente utente = null;
     //campi di fullRegister.fxml
@@ -88,6 +92,8 @@ public class FullRegisterController implements Stageable, Initializable {
                                         fullresult.setText("La registrazione completa è stata effettuata!");
                                         fullresult.setTextFill(Color.web("green"));
                                         System.out.println("update utente fatto");
+                                        
+                                        stage.setScene(Main.getScenes().get(SceneName.CATALOG).getScene());
 
                                     } else {
                                         fullresult.setText("Pagamento non selezionato!");
@@ -135,8 +141,16 @@ public class FullRegisterController implements Stageable, Initializable {
         this.stage = stage;
     }
 
+    /**
+     *
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         pagamento.getItems().setAll("Carta di Credito", "PayPal", "Alla consegna");
+        sessionStorage = Main.getSessionStorage();
+        utenteDaoImpl = new UtenteDaoImpl();
+        utente = (Utente) sessionStorage.getUtente();
     }
 }

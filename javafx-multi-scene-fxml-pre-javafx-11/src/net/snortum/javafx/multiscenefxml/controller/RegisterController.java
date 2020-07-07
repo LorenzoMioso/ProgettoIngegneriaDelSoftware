@@ -40,6 +40,8 @@ public class RegisterController implements Stageable, Initializable {
     Label result;
     @FXML
     Button register;
+    @FXML 
+    Button back;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -50,11 +52,11 @@ public class RegisterController implements Stageable, Initializable {
 
     public void handleMouseClick(MouseEvent evt) throws SQLException {
         String regexEmail = "^[\\w!#$%&'+/=?`{|}~^-]+(?:\\.[\\w!#$%&'+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
-        String regexPassword = "/^[a-zA-Z0-9\\_\\*\\-\\+\\!\\?\\,\\:\\;\\.\\xE0\\xE8\\xE9\\xF9\\xF2\\xEC\\x27]{6,12}/";
+        String regexPassword = "^[a-zA-Z0-9\\_\\*\\-\\+\\!\\?\\,\\:\\;\\.\\xE0\\xE8\\xE9\\xF9\\xF2\\xEC\\x27]{6,12}";
         Pattern patternEmail = Pattern.compile(regexEmail);
         Pattern patternPassword = Pattern.compile(regexPassword);
         Matcher matcher = patternEmail.matcher(email.getText());
-        Matcher matcherPwd = patternEmail.matcher(password.getText());
+        Matcher matcherPwd = patternPassword.matcher(password.getText());
         if (matcher.matches()) {
             if (!password.getText().equals("")) {
                 if (matcherPwd.matches()) {
@@ -68,6 +70,8 @@ public class RegisterController implements Stageable, Initializable {
                             sessionStorage.setUtente(utente);
                             result.setText("Registrazione effettuata");
                             result.setTextFill(Color.web("green"));
+                            stage.setScene(Main.getScenes().get(SceneName.FULLREGISTER).getScene());
+
 
                         }
                     } else {
@@ -92,7 +96,10 @@ public class RegisterController implements Stageable, Initializable {
     public void handleOnActionNext(ActionEvent event) {
         stage.setScene(Main.getScenes().get(SceneName.FULLREGISTER).getScene());
     }
-
+    
+    public void handleMouseClickBack(ActionEvent evt){
+        stage.setScene(Main.getScenes().get(SceneName.CATALOG).getScene());
+    }
     @Override
     public void setStage(Stage stage) {
         this.stage = stage;

@@ -173,16 +173,19 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
     public void setProfiloView() {
         managePane("profilo");
         System.out.println("" + utente);
-        labelNome.setText(utente.getNome());
-        labelCognome.setText(utente.getCognome());
-        labelData.setText(utente.getDataNascita().toString());
-        labelVia.setText(utente.getVia());
-        labelNCivico.setText(utente.getnCivico());
-        labelComune.setText(utente.getComune());
-        labelCittà.setText(utente.getCitta());
-        labelCap.setText("" + utente.getCAP());
-        labelTelefono.setText(utente.getTelefono());
-        labelPagamentoPreferito.setText(utente.getPagamentoPreferito());
+        if(utente.isLogged() == true){
+            labelNome.setText(utente.getNome());
+            labelCognome.setText(utente.getCognome());
+            labelData.setText(utente.getDataNascita().toString());
+            labelVia.setText(utente.getVia());
+            labelNCivico.setText(utente.getnCivico());
+            labelComune.setText(utente.getComune());
+            labelCittà.setText(utente.getCitta());
+            labelCap.setText("" + utente.getCAP());
+            labelTelefono.setText(utente.getTelefono());
+            labelPagamentoPreferito.setText(utente.getPagamentoPreferito());
+        }
+        
     }
 
     @FXML
@@ -208,8 +211,11 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
     }
 
     public void showSaldoPunti() throws SQLException {
-        tf = fedeltaDaoImpl.getTesseraFromUser(utente);
-        labelSaldoPunti.setText("" + tf.getPunti());
+        if(utente.isLogged()){
+            tf = fedeltaDaoImpl.getTesseraFromUser(utente);
+            labelSaldoPunti.setText("" + tf.getPunti());
+        }
+        
     }
 
     @FXML
