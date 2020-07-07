@@ -29,13 +29,12 @@ public class SessionStorage extends Subject {
     }
 
     public boolean isLogged() {
-        return utente.isIsLogged();
+        return utente.isLogged();
     }
 
     public void logOut() {
         this.carrello = new Carrello();
         this.utente = new Utente();
-        this.utente.setIsLogged(false);
     }
 
     public Carrello getCarrello() {

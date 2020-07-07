@@ -56,6 +56,7 @@ public class LoginController implements Stageable, Initializable {
                     utente = utenteDaoImpl.login(email.getText(), password.getText());
                     if (utente != null) {
                         sessionStorage.setUtente(utente);
+                        
                         email.setText("");
                         password.setText("");
                         stage.setScene(Main.getScenes().get(SceneName.CATALOG).getScene());

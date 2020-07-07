@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
@@ -20,6 +21,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
 import net.snortum.javafx.multiscenefxml.Main;
+import net.snortum.javafx.multiscenefxml.model.Observer;
 
 import net.snortum.javafx.multiscenefxml.model.Stageable;
 import net.snortum.javafx.multiscenefxml.model.Prodotto;
@@ -30,7 +32,7 @@ import net.snortum.javafx.multiscenefxml.model.Reparto;
 import net.snortum.javafx.multiscenefxml.model.SceneName;
 import net.snortum.javafx.multiscenefxml.model.SessionStorage;
 
-public class CatalogController implements Stageable, Initializable {
+public class CatalogController extends Observer implements Stageable, Initializable {
 
     private Stage stage;
     private SessionStorage sessionStorage;
@@ -85,6 +87,14 @@ public class CatalogController implements Stageable, Initializable {
     ToggleButton marcaDecrescente;
     @FXML
     TextField searchBar;
+    @FXML
+    Button registerButton;
+    @FXML
+    Button loginButton;
+    @FXML
+    Button cartButton;
+    @FXML
+    Button overviewButton;
 
     @Override
     public void setStage(Stage stage) {
@@ -94,8 +104,10 @@ public class CatalogController implements Stageable, Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         sessionStorage = Main.getSessionStorage();
+        sessionStorage.attach(this);
         combobox.getItems().addAll("Caratteristiche", "Marca", "Tipo");
         prodottoDaoImpl = new ProdottoDaoImpl();
+        buttonVisibility();
         try {
             showAllProductSmall();
         } catch (SQLException | IOException ex) {
@@ -273,6 +285,31 @@ public class CatalogController implements Stageable, Initializable {
         } else {
             showAllProductSmall();
         }
+    }
+
+    public void buttonVisibility() {
+        System.out.println("Islogged: " + sessionStorage.isLogged());
+        if (sessionStorage.isLogged() == true) {
+            loginButton.setVisible(false);
+            registerButton.setVisible(false);
+            overviewButton.setVisible(true);
+        } else {
+            overviewButton.setVisible(false);
+            loginButton.setVisible(true);
+            registerButton.setVisible(true);
+        }
+    }
+
+    @Override
+    public void update() {
+        System.out.println("Called update button");
+
+        buttonVisibility();
+    }
+
+    @Override
+    public void updateSpesa() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

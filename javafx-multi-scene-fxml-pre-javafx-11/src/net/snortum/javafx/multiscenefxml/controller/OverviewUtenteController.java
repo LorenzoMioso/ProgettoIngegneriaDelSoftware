@@ -208,6 +208,7 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
     }
 
     public void showSaldoPunti() throws SQLException {
+        tf = fedeltaDaoImpl.getTesseraFromUser(utente);
         labelSaldoPunti.setText("" + tf.getPunti());
     }
 
@@ -358,18 +359,20 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
     }
 
     public void handleMouseClickBack(MouseEvent evt) {
+//        btnProfilo.setSelected(true);
+//        btnBack.setSelected(false);
         stage.setScene(Main.getScenes().get(SceneName.CATALOG).getScene());
     }
 
     @Override
     public void update() {
-        System.out.println("Called update");
+        System.out.println("Called update overview");
         sessionStorage = Main.getSessionStorage();
         utente = (Utente) sessionStorage.getUtente();
         setNomeCognome();
         setProfiloView();
         try {
-            tf = fedeltaDaoImpl.getTesseraFromUser(utente);
+
             showSaldoPunti();
         } catch (SQLException ex) {
             Logger.getLogger(OverviewUtenteController.class.getName()).log(Level.SEVERE, null, ex);

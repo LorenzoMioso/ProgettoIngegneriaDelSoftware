@@ -142,7 +142,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleMouseClickCart" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Button fx:id="cartButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleMouseClickCart" GridPane.columnIndex="1" GridPane.rowIndex="1">
                             <graphic>
                                 <ImageView fitHeight="23.0" fitWidth="23.0" preserveRatio="true">
                                     <image>
@@ -154,7 +154,7 @@
                                 <Insets />
                             </GridPane.margin>
                         </Button>
-                        <Button alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleMouseClickLogin" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <Button fx:id="loginButton"  alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleMouseClickLogin" GridPane.columnIndex="1" GridPane.rowIndex="3">
                             <graphic>
                                 <ImageView fitHeight="23.0" fitWidth="23.0" preserveRatio="true">
                                     <image>
@@ -166,8 +166,8 @@
                                 <Insets />
                             </GridPane.margin>
                         </Button>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleMouseClickRegister" prefHeight="570.0" prefWidth="45.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <Button alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleMouseClickOverviewUtente" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                        <Button  fx:id="registerButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleMouseClickRegister" prefHeight="570.0" prefWidth="45.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Button fx:id="overviewButton" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleMouseClickOverviewUtente" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <graphic>
                         <ImageView fitHeight="23.0" fitWidth="23.0" preserveRatio="true">
                            <image>

@@ -5,7 +5,7 @@ public abstract class Autenticabile extends Subject{
  
     private boolean isLogged = false;
 
-    public boolean isIsLogged() {
+    public boolean isLogged() {
         return isLogged;
     }
 

@@ -30,6 +30,7 @@ public class Utente extends Autenticabile {
         this.CAP = 0;
         this.telefono = null;
         this.pagamentoPreferito = null;
+        this.setIsLogged(false);
         notifyAllObservers();
     }
 

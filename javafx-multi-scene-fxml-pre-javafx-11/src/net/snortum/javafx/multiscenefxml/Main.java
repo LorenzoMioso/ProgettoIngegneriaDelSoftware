@@ -41,7 +41,6 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
 
-
         scenes.put(SceneName.LOGIN, new FxmlInfo(LOGIN_FXML, SceneName.LOGIN, stage));
         scenes.put(SceneName.REGISTER, new FxmlInfo(REGISTER_FXML, SceneName.REGISTER, stage));
         scenes.put(SceneName.FULLREGISTER, new FxmlInfo(FULLREGISTER_FXML, SceneName.FULLREGISTER, stage));
@@ -51,12 +50,11 @@ public class Main extends Application {
         scenes.put(SceneName.PRODUCTLIST, new FxmlInfo(PRODUCTLIST_FXML, SceneName.PRODUCTLIST, stage));
 
         // getScene() will load the FXML file the first time
-        //stage.setScene(scenes.get(SceneName.CATALOG).getScene());
+        // stage.setScene(scenes.get(SceneName.CATALOG).getScene());
         stage.setScene(scenes.get(SceneName.CATALOG).getScene());
         stage.setTitle("Multi-Scene Demo");
         stage.show();
     }
-
 
     /**
      * @return a Map of the {@link FxmlInfo} by {@link SceneName}
