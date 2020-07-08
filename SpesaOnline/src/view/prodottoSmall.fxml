@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<Pane prefHeight="350.0" prefWidth="250.0" style="-fx-border-width: 10; -fx-background-color: white;"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.snortum.javafx.multiscenefxml.controller.ProdottoSmallController">
+<Pane prefHeight="350.0" prefWidth="250.0" style="-fx-border-width: 10; -fx-background-color: white;"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="univr.spesaonline.controller.ProdottoSmallController">
     <children>
         <GridPane hgap="5.0" layoutX="-2.0" layoutY="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="350.0" prefWidth="250.0" vgap="5.0">
             <columnConstraints>
