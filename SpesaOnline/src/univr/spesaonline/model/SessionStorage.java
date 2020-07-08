@@ -5,7 +5,7 @@ import java.util.List;
 
 public class SessionStorage extends Subject {
 
-    private Autenticabile utente;
+    private Autenticabile autenticabile;
     private TesseraFedelta tesseraFedelta;
     private Carrello carrello;
     private List<Spesa> speseList;
@@ -13,28 +13,28 @@ public class SessionStorage extends Subject {
 
     public SessionStorage() {
         this.carrello = new Carrello();
-        this.utente = new Utente();
-        this.utente.setIsLogged(false);
+        this.autenticabile = new Utente();
+        this.autenticabile.setIsLogged(false);
         this.speseList = new ArrayList<>();
         this.spesa = new Spesa();
     }
 
-    public Utente getUtente() {
-        return (Utente) utente;
+    public Autenticabile getAutenticabile() {
+        return autenticabile;
     }
 
-    public void setUtente(Autenticabile utente) {
-        this.utente = utente;
+    public void setAutenticabile(Autenticabile autenticabile) {
+        this.autenticabile = autenticabile;
         notifyAllObservers();
     }
 
     public boolean isLogged() {
-        return utente.isLogged();
+        return autenticabile.isLogged();
     }
 
     public void logOut() {
         this.carrello = new Carrello();
-        this.utente = new Utente();
+        this.autenticabile = new Utente();
         notifyAllObservers();
     }
 

@@ -76,10 +76,10 @@ public class CartController extends Observer implements Stageable, Initializable
         if (sessionStorage.isLogged() == false) {
             stage.setScene(Main.getScenes().get(SceneName.LOGIN).getScene());
         } else {
-            Spesa s = new Spesa(sessionStorage.getCarrello().getPrezzoTot(), (int) sessionStorage.getCarrello().getPrezzoTot(), sessionStorage.getUtente(), sessionStorage.getCarrello().getProdotti());
+            Spesa s = new Spesa(sessionStorage.getCarrello().getPrezzoTot(), (int) sessionStorage.getCarrello().getPrezzoTot(), (Utente) sessionStorage.getAutenticabile(), sessionStorage.getCarrello().getProdotti());
             SpesaDaoImpl sdi = new SpesaDaoImpl();
             TesseraFedeltaDaoImpl fedeltaDaoImpl = new TesseraFedeltaDaoImpl();
-            sessionStorage.setTesseraFedelta(fedeltaDaoImpl.getTesseraFromUser(sessionStorage.getUtente()));
+            sessionStorage.setTesseraFedelta(fedeltaDaoImpl.getTesseraFromUser((Utente) sessionStorage.getAutenticabile()));
             sdi.insertSpesa(s);
             final Node source = (Node) event.getSource();
             final Stage stage = (Stage) source.getScene().getWindow();

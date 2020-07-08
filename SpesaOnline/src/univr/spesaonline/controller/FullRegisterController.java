@@ -97,7 +97,7 @@ public class FullRegisterController implements Stageable, Initializable {
                                             utente.setDataNascita(java.sql.Date.valueOf(data.getValue()));
                                             System.out.println(utente.toString());
                                             utenteDaoImpl.updateUtente(utente);
-                                            sessionStorage.setUtente(utente);
+                                            sessionStorage.setAutenticabile(utente);
                                             //nuova tessera
                                             TesseraFedelta tesseraFedelta = new TesseraFedelta(utente);
                                             tesseraFedeltaDaoImpl.insertTesseraFedelta(tesseraFedelta);
@@ -171,7 +171,7 @@ public class FullRegisterController implements Stageable, Initializable {
        
         utenteDaoImpl = new UtenteDaoImpl();
         tesseraFedeltaDaoImpl = new TesseraFedeltaDaoImpl();
-        utente = (Utente) sessionStorage.getUtente();
+        utente = (Utente) sessionStorage.getAutenticabile();
     }
 
     public static int calculateAge(LocalDate birthDate, LocalDate currentDate) {
