@@ -1,0 +1,18 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 5 Jun 2020, 16:06:37
+    Author     : elisa
+*/
+.toggle-button {
+    -fx-background-color : #ADFF2F;
+    -fx-graphic: url("../images/outline_shopping_cart_white_18dp.png");
+}
+
+.toggle-button:selected {
+    -fx-background-color : #ADFF2F;
+    -fx-graphic: url("../images/outline_add_shopping_cart_white_18dp.png");
+}
