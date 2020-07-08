@@ -47,7 +47,7 @@ public class LoginResponsabileController implements Stageable, Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         sessionStorage = Main.getSessionStorage();
         responsabileRepartoDaoImpl = new ResponsabileRepartoDaoImpl();
-        responsabile = (ResponsabileReparto) sessionStorage.getAutenticabile();
+        responsabile = (ResponsabileReparto) sessionStorage.getResponsabile();
     }
 
     @FXML
@@ -57,7 +57,7 @@ public class LoginResponsabileController implements Stageable, Initializable {
                 if (responsabileRepartoDaoImpl.isRegistered(matricola.getText()) == true) {
                     responsabile = (ResponsabileReparto) responsabileRepartoDaoImpl.login(matricola.getText(), password.getText());
                     if (responsabile != null) {
-                        sessionStorage.setAutenticabile(responsabile);
+                        sessionStorage.setResponsabile(responsabile);
 
                         matricola.setText("");
                         password.setText("");

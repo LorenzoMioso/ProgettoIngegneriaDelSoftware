@@ -73,13 +73,13 @@ public class CartController extends Observer implements Stageable, Initializable
 
     @FXML
     private void handleMouseClickAcquista(MouseEvent event) throws SQLException {
-        if (sessionStorage.isLogged() == false) {
+        if (sessionStorage.isLoggedUtente()== false) {
             stage.setScene(Main.getScenes().get(SceneName.LOGIN).getScene());
         } else {
-            Spesa s = new Spesa(sessionStorage.getCarrello().getPrezzoTot(), (int) sessionStorage.getCarrello().getPrezzoTot(), (Utente) sessionStorage.getAutenticabile(), sessionStorage.getCarrello().getProdotti());
+            Spesa s = new Spesa(sessionStorage.getCarrello().getPrezzoTot(), (int) sessionStorage.getCarrello().getPrezzoTot(), (Utente) sessionStorage.getUtente(), sessionStorage.getCarrello().getProdotti());
             SpesaDaoImpl sdi = new SpesaDaoImpl();
             TesseraFedeltaDaoImpl fedeltaDaoImpl = new TesseraFedeltaDaoImpl();
-            sessionStorage.setTesseraFedelta(fedeltaDaoImpl.getTesseraFromUser((Utente) sessionStorage.getAutenticabile()));
+            sessionStorage.setTesseraFedelta(fedeltaDaoImpl.getTesseraFromUser((Utente) sessionStorage.getUtente()));
             sdi.insertSpesa(s);
             final Node source = (Node) event.getSource();
             final Stage stage = (Stage) source.getScene().getWindow();

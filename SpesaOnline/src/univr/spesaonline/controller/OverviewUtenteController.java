@@ -146,8 +146,8 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         sessionStorage = Main.getSessionStorage();
-        utente = (Utente) sessionStorage.getAutenticabile();
-        sessionStorage.getAutenticabile().attach(this);
+        utente = (Utente) sessionStorage.getUtente();
+        sessionStorage.getUtente().attach(this);
         sessionStorage.attach(this);
         setNomeCognome();
         //all' inizio rendo visibile profilo
@@ -287,7 +287,7 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
                                         utente.setTelefono(textTelefono.getText());
                                         utente.setPagamentoPreferito((String) comboPagamento.getValue());
                                         setNomeCognome();
-                                        sessionStorage.setAutenticabile(utente);
+                                        sessionStorage.setUtente(utente);
                                     } else {
                                         result.setText("Pagamento non selezionato!");
                                         result.setTextFill(Color.web("red"));
@@ -374,7 +374,7 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
     public void update() {
         System.out.println("Called update overview");
         sessionStorage = Main.getSessionStorage();
-        utente = (Utente) sessionStorage.getAutenticabile();
+        utente = (Utente) sessionStorage.getUtente();
         setNomeCognome();
         setProfiloView();
         try {

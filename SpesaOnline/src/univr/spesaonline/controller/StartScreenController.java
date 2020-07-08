@@ -11,12 +11,13 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import univr.spesaonline.Main;
 import univr.spesaonline.model.SceneName;
+import univr.spesaonline.model.Stageable;
 
 /**
  *
  * @author elisa
  */
-public class StartScreenController {
+public class StartScreenController implements Stageable{
     
     private Stage stage;
     @FXML
@@ -28,5 +29,10 @@ public class StartScreenController {
     }
     public void handleOnActionResponsabileReparto(ActionEvent evt){
         stage.setScene(Main.getScenes().get(SceneName.LOGIN_RESPONSABILE).getScene());
+    }
+
+    @Override
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 }

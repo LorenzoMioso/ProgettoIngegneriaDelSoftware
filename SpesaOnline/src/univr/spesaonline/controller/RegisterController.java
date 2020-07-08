@@ -47,7 +47,7 @@ public class RegisterController implements Stageable, Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         sessionStorage = Main.getSessionStorage();
         utenteDaoImpl = new UtenteDaoImpl();
-        utente = (Utente) sessionStorage.getAutenticabile();
+        utente = (Utente) sessionStorage.getUtente();
     }
 
     public void handleMouseClick(MouseEvent evt) throws SQLException {
@@ -67,7 +67,7 @@ public class RegisterController implements Stageable, Initializable {
                             result.setTextFill(Color.web("red"));
                         } else {
                             utente = utenteDaoImpl.register(email.getText(), password.getText());
-                            sessionStorage.setAutenticabile(utente);
+                            sessionStorage.setUtente(utente);
                             result.setText("Registrazione effettuata");
                             result.setTextFill(Color.web("green"));
                             //resetto i valori dei campi

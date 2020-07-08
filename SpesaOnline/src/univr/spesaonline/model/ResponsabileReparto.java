@@ -30,6 +30,20 @@ public class ResponsabileReparto extends Autenticabile {
         this.ruolo = ruolo;
     }
 
+    public ResponsabileReparto() {
+        this.matricola = "";
+        this.password = "";
+        this.nome = "";
+        this.cognome = "";
+        this.dataNascita = null;
+        this.via = "";
+        this.nCivico = "";
+        this.comune = "";
+        this.citta = "";
+        this.comuneDiNascita = "";
+        this.ruolo = "";
+    }
+
     public String getMatricola() {
         return matricola;
     }

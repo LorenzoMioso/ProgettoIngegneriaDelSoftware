@@ -45,7 +45,7 @@ public class LoginController implements Stageable, Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         sessionStorage = Main.getSessionStorage();
         utenteDaoImpl = new UtenteDaoImpl();
-        utente = (Utente) sessionStorage.getAutenticabile();
+        utente = (Utente) sessionStorage.getUtente();
     }
 
     @FXML
@@ -55,10 +55,11 @@ public class LoginController implements Stageable, Initializable {
                 if (utenteDaoImpl.isRegistered(email.getText()) == true) {
                     utente = utenteDaoImpl.login(email.getText(), password.getText());
                     if (utente != null) {
-                        sessionStorage.setAutenticabile(utente);
+                        sessionStorage.setUtente(utente);
 
                         email.setText("");
                         password.setText("");
+                        result.setText("");
                         stage.setScene(Main.getScenes().get(SceneName.CATALOG).getScene());
 
                     } else {

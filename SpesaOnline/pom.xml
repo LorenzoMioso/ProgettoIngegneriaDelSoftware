@@ -2,8 +2,8 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>net.snortum.javafx.multiscenefxml</groupId>
-	<artifactId>javafx-multi-scene-fxml</artifactId>
+	<groupId>univr.spesaonline</groupId>
+	<artifactId>spesaonline</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SpesaOnline</name>
 	<description>Demo of one way to use FXML in a multi-scene environment</description>
@@ -49,7 +49,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>net.snortum.javafx.multiscenefxml.Main</mainClass>
+					<mainClass>univr.spesaonline.Main</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -85,7 +85,7 @@
 				<configuration>
 					<project>
 						<description>
-							javafx-multi-scene-fxml: Demo of one way to build multi-scene applications
+							spesaonline: Demo of a supermarket online service
 						</description>
 					</project>
 					<show>protected</show>

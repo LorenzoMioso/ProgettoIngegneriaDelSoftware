@@ -163,7 +163,7 @@ public class CatalogController extends Observer implements Stageable, Initializa
 
     @FXML
     private void handleMouseClickOverviewUtente(MouseEvent event) {
-        if (sessionStorage.isLogged() == true) {
+        if (sessionStorage.isLoggedUtente() == true) {
             stage.setScene(Main.getScenes().get(SceneName.OVERVIEWUTENTE).getScene());
         }
     }
@@ -287,8 +287,8 @@ public class CatalogController extends Observer implements Stageable, Initializa
     }
 
     public void buttonVisibility() {
-        System.out.println("Islogged: " + sessionStorage.isLogged());
-        if (sessionStorage.isLogged() == true) {
+        System.out.println("Islogged: " + sessionStorage.isLoggedUtente());
+        if (sessionStorage.isLoggedUtente()== true) {
             loginButton.setVisible(false);
             registerButton.setVisible(false);
             overviewButton.setVisible(true);
