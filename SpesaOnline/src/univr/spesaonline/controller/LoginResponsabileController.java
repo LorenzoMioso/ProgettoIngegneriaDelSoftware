@@ -1,34 +1,36 @@
 package univr.spesaonline.controller;
 
 import java.net.URL;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-
 import univr.spesaonline.Main;
+import univr.spesaonline.model.ResponsabileReparto;
+import univr.spesaonline.model.ResponsabileRepartoDaoImpl;
 import univr.spesaonline.model.SceneName;
 import univr.spesaonline.model.SessionStorage;
 import univr.spesaonline.model.Stageable;
 import univr.spesaonline.model.Utente;
 import univr.spesaonline.model.UtenteDaoImpl;
 
-public class LoginController implements Stageable, Initializable {
+public class LoginResponsabileController implements Stageable, Initializable {
 
     private Stage stage;
     private SessionStorage sessionStorage;
-    UtenteDaoImpl utenteDaoImpl;
-    Utente utente = null;
+    ResponsabileRepartoDaoImpl responsabileRepartoDaoImpl;
+    ResponsabileReparto responsabile = null;
+    
     @FXML
-    TextField email;
+    TextField matricola;
     @FXML
     PasswordField password;
     @FXML
@@ -44,20 +46,20 @@ public class LoginController implements Stageable, Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         sessionStorage = Main.getSessionStorage();
-        utenteDaoImpl = new UtenteDaoImpl();
-        utente = (Utente) sessionStorage.getAutenticabile();
+        responsabileRepartoDaoImpl = new ResponsabileRepartoDaoImpl();
+        responsabile = (ResponsabileReparto) sessionStorage.getAutenticabile();
     }
 
     @FXML
     public void loginMouseClick(MouseEvent evt) throws SQLException {
-        if (!email.getText().equals("")) {
+        if (!matricola.getText().equals("")) {
             if (!password.getText().equals("")) {
-                if (utenteDaoImpl.isRegistered(email.getText()) == true) {
-                    utente = utenteDaoImpl.login(email.getText(), password.getText());
-                    if (utente != null) {
-                        sessionStorage.setAutenticabile(utente);
+                if (responsabileRepartoDaoImpl.isRegistered(matricola.getText()) == true) {
+                    responsabile = (ResponsabileReparto) responsabileRepartoDaoImpl.login(matricola.getText(), password.getText());
+                    if (responsabile != null) {
+                        sessionStorage.setAutenticabile(responsabile);
 
-                        email.setText("");
+                        matricola.setText("");
                         password.setText("");
                         stage.setScene(Main.getScenes().get(SceneName.CATALOG).getScene());
 
@@ -74,7 +76,7 @@ public class LoginController implements Stageable, Initializable {
                 result.setTextFill(Color.web("red"));
             }
         } else {
-            result.setText("Inserire una email");
+            result.setText("Inserire una matricola");
             result.setTextFill(Color.web("red"));
         }
         result.setVisible(true);
@@ -84,4 +86,5 @@ public class LoginController implements Stageable, Initializable {
     private void handleOnActionBack(ActionEvent event) {
         stage.setScene(Main.getScenes().get(SceneName.CATALOG).getScene());
     }
+
 }

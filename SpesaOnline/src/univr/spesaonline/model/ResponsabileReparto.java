@@ -1,37 +1,33 @@
-
 package univr.spesaonline.model;
 
 import java.sql.Date;
 
+public class ResponsabileReparto extends Autenticabile {
 
-public class ResponsabileReparto {
+    private String matricola;
+    private String password;
+    private String nome;
+    private String cognome;
+    private Date dataNascita;
+    private String via;
+    private String nCivico;
+    private String comune;
+    private String citta;
+    private String comuneDiNascita;
+    private String ruolo;
 
-	private String matricola;
-	private Date dataNascita;
-	private String via;
-	private String nome;
-	private String citta;
-	private String username;
-	private String cognome;
-	private String nCivico;
-	private String comune;
-	private String comuneDiNascita;
-	private String ruolo;
-	private String password;
-
-    public ResponsabileReparto(String matricola, Date dataNascita, String via, String nome, String citta, String username, String cognome, String nCivico, String comune, String comuneDiNascita, String ruolo, String password) {
+    public ResponsabileReparto(String matricola, String password, String nome, String cognome, Date dataNascita, String via, String nCivico, String comune, String citta, String comuneDiNascita, String ruolo) {
         this.matricola = matricola;
+        this.password = password;
+        this.nome = nome;
+        this.cognome = cognome;
         this.dataNascita = dataNascita;
         this.via = via;
-        this.nome = nome;
-        this.citta = citta;
-        this.username = username;
-        this.cognome = cognome;
         this.nCivico = nCivico;
         this.comune = comune;
+        this.citta = citta;
         this.comuneDiNascita = comuneDiNascita;
         this.ruolo = ruolo;
-        this.password = password;
     }
 
     public String getMatricola() {
@@ -40,6 +36,30 @@ public class ResponsabileReparto {
 
     public void setMatricola(String matricola) {
         this.matricola = matricola;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCognome() {
+        return cognome;
+    }
+
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
     }
 
     public Date getDataNascita() {
@@ -58,38 +78,6 @@ public class ResponsabileReparto {
         this.via = via;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCitta() {
-        return citta;
-    }
-
-    public void setCitta(String citta) {
-        this.citta = citta;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getCognome() {
-        return cognome;
-    }
-
-    public void setCognome(String cognome) {
-        this.cognome = cognome;
-    }
-
     public String getnCivico() {
         return nCivico;
     }
@@ -104,6 +92,14 @@ public class ResponsabileReparto {
 
     public void setComune(String comune) {
         this.comune = comune;
+    }
+
+    public String getCitta() {
+        return citta;
+    }
+
+    public void setCitta(String citta) {
+        this.citta = citta;
     }
 
     public String getComuneDiNascita() {
@@ -122,12 +118,6 @@ public class ResponsabileReparto {
         this.ruolo = ruolo;
     }
 
-    public String getPassword() {
-        return password;
-    }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-        
+
 };
