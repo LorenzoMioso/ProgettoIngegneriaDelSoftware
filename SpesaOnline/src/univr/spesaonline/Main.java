@@ -1,25 +1,13 @@
 package univr.spesaonline;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-
 import javafx.application.Application;
 import javafx.stage.Stage;
-
 import univr.spesaonline.model.SceneName;
 import univr.spesaonline.model.SessionStorage;
-import static univr.spesaonline.model.SpesaDaoImpl.addDays;
 import univr.spesaonline.util.FxmlInfo;
 
-/**
- * Sets all scene info into a Map and displays the main scene
- *
- * @author Knute Snortum
- * @version 2018-05-24
- */
 public class Main extends Application {
 
     private static final String LOGIN_FXML = "/view/login.fxml";
@@ -53,17 +41,16 @@ public class Main extends Application {
         scenes.put(SceneName.PRODUCTLIST, new FxmlInfo(PRODUCTLIST_FXML, SceneName.PRODUCTLIST, stage));
         scenes.put(SceneName.START_SCREEN, new FxmlInfo(START_SCREEN_FXML, SceneName.START_SCREEN, stage));
         scenes.put(SceneName.LOGIN_RESPONSABILE, new FxmlInfo(LOGIN_RESPONSABILE_FXML, SceneName.LOGIN_RESPONSABILE, stage));
+
         scenes.put(SceneName.OVERVIEW_RESPONSABILE, new FxmlInfo(OVERVIEW_RESPONSABILE_FXML, SceneName.OVERVIEW_RESPONSABILE, stage));
         // getScene() will load the FXML file the first time
         // stage.setScene(scenes.get(SceneName.CATALOG).getScene());
+
         stage.setScene(scenes.get(SceneName.START_SCREEN).getScene());
         stage.setTitle("Spesa online");
         stage.show();
     }
 
-    /**
-     * @return a Map of the {@link FxmlInfo} by {@link SceneName}
-     */
     public static Map<SceneName, FxmlInfo> getScenes() {
         return scenes;
     }
@@ -72,12 +59,6 @@ public class Main extends Application {
         return sessioStorage;
     }
 
-    /**
-     * Update the scene Map with new FxmlInfo
-     *
-     * @param name the {@link SceneName} that is the key to update
-     * @param info the {@link FxmlInfo} that is the data to update
-     */
     public static void updateScenes(SceneName name, FxmlInfo info) {
         scenes.put(name, info);
     }
