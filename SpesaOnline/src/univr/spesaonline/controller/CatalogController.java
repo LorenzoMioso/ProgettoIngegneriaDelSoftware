@@ -308,7 +308,7 @@ public class CatalogController extends Observer implements Stageable, Initializa
 
     @Override
     public void updateSpesa() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
 }

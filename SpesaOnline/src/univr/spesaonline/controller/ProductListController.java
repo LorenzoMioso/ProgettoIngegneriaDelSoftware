@@ -59,10 +59,14 @@ public class ProductListController extends Observer implements Stageable, Initia
     }
 
     public void showItems() throws IOException, SQLException {
-        prezzoTotale.setText("" + spesa.getCostoTot());
+        
+        
+        
         vbox.getChildren().clear();
 
         System.out.println("Spesa: " + spesa);
+        prezzoTotale.setText("" + spesa.getCostoTot() + "");
+        System.out.println("PrezzoTotale Label: " + prezzoTotale.getText());
         System.out.println("Prodotti: " + spesa.getProdotti().toString());
         for (Map.Entry<Prodotto, Integer> entry : spesa.getProdotti().entrySet()) {
             URL urlFile = getClass().getResource("/view/prodottoSmallWithoutButton.fxml");
@@ -78,7 +82,7 @@ public class ProductListController extends Observer implements Stageable, Initia
 
     @Override
     public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
