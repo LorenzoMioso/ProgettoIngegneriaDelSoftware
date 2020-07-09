@@ -173,7 +173,7 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
     public void setProfiloView() {
         managePane("profilo");
         System.out.println("" + utente);
-        if(utente.isLogged() == true){
+        if (utente.isLogged() == true) {
             labelNome.setText(utente.getNome());
             labelCognome.setText(utente.getCognome());
             labelData.setText(utente.getDataNascita().toString());
@@ -185,7 +185,7 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
             labelTelefono.setText(utente.getTelefono());
             labelPagamentoPreferito.setText(utente.getPagamentoPreferito());
         }
-        
+
     }
 
     @FXML
@@ -211,11 +211,11 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
     }
 
     public void showSaldoPunti() throws SQLException {
-        if(utente.isLogged()){
+        if (utente.isLogged()) {
             tf = fedeltaDaoImpl.getTesseraFromUser(utente);
             labelSaldoPunti.setText("" + tf.getPunti());
         }
-        
+
     }
 
     @FXML
@@ -223,7 +223,6 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
         managePane("spese");
         speseVBox.getChildren().clear();
         speseList = spesaDaoImpl.getAllSpesaByUtente(utente);
-        sessionStorage.setSpeseList(speseList);
         for (Spesa s : speseList) {
             URL urlFile = getClass().getResource("/view/spesaItem.fxml");
             FXMLLoader loader = new FXMLLoader(urlFile);
@@ -386,15 +385,4 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
 //        sessionStorage.setTesseraFedelta(tf);
     }
 
-    @Override
-    public void updateSpesa() {
-//        System.out.println("Called update");
-//        sessionStorage = Main.getSessionStorage();
-//        utente = (Utente) sessionStorage.getUtente();
-//        try {
-//            showSaldoPunti();
-//        } catch (SQLException ex) {
-//            Logger.getLogger(OverviewUtenteController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-    }
 }

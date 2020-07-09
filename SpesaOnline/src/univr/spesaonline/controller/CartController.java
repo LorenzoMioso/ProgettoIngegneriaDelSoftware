@@ -73,7 +73,7 @@ public class CartController extends Observer implements Stageable, Initializable
 
     @FXML
     private void handleMouseClickAcquista(MouseEvent event) throws SQLException {
-        if (sessionStorage.isLoggedUtente()== false) {
+        if (sessionStorage.isLoggedUtente() == false) {
             stage.setScene(Main.getScenes().get(SceneName.LOGIN).getScene());
         } else {
             Spesa s = new Spesa(sessionStorage.getCarrello().getPrezzoTot(), (int) sessionStorage.getCarrello().getPrezzoTot(), (Utente) sessionStorage.getUtente(), sessionStorage.getCarrello().getProdotti());
@@ -95,10 +95,6 @@ public class CartController extends Observer implements Stageable, Initializable
         } catch (IOException | SQLException ex) {
             Logger.getLogger(CartController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    @Override
-    public void updateSpesa() {
     }
 
 }

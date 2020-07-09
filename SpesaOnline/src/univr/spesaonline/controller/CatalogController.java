@@ -306,9 +306,5 @@ public class CatalogController extends Observer implements Stageable, Initializa
         buttonVisibility();
     }
 
-    @Override
-    public void updateSpesa() {
-        
-    }
 
 }

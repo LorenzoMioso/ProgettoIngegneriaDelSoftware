@@ -24,12 +24,11 @@ import univr.spesaonline.model.SessionStorage;
 import univr.spesaonline.model.Spesa;
 import univr.spesaonline.model.Stageable;
 
-public class ProductListController extends Observer implements Stageable, Initializable {
+public class ProductListController implements Stageable, Initializable {
 
-    private SessionStorage sessionStorage;
     private Spesa spesa;
     private Stage stage;
-    private List<Spesa> speseList;
+
     @FXML
     VBox vbox;
     @FXML
@@ -46,25 +45,11 @@ public class ProductListController extends Observer implements Stageable, Initia
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        sessionStorage = Main.getSessionStorage();
-        sessionStorage.attach(this);
-        speseList = sessionStorage.getSpeseList();
-        System.out.println("Setto la spesa");
-        spesa = sessionStorage.getSpesa();
-        try {
-            showItems();
-        } catch (IOException | SQLException ex) {
-            Logger.getLogger(ProductListController.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
     public void showItems() throws IOException, SQLException {
-        
-        
-        
         vbox.getChildren().clear();
-
-        System.out.println("Spesa: " + spesa);
+        System.out.println("Spesa ProductListController: " + spesa);
         prezzoTotale.setText("" + spesa.getCostoTot() + "");
         System.out.println("PrezzoTotale Label: " + prezzoTotale.getText());
         System.out.println("Prodotti: " + spesa.getProdotti().toString());
@@ -77,25 +62,7 @@ public class ProductListController extends Observer implements Stageable, Initia
             ctrl.setProdotto(entry.getKey(), entry.getValue());
             ctrl.showProdotto();
         }
-        prezzoTotale.setText(String.valueOf(sessionStorage.getCarrello().getPrezzoTot()));
-    }
-
-    @Override
-    public void update() {
-        
-    }
-
-    @Override
-    public void updateSpesa() {
-        sessionStorage = Main.getSessionStorage();
-        speseList = sessionStorage.getSpeseList();
-        System.out.println("Setto la spesa");
-        spesa = sessionStorage.getSpesa();
-        try {
-            showItems();
-        } catch (IOException | SQLException ex) {
-            Logger.getLogger(ProductListController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        prezzoTotale.setText(String.valueOf(spesa.getCostoTot()));
     }
 
 }

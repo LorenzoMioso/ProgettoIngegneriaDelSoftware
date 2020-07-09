@@ -8,6 +8,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -53,19 +55,22 @@ public class SpesaItemController implements Stageable, Initializable {
     }
 
     public void handleMouseClickBtnArticoli(MouseEvent evt) throws IOException, SQLException {
-        sessionStorage.setSpesa(spesa);
-        System.out.println("Spesa cliccata: " + spesa.toString());
+        URL urlFile = getClass().getResource("/view/productList.fxml");
+        FXMLLoader loader = new FXMLLoader(urlFile);
+        Parent productList = loader.load();
+        ProductListController ctrl = loader.getController();
+
         Stage ItemListWindow = new Stage();
         ItemListWindow.setTitle("Prodotti comprati");
-        ItemListWindow.setScene(Main.getScenes().get(SceneName.PRODUCTLIST).getScene());
+        Scene scene = new Scene(productList);
+
+        ItemListWindow.setScene(scene);
         ItemListWindow.show();
-//        URL urlFile = getClass().getResource("/view/productList.fxml");
-//        FXMLLoader loader = new FXMLLoader(urlFile);
-//        Node productList = loader.load();
-//        ProductListController ctrl = loader.getController();
-//        System.out.println("Spesa in SpesaItemController: " + spesa);
-//        ctrl.setSpesa(spesa);
-//        ctrl.showItems();
+
+        System.out.println("Spesa in SpesaItemController" + spesa.toString());
+        ctrl.setSpesa(spesa);
+        ctrl.showItems();
+
     }
 
 }
