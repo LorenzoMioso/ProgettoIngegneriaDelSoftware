@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.TilePane?>
 
-<AnchorPane minHeight="0.0" minWidth="0.0" fx:controller="univr.spesaonline.controller.OverviewResponsabileProdottiController" prefHeight="852.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="852.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="univr.spesaonline.controller.OverviewResponsabileProdottiController">
    <children>
       <Label fx:id="nomeReparto" alignment="CENTER" layoutX="8.0" layoutY="24.0" prefHeight="38.0" prefWidth="116.0" text="NomeReparto" />
       <GridPane prefHeight="30.0" prefWidth="815.0">
@@ -35,7 +35,7 @@
       </GridPane>
       <ScrollPane layoutX="183.0" layoutY="94.0" prefHeight="740.0" prefWidth="569.0">
          <content>
-            <TilePane fx:id="tilepane" hgap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefColumns="3" vgap="5.0">
+            <TilePane fx:id="tilepane" hgap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefColumns="3" prefHeight="375.0" prefWidth="268.0" vgap="5.0">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>

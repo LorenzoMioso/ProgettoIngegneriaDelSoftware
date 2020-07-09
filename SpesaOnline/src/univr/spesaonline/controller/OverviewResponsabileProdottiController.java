@@ -8,8 +8,11 @@ package univr.spesaonline.controller;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,6 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
+import univr.spesaonline.Main;
 import univr.spesaonline.model.Prodotto;
 import univr.spesaonline.model.ProdottoDaoImpl;
 import univr.spesaonline.model.ProductFilter;
@@ -30,7 +34,7 @@ import univr.spesaonline.model.SessionStorage;
  * @author elisa
  */
 public class OverviewResponsabileProdottiController implements Initializable{
-     private Stage stage;
+    private Stage stage;
     private SessionStorage sessionStorage;
     ProdottoDaoImpl prodottoDaoImpl;
     List<Prodotto> productList;
@@ -42,8 +46,26 @@ public class OverviewResponsabileProdottiController implements Initializable{
     ComboBox combobox;
     @FXML
     TilePane tilepane;
-     @Override
+
+    /**
+     *
+     * @param arg0
+     * @param arg1
+     */
+    @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        sessionStorage = Main.getSessionStorage();
+        prodottoDaoImpl = new ProdottoDaoImpl();
+        productList = new ArrayList <>();
+ 
+        combobox.getItems().addAll("Caratteristiche", "Marca", "Tipo");
+     
+        
+        try {
+            showAllProductSmall();
+        } catch (SQLException | IOException ex) {
+            Logger.getLogger(CatalogController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
      private void showProductSmall() throws SQLException, IOException {
