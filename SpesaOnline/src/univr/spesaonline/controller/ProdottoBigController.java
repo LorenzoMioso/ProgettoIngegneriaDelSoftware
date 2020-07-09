@@ -9,24 +9,18 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import univr.spesaonline.Main;
-
 import univr.spesaonline.model.Prodotto;
-import univr.spesaonline.model.SceneName;
 import univr.spesaonline.model.SessionStorage;
 
-public class ProdottoSmallController implements Initializable {
+public class ProdottoBigController implements Initializable {
 
     private SessionStorage sessionStorage;
     private Prodotto prodotto;
@@ -40,17 +34,15 @@ public class ProdottoSmallController implements Initializable {
     @FXML
     Label marcaProdotto;
     @FXML
-    Label prezzo;
+    Label prezzoProdotto;
     @FXML
     Label pesoProdotto;
     @FXML
-    Label numeroPezzi;
+    Label nPezziProdotto;
     @FXML
     ImageView immagineProdotto;
     @FXML
     Spinner quantità;
-    @FXML
-    ToggleButton carrello;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -67,9 +59,9 @@ public class ProdottoSmallController implements Initializable {
     public void showProdotto() throws SQLException, IOException {
         nomeProdotto.setText("" + prodotto.getNome());
         marcaProdotto.setText(prodotto.getMarca());
-        prezzo.setText("" + prodotto.getPrezzo());
+        prezzoProdotto.setText("" + prodotto.getPrezzo());
         pesoProdotto.setText("" + prodotto.getPeso());
-        numeroPezzi.setText("" + prodotto.getnPezzi());
+        nPezziProdotto.setText("" + prodotto.getnPezzi());
 
         if (prodotto.getImmagine() != null) {
             Blob aBlob = prodotto.getImmagine();
@@ -85,20 +77,6 @@ public class ProdottoSmallController implements Initializable {
     public void handleMouseAddToCart() {
         sessionStorage.getCarrello().putProdotto(prodotto, (Integer) quantità.getValue());
         System.out.println("Aggiunto " + prodotto + "\nQuantità: " + (Integer) quantità.getValue());
-    }
-
-    public void handleMouseShowProdottoBig() throws IOException, SQLException {
-        URL urlFile = getClass().getResource("/view/prodottobig.fxml");
-        FXMLLoader loader = new FXMLLoader(urlFile);
-        Node prodottoBig = loader.load();
-        ProdottoBigController ctrl = loader.getController();
-        ctrl.setProdotto(prodotto);
-        ctrl.showProdotto();
-
-        Stage prodottoBigWindow = new Stage();
-        prodottoBigWindow.setTitle("Prodotto");
-        prodottoBigWindow.setScene(prodottoBig.getScene());
-        prodottoBigWindow.show();
     }
 
 }
