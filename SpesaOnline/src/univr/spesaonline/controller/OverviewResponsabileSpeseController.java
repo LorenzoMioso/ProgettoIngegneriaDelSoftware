@@ -33,14 +33,25 @@ public class OverviewResponsabileSpeseController implements Initializable{
     private List<Spesa> speseList;
     private SpesaDaoImpl spesaDaoImpl = null;
     private SessionStorage sessionStorage;
+    private Spesa s;
     @FXML
     VBox speseVBox;
 
     
     @Override
     public void initialize(URL arg0, ResourceBundle arg1){
+
         sessionStorage = Main.getSessionStorage();
         spesaDaoImpl = new SpesaDaoImpl();
+
+        
+        sessionStorage = Main.getSessionStorage();
+        
+        spesaDaoImpl = new SpesaDaoImpl();
+        showSpese();
+    }
+    public void showSpese(){
+
         try {
             speseList = spesaDaoImpl.getAllSpesa();
         } catch (SQLException ex) {
@@ -59,6 +70,7 @@ public class OverviewResponsabileSpeseController implements Initializable{
             SpesaItemController ctrl = loader.getController();
             speseVBox.getChildren().add(prodottoSmall);
             try {
+                System.out.println("DentroOverviewResponsabile spesa " + s);
                 ctrl.setSpesa(s);
             } catch (SQLException ex) {
                 Logger.getLogger(OverviewResponsabileSpeseController.class.getName()).log(Level.SEVERE, null, ex);
@@ -67,5 +79,4 @@ public class OverviewResponsabileSpeseController implements Initializable{
             }
         }
     }
-    
 }
