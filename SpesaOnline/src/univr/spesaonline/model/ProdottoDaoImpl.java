@@ -17,7 +17,7 @@ public class ProdottoDaoImpl implements ProdottoDao {
         List<Prodotto> catalogo = new ArrayList<>();
         db.doQuery("select * from Prodotto where inVendita = 1");
         while (db.getResultSet().next()) {
-            catalogo.add(new Prodotto(
+            Prodotto p = new Prodotto(
                     db.getResultSet().getInt(1),
                     db.getResultSet().getString(2),
                     db.getResultSet().getString(3),
@@ -27,12 +27,14 @@ public class ProdottoDaoImpl implements ProdottoDao {
                     db.getResultSet().getBoolean(7),
                     db.getResultSet().getDouble(8),
                     db.getResultSet().getInt(9),
-                    db.getResultSet().getDouble(10)));
+                    db.getResultSet().getDouble(10));
+            catalogo.add(p);
+
         }
         return catalogo;
     }
 
-    public List<Caratteristica> getCaratteristicaProdotto(int id) throws SQLException {
+    public List<Caratteristica> getCaratteristicaByProdotto(int id) throws SQLException {
         List<Caratteristica> caratteristiche = new ArrayList<>();
         db.doQuery("select * from CaratteristicaProdotto where idProdotto = " + id);
         while (db.getResultSet().next()) {
@@ -42,7 +44,7 @@ public class ProdottoDaoImpl implements ProdottoDao {
         return caratteristiche;
     }
 
-    public List<Prodotto> getCaratteristicaProdotto(String caratterristica) throws SQLException {
+    public List<Prodotto> getProdottoByCaratteristica(String caratterristica) throws SQLException {
         List<Prodotto> catalogo = new ArrayList<>();
         db.doQuery("SELECT *"
                 + " FROM Prodotto P JOIN CaratteristicaProdotto CP"

@@ -24,7 +24,7 @@ public class ProductFilter {
 
     public void searchCaratteristica(String caratteristica) throws SQLException {
         ProdottoDaoImpl prodottoDaoImpl = new ProdottoDaoImpl();
-        productList = prodottoDaoImpl.getCaratteristicaProdotto(caratteristica);
+        productList = prodottoDaoImpl.getProdottoByCaratteristica(caratteristica);
     }
 
     public void searchMarca(String marca) {
