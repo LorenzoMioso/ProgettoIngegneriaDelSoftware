@@ -1,7 +1,9 @@
 package univr.spesaonline.model;
 
 import java.sql.Blob;
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
 public class Prodotto {
 
@@ -15,6 +17,7 @@ public class Prodotto {
     private double peso;
     private int nPezzi;
     private double prezzo;
+    private List<String> carattristiche;
 
     public Prodotto(int id, String nome, String marca, Blob immagine, String tipo, String reparto, boolean inVendita, double peso, int nPezzi, double prezzo) {
         this.id = id;
@@ -27,6 +30,7 @@ public class Prodotto {
         this.peso = peso;
         this.nPezzi = nPezzi;
         this.prezzo = prezzo;
+        this.carattristiche = new ArrayList();
     }
 
     public int getId() {
@@ -109,9 +113,17 @@ public class Prodotto {
         this.prezzo = prezzo;
     }
 
+    public List<String> getCarattristiche() {
+        return carattristiche;
+    }
+
+    public void setCarattristiche(List<String> carattristiche) {
+        this.carattristiche = carattristiche;
+    }
+
     @Override
     public String toString() {
-        return "Prodotto{" + "id=" + id + ", nome=" + nome + ", marca=" + marca + ", immagine=" + immagine + ", reparto=" + reparto + ", tipo=" + tipo + ", inVendita=" + inVendita + ", peso=" + peso + ", nPezzi=" + nPezzi + ", prezzo=" + prezzo + '}';
+        return "Prodotto{" + "id=" + id + ", nome=" + nome + ", marca=" + marca + ", immagine=" + immagine + ", tipo=" + tipo + ", reparto=" + reparto + ", inVendita=" + inVendita + ", peso=" + peso + ", nPezzi=" + nPezzi + ", prezzo=" + prezzo + ", carattristiche=" + carattristiche + '}';
     }
 
     public static Comparator<Prodotto> prezzoComparator = new Comparator<Prodotto>() {

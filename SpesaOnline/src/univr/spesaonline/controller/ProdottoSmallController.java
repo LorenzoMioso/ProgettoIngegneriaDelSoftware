@@ -9,17 +9,21 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import univr.spesaonline.Main;
 
 import univr.spesaonline.model.Prodotto;
+import univr.spesaonline.model.SceneName;
 import univr.spesaonline.model.SessionStorage;
 
 public class ProdottoSmallController implements Initializable {
@@ -50,7 +54,7 @@ public class ProdottoSmallController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        sessionStorage = Main.getSessionStorage();      
+        sessionStorage = Main.getSessionStorage();
         SpinnerValueFactory<Integer> factory = new SpinnerValueFactory.IntegerSpinnerValueFactory(MIN_VALUE, MAX_VALUE, INITIAL_VALUE, STEP);
         quantità.setValueFactory(factory);
         quantità.setEditable(true);
@@ -81,6 +85,20 @@ public class ProdottoSmallController implements Initializable {
     public void handleMouseAddToCart() {
         sessionStorage.getCarrello().putProdotto(prodotto, (Integer) quantità.getValue());
         System.out.println("Aggiunto " + prodotto + "\nQuantità: " + (Integer) quantità.getValue());
+    }
+
+    public void handleMouseShowProdottoBig() throws IOException, SQLException {
+        URL urlFile = getClass().getResource("/view/prodottobig.fxml");
+        FXMLLoader loader = new FXMLLoader(urlFile);
+        Node prodottoBig = loader.load();
+        ProdottoBigController ctrl = loader.getController();
+        ctrl.setProdotto(prodotto);
+        ctrl.showProdotto();
+
+        Stage prodottoBigWindow = new Stage();
+        prodottoBigWindow.setTitle("Prodotto");
+        prodottoBigWindow.setScene(prodottoBig.getScene());
+        prodottoBigWindow.show();
     }
 
 }
