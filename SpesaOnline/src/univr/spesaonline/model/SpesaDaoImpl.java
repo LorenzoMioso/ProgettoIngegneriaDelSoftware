@@ -26,7 +26,49 @@ public class SpesaDaoImpl implements SpesaDao {
     public SpesaDaoImpl() {
         db = ConnectionDb.getInstance();
     }
+    @Override
+    public List<Spesa> getAllSpesa() throws SQLException {
+        List<Spesa> spese = new ArrayList<>();
+        db.doQuery("select * from Spesa");
 
+        int i = 0;
+        while (db.getResultSet().next()) {
+            Map<Prodotto, Integer> spesa = new HashMap<>();
+            spese.add(new Spesa(
+                    db.getResultSet().getInt(1),
+                    db.getResultSet().getTimestamp(2),
+                    db.getResultSet().getDate(3),
+                    db.getResultSet().getTime(4),
+                    db.getResultSet().getTime(5),
+                    db.getResultSet().getDouble(6),
+                    db.getResultSet().getInt(7),
+                    db.getResultSet().getString(8),
+                    null,
+                    db.getResultSet().getString(10), spesa));
+        }
+        for (Spesa s : spese) {
+            Map<Prodotto, Integer> spesa = new HashMap<>();
+            //devo avere l'id della spesa per fare la query all'interno di prodottoComprato
+            db.doQuery("select * from ProdottoComprato PC JOIN Prodotto P ON PC.idProdotto = P.id where PC.idSpesa = '" + s.getId() + "'");
+            while (db.getResultSet().next()) {
+                spesa.put(new Prodotto(db.getResultSet().getInt(4),
+                        db.getResultSet().getString(5),
+                        db.getResultSet().getString(6),
+                        db.getResultSet().getBlob(7),
+                        db.getResultSet().getString(8),
+                        db.getResultSet().getString(9),
+                        db.getResultSet().getBoolean(10),
+                        db.getResultSet().getDouble(11),
+                        db.getResultSet().getInt(12),
+                        db.getResultSet().getDouble(13)), db.getResultSet().getInt(3));
+            }
+            s.setProdotti(spesa);
+            for (Map.Entry<Prodotto, Integer> entry : spesa.entrySet()) {
+                System.out.println("Prodotto " + entry.getKey() + " Quantità: " + entry.getValue());
+            }
+        }
+        return spese;
+    }
     @Override
     public List<Spesa> getAllSpesaByUtente(Utente u) throws SQLException {
         List<Spesa> spese = new ArrayList<>();
@@ -107,5 +149,7 @@ public class SpesaDaoImpl implements SpesaDao {
         cal.add(Calendar.DATE, days);
         return (Date) cal.getTime();
     }
+
+    
 
 }

@@ -13,14 +13,15 @@ import java.util.List;
  * @author elisa
  */
 public interface SpesaDao {
+    public List<Spesa> getAllSpesa() throws SQLException;
     
     public List<Spesa> getAllSpesaByUtente(Utente u) throws SQLException;
 
     public Spesa getSpesa(int id) throws SQLException;
-
+    
     public void updateSpesa(Spesa spesa) throws SQLException;
     
     public void insertSpesa(Spesa spesa) throws SQLException;
-
+    
    
 }
