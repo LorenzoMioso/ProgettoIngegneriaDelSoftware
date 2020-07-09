@@ -61,7 +61,7 @@ public class LoginResponsabileController implements Stageable, Initializable {
 
                         matricola.setText("");
                         password.setText("");
-                        stage.setScene(Main.getScenes().get(SceneName.CATALOG).getScene());
+                        stage.setScene(Main.getScenes().get(SceneName.OVERVIEW_RESPONSABILE).getScene());
 
                     } else {
                         result.setText("Password errata");

@@ -19,6 +19,7 @@ public class Main extends Application {
     private static final String PRODUCTLIST_FXML = "/view/productList.fxml";
     private static final String START_SCREEN_FXML = "/view/startScreen.fxml";
     private static final String LOGIN_RESPONSABILE_FXML = "/view/loginResponsabile.fxml";
+    private static final String OVERVIEW_RESPONSABILE_FXML = "/view/overviewResponsabile.fxml";
 
     private static Map<SceneName, FxmlInfo> scenes = new HashMap<>();
 
@@ -40,6 +41,10 @@ public class Main extends Application {
         scenes.put(SceneName.PRODUCTLIST, new FxmlInfo(PRODUCTLIST_FXML, SceneName.PRODUCTLIST, stage));
         scenes.put(SceneName.START_SCREEN, new FxmlInfo(START_SCREEN_FXML, SceneName.START_SCREEN, stage));
         scenes.put(SceneName.LOGIN_RESPONSABILE, new FxmlInfo(LOGIN_RESPONSABILE_FXML, SceneName.LOGIN_RESPONSABILE, stage));
+
+        scenes.put(SceneName.OVERVIEW_RESPONSABILE, new FxmlInfo(OVERVIEW_RESPONSABILE_FXML, SceneName.OVERVIEW_RESPONSABILE, stage));
+        // getScene() will load the FXML file the first time
+        // stage.setScene(scenes.get(SceneName.CATALOG).getScene());
 
         stage.setScene(scenes.get(SceneName.START_SCREEN).getScene());
         stage.setTitle("Spesa online");
