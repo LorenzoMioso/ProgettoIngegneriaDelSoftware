@@ -19,6 +19,7 @@ import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import univr.spesaonline.Main;
 import univr.spesaonline.model.ProductFilter;
 import univr.spesaonline.model.SessionStorage;
 import univr.spesaonline.model.Spesa;
@@ -38,6 +39,8 @@ public class OverviewResponsabileSpeseController implements Initializable{
     
     @Override
     public void initialize(URL arg0, ResourceBundle arg1){
+        sessionStorage = Main.getSessionStorage();
+        spesaDaoImpl = new SpesaDaoImpl();
         try {
             speseList = spesaDaoImpl.getAllSpesa();
         } catch (SQLException ex) {
