@@ -28,7 +28,7 @@ public class ProductFilter {
     }
     public void searchCaratteristicaReparto(String caratteristica, String reparto) throws SQLException{
         ProdottoDaoImpl prodottoDaoImpl = new ProdottoDaoImpl();
-        productList = prodottoDaoImpl.getCaratteristicaProdotto(caratteristica);
+        productList = prodottoDaoImpl.getProdottoByCaratteristica(caratteristica);
         List<Prodotto> filteredList = new ArrayList();
         for (Prodotto p : productList) {
             if (p.getReparto().equalsIgnoreCase(reparto)) {
