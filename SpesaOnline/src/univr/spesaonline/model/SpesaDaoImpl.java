@@ -129,7 +129,7 @@ public class SpesaDaoImpl implements SpesaDao {
         String dataConsegna = formatter.format(addDays(java.util.Calendar.getInstance().getTime(), 1));
         System.out.println("" + dataConsegna);
         int id = db.doSpecificQuery("INSERT INTO `Spesa` (`id`, `dataOrdine`, `dataConsegna`,`oraInizio`, `oraFine`, `costoTot`, `saldoPunti`, `pagamento`,`utente`, `stato`) VALUES "
-                + "(NULL, NULL ,'" + dataConsegna + "', '9:00:00', '18:00:00', '" + spesa.getCostoTot() + "', '" + spesa.getSaldoPunti() + "', '" + spesa.getUtente().getPagamentoPreferito() + "', '" + spesa.getUtente().getEmail() + "', 'In preparazione')");
+                + "(NULL, NULL ,'" + spesa.getDataConsegna() + "', '"+spesa.getOraInizio()+"', '"+spesa.getOraFine()+"', '" + spesa.getCostoTot() + "', '" + spesa.getSaldoPunti() + "', '" + spesa.getUtente().getPagamentoPreferito() + "', '" + spesa.getUtente().getEmail() + "', '"+spesa.getStato()+"')");
 
         System.out.println("Id :" + id);
         spesa.setId(id);

@@ -33,7 +33,17 @@ public class Spesa {
         this.stato = stato;
         this.prodotti = prodotti;
     }
-
+    public Spesa(Date dataConsegna, Time oraInizio, Time oraFine, double costoTot, int saldoPunti, Utente utente, Map<Prodotto, Integer> prodotti,String stato){
+        this.dataConsegna = dataConsegna;
+        this.oraInizio = oraInizio;
+        this.oraFine = oraFine;
+        this.costoTot = costoTot;
+        this.saldoPunti = saldoPunti;
+        this.pagamento = utente.getPagamentoPreferito();
+        this.utente = utente;
+        this.stato = stato;
+        this.prodotti = prodotti;
+    }
     public Spesa() {
         this.id = 0;
         this.dataOrdine = null;

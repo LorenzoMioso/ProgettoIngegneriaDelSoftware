@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import univr.spesaonline.Main;
@@ -30,7 +31,8 @@ public class CartController extends Observer implements Stageable, Initializable
 
     private SessionStorage sessionStorage;
     private Stage stage;
-
+    @FXML
+    private AnchorPane AnchorPane;
     @FXML
     VBox vbox;
     @FXML
@@ -76,14 +78,19 @@ public class CartController extends Observer implements Stageable, Initializable
         if (sessionStorage.isLoggedUtente() == false) {
             stage.setScene(Main.getScenes().get(SceneName.LOGIN).getScene());
         } else {
-            Spesa s = new Spesa(sessionStorage.getCarrello().getPrezzoTot(), (int) sessionStorage.getCarrello().getPrezzoTot(), (Utente) sessionStorage.getUtente(), sessionStorage.getCarrello().getProdotti());
-            SpesaDaoImpl sdi = new SpesaDaoImpl();
-            TesseraFedeltaDaoImpl fedeltaDaoImpl = new TesseraFedeltaDaoImpl();
-            sessionStorage.setTesseraFedelta(fedeltaDaoImpl.getTesseraFromUser((Utente) sessionStorage.getUtente()));
-            sdi.insertSpesa(s);
+            
             final Node source = (Node) event.getSource();
-            final Stage stage = (Stage) source.getScene().getWindow();
-            stage.close();
+            Stage stage = (Stage) source.getScene().getWindow();
+            //stage.close();
+            
+            
+            //stage = (Stage) AnchorPane.getScene().getWindow();
+
+            /*Stage selectOrarioWindow = new Stage();
+            selectOrarioWindow.setTitle("Carrello");
+            selectOrarioWindow.setScene(Main.getScenes().get(SceneName.CART).getScene());
+            selectOrarioWindow.show();*/
+            stage.setScene(Main.getScenes().get(SceneName.SELECT_DATA_ORA_CONSEGNA).getScene());
 
         }
     }
