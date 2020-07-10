@@ -91,14 +91,36 @@ public class ProdottoDaoImpl implements ProdottoDao {
         return db.getResultSet().getInt(1);
     }
 
-//TODO modificare
+    public void updateDisponibilitàProdotto(int id, int disponobilità) throws SQLException {
+        db.doQuery("UPDATE `Magazzino` SET "
+                + "`disponibilita`='" + disponobilità + "'"
+                + " WHERE idProdotto ='" + id + "'");
+    }
+
     @Override
     public void updateProdotto(Prodotto prodotto) throws SQLException {
-        db.doQuery("UPDATE `Prodotto` SET `nome`=[" + prodotto.getNome() + "],`marca`=[" + prodotto.getMarca() + "],"
-                + "`inVendita`=[" + prodotto.isInVendita() + "],`peso`=[" + prodotto.getPeso() + "], `nPezzi`=[" + prodotto.getnPezzi() + "],`prezzo`=[" + prodotto.getPrezzo() + "] WHERE id ='" + prodotto.getId() + "'");
-    }
-//TODO modificare
+        db.doQuery("UPDATE `Prodotto` SET "
+                + "`nome`='" + prodotto.getNome() + "',"
+                + "`marca`='" + prodotto.getMarca() + "',"
+//                + "`immagine`='" + prodotto.getImmagine() + "',"
+                + "`tipo`='" + prodotto.getTipo() + "',"
+                + "`reparto`='" + prodotto.getReparto() + "',"
+                + "`inVendita`='" + (prodotto.isInVendita() ? 1 : 0) + "',"
+                + "`peso`='" + prodotto.getPeso() + "',"
+                + "`nPezzi`='" + prodotto.getnPezzi() + "',"
+                + "`prezzo`='" + prodotto.getPrezzo() + "'"
+                + " WHERE id ='" + prodotto.getId() + "'");
 
+        for (Caratteristica c : prodotto.getCarattristiche()) {
+            db.doQuery("INSERT INTO CaratteristicaProdotto (idProdotto, nomeCaratteristica) "
+                    + "VALUES('" + prodotto.getId() + "','" + c.getNome() + "') "
+                    + "ON DUPLICATE KEY UPDATE    \n"
+                    + "idProdotto='" + prodotto.getId() + "', nomeCaratteristica='" + c.getNome() + "'");
+        }
+
+    }
+
+//TODO modificare
     @Override
     public void insertProdotto(Prodotto prodotto) throws SQLException {
         db.doQuery("INSERT INTO `Prodotto` (`id`, `nome`, `marca`, `reparto`, `inVendita`, `peso`,`nPezzi`,`prezzo`) VALUES "

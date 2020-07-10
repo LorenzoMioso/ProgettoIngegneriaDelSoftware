@@ -9,17 +9,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -31,7 +27,6 @@ import univr.spesaonline.model.Caratteristica;
 import univr.spesaonline.model.CaratteristicaDaoImpl;
 import univr.spesaonline.model.Prodotto;
 import univr.spesaonline.model.ProdottoDaoImpl;
-import univr.spesaonline.model.SceneName;
 import univr.spesaonline.model.SessionStorage;
 import univr.spesaonline.model.Tipo;
 import univr.spesaonline.model.TipoDaoImpl;
@@ -111,6 +106,7 @@ public class ProdottoBigEditableController implements Initializable {
         for (Tipo t : tipoDaoImpl.getAllTipo()) {
             tipoProdotto.getItems().add(t.getNome());
         }
+        tipoProdotto.getSelectionModel().select(prodotto.getTipo());
 
         for (Caratteristica c : caratteristicaDaoImpl.getAllCaratteristica()) {
             CheckBox checkBox = new CheckBox();
@@ -129,7 +125,7 @@ public class ProdottoBigEditableController implements Initializable {
     }
 
     @FXML
-    private void handleMouseClickSave(MouseEvent event) {
+    private void handleMouseClickSave(MouseEvent event) throws SQLException {
         List<Caratteristica> newCaratteristiche = new ArrayList<>();
 
         for (CheckBox c : checkBoxList) {
@@ -137,6 +133,17 @@ public class ProdottoBigEditableController implements Initializable {
                 newCaratteristiche.add(new Caratteristica(c.getText()));
             }
         }
+        prodotto.setNome(nomeProdotto.getText());
+        prodotto.setMarca(marcaProdotto.getText());
+        prodotto.setTipo(tipoProdotto.getSelectionModel().getSelectedItem().toString());
+        prodotto.setInVendita(inVenditaProdotto.isSelected());
+        prodotto.setPeso(Double.parseDouble(pesoProdotto.getText()));
+        prodotto.setnPezzi(Integer.parseInt(nPezziProdotto.getText()));
+        prodotto.setPrezzo(Double.parseDouble(prezzoProdotto.getText()));
+        prodotto.setCarattristiche(newCaratteristiche);
+
+        prodottoDaoImpl.updateProdotto(prodotto);
+        prodottoDaoImpl.updateDisponibilitàProdotto(prodotto.getId(), (int) disponibilitaProdotto.getValue());
     }
 
 }
