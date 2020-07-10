@@ -38,13 +38,16 @@ public class SelectDataOraConsegnaController implements Initializable, Stageable
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         List <String> timeTable = new ArrayList <>();
-        for(int i = BEGIN; i < END; i++){
+        int i;
+        for(i = BEGIN; i < END - 1; i++){
             timeTable.add(""+ i + ":00");
         }
         comboOraInizio.getItems().setAll(timeTable);
         timeTable.remove(FIRST_ELEMENT);
-        timeTable.remove(END - BEGIN  - 1);
+        i = END - 1;
+        timeTable.add(""+ i + ":00");
         comboOraFine.getItems().setAll(timeTable);
+        
     }
 
     @Override
