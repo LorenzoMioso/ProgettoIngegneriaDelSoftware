@@ -12,35 +12,37 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.TilePane?>
 
-<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="852.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="univr.spesaonline.controller.OverviewResponsabileProdottiController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="univr.spesaonline.controller.OverviewResponsabileProdottiController">
    <children>
-      <Label fx:id="nomeReparto" alignment="CENTER" layoutX="8.0" layoutY="24.0" prefHeight="38.0" prefWidth="116.0" text="NomeReparto" />
-      <GridPane prefHeight="30.0" prefWidth="815.0">
+      <GridPane hgap="5.0" layoutX="5.0" layoutY="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="815.0" vgap="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="61.0" prefWidth="120.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="214.0" minWidth="78.0" prefWidth="121.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="457.0" minWidth="218.0" prefWidth="457.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="53.0" minWidth="13.0" prefWidth="35.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="48.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="308.0" prefWidth="309.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="1.7976931348623157E308" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button fx:id="cerca" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleMouseClickCerca" prefHeight="30.0" prefWidth="26.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <TextField fx:id="searchBar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="29.0" prefWidth="324.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <ComboBox fx:id="combobox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="158.0" promptText="Cerca per:" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="cerca" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleMouseClickCerca" GridPane.columnIndex="3" />
+            <TextField fx:id="searchBar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" />
+            <ComboBox fx:id="combobox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="Cerca per:" GridPane.columnIndex="1" />
+            <Label fx:id="nomeReparto" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="NomeReparto" />
+            <ScrollPane GridPane.columnSpan="4" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+               <content>
+                  <TilePane fx:id="tilepane" hgap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefColumns="3" vgap="5.0">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </TilePane>
+               </content>
+            </ScrollPane>
          </children>
       </GridPane>
-      <ScrollPane layoutX="183.0" layoutY="94.0" prefHeight="740.0" prefWidth="569.0">
-         <content>
-            <TilePane fx:id="tilepane" hgap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefColumns="3" prefHeight="375.0" prefWidth="268.0" vgap="5.0">
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </TilePane>
-         </content>
-      </ScrollPane>
    </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
 </AnchorPane>

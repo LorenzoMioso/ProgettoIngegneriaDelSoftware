@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package univr.spesaonline.controller;
 
 import java.io.IOException;
@@ -32,11 +27,8 @@ import univr.spesaonline.model.Reparto;
 import univr.spesaonline.model.ResponsabileReparto;
 import univr.spesaonline.model.SessionStorage;
 
-/**
- *
- * @author elisa
- */
-public class OverviewResponsabileProdottiController implements Initializable{
+public class OverviewResponsabileProdottiController implements Initializable {
+
     private Stage stage;
     private SessionStorage sessionStorage;
     private Reparto reparto;
@@ -50,46 +42,43 @@ public class OverviewResponsabileProdottiController implements Initializable{
     ComboBox combobox;
     @FXML
     TilePane tilepane;
-    @FXML 
+    @FXML
     Label nomeReparto;
 
-    /**
-     *
-     * @param arg0
-     * @param arg1
-     */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         sessionStorage = Main.getSessionStorage();
         prodottoDaoImpl = new ProdottoDaoImpl();
-        productList = new ArrayList <>();
- 
+        productList = new ArrayList<>();
+
         combobox.getItems().addAll("Caratteristiche", "Marca", "Tipo");
-        nomeReparto.setText(""+ ((ResponsabileReparto) sessionStorage.getResponsabile()).getRuolo());
+        nomeReparto.setText("" + ((ResponsabileReparto) sessionStorage.getResponsabile()).getRuolo());
         reparto = new Reparto(((ResponsabileReparto) sessionStorage.getResponsabile()).getRuolo());
         try {
             showAllProductSmall();
         } catch (SQLException | IOException ex) {
             Logger.getLogger(CatalogController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
-     private void showProductSmall() throws SQLException, IOException {
+
+    private void showProductSmall() throws SQLException, IOException {
         tilepane.getChildren().clear();
         for (Prodotto p : productList) {
-            URL urlFile = getClass().getResource("/view/prodottoSmall.fxml");
+            URL urlFile = getClass().getResource("/view/prodottoSmallEditable.fxml");
             FXMLLoader loader = new FXMLLoader(urlFile);
             Node prodottoSmall = loader.load();
-            ProdottoSmallController ctrl = loader.getController();
+            ProdottoSmallEditableController ctrl = loader.getController();
             tilepane.getChildren().add(prodottoSmall);
             ctrl.setProdotto(p);
             ctrl.showProdotto();
         }
     }
+
     @FXML
     private void handleMouseClickCerca(MouseEvent event) throws SQLException, IOException {
         if (searchBar.getText() != null && combobox.getSelectionModel().getSelectedItem() != null) {
-             productList = prodottoDaoImpl.getAllProdotto();
+            productList = prodottoDaoImpl.getAllProdotto();
             pFilter = new ProductFilter(productList);
             pFilter.filterByReparto(reparto);
             productList = pFilter.getProductList();
@@ -108,7 +97,8 @@ public class OverviewResponsabileProdottiController implements Initializable{
             showProductSmall();
         }
     }
-     private void showAllProductSmall() throws SQLException, IOException {
+
+    private void showAllProductSmall() throws SQLException, IOException {
         productList = prodottoDaoImpl.getAllProdotto();
         pFilter = new ProductFilter(productList);
         pFilter.filterByReparto(reparto);
@@ -116,5 +106,4 @@ public class OverviewResponsabileProdottiController implements Initializable{
         showProductSmall();
     }
 
-   
 }

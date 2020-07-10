@@ -3,13 +3,13 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="881.0" prefWidth="840.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="univr.spesaonline.controller.OverviewResponsabileController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="840.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="univr.spesaonline.controller.OverviewResponsabileController">
   <tabs>
     <Tab text="Spese">
-        <fx:include source="TabSpese.fxml"></fx:include>
+        <fx:include source="TabSpese.fxml" />
     </Tab>
     <Tab text="Prodotti">
-        <fx:include source="TabProdotti.fxml"></fx:include>
+        <fx:include source="TabProdotti.fxml" />
     </Tab>
   </tabs>
 </TabPane>
