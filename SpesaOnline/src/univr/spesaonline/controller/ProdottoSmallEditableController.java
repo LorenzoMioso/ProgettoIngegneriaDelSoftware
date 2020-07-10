@@ -27,14 +27,10 @@ import univr.spesaonline.Main;
 import univr.spesaonline.model.Prodotto;
 import univr.spesaonline.model.SessionStorage;
 
-public class ProdottoSmallController implements Initializable {
+public class ProdottoSmallEditableController implements Initializable {
 
     private SessionStorage sessionStorage;
     private Prodotto prodotto;
-    private static final int MIN_VALUE = 1;
-    private static final int MAX_VALUE = 10;
-    private static final int STEP = 1;
-    private static final int INITIAL_VALUE = 1;
 
     @FXML
     Label nomeProdotto;
@@ -49,16 +45,12 @@ public class ProdottoSmallController implements Initializable {
     @FXML
     ImageView immagineProdotto;
     @FXML
-    Spinner quantità;
-    @FXML
     Button carrello;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         sessionStorage = Main.getSessionStorage();
-        SpinnerValueFactory<Integer> factory = new SpinnerValueFactory.IntegerSpinnerValueFactory(MIN_VALUE, MAX_VALUE, INITIAL_VALUE, STEP);
-        quantità.setValueFactory(factory);
-        quantità.setEditable(true);
+
     }
 
     public void setProdotto(Prodotto p) {
@@ -81,41 +73,21 @@ public class ProdottoSmallController implements Initializable {
         }
     }
 
-    public void handleMouseAddToCart() {
-        sessionStorage.getCarrello().putProdotto(prodotto, (Integer) quantità.getValue());
-        System.out.println("Aggiunto " + prodotto + "\nQuantità: " + (Integer) quantità.getValue());
-    }
-
-    public void handleMouseShowProdottoBig() throws IOException, SQLException {
-        URL urlFile = getClass().getResource("/view/prodottoBig.fxml");
+    public void handleMouseShowProdottoBigEditable() throws IOException, SQLException {
+        URL urlFile = getClass().getResource("/view/prodottoBigEditable.fxml");
         FXMLLoader loader = new FXMLLoader(urlFile);
         Parent prodottoBig = loader.load();
-        ProdottoBigController ctrl = loader.getController();
+        ProdottoBigEditableController ctrl = loader.getController();
 
         Scene scene = new Scene(prodottoBig);
 
         Stage prodottoBigWindow = new Stage();
-        prodottoBigWindow.setTitle("Prodotto");
+        prodottoBigWindow.setTitle("MOdifica prodotto");
         prodottoBigWindow.setScene(scene);
         prodottoBigWindow.show();
 
         ctrl.setProdotto(prodotto);
         ctrl.showProdotto();
-
-//        URL urlFile = getClass().getResource("/view/prodottoBigEditable.fxml");
-//        FXMLLoader loader = new FXMLLoader(urlFile);
-//        Parent prodottoBig = loader.load();
-//        ProdottoBigEditableController ctrl = loader.getController();
-//
-//        Scene scene = new Scene(prodottoBig);
-//
-//        Stage prodottoBigWindow = new Stage();
-//        prodottoBigWindow.setTitle("Prodotto");
-//        prodottoBigWindow.setScene(scene);
-//        prodottoBigWindow.show();
-//
-//        ctrl.setProdotto(prodotto);
-//        ctrl.showProdotto();
     }
 
 }
