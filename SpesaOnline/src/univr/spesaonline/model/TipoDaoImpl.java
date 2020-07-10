@@ -12,13 +12,9 @@ public class TipoDaoImpl implements TipoDao {
         db = ConnectionDb.getInstance();
     }
 
-    /**
-     *
-     * @return @throws SQLException
-     */
     @Override
     public List<Tipo> getAllTipo() throws SQLException {
-        List<Tipo> tipi = new ArrayList<Tipo>();
+        List<Tipo> tipi = new ArrayList<>();
         db.doQuery("select * from Tipo");
         while (db.getResultSet().next()) {
             tipi.add(new Tipo(db.getResultSet().getString(1)));

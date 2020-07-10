@@ -17,7 +17,7 @@ public class Prodotto {
     private double peso;
     private int nPezzi;
     private double prezzo;
-    private List<String> carattristiche;
+    private List<Caratteristica> carattristiche;
 
     public Prodotto(int id, String nome, String marca, Blob immagine, String tipo, String reparto, boolean inVendita, double peso, int nPezzi, double prezzo) {
         this.id = id;
@@ -113,11 +113,11 @@ public class Prodotto {
         this.prezzo = prezzo;
     }
 
-    public List<String> getCarattristiche() {
+    public List<Caratteristica> getCarattristiche() {
         return carattristiche;
     }
 
-    public void setCarattristiche(List<String> carattristiche) {
+    public void setCarattristiche(List<Caratteristica> carattristiche) {
         this.carattristiche = carattristiche;
     }
 
