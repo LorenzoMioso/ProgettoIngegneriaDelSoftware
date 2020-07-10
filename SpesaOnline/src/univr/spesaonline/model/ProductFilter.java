@@ -26,7 +26,17 @@ public class ProductFilter {
         ProdottoDaoImpl prodottoDaoImpl = new ProdottoDaoImpl();
         productList = prodottoDaoImpl.getCaratteristicaProdotto(caratteristica);
     }
-
+    public void searchCaratteristicaReparto(String caratteristica, String reparto) throws SQLException{
+        ProdottoDaoImpl prodottoDaoImpl = new ProdottoDaoImpl();
+        productList = prodottoDaoImpl.getCaratteristicaProdotto(caratteristica);
+        List<Prodotto> filteredList = new ArrayList();
+        for (Prodotto p : productList) {
+            if (p.getReparto().equalsIgnoreCase(reparto)) {
+                filteredList.add(p);
+            }
+        }
+        productList = filteredList;
+    }
     public void searchMarca(String marca) {
         List<Prodotto> filteredList = new ArrayList();
         for (Prodotto p : productList) {

@@ -18,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.TilePane;
@@ -27,6 +28,8 @@ import univr.spesaonline.model.Prodotto;
 import univr.spesaonline.model.ProdottoDaoImpl;
 import univr.spesaonline.model.ProductFilter;
 import univr.spesaonline.model.ProductSorter;
+import univr.spesaonline.model.Reparto;
+import univr.spesaonline.model.ResponsabileReparto;
 import univr.spesaonline.model.SessionStorage;
 
 /**
@@ -36,6 +39,7 @@ import univr.spesaonline.model.SessionStorage;
 public class OverviewResponsabileProdottiController implements Initializable{
     private Stage stage;
     private SessionStorage sessionStorage;
+    private Reparto reparto;
     ProdottoDaoImpl prodottoDaoImpl;
     List<Prodotto> productList;
     ProductFilter pFilter;
@@ -46,6 +50,8 @@ public class OverviewResponsabileProdottiController implements Initializable{
     ComboBox combobox;
     @FXML
     TilePane tilepane;
+    @FXML 
+    Label nomeReparto;
 
     /**
      *
@@ -59,8 +65,8 @@ public class OverviewResponsabileProdottiController implements Initializable{
         productList = new ArrayList <>();
  
         combobox.getItems().addAll("Caratteristiche", "Marca", "Tipo");
-     
-        
+        nomeReparto.setText(""+ ((ResponsabileReparto) sessionStorage.getResponsabile()).getRuolo());
+        reparto = new Reparto(((ResponsabileReparto) sessionStorage.getResponsabile()).getRuolo());
         try {
             showAllProductSmall();
         } catch (SQLException | IOException ex) {
@@ -83,11 +89,13 @@ public class OverviewResponsabileProdottiController implements Initializable{
     @FXML
     private void handleMouseClickCerca(MouseEvent event) throws SQLException, IOException {
         if (searchBar.getText() != null && combobox.getSelectionModel().getSelectedItem() != null) {
-            productList = prodottoDaoImpl.getAllProdotto();
+             productList = prodottoDaoImpl.getAllProdotto();
             pFilter = new ProductFilter(productList);
+            pFilter.filterByReparto(reparto);
+            productList = pFilter.getProductList();
             switch (combobox.getSelectionModel().getSelectedItem().toString()) {
                 case "Caratteristiche":
-                    pFilter.searchCaratteristica(searchBar.getText());
+                    pFilter.searchCaratteristicaReparto(searchBar.getText(), reparto.getNome());
                     break;
                 case "Marca":
                     pFilter.searchMarca(searchBar.getText());
@@ -102,6 +110,9 @@ public class OverviewResponsabileProdottiController implements Initializable{
     }
      private void showAllProductSmall() throws SQLException, IOException {
         productList = prodottoDaoImpl.getAllProdotto();
+        pFilter = new ProductFilter(productList);
+        pFilter.filterByReparto(reparto);
+        productList = pFilter.getProductList();
         showProductSmall();
     }
 
