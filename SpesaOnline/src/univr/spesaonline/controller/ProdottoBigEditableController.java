@@ -1,0 +1,142 @@
+package univr.spesaonline.controller;
+
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.sql.Blob;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
+import javax.imageio.ImageIO;
+import univr.spesaonline.Main;
+import univr.spesaonline.model.Caratteristica;
+import univr.spesaonline.model.CaratteristicaDaoImpl;
+import univr.spesaonline.model.Prodotto;
+import univr.spesaonline.model.ProdottoDaoImpl;
+import univr.spesaonline.model.SceneName;
+import univr.spesaonline.model.SessionStorage;
+import univr.spesaonline.model.Tipo;
+import univr.spesaonline.model.TipoDaoImpl;
+
+public class ProdottoBigEditableController implements Initializable {
+
+    private SessionStorage sessionStorage;
+    private ProdottoDaoImpl prodottoDaoImpl;
+    private TipoDaoImpl tipoDaoImpl;
+    private CaratteristicaDaoImpl caratteristicaDaoImpl;
+    private Prodotto prodotto;
+    List<CheckBox> checkBoxList;
+
+    private static final int MIN_VALUE = 1;
+    private static final int MAX_VALUE = Integer.MAX_VALUE;
+    private static final int STEP = 1;
+    private static final int INITIAL_VALUE = 1;
+
+    @FXML
+    TextField nomeProdotto;
+    @FXML
+    TextField marcaProdotto;
+    @FXML
+    TextField prezzoProdotto;
+    @FXML
+    TextField pesoProdotto;
+    @FXML
+    TextField nPezziProdotto;
+    @FXML
+    ComboBox tipoProdotto;
+    @FXML
+    CheckBox inVenditaProdotto;
+    @FXML
+    ImageView immagineProdotto;
+    @FXML
+    VBox boxCaratteristiche;
+    @FXML
+    Spinner disponibilitaProdotto;
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        sessionStorage = Main.getSessionStorage();
+        prodottoDaoImpl = new ProdottoDaoImpl();
+        tipoDaoImpl = new TipoDaoImpl();
+        caratteristicaDaoImpl = new CaratteristicaDaoImpl();
+        checkBoxList = new ArrayList();
+    }
+
+    public void setProdotto(Prodotto p) {
+        this.prodotto = p;
+    }
+
+    public void showProdotto() throws SQLException, IOException {
+        nomeProdotto.setText("" + prodotto.getNome());
+        marcaProdotto.setText(prodotto.getMarca());
+        prezzoProdotto.setText("" + prodotto.getPrezzo());
+        pesoProdotto.setText("" + prodotto.getPeso());
+        nPezziProdotto.setText("" + prodotto.getnPezzi());
+        inVenditaProdotto.setSelected(prodotto.isInVendita());
+
+        SpinnerValueFactory<Integer> factory = new SpinnerValueFactory.IntegerSpinnerValueFactory(MIN_VALUE, MAX_VALUE, prodottoDaoImpl.getDisponibilitàProdotto(prodotto.getId()), STEP);
+        disponibilitaProdotto.setValueFactory(factory);
+        disponibilitaProdotto.setEditable(true);
+
+        if (prodotto.getImmagine() != null) {
+            Blob aBlob = prodotto.getImmagine();
+            InputStream is = null;
+            BufferedImage imag = null;
+            is = aBlob.getBinaryStream(1, aBlob.length());
+            imag = ImageIO.read(is);
+            Image image1 = SwingFXUtils.toFXImage(imag, null);
+            immagineProdotto.setImage(image1);
+        }
+
+        prodotto.setCarattristiche(prodottoDaoImpl.getCaratteristicaByProdotto(prodotto.getId()));
+
+        for (Tipo t : tipoDaoImpl.getAllTipo()) {
+            tipoProdotto.getItems().add(t.getNome());
+        }
+
+        for (Caratteristica c : caratteristicaDaoImpl.getAllCaratteristica()) {
+            CheckBox checkBox = new CheckBox();
+            checkBox.setText(c.getNome());
+
+            for (Caratteristica cp : prodotto.getCarattristiche()) {
+                if (cp.getNome().equals(c.getNome())) {
+                    checkBox.setSelected(true);
+                }
+            }
+
+            checkBoxList.add(checkBox);
+            boxCaratteristiche.getChildren().add(checkBox);
+        }
+
+    }
+
+    @FXML
+    private void handleMouseClickSave(MouseEvent event) {
+        List<Caratteristica> newCaratteristiche = new ArrayList<>();
+
+        for (CheckBox c : checkBoxList) {
+            if (c.isSelected()) {
+                newCaratteristiche.add(new Caratteristica(c.getText()));
+            }
+        }
+    }
+
+}

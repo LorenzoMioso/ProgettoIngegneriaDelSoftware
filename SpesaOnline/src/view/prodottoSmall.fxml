@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<Pane prefHeight="350.0" prefWidth="250.0" style="-fx-border-width: 10; -fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" onMouseClicked="#handleMouseShowProdottoBig" fx:controller="univr.spesaonline.controller.ProdottoSmallController">
+<Pane onMouseClicked="#handleMouseShowProdottoBig" prefHeight="350.0" prefWidth="250.0" style="-fx-border-width: 10; -fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="univr.spesaonline.controller.ProdottoSmallController">
     <children>
         <GridPane hgap="5.0" layoutX="-2.0" layoutY="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="350.0" prefWidth="250.0" vgap="5.0">
             <columnConstraints>
@@ -25,7 +25,7 @@
                 <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <ImageView fx:id="immagineProdotto" fitHeight="200.0" fitWidth="237.0"  preserveRatio="true" GridPane.rowSpan="2" />
+                <ImageView fx:id="immagineProdotto" fitHeight="200.0" fitWidth="237.0" preserveRatio="true" GridPane.rowSpan="2" />
                 <Label fx:id="marcaProdotto" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="marca" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <Label fx:id="nomeProdotto" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="nome" GridPane.rowIndex="1" />
                 <Spinner fx:id="quantità" editable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="Spinner.STYLE_CLASS_SPLIT_ARROWS_HORIZONTAL" GridPane.rowIndex="3" />
@@ -33,7 +33,7 @@
                     <graphic>
                         <ImageView fitHeight="23.0" fitWidth="23.0" preserveRatio="true">
                             <image>
-                                <Image url="@../outline_add_shopping_cart_white_18dp.png" />
+                                <Image url="@../images/outline_add_shopping_cart_white_18dp.png" />
                             </image>
                         </ImageView>
                     </graphic>

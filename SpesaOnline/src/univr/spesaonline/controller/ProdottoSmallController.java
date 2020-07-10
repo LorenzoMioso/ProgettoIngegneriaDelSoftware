@@ -87,10 +87,25 @@ public class ProdottoSmallController implements Initializable {
     }
 
     public void handleMouseShowProdottoBig() throws IOException, SQLException {
-        URL urlFile = getClass().getResource("/view/prodottoBig.fxml");
+//        URL urlFile = getClass().getResource("/view/prodottoBig.fxml");
+//        FXMLLoader loader = new FXMLLoader(urlFile);
+//        Parent prodottoBig = loader.load();
+//        ProdottoBigController ctrl = loader.getController();
+//
+//        Scene scene = new Scene(prodottoBig);
+//
+//        Stage prodottoBigWindow = new Stage();
+//        prodottoBigWindow.setTitle("Prodotto");
+//        prodottoBigWindow.setScene(scene);
+//        prodottoBigWindow.show();
+//
+//        ctrl.setProdotto(prodotto);
+//        ctrl.showProdotto();
+
+        URL urlFile = getClass().getResource("/view/prodottoBigEditable.fxml");
         FXMLLoader loader = new FXMLLoader(urlFile);
         Parent prodottoBig = loader.load();
-        ProdottoBigController ctrl = loader.getController();
+        ProdottoBigEditableController ctrl = loader.getController();
 
         Scene scene = new Scene(prodottoBig);
 

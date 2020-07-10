@@ -84,8 +84,14 @@ public class ProdottoDaoImpl implements ProdottoDao {
                 db.getResultSet().getDouble(10));
         return p;
     }
-//TODO modificare
 
+    public int getDisponibilitàProdotto(int id) throws SQLException {
+        db.doQuery("select disponibilita from Magazzino where idProdotto = " + id);
+        db.getResultSet().next();
+        return db.getResultSet().getInt(1);
+    }
+
+//TODO modificare
     @Override
     public void updateProdotto(Prodotto prodotto) throws SQLException {
         db.doQuery("UPDATE `Prodotto` SET `nome`=[" + prodotto.getNome() + "],`marca`=[" + prodotto.getMarca() + "],"

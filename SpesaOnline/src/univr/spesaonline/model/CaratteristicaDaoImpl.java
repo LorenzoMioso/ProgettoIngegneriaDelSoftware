@@ -14,7 +14,7 @@ public class CaratteristicaDaoImpl implements CaratteristicaDao {
 
     @Override
     public List<Caratteristica> getAllCaratteristica() throws SQLException {
-        List<Caratteristica> caratteristiche = new ArrayList<Caratteristica>();
+        List<Caratteristica> caratteristiche = new ArrayList<>();
         db.doQuery("select * from Caratteristica");
         while (db.getResultSet().next()) {
             caratteristiche.add(new Caratteristica(db.getResultSet().getString(1)));
