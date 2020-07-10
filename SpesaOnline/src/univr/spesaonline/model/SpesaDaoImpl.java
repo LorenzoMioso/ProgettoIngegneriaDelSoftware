@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package univr.spesaonline.model;
 
 import java.util.Date;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -15,10 +9,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- *
- * @author elisa
- */
 public class SpesaDaoImpl implements SpesaDao {
 
     private ConnectionDb db;
@@ -26,6 +16,7 @@ public class SpesaDaoImpl implements SpesaDao {
     public SpesaDaoImpl() {
         db = ConnectionDb.getInstance();
     }
+
     @Override
     public List<Spesa> getAllSpesa() throws SQLException {
         List<Spesa> spese = new ArrayList<>();
@@ -69,6 +60,7 @@ public class SpesaDaoImpl implements SpesaDao {
         }
         return spese;
     }
+
     @Override
     public List<Spesa> getAllSpesaByUtente(Utente u) throws SQLException {
         List<Spesa> spese = new ArrayList<>();
@@ -125,20 +117,22 @@ public class SpesaDaoImpl implements SpesaDao {
 
     @Override
     public void insertSpesa(Spesa spesa) throws SQLException {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        String dataConsegna = formatter.format(addDays(java.util.Calendar.getInstance().getTime(), 1));
-        System.out.println("" + dataConsegna);
         int id = db.doSpecificQuery("INSERT INTO `Spesa` (`id`, `dataOrdine`, `dataConsegna`,`oraInizio`, `oraFine`, `costoTot`, `saldoPunti`, `pagamento`,`utente`, `stato`) VALUES "
-                + "(NULL, NULL ,'" + spesa.getDataConsegna() + "', '"+spesa.getOraInizio()+"', '"+spesa.getOraFine()+"', '" + spesa.getCostoTot() + "', '" + spesa.getSaldoPunti() + "', '" + spesa.getUtente().getPagamentoPreferito() + "', '" + spesa.getUtente().getEmail() + "', '"+spesa.getStato()+"')");
+                + "(NULL, NULL ,'" + spesa.getDataConsegna() + "', '" + spesa.getOraInizio() + "', '" + spesa.getOraFine() + "', '" + spesa.getCostoTot() + "', '" + spesa.getSaldoPunti() + "', '" + spesa.getUtente().getPagamentoPreferito() + "', '" + spesa.getUtente().getEmail() + "', '" + spesa.getStato() + "')");
 
-        System.out.println("Id :" + id);
         spesa.setId(id);
+
+        for (Map.Entry<Prodotto, Integer> entry : spesa.getProdotti().entrySet()) {
+            db.doQuery("UPDATE  `Magazzino` SET "
+                    + "`disponibilita`= disponibilita - '" + entry.getValue() + "'"
+                    + " WHERE idProdotto ='" + entry.getKey().getId() + "'");
+        }
 
         for (Map.Entry<Prodotto, Integer> entry : spesa.getProdotti().entrySet()) {
             db.doQuery("INSERT INTO `ProdottoComprato` (`idSpesa`, `idProdotto`, `quantitàProdotto`) VALUES "
                     + "('" + spesa.getId() + "', '" + entry.getKey().getId() + "' , '" + entry.getValue() + "')");
         }
-        
+
         db.doQuery("UPDATE `TesseraFedelta` SET punti = punti + '" + spesa.getSaldoPunti() + "' WHERE utente = '" + spesa.getUtente().getEmail() + "'");
 
     }
@@ -149,7 +143,5 @@ public class SpesaDaoImpl implements SpesaDao {
         cal.add(Calendar.DATE, days);
         return (Date) cal.getTime();
     }
-
-    
 
 }

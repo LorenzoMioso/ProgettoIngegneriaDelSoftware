@@ -1,18 +1,14 @@
 package univr.spesaonline.model;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-public class Carrello extends Subject{
+public class Carrello extends Subject {
 
-    
     private Map<Prodotto, Integer> prodotti;
     private double prezzoTot;
 
     public Carrello() {
-        
         this.prodotti = new HashMap<Prodotto, Integer>();
         this.prezzoTot = 0;
     }
@@ -43,6 +39,12 @@ public class Carrello extends Subject{
         for (Map.Entry<Prodotto, Integer> entry : prodotti.entrySet()) {
             prezzoTot += entry.getKey().getPrezzo() * entry.getValue();
         }
+    }
+
+    public void emptyCarrello() {
+        this.prodotti = new HashMap<Prodotto, Integer>();
+        this.prezzoTot = 0;
+        notifyAllObservers();
     }
 
     public double getPrezzoTot() {
