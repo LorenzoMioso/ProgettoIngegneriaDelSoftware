@@ -11,12 +11,12 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="univr.spesaonline.controller.ProdottoBigController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="univr.spesaonline.controller.ProdottoBigController">
    <children>
-      <GridPane layoutX="6.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <GridPane hgap="5.0" layoutX="6.0" vgap="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="245.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="245.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="245.0" minWidth="245.0" prefWidth="245.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="245.0" minWidth="245.0" prefWidth="245.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -33,17 +33,17 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fx:id="immagineProdotto" fitHeight="240.0" fitWidth="480.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowSpan="2147483647" GridPane.valignment="CENTER" />
+            <ImageView fx:id="immagineProdotto" fitHeight="240.0" fitWidth="238.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowSpan="2147483647" GridPane.valignment="CENTER" />
             <Label fx:id="marcaProdotto" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="marca" GridPane.columnIndex="1" />
             <Label fx:id="tipoProdotto" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="tipo" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label fx:id="nomeProdotto" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="nome" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label fx:id="prezzoProdotto" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="16.0" prefWidth="0.0" text="prezzo" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Label fx:id="npezziProdotto" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="npezzi" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="nPezziProdotto" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="npezzi" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label fx:id="pesoProdotto" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="peso" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Spinner fx:id="quantità" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Aggiungi al carrello" onMouseClicked="#handleMouseAddToCart" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleMouseAddToCart" style="-fx-background-color: #6FB533;" text="Aggiungi al carrello" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="16.0" prefWidth="0.0" text="Caratteristiche" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-            <TextArea fx:id="caratteristicheProdotto" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+            <TextArea fx:id="caratteristicheProdotto" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
          </children>
       </GridPane>
    </children>

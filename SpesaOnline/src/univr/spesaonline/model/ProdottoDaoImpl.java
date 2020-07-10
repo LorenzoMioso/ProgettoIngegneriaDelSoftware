@@ -17,7 +17,7 @@ public class ProdottoDaoImpl implements ProdottoDao {
         List<Prodotto> catalogo = new ArrayList<>();
         db.doQuery("select * from Prodotto where inVendita = 1");
         while (db.getResultSet().next()) {
-            catalogo.add(new Prodotto(
+            Prodotto p = new Prodotto(
                     db.getResultSet().getInt(1),
                     db.getResultSet().getString(2),
                     db.getResultSet().getString(3),
@@ -27,12 +27,14 @@ public class ProdottoDaoImpl implements ProdottoDao {
                     db.getResultSet().getBoolean(7),
                     db.getResultSet().getDouble(8),
                     db.getResultSet().getInt(9),
-                    db.getResultSet().getDouble(10)));
+                    db.getResultSet().getDouble(10));
+            catalogo.add(p);
+
         }
         return catalogo;
     }
 
-    public List<Caratteristica> getCaratteristicaProdotto(int id) throws SQLException {
+    public List<Caratteristica> getCaratteristicaByProdotto(int id) throws SQLException {
         List<Caratteristica> caratteristiche = new ArrayList<>();
         db.doQuery("select * from CaratteristicaProdotto where idProdotto = " + id);
         while (db.getResultSet().next()) {
@@ -42,7 +44,7 @@ public class ProdottoDaoImpl implements ProdottoDao {
         return caratteristiche;
     }
 
-    public List<Prodotto> getCaratteristicaProdotto(String caratterristica) throws SQLException {
+    public List<Prodotto> getProdottoByCaratteristica(String caratterristica) throws SQLException {
         List<Prodotto> catalogo = new ArrayList<>();
         db.doQuery("SELECT *"
                 + " FROM Prodotto P JOIN CaratteristicaProdotto CP"
@@ -82,15 +84,43 @@ public class ProdottoDaoImpl implements ProdottoDao {
                 db.getResultSet().getDouble(10));
         return p;
     }
-//TODO modificare
+
+    public int getDisponibilitàProdotto(int id) throws SQLException {
+        db.doQuery("select disponibilita from Magazzino where idProdotto = " + id);
+        db.getResultSet().next();
+        return db.getResultSet().getInt(1);
+    }
+
+    public void updateDisponibilitàProdotto(int id, int disponobilità) throws SQLException {
+        db.doQuery("UPDATE `Magazzino` SET "
+                + "`disponibilita`='" + disponobilità + "'"
+                + " WHERE idProdotto ='" + id + "'");
+    }
 
     @Override
     public void updateProdotto(Prodotto prodotto) throws SQLException {
-        db.doQuery("UPDATE `Prodotto` SET `nome`=[" + prodotto.getNome() + "],`marca`=[" + prodotto.getMarca() + "],"
-                + "`inVendita`=[" + prodotto.isInVendita() + "],`peso`=[" + prodotto.getPeso() + "], `nPezzi`=[" + prodotto.getnPezzi() + "],`prezzo`=[" + prodotto.getPrezzo() + "] WHERE id ='" + prodotto.getId() + "'");
-    }
-//TODO modificare
+        db.doQuery("UPDATE `Prodotto` SET "
+                + "`nome`='" + prodotto.getNome() + "',"
+                + "`marca`='" + prodotto.getMarca() + "',"
+//                + "`immagine`='" + prodotto.getImmagine() + "',"
+                + "`tipo`='" + prodotto.getTipo() + "',"
+                + "`reparto`='" + prodotto.getReparto() + "',"
+                + "`inVendita`='" + (prodotto.isInVendita() ? 1 : 0) + "',"
+                + "`peso`='" + prodotto.getPeso() + "',"
+                + "`nPezzi`='" + prodotto.getnPezzi() + "',"
+                + "`prezzo`='" + prodotto.getPrezzo() + "'"
+                + " WHERE id ='" + prodotto.getId() + "'");
 
+        for (Caratteristica c : prodotto.getCarattristiche()) {
+            db.doQuery("INSERT INTO CaratteristicaProdotto (idProdotto, nomeCaratteristica) "
+                    + "VALUES('" + prodotto.getId() + "','" + c.getNome() + "') "
+                    + "ON DUPLICATE KEY UPDATE    \n"
+                    + "idProdotto='" + prodotto.getId() + "', nomeCaratteristica='" + c.getNome() + "'");
+        }
+
+    }
+
+//TODO modificare
     @Override
     public void insertProdotto(Prodotto prodotto) throws SQLException {
         db.doQuery("INSERT INTO `Prodotto` (`id`, `nome`, `marca`, `reparto`, `inVendita`, `peso`,`nPezzi`,`prezzo`) VALUES "
