@@ -45,8 +45,6 @@ public class Main extends Application {
         scenes.put(SceneName.OVERVIEW_RESPONSABILE, new FxmlInfo(OVERVIEW_RESPONSABILE_FXML, SceneName.OVERVIEW_RESPONSABILE, stage));
         scenes.put(SceneName.SELECT_DATA_ORA_CONSEGNA, new FxmlInfo(SELECT_DATA_ORA_CONSEGNA_FXML, SceneName.SELECT_DATA_ORA_CONSEGNA, stage));
 
-// getScene() will load the FXML file the first time
-        // stage.setScene(scenes.get(SceneName.CATALOG).getScene());
         stage.setScene(scenes.get(SceneName.START_SCREEN).getScene());
         stage.setTitle("Spesa online");
         stage.show();
