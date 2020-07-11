@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="univr.spesaonline.controller.OverviewResponsabileSpeseController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="830.0"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="univr.spesaonline.controller.OverviewResponsabileSpeseController" stylesheets="@bootstrap3.css">
     <children>
         <GridPane fx:id="labelsSpese" layoutY="1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="760.0" prefWidth="830.0">
             <columnConstraints>

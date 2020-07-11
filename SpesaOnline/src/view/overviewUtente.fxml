@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="853.0" prefWidth="1057.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="univr.spesaonline.controller.OverviewUtenteController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="853.0" prefWidth="1057.0"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="univr.spesaonline.controller.OverviewUtenteController">
    <children>
       <VBox prefHeight="576.0" prefWidth="210.0">
          <children>
@@ -30,9 +30,9 @@
             </Label>
             <ToggleButton fx:id="btnProfilo" alignment="CENTER_LEFT" mnemonicParsing="false" onMouseClicked="#handleMouseClickProfilo" prefHeight="40.0" prefWidth="216.0" text="Profilo" textAlignment="CENTER">
                <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../designImages/icons8_Person_32px.png" />
+                        <Image url="@../../../icons/account_circle-black-24dp/2x/outline_account_circle_black_24dp.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -42,45 +42,45 @@
             </ToggleButton>
             <ToggleButton fx:id="btnSaldoPunti" alignment="CENTER_LEFT" mnemonicParsing="false" onMouseClicked="#handleMouseClickSaldoPunti" prefHeight="40.0" prefWidth="210.0" text="Saldo punti" textAlignment="CENTER" toggleGroup="$group">
                <graphic>
-                  <ImageView fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../designImages/point-silver.png" />
+                        <Image url="@../../../icons/money-black-24dp/2x/outline_money_black_24dp.png" />
                      </image>
                   </ImageView>
                </graphic>
             </ToggleButton>
             <ToggleButton fx:id="btnSpese" alignment="CENTER_LEFT" mnemonicParsing="false" onMouseClicked="#handleMouseClickSpese" prefHeight="40.0" prefWidth="215.0" text="Spese" textAlignment="CENTER" toggleGroup="$group">
                <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../designImages/shopping_cart-black-18dp%20(1)/1x/outline_shopping_cart_black_18dp.png" />
+                        <Image url="@../../../icons/shopping_bag-black-24dp/2x/outline_shopping_bag_black_24dp.png" />
                      </image>
                   </ImageView>
                </graphic>
             </ToggleButton>
             <ToggleButton fx:id="btnModificaProfilo" alignment="CENTER_LEFT" mnemonicParsing="false" onMouseClicked="#handleMouseClickModificaProfilo" prefHeight="40.0" prefWidth="211.0" text="Modifica profilo" textAlignment="CENTER" toggleGroup="$group">
                <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../designImages/icons8_Slider__32px.png" />
+                        <Image url="@../../../icons/create-black-24dp/2x/outline_create_black_24dp.png" />
                      </image>
                   </ImageView>
                </graphic>
             </ToggleButton>
             <ToggleButton fx:id="btnLogOut" alignment="CENTER_LEFT" mnemonicParsing="false" onMouseClicked="#handleMouseClickLogOut" prefHeight="40.0" prefWidth="211.0" text="Log out" textAlignment="CENTER" toggleGroup="$group">
                <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../designImages/icons8_Sign_Out_32px.png" />
+                        <Image url="@../../../icons/exit_to_app-black-24dp/2x/outline_exit_to_app_black_24dp.png" />
                      </image>
                   </ImageView>
                </graphic>
             </ToggleButton>
             <ToggleButton fx:id="btnBack" alignment="CENTER_LEFT" mnemonicParsing="false" onMouseClicked="#handleMouseClickBack" prefHeight="40.0" prefWidth="210.0" text="Back to Catalogo" textAlignment="CENTER" toggleGroup="$group">
                <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../designImages/arrow_back-black-18dp/1x/outline_arrow_back_black_18dp.png" />
+                        <Image url="@../../../icons/arrow_back-black-24dp/2x/outline_arrow_back_black_24dp.png" />
                      </image>
                   </ImageView>
                </graphic>

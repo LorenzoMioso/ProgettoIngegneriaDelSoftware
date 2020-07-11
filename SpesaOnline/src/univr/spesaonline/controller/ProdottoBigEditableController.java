@@ -1,6 +1,8 @@
 package univr.spesaonline.controller;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -22,8 +24,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
+import javax.sql.rowset.serial.SerialBlob;
 import univr.spesaonline.Main;
 import univr.spesaonline.model.Caratteristica;
 import univr.spesaonline.model.CaratteristicaDaoImpl;
@@ -158,4 +162,36 @@ public class ProdottoBigEditableController implements Initializable {
         thisStage.close();
     }
 
+    @FXML
+    private void handleMouseClickSelectFile(MouseEvent event) throws SQLException, IOException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Scegli un immagine");
+        fileChooser.setInitialDirectory(
+                new File(System.getProperty("user.home"))
+        );
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("All Images", "*.*"),
+                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                new FileChooser.ExtensionFilter("PNG", "*.png")
+        );
+        Stage chooserWindow = new Stage();
+        File selectedFile = fileChooser.showOpenDialog(chooserWindow);
+
+        //file to blob
+        byte[] fileContent = new byte[(int) selectedFile.length()];
+        FileInputStream inputStream = null;
+        // create an input stream pointing to the file
+        inputStream = new FileInputStream(selectedFile);
+        // read the contents of file into byte array
+        inputStream.read(fileContent);
+        // close input stream
+        if (inputStream != null) {
+            inputStream.close();
+        }
+        Blob blob = new SerialBlob(fileContent);
+
+        prodotto.setImmagine(blob);
+
+        showProdotto();
+    }
 }

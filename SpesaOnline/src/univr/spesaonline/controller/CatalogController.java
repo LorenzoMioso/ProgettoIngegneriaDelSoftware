@@ -11,10 +11,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -87,13 +87,11 @@ public class CatalogController extends Observer implements Stageable, Initializa
     @FXML
     TextField searchBar;
     @FXML
-    Button registerButton;
+    ImageView imageLogin;
     @FXML
-    Button loginButton;
+    ImageView imageOverview;
     @FXML
-    Button cartButton;
-    @FXML
-    Button overviewButton;
+    ImageView imageRegister;
 
     @Override
     public void setStage(Stage stage) {
@@ -106,7 +104,7 @@ public class CatalogController extends Observer implements Stageable, Initializa
         sessionStorage.attach(this);
         combobox.getItems().addAll("Caratteristiche", "Marca", "Tipo");
         prodottoDaoImpl = new ProdottoDaoImpl();
-        buttonVisibility();
+        imageVisibility();
         try {
             showAllProductSmall();
         } catch (SQLException | IOException ex) {
@@ -174,7 +172,6 @@ public class CatalogController extends Observer implements Stageable, Initializa
         cartWindow.setTitle("Carrello");
         cartWindow.setScene(Main.getScenes().get(SceneName.CART).getScene());
         cartWindow.show();
-//        stage.setScene(Main.getScenes().get(SceneName.CART).getScene());
     }
 
     @FXML
@@ -286,25 +283,22 @@ public class CatalogController extends Observer implements Stageable, Initializa
         }
     }
 
-    public void buttonVisibility() {
+    public void imageVisibility() {
         System.out.println("Islogged: " + sessionStorage.isLoggedUtente());
-        if (sessionStorage.isLoggedUtente()== true) {
-            loginButton.setVisible(false);
-            registerButton.setVisible(false);
-            overviewButton.setVisible(true);
+        if (sessionStorage.isLoggedUtente() == true) {
+            imageLogin.setVisible(false);
+            imageRegister.setVisible(false);
+            imageOverview.setVisible(true);
         } else {
-            overviewButton.setVisible(false);
-            loginButton.setVisible(true);
-            registerButton.setVisible(true);
+            imageOverview.setVisible(false);
+            imageLogin.setVisible(true);
+            imageRegister.setVisible(true);
         }
     }
 
     @Override
     public void update() {
-        System.out.println("Called update button");
-
-        buttonVisibility();
+        imageVisibility();
     }
-
 
 }

@@ -58,19 +58,11 @@ public class FxmlInfo {
         return sceneName;
     }
 
-    /**
-     * @param scene the scene to set, loaded from this FxmlInfo
-     */
+
     public void setScene(Scene scene) {
         this.scene = scene;
     }
 
-    /**
-     * Builds the scene iff {@code scene} is {@code null}. Then it returns the
-     * scene to the caller.
-     *
-     * @return the scene
-     */
     public Scene getScene() {
         if (scene == null) {
             scene = new FxmlLoad().load(this);

@@ -42,7 +42,6 @@ public class ConnectionDb {
     public PreparedStatement getPreparedStatement(String query) throws SQLException {
         this.connection = DriverManager.getConnection(url + dbname, username, password);
         this.pstmt = connection.prepareStatement(query);
-        
         return pstmt;
     }
     

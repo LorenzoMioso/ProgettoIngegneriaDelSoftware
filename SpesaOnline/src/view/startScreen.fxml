@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="611.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="univr.spesaonline.controller.StartScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="611.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="univr.spesaonline.controller.StartScreenController" stylesheets="@bootstrap3.css">
    <children>
       <Button fx:id="btnUtente" layoutX="174.0" layoutY="216.0" mnemonicParsing="false" onAction="#handleOnActionUtente" prefHeight="38.0" prefWidth="253.0" text="Prosegui come utente" />
       <Button fx:id="btnResponsabileReparto" layoutX="174.0" layoutY="331.0" mnemonicParsing="false" onAction="#handleOnActionResponsabileReparto" prefHeight="38.0" prefWidth="253.0" text="Prosegui come responsabile reparto" />

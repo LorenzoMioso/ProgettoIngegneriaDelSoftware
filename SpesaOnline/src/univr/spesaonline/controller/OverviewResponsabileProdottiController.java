@@ -110,7 +110,8 @@ public class OverviewResponsabileProdottiController implements Initializable {
         productList = pFilter.getProductList();
         showProductSmall();
     }
-    public void handleMouseClickAggiungiProdotto(MouseEvent evt) throws IOException, SQLException{
+
+    public void handleMouseClickAggiungiProdotto(MouseEvent evt) throws IOException, SQLException {
         URL urlFile = getClass().getResource("/view/prodottoBigAdd.fxml");
         FXMLLoader loader = new FXMLLoader(urlFile);
         Parent prodottoBig = loader.load();
@@ -125,6 +126,12 @@ public class OverviewResponsabileProdottiController implements Initializable {
 
         //ctrl.setProdotto(prodotto);
         ctrl.showProdotto();
-        
+
     }
+
+    @FXML
+    private void handleMouseClickRefresh(MouseEvent event) throws SQLException, IOException {
+        showAllProductSmall();
+    }
+
 }
