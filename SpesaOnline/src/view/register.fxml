@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="univr.spesaonline.controller.RegisterController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="300.0"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="univr.spesaonline.controller.RegisterController" stylesheets="@bootstrap3.css">
    <children>
       <GridPane alignment="CENTER" hgap="5.0" layoutX="10.0" layoutY="10.0" prefHeight="330.0" prefWidth="280.0" vgap="5.0">
         <columnConstraints>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -17,7 +16,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.TilePane?>
 
-<AnchorPane prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="univr.spesaonline.controller.CatalogController">
+<AnchorPane prefHeight="700.0" prefWidth="900.0"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="univr.spesaonline.controller.CatalogController" stylesheets="@bootstrap3.css">
     <children>
         <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="585.0" prefWidth="890.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
             <center>
@@ -117,12 +116,11 @@
                         <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Button fx:id="cerca" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleMouseClickCerca" GridPane.columnIndex="3" />
                         <TextField fx:id="searchBar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="641.0" GridPane.columnIndex="2" />
                         <ComboBox fx:id="combobox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="178.0" promptText="Cerca per:" GridPane.columnIndex="1" />
-                  <ImageView fitHeight="29.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#handleMouseClickCerca" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
                      <image>
-                        <Image url="@../icons/search-black-18dp/2x/outline_search_black_18dp.png" />
+                        <Image url="@../../../icons/search-black-24dp/2x/outline_search_black_24dp.png" />
                      </image>
                   </ImageView>
                     </children>
@@ -132,55 +130,41 @@
                 <GridPane prefHeight="555.0" prefWidth="54.0" BorderPane.alignment="CENTER">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Button fx:id="cartButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleMouseClickCart" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                            <graphic>
-                                <ImageView fitHeight="23.0" fitWidth="23.0" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../images/baseline_shopping_cart_black_18dp.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                            <GridPane.margin>
-                                <Insets />
-                            </GridPane.margin>
-                        </Button>
-                        <Button fx:id="loginButton" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleMouseClickLogin" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                            <graphic>
-                                <ImageView fitHeight="23.0" fitWidth="23.0" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../images/icons8_Person_32px.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                            <GridPane.margin>
-                                <Insets />
-                            </GridPane.margin>
-                        </Button>
-                        <Button fx:id="registerButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleMouseClickRegister" prefHeight="570.0" prefWidth="45.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <Button fx:id="overviewButton" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleMouseClickOverviewUtente" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                     <graphic>
-                        <ImageView fitHeight="23.0" fitWidth="23.0" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/icons8_Person_32px.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#handleMouseClickCart" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../../../icons/shopping_cart-black-24dp/2x/outline_shopping_cart_black_24dp.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageLogin" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#handleMouseClickLogin" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <image>
+                        <Image url="@../../../icons/login-black-24dp/2x/outline_login_black_24dp.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageRegister" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#handleMouseClickRegister" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <image>
+                        <Image url="@../../../icons/person_add-black-24dp/2x/outline_person_add_black_24dp.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageOverview" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#handleMouseClickOverviewUtente" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <image>
+                        <Image url="@../../../icons/account_circle-black-24dp/2x/outline_account_circle_black_24dp.png" />
+                     </image>
+                  </ImageView>
                     </children>
                 </GridPane>
             </right>

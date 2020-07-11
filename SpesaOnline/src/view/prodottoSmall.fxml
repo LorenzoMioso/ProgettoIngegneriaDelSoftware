@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<Pane onMouseClicked="#handleMouseShowProdottoBig" prefHeight="350.0" prefWidth="250.0" style="-fx-border-width: 10; -fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="univr.spesaonline.controller.ProdottoSmallController">
+<Pane onMouseClicked="#handleMouseShowProdottoBig" prefHeight="350.0" prefWidth="250.0" style="-fx-border-width: 10; -fx-background-color: white;"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="univr.spesaonline.controller.ProdottoSmallController" stylesheets="@bootstrap3.css">
     <children>
         <GridPane hgap="5.0" layoutX="-2.0" layoutY="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="350.0" prefWidth="250.0" vgap="5.0">
             <columnConstraints>
@@ -30,16 +30,16 @@
                 <Label fx:id="nomeProdotto" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="nome" GridPane.rowIndex="1" />
                 <Spinner fx:id="quantità" editable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="Spinner.STYLE_CLASS_SPLIT_ARROWS_HORIZONTAL" GridPane.rowIndex="3" />
                 <Button fx:id="carrello" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleMouseAddToCart" style="-fx-background-color: #6FB533;" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                    <graphic>
-                        <ImageView fitHeight="23.0" fitWidth="23.0" preserveRatio="true">
-                            <image>
-                                <Image url="@../images/outline_add_shopping_cart_white_18dp.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
                     <GridPane.margin>
                         <Insets />
                     </GridPane.margin>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../icons/add_shopping_cart-black-24dp/2x/outline_add_shopping_cart_black_24dp.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
                 </Button>
             <Label fx:id="prezzoProdotto" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="prezzo" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label fx:id="disponibilitàProdotto" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="disponibilità" GridPane.rowIndex="2" />

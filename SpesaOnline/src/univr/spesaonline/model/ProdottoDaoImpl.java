@@ -102,7 +102,7 @@ public class ProdottoDaoImpl implements ProdottoDao {
         db.doQuery("UPDATE `Prodotto` SET "
                 + "`nome`='" + prodotto.getNome() + "',"
                 + "`marca`='" + prodotto.getMarca() + "',"
-//                + "`immagine`='" + prodotto.getImmagine() + "',"
+                //                + "`immagine`='" + prodotto.getImmagine() + "',"
                 + "`tipo`='" + prodotto.getTipo() + "',"
                 + "`reparto`='" + prodotto.getReparto() + "',"
                 + "`inVendita`='" + (prodotto.isInVendita() ? 1 : 0) + "',"

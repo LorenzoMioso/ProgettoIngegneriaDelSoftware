@@ -1,6 +1,7 @@
 package univr.spesaonline.controller;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -12,6 +13,7 @@ import java.util.ResourceBundle;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Spinner;
@@ -21,6 +23,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import univr.spesaonline.Main;
 import univr.spesaonline.model.Caratteristica;
@@ -144,6 +148,26 @@ public class ProdottoBigEditableController implements Initializable {
 
         prodottoDaoImpl.updateProdotto(prodotto);
         prodottoDaoImpl.updateDisponibilitàProdotto(prodotto.getId(), (int) disponibilitaProdotto.getValue());
+    }
+
+    @FXML
+    private void handleMouseClickSelectFile(MouseEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Scegli un immagine");
+        fileChooser.setInitialDirectory(
+                new File(System.getProperty("user.home"))
+        );
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("All Images", "*.*"),
+                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                new FileChooser.ExtensionFilter("PNG", "*.png")
+        );
+        Stage chooserWindow = new Stage();
+        File selectedFile = fileChooser.showOpenDialog(chooserWindow);
+
+        Image image = new Image(selectedFile.toURI().toString());
+        immagineProdotto.setImage(image);
+
     }
 
 }

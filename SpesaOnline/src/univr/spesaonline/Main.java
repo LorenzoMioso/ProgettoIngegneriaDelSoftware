@@ -1,4 +1,3 @@
-
 package univr.spesaonline;
 
 import java.util.HashMap;
@@ -22,6 +21,7 @@ public class Main extends Application {
     private static final String LOGIN_RESPONSABILE_FXML = "/view/loginResponsabile.fxml";
     private static final String OVERVIEW_RESPONSABILE_FXML = "/view/overviewResponsabile.fxml";
     private static final String SELECT_DATA_ORA_CONSEGNA_FXML = "/view/selectDataOraConsegna.fxml";
+
     private static Map<SceneName, FxmlInfo> scenes = new HashMap<>();
 
     private static SessionStorage sessioStorage = new SessionStorage();
@@ -47,8 +47,6 @@ public class Main extends Application {
 
 // getScene() will load the FXML file the first time
         // stage.setScene(scenes.get(SceneName.CATALOG).getScene());
-
-
         stage.setScene(scenes.get(SceneName.START_SCREEN).getScene());
         stage.setTitle("Spesa online");
         stage.show();
