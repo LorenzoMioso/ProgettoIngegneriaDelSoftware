@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -105,30 +107,13 @@ public class CatalogController extends Observer implements Stageable, Initializa
         combobox.getItems().addAll("Caratteristiche", "Marca", "Tipo");
         prodottoDaoImpl = new ProdottoDaoImpl();
         imageVisibility();
+
         try {
             showAllProductSmall();
         } catch (SQLException | IOException ex) {
             Logger.getLogger(CatalogController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //        Platform.runLater(() -> {
-//            try {
-//                addProdotti();
-//            } catch (SQLException ex) {
-//                Logger.getLogger(CatalogController.class.getName()).log(Level.SEVERE, null, ex);
-//            } catch (IOException ex) {
-//                Logger.getLogger(CatalogController.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        });
 
-        //        Platform.runLater(() -> {
-//            try {
-//                addProdotti();
-//            } catch (SQLException ex) {
-//                Logger.getLogger(CatalogController.class.getName()).log(Level.SEVERE, null, ex);
-//            } catch (IOException ex) {
-//                Logger.getLogger(CatalogController.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        });
     }
 
     private void showProductSmall() throws SQLException, IOException {
@@ -295,9 +280,11 @@ public class CatalogController extends Observer implements Stageable, Initializa
             imageRegister.setVisible(true);
         }
     }
-    public void handleMouseClickRefresh(MouseEvent evt) throws SQLException, IOException{
+
+    public void handleMouseClickRefresh(MouseEvent evt) throws SQLException, IOException {
         showAllProductSmall();
     }
+
     @Override
     public void update() {
         imageVisibility();
