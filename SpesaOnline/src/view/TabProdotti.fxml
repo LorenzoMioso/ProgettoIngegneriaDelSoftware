@@ -24,6 +24,7 @@
          <rowConstraints>
             <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="1.7976931348623157E308" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
             <Button fx:id="cerca" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleMouseClickCerca" GridPane.columnIndex="3" />
@@ -39,6 +40,7 @@
                   </TilePane>
                </content>
             </ScrollPane>
+            <Button fx:id="aggiungiProdotto" mnemonicParsing="false" onMouseClicked="#handleMouseClickAggiungiProdotto" prefHeight="30.0" prefWidth="154.0" text="Aggiungi prodotto" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </children>

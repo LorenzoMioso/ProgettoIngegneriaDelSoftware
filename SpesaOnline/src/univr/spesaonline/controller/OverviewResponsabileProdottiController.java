@@ -12,6 +12,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -44,6 +47,8 @@ public class OverviewResponsabileProdottiController implements Initializable {
     TilePane tilepane;
     @FXML
     Label nomeReparto;
+    @FXML
+    Button aggiungiProdotti;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -105,5 +110,21 @@ public class OverviewResponsabileProdottiController implements Initializable {
         productList = pFilter.getProductList();
         showProductSmall();
     }
+    public void handleMouseClickAggiungiProdotto(MouseEvent evt) throws IOException, SQLException{
+        URL urlFile = getClass().getResource("/view/prodottoBigAdd.fxml");
+        FXMLLoader loader = new FXMLLoader(urlFile);
+        Parent prodottoBig = loader.load();
+        ProdottoBigAddController ctrl = loader.getController();
 
+        Scene scene = new Scene(prodottoBig);
+
+        Stage prodottoBigWindow = new Stage();
+        prodottoBigWindow.setTitle("Aggiungi prodotto");
+        prodottoBigWindow.setScene(scene);
+        prodottoBigWindow.show();
+
+        //ctrl.setProdotto(prodotto);
+        ctrl.showProdotto();
+        
+    }
 }

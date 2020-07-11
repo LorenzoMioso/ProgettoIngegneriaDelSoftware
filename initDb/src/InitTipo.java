@@ -20,6 +20,7 @@ public class InitTipo {
                 + "('Uova'),"
                 + "('Pasta'),"
                 + "('Latte'),"
+                + "('Frutta'),"
                 + "('Biscotti');");
     }
 }

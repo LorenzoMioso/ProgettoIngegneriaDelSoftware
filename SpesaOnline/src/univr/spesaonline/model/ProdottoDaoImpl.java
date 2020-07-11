@@ -35,6 +35,7 @@ public class ProdottoDaoImpl implements ProdottoDao {
     }
 
     public List<Caratteristica> getCaratteristicaByProdotto(int id) throws SQLException {
+        
         List<Caratteristica> caratteristiche = new ArrayList<>();
         db.doQuery("select * from CaratteristicaProdotto where idProdotto = " + id);
         while (db.getResultSet().next()) {
@@ -43,7 +44,7 @@ public class ProdottoDaoImpl implements ProdottoDao {
         }
         return caratteristiche;
     }
-
+  
     public List<Prodotto> getProdottoByCaratteristica(String caratterristica) throws SQLException {
         List<Prodotto> catalogo = new ArrayList<>();
         db.doQuery("SELECT *"
@@ -96,6 +97,10 @@ public class ProdottoDaoImpl implements ProdottoDao {
                 + "`disponibilita`='" + disponobilità + "'"
                 + " WHERE idProdotto ='" + id + "'");
     }
+    public void insertDisponibilitàProdotto(int id, int disponibilità) throws SQLException{
+        db.doQuery("INSERT INTO `Magazzino` (`idProdotto`, `disponibilita`) VALUES "
+                + "('" + id + "','" + disponibilità + "')");
+    }
 
     @Override
     public void updateProdotto(Prodotto prodotto) throws SQLException {
@@ -133,5 +138,17 @@ public class ProdottoDaoImpl implements ProdottoDao {
         db.doQuery("DELETE FROM `Prodotto` WHERE id = '" + prodotto.getId() + "'");
 
     }
+    public void newProdotto(Prodotto prodotto) throws SQLException{
+         int id = db.doSpecificQuery("INSERT INTO `Prodotto` (`id`, `nome`, `marca`, `tipo` ,`reparto`, `inVendita`, `peso`,`nPezzi`,`prezzo`) VALUES "
+                + "(NULL, '" + prodotto.getNome() + "', '" + prodotto.getMarca() + "', '"+ prodotto.getTipo()+ "', '" + prodotto.getReparto() + "', '" + (prodotto.isInVendita() ? 1 : 0)
+                + "', '" + prodotto.getPeso() + "', '" + prodotto.getnPezzi() + "', '" + prodotto.getPrezzo() + "')");
 
+        prodotto.setId(id);
+        for (Caratteristica c : prodotto.getCarattristiche()) {
+            db.doQuery("INSERT INTO CaratteristicaProdotto (idProdotto, nomeCaratteristica) "
+                    + "VALUES('" + prodotto.getId() + "','" + c.getNome() + "') "
+                    + "ON DUPLICATE KEY UPDATE    \n"
+                    + "idProdotto='" + prodotto.getId() + "', nomeCaratteristica='" + c.getNome() + "'");
+        }
+    }
 }

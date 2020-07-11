@@ -18,7 +18,9 @@ public class Prodotto {
     private int nPezzi;
     private double prezzo;
     private List<Caratteristica> carattristiche;
-
+    public Prodotto(){
+        
+    }
     public Prodotto(int id, String nome, String marca, Blob immagine, String tipo, String reparto, boolean inVendita, double peso, int nPezzi, double prezzo) {
         this.id = id;
         this.nome = nome;

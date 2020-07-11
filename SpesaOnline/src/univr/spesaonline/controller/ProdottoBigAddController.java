@@ -29,11 +29,12 @@ import univr.spesaonline.model.Caratteristica;
 import univr.spesaonline.model.CaratteristicaDaoImpl;
 import univr.spesaonline.model.Prodotto;
 import univr.spesaonline.model.ProdottoDaoImpl;
+import univr.spesaonline.model.ResponsabileReparto;
 import univr.spesaonline.model.SessionStorage;
 import univr.spesaonline.model.Tipo;
 import univr.spesaonline.model.TipoDaoImpl;
 
-public class ProdottoBigEditableController implements Initializable {
+public class ProdottoBigAddController implements Initializable {
 
     private SessionStorage sessionStorage;
     private ProdottoDaoImpl prodottoDaoImpl;
@@ -77,23 +78,21 @@ public class ProdottoBigEditableController implements Initializable {
         checkBoxList = new ArrayList();
     }
 
-    public void setProdotto(Prodotto p) {
-        this.prodotto = p;
-    }
+    
 
     public void showProdotto() throws SQLException, IOException {
-        nomeProdotto.setText("" + prodotto.getNome());
-        marcaProdotto.setText(prodotto.getMarca());
-        prezzoProdotto.setText("" + prodotto.getPrezzo());
-        pesoProdotto.setText("" + prodotto.getPeso());
-        nPezziProdotto.setText("" + prodotto.getnPezzi());
-        inVenditaProdotto.setSelected(prodotto.isInVendita());
+//        nomeProdotto.setText("" + prodotto.getNome());
+//        marcaProdotto.setText(prodotto.getMarca());
+//        prezzoProdotto.setText("" + prodotto.getPrezzo());
+//        pesoProdotto.setText("" + prodotto.getPeso());
+//        nPezziProdotto.setText("" + prodotto.getnPezzi());
+//        inVenditaProdotto.setSelected(prodotto.isInVendita());
 
-        SpinnerValueFactory<Integer> factory = new SpinnerValueFactory.IntegerSpinnerValueFactory(MIN_VALUE, MAX_VALUE, prodottoDaoImpl.getDisponibilitàProdotto(prodotto.getId()), STEP);
+        SpinnerValueFactory<Integer> factory = new SpinnerValueFactory.IntegerSpinnerValueFactory(MIN_VALUE, MAX_VALUE, 1, STEP);
         disponibilitaProdotto.setValueFactory(factory);
         disponibilitaProdotto.setEditable(true);
 
-        if (prodotto.getImmagine() != null) {
+        /*if (prodotto.getImmagine() != null) {
             Blob aBlob = prodotto.getImmagine();
             InputStream is = null;
             BufferedImage imag = null;
@@ -101,25 +100,18 @@ public class ProdottoBigEditableController implements Initializable {
             imag = ImageIO.read(is);
             Image image1 = SwingFXUtils.toFXImage(imag, null);
             immagineProdotto.setImage(image1);
-        }
-
-        prodotto.setCarattristiche(prodottoDaoImpl.getCaratteristicaByProdotto(prodotto.getId()));
+        }*/
+        
+        
 
         for (Tipo t : tipoDaoImpl.getAllTipo()) {
             tipoProdotto.getItems().add(t.getNome());
         }
-        tipoProdotto.getSelectionModel().select(prodotto.getTipo());
+        
 
         for (Caratteristica c : caratteristicaDaoImpl.getAllCaratteristica()) {
             CheckBox checkBox = new CheckBox();
             checkBox.setText(c.getNome());
-
-            for (Caratteristica cp : prodotto.getCarattristiche()) {
-                if (cp.getNome().equals(c.getNome())) {
-                    checkBox.setSelected(true);
-                }
-            }
-
             checkBoxList.add(checkBox);
             boxCaratteristiche.getChildren().add(checkBox);
         }
@@ -135,6 +127,7 @@ public class ProdottoBigEditableController implements Initializable {
                 newCaratteristiche.add(new Caratteristica(c.getText()));
             }
         }
+        prodotto = new Prodotto();
         prodotto.setNome(nomeProdotto.getText());
         prodotto.setMarca(marcaProdotto.getText());
         prodotto.setTipo(tipoProdotto.getSelectionModel().getSelectedItem().toString());
@@ -143,9 +136,10 @@ public class ProdottoBigEditableController implements Initializable {
         prodotto.setnPezzi(Integer.parseInt(nPezziProdotto.getText()));
         prodotto.setPrezzo(Double.parseDouble(prezzoProdotto.getText()));
         prodotto.setCarattristiche(newCaratteristiche);
-
-        prodottoDaoImpl.updateProdotto(prodotto);
-        prodottoDaoImpl.updateDisponibilitàProdotto(prodotto.getId(), (int) disponibilitaProdotto.getValue());
+        prodotto.setReparto(((ResponsabileReparto)sessionStorage.getResponsabile()).getRuolo());
+        prodottoDaoImpl.newProdotto(prodotto);
+        //prodottoDaoImpl.updateProdotto(prodotto);
+        prodottoDaoImpl.insertDisponibilitàProdotto(prodotto.getId(), (int) disponibilitaProdotto.getValue());
         
         nomeProdotto.setText("");
         marcaProdotto.setText("");
@@ -156,6 +150,8 @@ public class ProdottoBigEditableController implements Initializable {
         final Node source = (Node) event.getSource();
         Stage thisStage = (Stage) source.getScene().getWindow();
         thisStage.close();
+        
+        
     }
 
 }
