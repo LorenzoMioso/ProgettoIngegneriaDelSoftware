@@ -1,5 +1,6 @@
 package univr.spesaonline.model;
 
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -102,7 +103,6 @@ public class ProdottoDaoImpl implements ProdottoDao {
         db.doQuery("UPDATE `Prodotto` SET "
                 + "`nome`='" + prodotto.getNome() + "',"
                 + "`marca`='" + prodotto.getMarca() + "',"
-                //                + "`immagine`='" + prodotto.getImmagine() + "',"
                 + "`tipo`='" + prodotto.getTipo() + "',"
                 + "`reparto`='" + prodotto.getReparto() + "',"
                 + "`inVendita`='" + (prodotto.isInVendita() ? 1 : 0) + "',"
@@ -110,6 +110,11 @@ public class ProdottoDaoImpl implements ProdottoDao {
                 + "`nPezzi`='" + prodotto.getnPezzi() + "',"
                 + "`prezzo`='" + prodotto.getPrezzo() + "'"
                 + " WHERE id ='" + prodotto.getId() + "'");
+
+        String query = String.format("UPDATE Prodotto set immagine = ? WHERE id = %d", prodotto.getId());
+        PreparedStatement pstmt = db.getPreparedStatement(query);
+        pstmt.setBlob(1, prodotto.getImmagine());
+        pstmt.executeUpdate();
 
         for (Caratteristica c : prodotto.getCarattristiche()) {
             db.doQuery("INSERT INTO CaratteristicaProdotto (idProdotto, nomeCaratteristica) "

@@ -106,4 +106,9 @@ public class OverviewResponsabileProdottiController implements Initializable {
         showProductSmall();
     }
 
+    @FXML
+    private void handleMouseClickRefresh(MouseEvent event) throws SQLException, IOException {
+        showAllProductSmall();
+    }
+
 }
