@@ -295,7 +295,9 @@ public class CatalogController extends Observer implements Stageable, Initializa
             imageRegister.setVisible(true);
         }
     }
-
+    public void handleMouseClickRefresh(MouseEvent evt) throws SQLException, IOException{
+        showAllProductSmall();
+    }
     @Override
     public void update() {
         imageVisibility();

@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.TilePane?>
 
-<AnchorPane prefHeight="700.0" prefWidth="900.0"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="univr.spesaonline.controller.CatalogController" stylesheets="@bootstrap3.css">
+<AnchorPane prefHeight="700.0" prefWidth="900.0" stylesheets="@bootstrap3.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="univr.spesaonline.controller.CatalogController">
     <children>
         <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="585.0" prefWidth="890.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
             <center>
@@ -104,12 +104,13 @@
                 </GridPane>
             </left>
             <top>
-                <GridPane BorderPane.alignment="CENTER">
+                <GridPane prefHeight="30.0" prefWidth="862.0" BorderPane.alignment="CENTER">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="330.0" minWidth="330.0" prefWidth="330.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
                     </columnConstraints>
                     <rowConstraints>
@@ -121,6 +122,11 @@
                   <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#handleMouseClickCerca" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
                      <image>
                         <Image url="@../../../icons/search-black-24dp/2x/outline_search_black_24dp.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="refresh" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#handleMouseClickRefresh" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4">
+                     <image>
+                        <Image url="@../../../icons/refresh-black-24dp/2x/outline_refresh_black_24dp.png" />
                      </image>
                   </ImageView>
                     </children>

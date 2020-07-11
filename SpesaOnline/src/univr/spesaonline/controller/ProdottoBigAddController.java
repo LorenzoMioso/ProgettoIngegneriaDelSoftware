@@ -72,6 +72,7 @@ public class ProdottoBigAddController implements Initializable {
     Spinner disponibilitaProdotto;
     @FXML
     Label result;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         sessionStorage = Main.getSessionStorage();
@@ -80,8 +81,6 @@ public class ProdottoBigAddController implements Initializable {
         caratteristicaDaoImpl = new CaratteristicaDaoImpl();
         checkBoxList = new ArrayList();
     }
-
-    
 
     public void showProdotto() throws SQLException, IOException {
 //        nomeProdotto.setText("" + prodotto.getNome());
@@ -104,13 +103,9 @@ public class ProdottoBigAddController implements Initializable {
             Image image1 = SwingFXUtils.toFXImage(imag, null);
             immagineProdotto.setImage(image1);
         }*/
-        
-        
-
         for (Tipo t : tipoDaoImpl.getAllTipo()) {
             tipoProdotto.getItems().add(t.getNome());
         }
-        
 
         for (Caratteristica c : caratteristicaDaoImpl.getAllCaratteristica()) {
             CheckBox checkBox = new CheckBox();
@@ -124,43 +119,20 @@ public class ProdottoBigAddController implements Initializable {
     @FXML
     private void handleMouseClickSave(MouseEvent event) throws SQLException {
         List<Caratteristica> newCaratteristiche = new ArrayList<>();
-
+     
         for (CheckBox c : checkBoxList) {
             if (c.isSelected()) {
                 newCaratteristiche.add(new Caratteristica(c.getText()));
             }
         }
         prodotto = new Prodotto();
-        if(nomeProdotto.getText() != null ){
-            if(marcaProdotto.getText() != null){
-                if(tipoProdotto.getSelectionModel().isEmpty() != true){
-                    if(pesoProdotto.getText() != null){
-                        try {
-                               Double.parseDouble(pesoProdotto.getText());
-                        }
-                        catch (NumberFormatException ex)
-                        {
-                            result.setText("Errore nel peso sono stati inseriti dei caratteri invece di un numero!");
-                            result.setTextFill(Color.web("red"));
-                        }
-                        if(nPezziProdotto.getText() != null){
-                            try {
-                               Integer.parseInt(nPezziProdotto.getText());
-                            }
-                            catch (NumberFormatException ex)
-                            {
-                                result.setText("Errore nel numero di pezzi sono stati inseriti dei caratteri invece di un numero!");
-                                result.setTextFill(Color.web("red"));
-                            }
-                            if(prezzoProdotto.getText() != null){
-                                try {
-                                    Double.parseDouble(pesoProdotto.getText());
-                                }
-                                catch (NumberFormatException ex)
-                                {
-                                    result.setText("Errore nel prezzo sono stati inseriti dei caratteri invece di un numero!");
-                                    result.setTextFill(Color.web("red"));
-                                }
+        if (nomeProdotto.getText() != null) {
+            if (marcaProdotto.getText() != null) {
+                if (tipoProdotto.getSelectionModel().isEmpty() != true) {
+                    if (isInteger(nPezziProdotto.getText()) == true) {
+                        if (isDouble(pesoProdotto.getText()) == true) {
+                            if (isDouble(prezzoProdotto.getText()) == true) {
+
                                 prodotto.setNome(nomeProdotto.getText());
                                 prodotto.setMarca(marcaProdotto.getText());
                                 prodotto.setTipo(tipoProdotto.getSelectionModel().getSelectedItem().toString());
@@ -169,7 +141,7 @@ public class ProdottoBigAddController implements Initializable {
                                 prodotto.setnPezzi(Integer.parseInt(nPezziProdotto.getText()));
                                 prodotto.setPrezzo(Double.parseDouble(prezzoProdotto.getText()));
                                 prodotto.setCarattristiche(newCaratteristiche);
-                                prodotto.setReparto(((ResponsabileReparto)sessionStorage.getResponsabile()).getRuolo());
+                                prodotto.setReparto(((ResponsabileReparto) sessionStorage.getResponsabile()).getRuolo());
                                 prodottoDaoImpl.newProdotto(prodotto);
                                 //prodottoDaoImpl.updateProdotto(prodotto);
                                 prodottoDaoImpl.insertDisponibilitàProdotto(prodotto.getId(), (int) disponibilitaProdotto.getValue());
@@ -183,36 +155,57 @@ public class ProdottoBigAddController implements Initializable {
                                 final Node source = (Node) event.getSource();
                                 Stage thisStage = (Stage) source.getScene().getWindow();
                                 thisStage.close();
-                            }else{
-                                result.setText("Errore prezzo prodotto non inserito!");
+
+                            } else {
+                                result.setText("Errore prezzo del prodotto non inserito o contiene dei caratteri!");
                                 result.setTextFill(Color.web("red"));
                             }
-                        }else{
-                            result.setText("Errore numero pezzi del prodotto non inserito!");
+                        } else {
+                            result.setText("Errore peso del prodotto non inserito o contiene dei caratteri!");
                             result.setTextFill(Color.web("red"));
                         }
-                    }else{
-                        result.setText("Errore peso prodotto non inserito!");
+                    } else {
+                        result.setText("Errore numero pezzi del prodotto non inserito o contiene dei caratteri!");
                         result.setTextFill(Color.web("red"));
                     }
-                }else{
+                } else {
                     result.setText("Errore tipo prodotto non inserito!");
                     result.setTextFill(Color.web("red"));
                 }
-            }else{
-                
+            } else {
+
                 result.setText("Errore marca prodotto non inserita!");
                 result.setTextFill(Color.web("red"));
 
             }
-        }else{
+        } else {
             result.setText("Errore nome prodotto non inserito!");
             result.setTextFill(Color.web("red"));
         }
-            
-        
-        
-        
+
     }
 
+    public static boolean isInteger(String s) {
+        try {
+            Integer.parseInt(s);
+        } catch (NumberFormatException e) {
+            return false;
+        } catch (NullPointerException e) {
+            return false;
+        }
+        // only got here if we didn't return false
+        return true;
+    }
+
+    public static boolean isDouble(String s) {
+        try {
+            Double.parseDouble(s);
+        } catch (NumberFormatException e) {
+            return false;
+        } catch (NullPointerException e) {
+            return false;
+        }
+        // only got here if we didn't return false
+        return true;
+    }
 }

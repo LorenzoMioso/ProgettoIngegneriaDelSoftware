@@ -84,7 +84,7 @@ public class LoginResponsabileController implements Stageable, Initializable {
 
     @FXML
     private void handleOnActionBack(ActionEvent event) {
-        stage.setScene(Main.getScenes().get(SceneName.CATALOG).getScene());
+        stage.setScene(Main.getScenes().get(SceneName.START_SCREEN).getScene());
     }
 
 }
