@@ -42,6 +42,7 @@
                     </GridPane.margin>
                 </Button>
             <Label fx:id="prezzoProdotto" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="prezzo" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="disponibilitàProdotto" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="disponibilità" GridPane.rowIndex="2" />
             </children>
             <opaqueInsets>
                 <Insets />

@@ -77,7 +77,6 @@ public class SelectDataOraConsegnaController implements Initializable, Stageable
 
         }
         comboData.getItems().setAll(deliveryDate);
-
     }
 
     @Override
@@ -93,7 +92,6 @@ public class SelectDataOraConsegnaController implements Initializable, Stageable
     }
 
     public void handleMouseClickConferma(MouseEvent evt) throws ParseException, SQLException {
-
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         Date date = df.parse((String) comboData.getValue());
 
@@ -103,33 +101,35 @@ public class SelectDataOraConsegnaController implements Initializable, Stageable
         DateFormat sdf = new SimpleDateFormat("hh:mm");
         Date dateBegin = sdf.parse(timeBegin);
         Date dateEnd = sdf.parse(timeEnd);
-        if (dateBegin.compareTo(dateEnd) == 1) {
-            result.setText("Errore la data di fine viene prima di quella di inizio");
-            result.setTextFill(Color.web("red"));
-        } else if (dateBegin.compareTo(dateEnd) == 0) {
-            result.setText("Errore le date di inizio e fine sono uguali");
-            result.setTextFill(Color.web("red"));
-        } else {//date di inizio e fine sono corrette
-            result.setText("La spesa è stata evasa");
-            result.setTextFill(Color.web("green"));
-            timeBegin += ":00";
-            timeEnd += ":00";
-            Time b = Time.valueOf(timeBegin);
-            Time e = Time.valueOf(timeEnd);
-            java.sql.Date sDate = new java.sql.Date(date.getTime());
-            Spesa s = new Spesa(sDate, b, e, sessionStorage.getCarrello().getPrezzoTot(), (int) sessionStorage.getCarrello().getPrezzoTot(), (Utente) sessionStorage.getUtente(), sessionStorage.getCarrello().getProdotti(), "In preparazione");
-            SpesaDaoImpl sdi = new SpesaDaoImpl();
-            TesseraFedeltaDaoImpl fedeltaDaoImpl = new TesseraFedeltaDaoImpl();
-            sessionStorage.setTesseraFedelta(fedeltaDaoImpl.getTesseraFromUser((Utente) sessionStorage.getUtente()));
-            sdi.insertSpesa(s);
-
-            final Node source = (Node) evt.getSource();
-            Stage thisStage = (Stage) source.getScene().getWindow();
-            thisStage.close();
-            stage.setScene(Main.getScenes().get(SceneName.CATALOG).getScene());
-
-            sessionStorage.getCarrello().emptyCarrello();
+        switch (dateBegin.compareTo(dateEnd)) {
+            case 1:
+                result.setText("Errore la data di fine viene prima di quella di inizio");
+                result.setTextFill(Color.web("red"));
+                break;
+            case 0:
+                result.setText("Errore le date di inizio e fine sono uguali");
+                result.setTextFill(Color.web("red"));
+                break;
+            default:
+                //date di inizio e fine sono corrette
+                result.setText("La spesa è stata evasa");
+                result.setTextFill(Color.web("green"));
+                timeBegin += ":00";
+                timeEnd += ":00";
+                Time b = Time.valueOf(timeBegin);
+                Time e = Time.valueOf(timeEnd);
+                java.sql.Date sDate = new java.sql.Date(date.getTime());
+                Spesa s = new Spesa(sDate, b, e, sessionStorage.getCarrello().getPrezzoTot(), (int) sessionStorage.getCarrello().getPrezzoTot(), (Utente) sessionStorage.getUtente(), sessionStorage.getCarrello().getProdotti(), "In preparazione");
+                SpesaDaoImpl sdi = new SpesaDaoImpl();
+                TesseraFedeltaDaoImpl fedeltaDaoImpl = new TesseraFedeltaDaoImpl();
+                sessionStorage.setTesseraFedelta(fedeltaDaoImpl.getTesseraFromUser((Utente) sessionStorage.getUtente()));
+                sdi.insertSpesa(s);
+                final Node source = (Node) evt.getSource();
+                Stage thisStage = (Stage) source.getScene().getWindow();
+                thisStage.close();
+                stage.setScene(Main.getScenes().get(SceneName.CATALOG).getScene());
+                sessionStorage.getCarrello().emptyCarrello();
+                break;
         }
-
     }
 }

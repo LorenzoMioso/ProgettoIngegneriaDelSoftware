@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.TilePane?>
 
-<AnchorPane prefHeight="700.0" prefWidth="900.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="univr.spesaonline.controller.CatalogController">
+<AnchorPane prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="univr.spesaonline.controller.CatalogController">
     <children>
         <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="585.0" prefWidth="890.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
             <center>
@@ -120,6 +120,11 @@
                         <Button fx:id="cerca" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleMouseClickCerca" GridPane.columnIndex="3" />
                         <TextField fx:id="searchBar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="641.0" GridPane.columnIndex="2" />
                         <ComboBox fx:id="combobox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="178.0" promptText="Cerca per:" GridPane.columnIndex="1" />
+                  <ImageView fitHeight="29.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
+                     <image>
+                        <Image url="@../icons/search-black-18dp/2x/outline_search_black_18dp.png" />
+                     </image>
+                  </ImageView>
                     </children>
                 </GridPane>
             </top>
@@ -154,7 +159,7 @@
                                 <Insets />
                             </GridPane.margin>
                         </Button>
-                        <Button fx:id="loginButton"  alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleMouseClickLogin" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <Button fx:id="loginButton" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleMouseClickLogin" GridPane.columnIndex="1" GridPane.rowIndex="3">
                             <graphic>
                                 <ImageView fitHeight="23.0" fitWidth="23.0" preserveRatio="true">
                                     <image>
@@ -166,7 +171,7 @@
                                 <Insets />
                             </GridPane.margin>
                         </Button>
-                        <Button  fx:id="registerButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleMouseClickRegister" prefHeight="570.0" prefWidth="45.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Button fx:id="registerButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleMouseClickRegister" prefHeight="570.0" prefWidth="45.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                   <Button fx:id="overviewButton" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleMouseClickOverviewUtente" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <graphic>
                         <ImageView fitHeight="23.0" fitWidth="23.0" preserveRatio="true">

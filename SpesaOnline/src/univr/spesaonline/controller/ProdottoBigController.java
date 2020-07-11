@@ -54,7 +54,8 @@ public class ProdottoBigController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         sessionStorage = Main.getSessionStorage();
         prodottoDaoImpl = new ProdottoDaoImpl();
-        SpinnerValueFactory<Integer> factory = new SpinnerValueFactory.IntegerSpinnerValueFactory(MIN_VALUE, MAX_VALUE, INITIAL_VALUE, STEP);
+        SpinnerValueFactory<Integer> factory = new SpinnerValueFactory.IntegerSpinnerValueFactory(MIN_VALUE, MAX_VALUE,
+                INITIAL_VALUE, STEP);
         quantità.setValueFactory(factory);
         quantità.setEditable(true);
     }
