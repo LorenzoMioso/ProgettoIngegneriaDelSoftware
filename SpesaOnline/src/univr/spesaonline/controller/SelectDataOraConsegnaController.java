@@ -94,42 +94,61 @@ public class SelectDataOraConsegnaController implements Initializable, Stageable
 
     public void handleMouseClickConferma(MouseEvent evt) throws ParseException, SQLException {
 
-        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-        Date date = df.parse((String) comboData.getValue());
-
-        String timeBegin = (String) comboOraInizio.getValue();
-        String timeEnd = (String) comboOraFine.getValue();
-
-        DateFormat sdf = new SimpleDateFormat("hh:mm");
-        Date dateBegin = sdf.parse(timeBegin);
-        Date dateEnd = sdf.parse(timeEnd);
-        if (dateBegin.compareTo(dateEnd) == 1) {
-            result.setText("Errore la data di fine viene prima di quella di inizio");
+        
+        if (comboData.getSelectionModel().isEmpty() == true  ){
+            result.setText("Errore non hai selezionato la data di consegna !");
             result.setTextFill(Color.web("red"));
-        } else if (dateBegin.compareTo(dateEnd) == 0) {
-            result.setText("Errore le date di inizio e fine sono uguali");
+        }else if(comboOraInizio.getSelectionModel().isEmpty() == true){
+            result.setText("Errore non hai selezionato l'ora di inizio della consegna !");
             result.setTextFill(Color.web("red"));
-        } else {//date di inizio e fine sono corrette
-            result.setText("La spesa è stata evasa");
-            result.setTextFill(Color.web("green"));
+        }
+        else if(comboOraFine.getSelectionModel().isEmpty() == true){
+            
+            result.setText("Errore non hai selezionato l'ora di fine della consegna !");
+            result.setTextFill(Color.web("red"));
+        } else {
+            DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+            Date date = df.parse((String) comboData.getValue());
+
+            String timeBegin = (String) comboOraInizio.getValue();
+            String timeEnd = (String) comboOraFine.getValue();
+
             timeBegin += ":00";
             timeEnd += ":00";
             Time b = Time.valueOf(timeBegin);
             Time e = Time.valueOf(timeEnd);
-            java.sql.Date sDate = new java.sql.Date(date.getTime());
-            Spesa s = new Spesa(sDate, b, e, sessionStorage.getCarrello().getPrezzoTot(), (int) sessionStorage.getCarrello().getPrezzoTot(), (Utente) sessionStorage.getUtente(), sessionStorage.getCarrello().getProdotti(), "In preparazione");
-            SpesaDaoImpl sdi = new SpesaDaoImpl();
-            TesseraFedeltaDaoImpl fedeltaDaoImpl = new TesseraFedeltaDaoImpl();
-            sessionStorage.setTesseraFedelta(fedeltaDaoImpl.getTesseraFromUser((Utente) sessionStorage.getUtente()));
-            sdi.insertSpesa(s);
+            switch (b.compareTo(e)) {
+                case 1:
+                    result.setText("Errore la data di fine viene prima di quella di inizio");
+                    result.setTextFill(Color.web("red"));
+                    break;
+                case 0:
+                    result.setText("Errore le date di inizio e fine sono uguali");
+                    result.setTextFill(Color.web("red"));
+                    break;
+                default:
+                    //date di inizio e fine sono corrette
+                    result.setText("La spesa è stata evasa");
+                    result.setTextFill(Color.web("green"));
+                    
+                    java.sql.Date sDate = new java.sql.Date(date.getTime());
+                    Spesa s = new Spesa(sDate, b, e, sessionStorage.getCarrello().getPrezzoTot(), (int) sessionStorage.getCarrello().getPrezzoTot(), (Utente) sessionStorage.getUtente(), sessionStorage.getCarrello().getProdotti(), "In preparazione");
+                    SpesaDaoImpl sdi = new SpesaDaoImpl();
+                    TesseraFedeltaDaoImpl fedeltaDaoImpl = new TesseraFedeltaDaoImpl();
+                    sessionStorage.setTesseraFedelta(fedeltaDaoImpl.getTesseraFromUser((Utente) sessionStorage.getUtente()));
+                    sdi.insertSpesa(s);
+                    result.setText("");
+                    comboData.valueProperty().set(null);
+                    comboOraInizio.valueProperty().set(null);
+                    comboOraFine.valueProperty().set(null);
+                    final Node source = (Node) evt.getSource();
+                    Stage thisStage = (Stage) source.getScene().getWindow();
+                    thisStage.close();
+                    stage.setScene(Main.getScenes().get(SceneName.CATALOG).getScene());
+                    sessionStorage.getCarrello().emptyCarrello();
+                    break;
+            }
 
-            final Node source = (Node) evt.getSource();
-            Stage thisStage = (Stage) source.getScene().getWindow();
-            thisStage.close();
-            stage.setScene(Main.getScenes().get(SceneName.CATALOG).getScene());
-
-            sessionStorage.getCarrello().emptyCarrello();
         }
-
     }
 }
