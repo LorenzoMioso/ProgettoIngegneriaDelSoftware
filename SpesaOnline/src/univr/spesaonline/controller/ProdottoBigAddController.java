@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
@@ -22,6 +23,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import univr.spesaonline.Main;
@@ -68,7 +70,8 @@ public class ProdottoBigAddController implements Initializable {
     VBox boxCaratteristiche;
     @FXML
     Spinner disponibilitaProdotto;
-
+    @FXML
+    Label result;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         sessionStorage = Main.getSessionStorage();
@@ -128,28 +131,86 @@ public class ProdottoBigAddController implements Initializable {
             }
         }
         prodotto = new Prodotto();
-        prodotto.setNome(nomeProdotto.getText());
-        prodotto.setMarca(marcaProdotto.getText());
-        prodotto.setTipo(tipoProdotto.getSelectionModel().getSelectedItem().toString());
-        prodotto.setInVendita(inVenditaProdotto.isSelected());
-        prodotto.setPeso(Double.parseDouble(pesoProdotto.getText()));
-        prodotto.setnPezzi(Integer.parseInt(nPezziProdotto.getText()));
-        prodotto.setPrezzo(Double.parseDouble(prezzoProdotto.getText()));
-        prodotto.setCarattristiche(newCaratteristiche);
-        prodotto.setReparto(((ResponsabileReparto)sessionStorage.getResponsabile()).getRuolo());
-        prodottoDaoImpl.newProdotto(prodotto);
-        //prodottoDaoImpl.updateProdotto(prodotto);
-        prodottoDaoImpl.insertDisponibilitàProdotto(prodotto.getId(), (int) disponibilitaProdotto.getValue());
+        if(nomeProdotto.getText() != null ){
+            if(marcaProdotto.getText() != null){
+                if(tipoProdotto.getSelectionModel().isEmpty() != true){
+                    if(pesoProdotto.getText() != null){
+                        try {
+                               Double.parseDouble(pesoProdotto.getText());
+                        }
+                        catch (NumberFormatException ex)
+                        {
+                            result.setText("Errore nel peso sono stati inseriti dei caratteri invece di un numero!");
+                            result.setTextFill(Color.web("red"));
+                        }
+                        if(nPezziProdotto.getText() != null){
+                            try {
+                               Integer.parseInt(nPezziProdotto.getText());
+                            }
+                            catch (NumberFormatException ex)
+                            {
+                                result.setText("Errore nel numero di pezzi sono stati inseriti dei caratteri invece di un numero!");
+                                result.setTextFill(Color.web("red"));
+                            }
+                            if(prezzoProdotto.getText() != null){
+                                try {
+                                    Double.parseDouble(pesoProdotto.getText());
+                                }
+                                catch (NumberFormatException ex)
+                                {
+                                    result.setText("Errore nel prezzo sono stati inseriti dei caratteri invece di un numero!");
+                                    result.setTextFill(Color.web("red"));
+                                }
+                                prodotto.setNome(nomeProdotto.getText());
+                                prodotto.setMarca(marcaProdotto.getText());
+                                prodotto.setTipo(tipoProdotto.getSelectionModel().getSelectedItem().toString());
+                                prodotto.setInVendita(inVenditaProdotto.isSelected());
+                                prodotto.setPeso(Double.parseDouble(pesoProdotto.getText()));
+                                prodotto.setnPezzi(Integer.parseInt(nPezziProdotto.getText()));
+                                prodotto.setPrezzo(Double.parseDouble(prezzoProdotto.getText()));
+                                prodotto.setCarattristiche(newCaratteristiche);
+                                prodotto.setReparto(((ResponsabileReparto)sessionStorage.getResponsabile()).getRuolo());
+                                prodottoDaoImpl.newProdotto(prodotto);
+                                //prodottoDaoImpl.updateProdotto(prodotto);
+                                prodottoDaoImpl.insertDisponibilitàProdotto(prodotto.getId(), (int) disponibilitaProdotto.getValue());
+
+                                nomeProdotto.setText("");
+                                marcaProdotto.setText("");
+                                tipoProdotto.valueProperty().set(null);
+                                pesoProdotto.setText("");
+                                nPezziProdotto.setText("");
+
+                                final Node source = (Node) event.getSource();
+                                Stage thisStage = (Stage) source.getScene().getWindow();
+                                thisStage.close();
+                            }else{
+                                result.setText("Errore prezzo prodotto non inserito!");
+                                result.setTextFill(Color.web("red"));
+                            }
+                        }else{
+                            result.setText("Errore numero pezzi del prodotto non inserito!");
+                            result.setTextFill(Color.web("red"));
+                        }
+                    }else{
+                        result.setText("Errore peso prodotto non inserito!");
+                        result.setTextFill(Color.web("red"));
+                    }
+                }else{
+                    result.setText("Errore tipo prodotto non inserito!");
+                    result.setTextFill(Color.web("red"));
+                }
+            }else{
+                
+                result.setText("Errore marca prodotto non inserita!");
+                result.setTextFill(Color.web("red"));
+
+            }
+        }else{
+            result.setText("Errore nome prodotto non inserito!");
+            result.setTextFill(Color.web("red"));
+        }
+            
         
-        nomeProdotto.setText("");
-        marcaProdotto.setText("");
-        tipoProdotto.valueProperty().set(null);
-        pesoProdotto.setText("");
-        nPezziProdotto.setText("");
-        
-        final Node source = (Node) event.getSource();
-        Stage thisStage = (Stage) source.getScene().getWindow();
-        thisStage.close();
         
         
     }

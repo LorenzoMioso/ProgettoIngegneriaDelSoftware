@@ -126,7 +126,6 @@ public class OverviewResponsabileProdottiController implements Initializable {
 
         //ctrl.setProdotto(prodotto);
         ctrl.showProdotto();
-
     }
 
     @FXML
