@@ -39,7 +39,7 @@
                 <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <ImageView fx:id="immagineProdotto" fitHeight="240.0" fitWidth="238.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowSpan="2147483647" GridPane.valignment="CENTER" />
+                <ImageView fx:id="immagineProdotto" fitHeight="240.0" fitWidth="238.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowSpan="11" GridPane.valignment="CENTER" />
             
             
                 <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Marca:" GridPane.columnIndex="1" />
@@ -72,6 +72,7 @@
             <Spinner fx:id="disponibilitaProdotto" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" GridPane.rowIndex="6" />
             <CheckBox fx:id="inVenditaProdotto" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="In vendita?" GridPane.columnIndex="2" GridPane.rowIndex="7" />
             <Label fx:id="result" alignment="CENTER" prefHeight="30.0" prefWidth="516.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="8" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#handleMouseClickSelectFile" text="Scegli un'immagine" GridPane.rowIndex="12" />
             </children>
         </GridPane>
     </children>

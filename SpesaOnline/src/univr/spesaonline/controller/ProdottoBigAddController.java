@@ -1,15 +1,14 @@
 package univr.spesaonline.controller;
 
-import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -24,8 +23,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javax.imageio.ImageIO;
+import javax.sql.rowset.serial.SerialBlob;
 import univr.spesaonline.Main;
 import univr.spesaonline.model.Caratteristica;
 import univr.spesaonline.model.CaratteristicaDaoImpl;
@@ -80,29 +80,14 @@ public class ProdottoBigAddController implements Initializable {
         tipoDaoImpl = new TipoDaoImpl();
         caratteristicaDaoImpl = new CaratteristicaDaoImpl();
         checkBoxList = new ArrayList();
+        prodotto = new Prodotto();
     }
 
     public void showProdotto() throws SQLException, IOException {
-//        nomeProdotto.setText("" + prodotto.getNome());
-//        marcaProdotto.setText(prodotto.getMarca());
-//        prezzoProdotto.setText("" + prodotto.getPrezzo());
-//        pesoProdotto.setText("" + prodotto.getPeso());
-//        nPezziProdotto.setText("" + prodotto.getnPezzi());
-//        inVenditaProdotto.setSelected(prodotto.isInVendita());
-
         SpinnerValueFactory<Integer> factory = new SpinnerValueFactory.IntegerSpinnerValueFactory(MIN_VALUE, MAX_VALUE, 1, STEP);
         disponibilitaProdotto.setValueFactory(factory);
         disponibilitaProdotto.setEditable(true);
 
-        /*if (prodotto.getImmagine() != null) {
-            Blob aBlob = prodotto.getImmagine();
-            InputStream is = null;
-            BufferedImage imag = null;
-            is = aBlob.getBinaryStream(1, aBlob.length());
-            imag = ImageIO.read(is);
-            Image image1 = SwingFXUtils.toFXImage(imag, null);
-            immagineProdotto.setImage(image1);
-        }*/
         for (Tipo t : tipoDaoImpl.getAllTipo()) {
             tipoProdotto.getItems().add(t.getNome());
         }
@@ -119,7 +104,7 @@ public class ProdottoBigAddController implements Initializable {
     @FXML
     private void handleMouseClickSave(MouseEvent event) throws SQLException {
         List<Caratteristica> newCaratteristiche = new ArrayList<>();
-     
+
         for (CheckBox c : checkBoxList) {
             if (c.isSelected()) {
                 newCaratteristiche.add(new Caratteristica(c.getText()));
@@ -142,8 +127,7 @@ public class ProdottoBigAddController implements Initializable {
                                 prodotto.setPrezzo(Double.parseDouble(prezzoProdotto.getText()));
                                 prodotto.setCarattristiche(newCaratteristiche);
                                 prodotto.setReparto(((ResponsabileReparto) sessionStorage.getResponsabile()).getRuolo());
-                                prodottoDaoImpl.newProdotto(prodotto);
-                                //prodottoDaoImpl.updateProdotto(prodotto);
+                                prodottoDaoImpl.insertProdotto(prodotto);
                                 prodottoDaoImpl.insertDisponibilitàProdotto(prodotto.getId(), (int) disponibilitaProdotto.getValue());
 
                                 nomeProdotto.setText("");
@@ -155,7 +139,6 @@ public class ProdottoBigAddController implements Initializable {
                                 final Node source = (Node) event.getSource();
                                 Stage thisStage = (Stage) source.getScene().getWindow();
                                 thisStage.close();
-
                             } else {
                                 result.setText("Errore prezzo del prodotto non inserito o contiene dei caratteri!");
                                 result.setTextFill(Color.web("red"));
@@ -182,6 +165,43 @@ public class ProdottoBigAddController implements Initializable {
             result.setText("Errore nome prodotto non inserito!");
             result.setTextFill(Color.web("red"));
         }
+    }
+
+    @FXML
+    private void handleMouseClickSelectFile(MouseEvent event) throws SQLException, IOException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Scegli un immagine");
+        fileChooser.setInitialDirectory(
+                new File(System.getProperty("user.home"))
+        );
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("All Images", "*.*"),
+                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                new FileChooser.ExtensionFilter("PNG", "*.png")
+        );
+        Stage chooserWindow = new Stage();
+        File selectedFile = fileChooser.showOpenDialog(chooserWindow);
+
+        //file to blob
+        byte[] fileContent = new byte[(int) selectedFile.length()];
+        FileInputStream inputStream = null;
+        // create an input stream pointing to the file
+        inputStream = new FileInputStream(selectedFile);
+        // read the contents of file into byte array
+        inputStream.read(fileContent);
+        // close input stream
+        if (inputStream != null) {
+            inputStream.close();
+        }
+        Blob blob = new SerialBlob(fileContent);
+
+        prodotto.setImmagine(blob);
+
+        //show image 
+        Image image = new Image(selectedFile.toURI().toString());
+        immagineProdotto.setImage(image);
+
+        showProdotto();
 
     }
 
