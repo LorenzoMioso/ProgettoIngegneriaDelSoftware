@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package univr.spesaonline.controller;
 
 import java.net.URL;
@@ -26,7 +21,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import univr.spesaonline.Main;
-import univr.spesaonline.model.Carrello;
 import univr.spesaonline.model.SceneName;
 import univr.spesaonline.model.SessionStorage;
 import univr.spesaonline.model.Spesa;
@@ -77,7 +71,6 @@ public class SelectDataOraConsegnaController implements Initializable, Stageable
 
         }
         comboData.getItems().setAll(deliveryDate);
-
     }
 
     @Override
@@ -93,17 +86,14 @@ public class SelectDataOraConsegnaController implements Initializable, Stageable
     }
 
     public void handleMouseClickConferma(MouseEvent evt) throws ParseException, SQLException {
-
-        
-        if (comboData.getSelectionModel().isEmpty() == true  ){
+        if (comboData.getSelectionModel().isEmpty() == true) {
             result.setText("Errore non hai selezionato la data di consegna !");
             result.setTextFill(Color.web("red"));
-        }else if(comboOraInizio.getSelectionModel().isEmpty() == true){
+        } else if (comboOraInizio.getSelectionModel().isEmpty() == true) {
             result.setText("Errore non hai selezionato l'ora di inizio della consegna !");
             result.setTextFill(Color.web("red"));
-        }
-        else if(comboOraFine.getSelectionModel().isEmpty() == true){
-            
+        } else if (comboOraFine.getSelectionModel().isEmpty() == true) {
+
             result.setText("Errore non hai selezionato l'ora di fine della consegna !");
             result.setTextFill(Color.web("red"));
         } else {
@@ -130,7 +120,7 @@ public class SelectDataOraConsegnaController implements Initializable, Stageable
                     //date di inizio e fine sono corrette
                     result.setText("La spesa è stata evasa");
                     result.setTextFill(Color.web("green"));
-                    
+
                     java.sql.Date sDate = new java.sql.Date(date.getTime());
                     Spesa s = new Spesa(sDate, b, e, sessionStorage.getCarrello().getPrezzoTot(), (int) sessionStorage.getCarrello().getPrezzoTot(), (Utente) sessionStorage.getUtente(), sessionStorage.getCarrello().getProdotti(), "In preparazione");
                     SpesaDaoImpl sdi = new SpesaDaoImpl();

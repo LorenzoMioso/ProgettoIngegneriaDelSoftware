@@ -11,7 +11,6 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -20,16 +19,19 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import univr.spesaonline.Main;
 
 import univr.spesaonline.model.Prodotto;
+import univr.spesaonline.model.ProdottoDaoImpl;
 import univr.spesaonline.model.SessionStorage;
 
 public class ProdottoSmallController implements Initializable {
 
     private SessionStorage sessionStorage;
+    private ProdottoDaoImpl prodottoDaoImpl;
     private Prodotto prodotto;
     private static final int MIN_VALUE = 1;
     private static final int MAX_VALUE = 10;
@@ -43,9 +45,7 @@ public class ProdottoSmallController implements Initializable {
     @FXML
     Label prezzoProdotto;
     @FXML
-    Label pesoProdotto;
-    @FXML
-    Label numeroPezzi;
+    Label disponibilitàProdotto;
     @FXML
     ImageView immagineProdotto;
     @FXML
@@ -56,6 +56,7 @@ public class ProdottoSmallController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         sessionStorage = Main.getSessionStorage();
+        prodottoDaoImpl = new ProdottoDaoImpl();
         SpinnerValueFactory<Integer> factory = new SpinnerValueFactory.IntegerSpinnerValueFactory(MIN_VALUE, MAX_VALUE, INITIAL_VALUE, STEP);
         quantità.setValueFactory(factory);
         quantità.setEditable(true);
@@ -69,6 +70,15 @@ public class ProdottoSmallController implements Initializable {
         nomeProdotto.setText(prodotto.getNome());
         marcaProdotto.setText(prodotto.getMarca());
         prezzoProdotto.setText(prodotto.getPrezzo() + " €");
+
+        int disp = prodottoDaoImpl.getDisponibilitàProdotto(prodotto.getId());
+        if (disp == 0) {
+            disponibilitàProdotto.setText("Non disponibile");
+            disponibilitàProdotto.setTextFill(Color.web("red"));
+        } else {
+            disponibilitàProdotto.setText("Disponibile");
+            disponibilitàProdotto.setTextFill(Color.web("green"));
+        }
 
         if (prodotto.getImmagine() != null) {
             Blob aBlob = prodotto.getImmagine();

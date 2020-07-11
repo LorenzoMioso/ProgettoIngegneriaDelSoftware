@@ -101,6 +101,11 @@ public class CartController extends Observer implements Stageable, Initializable
                     forward = false;
                 }
             }
+            if (sessionStorage.getCarrello().getProdotti().isEmpty()) {
+                result.setText("Devi aggiungere dei prodotti.");
+                result.setTextFill(Color.web("red"));
+                forward = false;
+            }
             if (forward) {
                 final Node source = (Node) event.getSource();
                 Stage stage = (Stage) source.getScene().getWindow();

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package univr.spesaonline.controller;
 
 import java.io.IOException;
@@ -44,10 +39,6 @@ import univr.spesaonline.model.TesseraFedeltaDaoImpl;
 import univr.spesaonline.model.Utente;
 import univr.spesaonline.model.UtenteDaoImpl;
 
-/**
- *
- * @author elisa
- */
 public class OverviewUtenteController extends Observer implements Stageable, Initializable {
 
     private Stage stage;
@@ -58,10 +49,6 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
     private TesseraFedelta tf = null;
     private SpesaDaoImpl spesaDaoImpl = null;
     private List<Spesa> speseList;
-    /**
-     *
-     * @param stage
-     */
     @FXML
     Label nomeCognome;
     @FXML
@@ -76,7 +63,7 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
     ToggleButton btnLogOut;
     @FXML
     ToggleButton btnBack;
-    //pane
+    // pane
     @FXML
     Pane profilo;
     @FXML
@@ -85,7 +72,7 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
     Pane spese;
     @FXML
     Pane modificaProfilo;
-    //Elementi del pane profilo
+    // Elementi del pane profilo
     @FXML
     Label labelNome;
     @FXML
@@ -106,10 +93,10 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
     Label labelTelefono;
     @FXML
     Label labelPagamentoPreferito;
-    //elementi del pane saldoPunti
+    // elementi del pane saldoPunti
     @FXML
     Label labelSaldoPunti;
-    //elementi di pane modificaProfilo
+    // elementi di pane modificaProfilo
     @FXML
     TextField textNome;
     @FXML
@@ -132,7 +119,7 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
     ComboBox comboPagamento;
     @FXML
     Label result;
-    //elementi di del pane di spese
+    // elementi di del pane di spese
     @FXML
     ScrollPane speseScrollPane;
     @FXML
@@ -150,9 +137,9 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
         sessionStorage.getUtente().attach(this);
         sessionStorage.attach(this);
         setNomeCognome();
-        //all' inizio rendo visibile profilo
+        // all' inizio rendo visibile profilo
         setProfiloView();
-        //aggiungo gli item alla comboBox
+        // aggiungo gli item alla comboBox
         comboPagamento.getItems().setAll("Carta di Credito", "PayPal", "Alla consegna");
         fedeltaDaoImpl = new TesseraFedeltaDaoImpl();
         spesaDaoImpl = new SpesaDaoImpl();
@@ -238,8 +225,7 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
         managePane("modificaProfilo");
         textNome.setText(utente.getNome());
         textCognome.setText(utente.getCognome());
-        LocalDate localDate = Instant.ofEpochMilli(utente.getDataNascita().getTime())
-                .atZone(ZoneId.systemDefault())
+        LocalDate localDate = Instant.ofEpochMilli(utente.getDataNascita().getTime()).atZone(ZoneId.systemDefault())
                 .toLocalDate();
         datePickerNascita.setValue(localDate);
         textVia.setText(utente.getVia());
@@ -364,8 +350,8 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
     }
 
     public void handleMouseClickBack(MouseEvent evt) {
-//        btnProfilo.setSelected(true);
-//        btnBack.setSelected(false);
+        // btnProfilo.setSelected(true);
+        // btnBack.setSelected(false);
         stage.setScene(Main.getScenes().get(SceneName.CATALOG).getScene());
     }
 
@@ -382,7 +368,7 @@ public class OverviewUtenteController extends Observer implements Stageable, Ini
         } catch (SQLException ex) {
             Logger.getLogger(OverviewUtenteController.class.getName()).log(Level.SEVERE, null, ex);
         }
-//        sessionStorage.setTesseraFedelta(tf);
+        // sessionStorage.setTesseraFedelta(tf);
     }
 
 }
