@@ -36,7 +36,7 @@ public class ProdottoDaoImpl implements ProdottoDao {
     }
 
     public List<Caratteristica> getCaratteristicaByProdotto(int id) throws SQLException {
-        
+
         List<Caratteristica> caratteristiche = new ArrayList<>();
         db.doQuery("select * from CaratteristicaProdotto where idProdotto = " + id);
         while (db.getResultSet().next()) {
@@ -45,7 +45,7 @@ public class ProdottoDaoImpl implements ProdottoDao {
         }
         return caratteristiche;
     }
-  
+
     public List<Prodotto> getProdottoByCaratteristica(String caratterristica) throws SQLException {
         List<Prodotto> catalogo = new ArrayList<>();
         db.doQuery("SELECT *"
@@ -98,7 +98,8 @@ public class ProdottoDaoImpl implements ProdottoDao {
                 + "`disponibilita`='" + disponobilità + "'"
                 + " WHERE idProdotto ='" + id + "'");
     }
-    public void insertDisponibilitàProdotto(int id, int disponibilità) throws SQLException{
+
+    public void insertDisponibilitàProdotto(int id, int disponibilità) throws SQLException {
         db.doQuery("INSERT INTO `Magazzino` (`idProdotto`, `disponibilita`) VALUES "
                 + "('" + id + "','" + disponibilità + "')");
     }
@@ -130,22 +131,16 @@ public class ProdottoDaoImpl implements ProdottoDao {
 
     }
 
-//TODO modificare
-    @Override
-    public void insertProdotto(Prodotto prodotto) throws SQLException {
-        db.doQuery("INSERT INTO `Prodotto` (`id`, `nome`, `marca`, `reparto`, `inVendita`, `peso`,`nPezzi`,`prezzo`) VALUES "
-                + "(NULL, '" + prodotto.getNome() + "', '" + prodotto.getMarca() + "', '" + prodotto.getReparto() + "', '" + prodotto.isInVendita()
-                + "', '" + prodotto.getPeso() + "', '" + prodotto.getnPezzi() + "', '" + prodotto.getPrezzo() + "'),");
-    }
-
     @Override
     public void deleteProdotto(Prodotto prodotto) throws SQLException {
         db.doQuery("DELETE FROM `Prodotto` WHERE id = '" + prodotto.getId() + "'");
 
     }
-    public void newProdotto(Prodotto prodotto) throws SQLException{
-         int id = db.doSpecificQuery("INSERT INTO `Prodotto` (`id`, `nome`, `marca`, `tipo` ,`reparto`, `inVendita`, `peso`,`nPezzi`,`prezzo`) VALUES "
-                + "(NULL, '" + prodotto.getNome() + "', '" + prodotto.getMarca() + "', '"+ prodotto.getTipo()+ "', '" + prodotto.getReparto() + "', '" + (prodotto.isInVendita() ? 1 : 0)
+
+    @Override
+    public void insertProdotto(Prodotto prodotto) throws SQLException {
+        int id = db.doSpecificQuery("INSERT INTO `Prodotto` (`id`, `nome`, `marca`, `tipo` ,`reparto`, `inVendita`, `peso`,`nPezzi`,`prezzo`) VALUES "
+                + "(NULL, '" + prodotto.getNome() + "', '" + prodotto.getMarca() + "', '" + prodotto.getTipo() + "', '" + prodotto.getReparto() + "', '" + (prodotto.isInVendita() ? 1 : 0)
                 + "', '" + prodotto.getPeso() + "', '" + prodotto.getnPezzi() + "', '" + prodotto.getPrezzo() + "')");
 
         prodotto.setId(id);
@@ -155,5 +150,11 @@ public class ProdottoDaoImpl implements ProdottoDao {
                     + "ON DUPLICATE KEY UPDATE    \n"
                     + "idProdotto='" + prodotto.getId() + "', nomeCaratteristica='" + c.getNome() + "'");
         }
+
+        String query = String.format("UPDATE Prodotto set immagine = ? WHERE id = %d", prodotto.getId());
+        PreparedStatement pstmt = db.getPreparedStatement(query);
+        pstmt.setBlob(1, prodotto.getImmagine());
+        pstmt.executeUpdate();
+
     }
 }

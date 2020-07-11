@@ -1,6 +1,8 @@
 package univr.spesaonline.controller;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -24,8 +26,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
+import javax.sql.rowset.serial.SerialBlob;
 import univr.spesaonline.Main;
 import univr.spesaonline.model.Caratteristica;
 import univr.spesaonline.model.CaratteristicaDaoImpl;
@@ -72,6 +76,7 @@ public class ProdottoBigAddController implements Initializable {
     Spinner disponibilitaProdotto;
     @FXML
     Label result;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         sessionStorage = Main.getSessionStorage();
@@ -79,9 +84,8 @@ public class ProdottoBigAddController implements Initializable {
         tipoDaoImpl = new TipoDaoImpl();
         caratteristicaDaoImpl = new CaratteristicaDaoImpl();
         checkBoxList = new ArrayList();
+        prodotto = new Prodotto();
     }
-
-    
 
     public void showProdotto() throws SQLException, IOException {
 //        nomeProdotto.setText("" + prodotto.getNome());
@@ -104,13 +108,9 @@ public class ProdottoBigAddController implements Initializable {
             Image image1 = SwingFXUtils.toFXImage(imag, null);
             immagineProdotto.setImage(image1);
         }*/
-        
-        
-
         for (Tipo t : tipoDaoImpl.getAllTipo()) {
             tipoProdotto.getItems().add(t.getNome());
         }
-        
 
         for (Caratteristica c : caratteristicaDaoImpl.getAllCaratteristica()) {
             CheckBox checkBox = new CheckBox();
@@ -130,34 +130,28 @@ public class ProdottoBigAddController implements Initializable {
                 newCaratteristiche.add(new Caratteristica(c.getText()));
             }
         }
-        prodotto = new Prodotto();
-        if(nomeProdotto.getText() != null ){
-            if(marcaProdotto.getText() != null){
-                if(tipoProdotto.getSelectionModel().isEmpty() != true){
-                    if(pesoProdotto.getText() != null){
+
+        if (nomeProdotto.getText() != null) {
+            if (marcaProdotto.getText() != null) {
+                if (tipoProdotto.getSelectionModel().isEmpty() != true) {
+                    if (pesoProdotto.getText() != null) {
                         try {
-                               Double.parseDouble(pesoProdotto.getText());
-                        }
-                        catch (NumberFormatException ex)
-                        {
+                            Double.parseDouble(pesoProdotto.getText());
+                        } catch (NumberFormatException ex) {
                             result.setText("Errore nel peso sono stati inseriti dei caratteri invece di un numero!");
                             result.setTextFill(Color.web("red"));
                         }
-                        if(nPezziProdotto.getText() != null){
+                        if (nPezziProdotto.getText() != null) {
                             try {
-                               Integer.parseInt(nPezziProdotto.getText());
-                            }
-                            catch (NumberFormatException ex)
-                            {
+                                Integer.parseInt(nPezziProdotto.getText());
+                            } catch (NumberFormatException ex) {
                                 result.setText("Errore nel numero di pezzi sono stati inseriti dei caratteri invece di un numero!");
                                 result.setTextFill(Color.web("red"));
                             }
-                            if(prezzoProdotto.getText() != null){
+                            if (prezzoProdotto.getText() != null) {
                                 try {
                                     Double.parseDouble(pesoProdotto.getText());
-                                }
-                                catch (NumberFormatException ex)
-                                {
+                                } catch (NumberFormatException ex) {
                                     result.setText("Errore nel prezzo sono stati inseriti dei caratteri invece di un numero!");
                                     result.setTextFill(Color.web("red"));
                                 }
@@ -169,8 +163,8 @@ public class ProdottoBigAddController implements Initializable {
                                 prodotto.setnPezzi(Integer.parseInt(nPezziProdotto.getText()));
                                 prodotto.setPrezzo(Double.parseDouble(prezzoProdotto.getText()));
                                 prodotto.setCarattristiche(newCaratteristiche);
-                                prodotto.setReparto(((ResponsabileReparto)sessionStorage.getResponsabile()).getRuolo());
-                                prodottoDaoImpl.newProdotto(prodotto);
+                                prodotto.setReparto(((ResponsabileReparto) sessionStorage.getResponsabile()).getRuolo());
+                                prodottoDaoImpl.insertProdotto(prodotto);
                                 //prodottoDaoImpl.updateProdotto(prodotto);
                                 prodottoDaoImpl.insertDisponibilitàProdotto(prodotto.getId(), (int) disponibilitaProdotto.getValue());
 
@@ -183,36 +177,70 @@ public class ProdottoBigAddController implements Initializable {
                                 final Node source = (Node) event.getSource();
                                 Stage thisStage = (Stage) source.getScene().getWindow();
                                 thisStage.close();
-                            }else{
+                            } else {
                                 result.setText("Errore prezzo prodotto non inserito!");
                                 result.setTextFill(Color.web("red"));
                             }
-                        }else{
+                        } else {
                             result.setText("Errore numero pezzi del prodotto non inserito!");
                             result.setTextFill(Color.web("red"));
                         }
-                    }else{
+                    } else {
                         result.setText("Errore peso prodotto non inserito!");
                         result.setTextFill(Color.web("red"));
                     }
-                }else{
+                } else {
                     result.setText("Errore tipo prodotto non inserito!");
                     result.setTextFill(Color.web("red"));
                 }
-            }else{
-                
+            } else {
+
                 result.setText("Errore marca prodotto non inserita!");
                 result.setTextFill(Color.web("red"));
 
             }
-        }else{
+        } else {
             result.setText("Errore nome prodotto non inserito!");
             result.setTextFill(Color.web("red"));
         }
-            
-        
-        
-        
+    }
+
+    @FXML
+    private void handleMouseClickSelectFile(MouseEvent event) throws SQLException, IOException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Scegli un immagine");
+        fileChooser.setInitialDirectory(
+                new File(System.getProperty("user.home"))
+        );
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("All Images", "*.*"),
+                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                new FileChooser.ExtensionFilter("PNG", "*.png")
+        );
+        Stage chooserWindow = new Stage();
+        File selectedFile = fileChooser.showOpenDialog(chooserWindow);
+
+        //file to blob
+        byte[] fileContent = new byte[(int) selectedFile.length()];
+        FileInputStream inputStream = null;
+        // create an input stream pointing to the file
+        inputStream = new FileInputStream(selectedFile);
+        // read the contents of file into byte array
+        inputStream.read(fileContent);
+        // close input stream
+        if (inputStream != null) {
+            inputStream.close();
+        }
+        Blob blob = new SerialBlob(fileContent);
+
+        prodotto.setImmagine(blob);
+
+        //show image 
+        Image image = new Image(selectedFile.toURI().toString());
+        immagineProdotto.setImage(image);
+
+        showProdotto();
+
     }
 
 }
