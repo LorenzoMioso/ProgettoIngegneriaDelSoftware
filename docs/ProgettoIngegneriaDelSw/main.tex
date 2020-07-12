@@ -388,8 +388,8 @@ del sistema.
 	Se i dati inseriti non sono validi il sistema non effettua modifiche
 \end{mdframed}
 
-
-\section{Sviluppo: progetto dell'architettura ed implemtazione del sistema}
+\newpage
+\section{Sviluppo: progetto dell'architettura ed implementazione del sistema}
 \subsection{Note sul processo di sviluppo}
 \subsection{Progettazione e pattern architetturali usati}
 \subsubsection{Pattern MVC}
@@ -397,20 +397,25 @@ Il progetto è strutturato con il Pattern MVC, perché fornisce una coerenza str
 semplificando le fasi di progettazione e implementazione. Inoltre crea un'ottima sinergia con la
 piattaforma JavaFX.
 
-
-Il sistema è suddiviso in tre parti:
+\noindent Il sistema è suddiviso in tre parti:
 \begin{itemize}
     \item{\textbf{Model:}
             Sono presenti le classi che definiscono i dati manipolati
+            e implementano la logica businnes.
             Inoltre sono presenti le classi che permettono la comunicazione
             con il Database organizzate seguendo il DAO pattern.
         }
     \item{\textbf{View:}
             Parte esclusivamente dedicata alla visualizzazione dei dati
             presenti nel modello.
-            In particolare si utilizzano file .fxml
+            In particolare si utilizzano file del formato fxml per rappesentare
+            l'interfaccia grafica.
         }
-    \item{\textbf Controller:}
+    \item{\textbf{Controller:}
+            Le classi controller sono utilizzate come mezzo di comunicazione
+            tra il Model e la View, permettono l'interazione dell'utente con il
+            sistema e implementano della logica per validare i dati inseriti dall'utente
+        }
 \end{itemize}
 \subsection{Note su JavaFX}
 \subsection{Implementazione e desing pattern usati}
