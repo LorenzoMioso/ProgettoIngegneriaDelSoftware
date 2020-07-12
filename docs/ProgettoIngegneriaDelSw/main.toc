@@ -2,14 +2,23 @@
 \contentsline {subsection}{\numberline {1.1}Specifiche casi d’uso}{3}{subsection.1.1}% 
 \contentsline {subsubsection}{\numberline {1.1.1}Casi d'uso relativi all'utente}{3}{subsubsection.1.1.1}% 
 \contentsline {paragraph}{Registrazione nel sistema:}{4}{section*.2}% 
-\contentsline {paragraph}{Autenticazione:}{4}{section*.3}% 
-\contentsline {paragraph}{Visualizzazione catalogo:}{5}{section*.4}% 
-\contentsline {paragraph}{Gestione profilo:}{5}{section*.5}% 
-\contentsline {subsubsection}{\numberline {1.1.2}Gestione carrello:}{6}{subsubsection.1.1.2}% 
-\contentsline {subsubsection}{\numberline {1.1.3}Casi d'uso relativi al responsabile reparto}{8}{subsubsection.1.1.3}% 
-\contentsline {paragraph}{Autenticazione:}{8}{section*.6}% 
-\contentsline {paragraph}{Visualizzazione stato spese:}{9}{section*.7}% 
-\contentsline {paragraph}{Gestione prodotti}{9}{section*.8}% 
-\contentsline {section}{\numberline {2}Sviluppo: progetto dell'architettura ed implemtazione del sistema}{9}{section.2}% 
-\contentsline {subsection}{\numberline {2.1}Persistenza dati con Database}{9}{subsection.2.1}% 
-\contentsline {subsubsection}{\numberline {2.1.1}Diagramma ER}{9}{subsubsection.2.1.1}% 
+\contentsline {paragraph}{Autenticazione:}{5}{section*.3}% 
+\contentsline {paragraph}{Visualizzazione catalogo:}{6}{section*.4}% 
+\contentsline {paragraph}{Gestione profilo:}{7}{section*.5}% 
+\contentsline {subsubsection}{\numberline {1.1.2}Gestione carrello:}{8}{subsubsection.1.1.2}% 
+\contentsline {subsubsection}{\numberline {1.1.3}Casi d'uso relativi al responsabile reparto}{12}{subsubsection.1.1.3}% 
+\contentsline {paragraph}{Autenticazione:}{12}{section*.6}% 
+\contentsline {paragraph}{Visualizzazione stato spese:}{13}{section*.7}% 
+\contentsline {paragraph}{Gestione prodotti}{13}{section*.8}% 
+\contentsline {section}{\numberline {2}Sviluppo: progetto dell'architettura ed implemtazione del sistema}{13}{section.2}% 
+\contentsline {subsection}{\numberline {2.1}Note sul processo di sviluppo}{13}{subsection.2.1}% 
+\contentsline {subsection}{\numberline {2.2}Progettazione e pattern architetturali usati}{13}{subsection.2.2}% 
+\contentsline {subsubsection}{\numberline {2.2.1}Pattern MVC}{13}{subsubsection.2.2.1}% 
+\contentsline {subsection}{\numberline {2.3}Note su JavaFX}{14}{subsection.2.3}% 
+\contentsline {subsection}{\numberline {2.4}Implementazione e desing pattern usati}{14}{subsection.2.4}% 
+\contentsline {subsubsection}{\numberline {2.4.1}Pattern Sigleton}{14}{subsubsection.2.4.1}% 
+\contentsline {subsubsection}{\numberline {2.4.2}Pattern Observer}{14}{subsubsection.2.4.2}% 
+\contentsline {subsubsection}{\numberline {2.4.3}Pattern Data Access Object}{14}{subsubsection.2.4.3}% 
+\contentsline {subsubsection}{\numberline {2.4.4}UML delle Classi}{14}{subsubsection.2.4.4}% 
+\contentsline {subsection}{\numberline {2.5}Persistenza dati con Database SQL}{19}{subsection.2.5}% 
+\contentsline {subsubsection}{\numberline {2.5.1}Diagramma ER}{19}{subsubsection.2.5.1}% 
