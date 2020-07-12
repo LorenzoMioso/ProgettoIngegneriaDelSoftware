@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2020.5.8)  12 JUL 2020 12:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2020.5.8)  12 JUL 2020 18:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -883,66 +883,157 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \openout5 = `main.toc'.
 
  [2]
-<UseCaseUtenteGestioneProfilo.jpg, id=63, 874.26625pt x 563.10374pt>
+<UseCaseUtenteGestioneProfilo.jpg, id=108, 874.26625pt x 563.10374pt>
 File: UseCaseUtenteGestioneProfilo.jpg Graphic file (type jpg)
 <use UseCaseUtenteGestioneProfilo.jpg>
 Package pdftex.def Info: UseCaseUtenteGestioneProfilo.jpg  used on input line 4
 7.
 (pdftex.def)             Requested size: 345.0pt x 222.21303pt.
- [3 <./UseCaseUtenteGestioneProfilo.jpg>] [4] [5]
-<UseCaseUtenteGestioneCarrello.jpg, id=88, 863.225pt x 653.44125pt>
-File: UseCaseUtenteGestioneCarrello.jpg Graphic file (type jpg)
-<use UseCaseUtenteGestioneCarrello.jpg>
-Package pdftex.def Info: UseCaseUtenteGestioneCarrello.jpg  used on input line 
-198.
-(pdftex.def)             Requested size: 345.0pt x 261.15251pt.
- [6 <./UseCaseUtenteGestioneCarrello.jpg>]
-Package mdframed Info: Not enough space on this page on input line 256.
- [7]
-<UseCaseResponsabile.jpg, id=104, 570.13pt x 522.95375pt>
-File: UseCaseResponsabile.jpg Graphic file (type jpg)
-<use UseCaseResponsabile.jpg>
-Package pdftex.def Info: UseCaseResponsabile.jpg  used on input line 262.
-(pdftex.def)             Requested size: 345.0pt x 316.44785pt.
- [8 <./UseCaseResponsabile.jpg>]
-Overfull \hbox (8.80241pt too wide) in paragraph at lines 363--363
-[]\OT1/cmr/bx/n/14.4 Sviluppo: pro-getto dell'architettura ed im-plem-
- []
+ [3 <./UseCaseUtenteGestioneProfilo.jpg>]
+<SDregistrazione.jpg, id=114, 512.91624pt x 452.69125pt>
+File: SDregistrazione.jpg Graphic file (type jpg)
+<use SDregistrazione.jpg>
+Package pdftex.def Info: SDregistrazione.jpg  used on input line 92.
+(pdftex.def)             Requested size: 345.0pt x 304.48965pt.
+ [4 <./SDregistrazione.jpg>]
+<SDautenticazione.jpg, id=122, 392.46625pt x 452.69125pt>
+File: SDautenticazione.jpg Graphic file (type jpg)
+<use SDautenticazione.jpg>
+Package pdftex.def Info: SDautenticazione.jpg  used on input line 130.
+(pdftex.def)             Requested size: 345.0pt x 397.96889pt.
 
-<DiagrammaER.png, id=111, 1421.31pt x 994.71625pt>
-File: DiagrammaER.png Graphic file (type png)
-<use DiagrammaER.png>
-Package pdftex.def Info: DiagrammaER.png  used on input line 369.
-(pdftex.def)             Requested size: 345.0pt x 241.45366pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[9] [10 <./DiagrammaER.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 374.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 374.
- (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 374.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 374.
+[5]
+Package mdframed Info: Box was splittet wrong
+ starting loop to iterate the splitting point
+(mdframed)              on input line 159.
+ [6 <./SDautenticazione.jpg>] [7]
+<UseCaseUtenteGestioneCarrello.jpg, id=146, 863.225pt x 653.44125pt>
+File: UseCaseUtenteGestioneCarrello.jpg Graphic file (type jpg)
+<use UseCaseUtenteGestioneCarrello.jpg>
+Package pdftex.def Info: UseCaseUtenteGestioneCarrello.jpg  used on input line 
+212.
+(pdftex.def)             Requested size: 345.0pt x 261.15251pt.
+ [8 <./UseCaseUtenteGestioneCarrello.jpg>]
+Package mdframed Info: Not enough space on this page on input line 270.
+
+[9]
+<SDGestioneCarrello.jpg, id=162, 372.39125pt x 584.1825pt>
+File: SDGestioneCarrello.jpg Graphic file (type jpg)
+<use SDGestioneCarrello.jpg>
+Package pdftex.def Info: SDGestioneCarrello.jpg  used on input line 274.
+(pdftex.def)             Requested size: 345.0pt x 541.2339pt.
+
+
+LaTeX Warning: Float too large for page by 15.17834pt on input line 277.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<SDConfermaOrdine.jpg, id=163, 392.46625pt x 648.4225pt>
+File: SDConfermaOrdine.jpg Graphic file (type jpg)
+<use SDConfermaOrdine.jpg>
+Package pdftex.def Info: SDConfermaOrdine.jpg  used on input line 281.
+(pdftex.def)             Requested size: 345.0pt x 570.0397pt.
+
+LaTeX Warning: Float too large for page by 43.98415pt on input line 284.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[10 <./SDGestioneCarrello.jpg>] [11 <./SDConfermaOrdine.jpg>]
+<UseCaseResponsabile.jpg, id=174, 570.13pt x 522.95375pt>
+File: UseCaseResponsabile.jpg Graphic file (type jpg)
+<use UseCaseResponsabile.jpg>
+Package pdftex.def Info: UseCaseResponsabile.jpg  used on input line 291.
+(pdftex.def)             Requested size: 345.0pt x 316.44785pt.
+ [12
+
+ <./UseCaseResponsabile.jpg>]
+Overfull \hbox (8.80241pt too wide) in paragraph at lines 392--392
+[]\OT1/cmr/bx/n/14.4 Sviluppo: pro-getto dell'architettura ed im-plem-
+ []
+
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 4
+03.
+(/usr/share/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 403.
+ [13]
+<UmlProdotto.png, id=189, 993.7125pt x 1103.12125pt>
+File: UmlProdotto.png Graphic file (type png)
+<use UmlProdotto.png>
+Package pdftex.def Info: UmlProdotto.png  used on input line 423.
+(pdftex.def)             Requested size: 345.0pt x 382.98425pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<UmlSpesa.png, id=190, 1228.59pt x 1085.05376pt>
+File: UmlSpesa.png Graphic file (type png)
+<use UmlSpesa.png>
+Package pdftex.def Info: UmlSpesa.png  used on input line 430.
+(pdftex.def)             Requested size: 345.0pt x 304.69048pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<UmlCatalog.jpg, id=191, 573.14125pt x 612.2875pt>
+File: UmlCatalog.jpg Graphic file (type jpg)
+<use UmlCatalog.jpg>
+Package pdftex.def Info: UmlCatalog.jpg  used on input line 438.
+(pdftex.def)             Requested size: 345.0pt x 368.57121pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<UmlInterfaccie.jpg, id=192, 1627.07875pt x 1517.67pt>
+File: UmlInterfaccie.jpg Graphic file (type jpg)
+<use UmlInterfaccie.jpg>
+Package pdftex.def Info: UmlInterfaccie.jpg  used on input line 445.
+(pdftex.def)             Requested size: 345.0pt x 321.80008pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[14] [15 <./UmlProdotto.png (PNG copy)>] [16 <./UmlSpesa.png (PNG copy)>]
+[17 <./UmlCatalog.jpg>] [18 <./UmlInterfaccie.jpg>]
+<DiagrammaER.png, id=217, 1421.31pt x 994.71625pt>
+File: DiagrammaER.png Graphic file (type png)
+<use DiagrammaER.png>
+Package pdftex.def Info: DiagrammaER.png  used on input line 456.
+(pdftex.def)             Requested size: 345.0pt x 241.45366pt.
+ [19
+
+ <./DiagrammaER.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 461.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 461.
+
+(./main.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 461.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 461.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 9F6905758D8FC4D9E6E1202336CC7036;664.
+(rerunfilecheck)             Checksum: 6C55C613001F027B2D81C5C924965C3F;1377.
  ) 
 Here is how much of TeX's memory you used:
- 29059 strings out of 492167
- 560387 string characters out of 6131559
- 677752 words of memory out of 5000000
- 32997 multiletter control sequences out of 15000+600000
+ 29187 strings out of 492167
+ 562723 string characters out of 6131559
+ 678301 words of memory out of 5000000
+ 33088 multiletter control sequences out of 15000+600000
  538324 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 78i,10n,92p,828b,934s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 78i,10n,92p,828b,968s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texmf-dist/fonts/type1/pub
 lic/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on main.pdf (10 pages, 584886 bytes).
+/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></us
+r/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on main.pdf (19 pages, 1133342 bytes).
 PDF statistics:
- 159 PDF objects out of 1000 (max. 8388607)
- 134 compressed objects within 2 object streams
- 42 named destinations out of 1000 (max. 500000)
- 12897 words of extra memory for PDF output out of 14400 (max. 10000000)
+ 268 PDF objects out of 1000 (max. 8388607)
+ 224 compressed objects within 3 object streams
+ 68 named destinations out of 1000 (max. 500000)
+ 13009 words of extra memory for PDF output out of 14400 (max. 10000000)
 
