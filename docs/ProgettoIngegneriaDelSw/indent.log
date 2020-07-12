@@ -1,0 +1,27 @@
+INFO: latexindent version 3.7.1, 2019-09-07, a script to indent .tex files
+      latexindent lives here: /usr/share/texmf-dist/scripts/latexindent/
+      Sun Jul 12 11:11:34 2020
+      Filename: main.tex
+INFO: Processing switches:
+      -w|--overwrite: Overwrite mode active, will make a back up of main.tex first
+INFO: Directory for backup files and indent.log: .
+INFO: YAML settings read: defaultSettings.yaml
+      Reading defaultSettings.yaml from /usr/share/texmf-dist/scripts/latexindent/defaultSettings.yaml
+INFO: YAML settings read: indentconfig.yaml or .indentconfig.yaml
+      Home directory is /home/lore (didn't find either indentconfig.yaml or .indentconfig.yaml)
+      To specify user settings you would put indentconfig.yaml here: /home/lore/indentconfig.yaml
+      Alternatively, you can use the hidden file .indentconfig.yaml as: /home/lore/.indentconfig.yaml
+INFO: Backup procedure (-w flag active):
+      ./main.bak0 already exists, incrementing by 1... (see maxNumberOfBackUps and onlyOneBackUp)
+      copying main.tex to ./main.bak1
+      Backup file: ./main.bak1
+      main.tex will be overwritten after indentation
+INFO: Phase 1: searching for objects
+INFO: Phase 2: finding surrounding indentation
+INFO: Phase 3: indenting objects
+INFO: Phase 4: final indentation check
+INFO: Output routine:
+      Overwriting file main.tex
+      --------------
+INFO: Please direct all communication/issues to:
+      https://github.com/cmhughes/latexindent.pl
