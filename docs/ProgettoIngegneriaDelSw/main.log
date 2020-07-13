@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2020.5.8)  13 JUL 2020 11:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2020.5.8)  13 JUL 2020 18:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -780,7 +780,14 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 15.
- (./main.aux)
+ (./main.aux
+
+LaTeX Warning: Label `fig:UmlProdotto' multiply defined.
+
+
+LaTeX Warning: Label `fig:UmlProdotto' multiply defined.
+
+)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
@@ -797,8 +804,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
 LaTeX Font Info:    ... okay on input line 21.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 21.
 LaTeX Font Info:    ... okay on input line 21.
-
-(/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+ (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count290
 \scratchdimen=\dimen192
@@ -905,25 +911,27 @@ Package pdftex.def Info: SDautenticazione.jpg  used on input line 130.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[5] [6 <./SDautenticazione.jpg>] [7]
+[5] [6 <./SDautenticazione.jpg>] [7
+
+]
 <UseCaseUtenteGestioneCarrello.jpg, id=151, 844.15375pt x 402.50375pt>
 File: UseCaseUtenteGestioneCarrello.jpg Graphic file (type jpg)
 <use UseCaseUtenteGestioneCarrello.jpg>
 Package pdftex.def Info: UseCaseUtenteGestioneCarrello.jpg  used on input line 
-212.
+211.
 (pdftex.def)             Requested size: 345.0pt x 164.50555pt.
  [8 <./UseCaseUtenteGestioneCarrello.jpg>]
-Package mdframed Info: Not enough space on this page on input line 267.
+Package mdframed Info: Not enough space on this page on input line 266.
 
 [9]
 <SDGestioneCarrello.jpg, id=167, 372.39125pt x 584.1825pt>
 File: SDGestioneCarrello.jpg Graphic file (type jpg)
 <use SDGestioneCarrello.jpg>
-Package pdftex.def Info: SDGestioneCarrello.jpg  used on input line 271.
+Package pdftex.def Info: SDGestioneCarrello.jpg  used on input line 270.
 (pdftex.def)             Requested size: 345.0pt x 541.2339pt.
 
 
-LaTeX Warning: Float too large for page by 15.17834pt on input line 274.
+LaTeX Warning: Float too large for page by 15.17834pt on input line 273.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -931,10 +939,10 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <SDConfermaOrdine.jpg, id=168, 392.46625pt x 648.4225pt>
 File: SDConfermaOrdine.jpg Graphic file (type jpg)
 <use SDConfermaOrdine.jpg>
-Package pdftex.def Info: SDConfermaOrdine.jpg  used on input line 278.
+Package pdftex.def Info: SDConfermaOrdine.jpg  used on input line 277.
 (pdftex.def)             Requested size: 345.0pt x 570.0397pt.
 
-LaTeX Warning: Float too large for page by 43.98415pt on input line 281.
+LaTeX Warning: Float too large for page by 43.98415pt on input line 280.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -943,85 +951,109 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <UseCaseResponsabile.jpg, id=179, 570.13pt x 522.95375pt>
 File: UseCaseResponsabile.jpg Graphic file (type jpg)
 <use UseCaseResponsabile.jpg>
-Package pdftex.def Info: UseCaseResponsabile.jpg  used on input line 288.
+Package pdftex.def Info: UseCaseResponsabile.jpg  used on input line 287.
 (pdftex.def)             Requested size: 345.0pt x 316.44785pt.
  [12
 
  <./UseCaseResponsabile.jpg>] [13]
 LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 3
-99.
+98.
  (/usr/share/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 399.
-<UmlProdotto.png, id=193, 993.7125pt x 1103.12125pt>
-File: UmlProdotto.png Graphic file (type png)
-<use UmlProdotto.png>
-Package pdftex.def Info: UmlProdotto.png  used on input line 433.
-(pdftex.def)             Requested size: 345.0pt x 382.98425pt.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 398.
+<UmlConnectionDb.png, id=193, 454.69875pt x 408.52625pt>
+File: UmlConnectionDb.png Graphic file (type png)
+<use UmlConnectionDb.png>
+Package pdftex.def Info: UmlConnectionDb.png  used on input line 434.
+(pdftex.def)             Requested size: 345.0pt x 309.97202pt.
  [14]
-<UmlSpesa.png, id=199, 1228.59pt x 1085.05376pt>
-File: UmlSpesa.png Graphic file (type png)
-<use UmlSpesa.png>
-Package pdftex.def Info: UmlSpesa.png  used on input line 440.
-(pdftex.def)             Requested size: 345.0pt x 304.69048pt.
+[15 <./UmlConnectionDb.png (PNG copy)>]
+<UmlObserver.png, id=204, 915.42pt x 1040.88875pt>
+File: UmlObserver.png Graphic file (type png)
+<use UmlObserver.png>
+Package pdftex.def Info: UmlObserver.png  used on input line 458.
+(pdftex.def)             Requested size: 345.0pt x 392.28589pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<UmlCatalog.jpg, id=200, 573.14125pt x 612.2875pt>
+[16]
+<UmlProdotto.png, id=209, 993.7125pt x 1103.12125pt>
+File: UmlProdotto.png Graphic file (type png)
+<use UmlProdotto.png>
+Package pdftex.def Info: UmlProdotto.png  used on input line 466.
+(pdftex.def)             Requested size: 345.0pt x 382.98425pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<UmlSpesa.png, id=210, 1228.59pt x 1085.05376pt>
+File: UmlSpesa.png Graphic file (type png)
+<use UmlSpesa.png>
+Package pdftex.def Info: UmlSpesa.png  used on input line 474.
+(pdftex.def)             Requested size: 345.0pt x 304.69048pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<UmlCatalog.jpg, id=211, 573.14125pt x 612.2875pt>
 File: UmlCatalog.jpg Graphic file (type jpg)
 <use UmlCatalog.jpg>
-Package pdftex.def Info: UmlCatalog.jpg  used on input line 448.
+Package pdftex.def Info: UmlCatalog.jpg  used on input line 482.
 (pdftex.def)             Requested size: 345.0pt x 368.57121pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<UmlInterfaccie.jpg, id=201, 1627.07875pt x 1517.67pt>
+<UmlInterfaccie.jpg, id=212, 1627.07875pt x 1517.67pt>
 File: UmlInterfaccie.jpg Graphic file (type jpg)
 <use UmlInterfaccie.jpg>
-Package pdftex.def Info: UmlInterfaccie.jpg  used on input line 455.
+Package pdftex.def Info: UmlInterfaccie.jpg  used on input line 489.
 (pdftex.def)             Requested size: 345.0pt x 321.80008pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[15 <./UmlProdotto.png (PNG copy)>] [16 <./UmlSpesa.png (PNG copy)>] [17 <./Uml
-Catalog.jpg>] [18 <./UmlInterfaccie.jpg>]
-<DiagrammaER.png, id=222, 1421.31pt x 994.71625pt>
+[17 <./UmlObserver.png (PNG copy)>] [18 <./UmlProdotto.png (PNG copy)>]
+[19 <./UmlSpesa.png (PNG copy)>] [20 <./UmlCatalog.jpg>] [21 <./UmlInterfaccie.
+jpg>]
+<DiagrammaER.png, id=239, 1421.31pt x 994.71625pt>
 File: DiagrammaER.png Graphic file (type png)
 <use DiagrammaER.png>
-Package pdftex.def Info: DiagrammaER.png  used on input line 478.
+Package pdftex.def Info: DiagrammaER.png  used on input line 512.
 (pdftex.def)             Requested size: 345.0pt x 241.45366pt.
- [19
+ [22
 
  <./DiagrammaER.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 483.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 483.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 517.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 517.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 483.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 483.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 517.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 517.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: B03CA3E94493E9DCCFF917D8470F0C73;1447.
+(rerunfilecheck)             Checksum: 62D78ED606ADF03FE0936D2BF67E0722;1473.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 29198 strings out of 492167
- 562821 string characters out of 6131559
- 677302 words of memory out of 5000000
- 33090 multiletter control sequences out of 15000+600000
- 538528 words of font info for 62 fonts, out of 8000000 for 9000
+ 29219 strings out of 492167
+ 562988 string characters out of 6131559
+ 678335 words of memory out of 5000000
+ 33094 multiletter control sequences out of 15000+600000
+ 538783 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 78i,10n,92p,828b,964s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 78i,10n,92p,828b,934s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texmf-dist/fonts/type1/pub
 lic/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></us
 r/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on main.pdf (19 pages, 1090219 bytes).
+Output written on main.pdf (22 pages, 1142260 bytes).
 PDF statistics:
- 273 PDF objects out of 1000 (max. 8388607)
- 229 compressed objects within 3 object streams
- 69 named destinations out of 1000 (max. 500000)
- 13017 words of extra memory for PDF output out of 14400 (max. 10000000)
+ 291 PDF objects out of 1000 (max. 8388607)
+ 242 compressed objects within 3 object streams
+ 74 named destinations out of 1000 (max. 500000)
+ 13027 words of extra memory for PDF output out of 14400 (max. 10000000)
 

@@ -11,7 +11,7 @@
 \BOOKMARK [2][-]{subsection.2.4}{Note su JavaFX}{section.2}% 11
 \BOOKMARK [2][-]{subsection.2.5}{Implementazione e design pattern usati}{section.2}% 12
 \BOOKMARK [3][-]{subsubsection.2.5.1}{Pattern Sigleton}{subsection.2.5}% 13
-\BOOKMARK [3][-]{subsubsection.2.5.2}{Pattern Observer}{subsection.2.5}% 14
+\BOOKMARK [3][-]{subsubsection.2.5.2}{Pattern Observer e gestione della sessione}{subsection.2.5}% 14
 \BOOKMARK [3][-]{subsubsection.2.5.3}{Pattern Data Access Object}{subsection.2.5}% 15
 \BOOKMARK [3][-]{subsubsection.2.5.4}{UML delle Classi}{subsection.2.5}% 16
 \BOOKMARK [2][-]{subsection.2.6}{Persistenza dati con Database SQL}{section.2}% 17

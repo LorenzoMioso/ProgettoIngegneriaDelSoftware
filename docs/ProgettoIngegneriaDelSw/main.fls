@@ -281,6 +281,12 @@ INPUT ./UseCaseResponsabile.jpg
 INPUT ./UseCaseResponsabile.jpg
 INPUT /usr/share/texmf-dist/tex/latex/base/omscmr.fd
 INPUT /usr/share/texmf-dist/tex/latex/base/omscmr.fd
+INPUT UmlConnectionDb.png
+INPUT ./UmlConnectionDb.png
+INPUT ./UmlConnectionDb.png
+INPUT UmlObserver.png
+INPUT ./UmlObserver.png
+INPUT ./UmlObserver.png
 INPUT UmlProdotto.png
 INPUT ./UmlProdotto.png
 INPUT ./UmlProdotto.png
