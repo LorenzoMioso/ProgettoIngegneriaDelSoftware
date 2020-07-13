@@ -21,4 +21,9 @@ public class Caratteristica {
         return "Caratteristica{" + "nome=" + nome + '}';
     }
 
+    @Override
+    public boolean equals(Object c) {
+        return c instanceof Caratteristica
+                && ((Caratteristica) c).getNome().equals(this.getNome());
+    }
 }

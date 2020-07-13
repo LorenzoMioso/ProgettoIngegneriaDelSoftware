@@ -18,9 +18,11 @@ public class Prodotto {
     private int nPezzi;
     private double prezzo;
     private List<Caratteristica> carattristiche;
-    public Prodotto(){
-        
+
+    public Prodotto() {
+
     }
+
     public Prodotto(int id, String nome, String marca, Blob immagine, String tipo, String reparto, boolean inVendita, double peso, int nPezzi, double prezzo) {
         this.id = id;
         this.nome = nome;
@@ -121,6 +123,26 @@ public class Prodotto {
 
     public void setCarattristiche(List<Caratteristica> carattristiche) {
         this.carattristiche = carattristiche;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object p) {
+        return p instanceof Prodotto
+                && ((Prodotto) p).getNome().equals(this.getNome())
+                && ((Prodotto) p).getMarca().equals(this.getMarca())
+                && ((Prodotto) p).getImmagine() == this.getImmagine()
+                && ((Prodotto) p).getTipo().equals(this.getTipo())
+                && ((Prodotto) p).getReparto().equals(this.getReparto())
+                && ((Prodotto) p).isInVendita() == this.isInVendita()
+                && ((Prodotto) p).getPeso() == this.getPeso()
+                && ((Prodotto) p).getnPezzi() == this.getnPezzi()
+                && ((Prodotto) p).getPrezzo() == this.getPrezzo();
     }
 
     @Override

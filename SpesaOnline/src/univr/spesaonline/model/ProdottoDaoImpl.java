@@ -30,13 +30,11 @@ public class ProdottoDaoImpl implements ProdottoDao {
                     db.getResultSet().getInt(9),
                     db.getResultSet().getDouble(10));
             catalogo.add(p);
-
         }
         return catalogo;
     }
 
     public List<Caratteristica> getCaratteristicaByProdotto(int id) throws SQLException {
-
         List<Caratteristica> caratteristiche = new ArrayList<>();
         db.doQuery("select * from CaratteristicaProdotto where idProdotto = " + id);
         while (db.getResultSet().next()) {
