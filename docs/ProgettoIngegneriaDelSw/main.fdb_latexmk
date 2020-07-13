@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1594573740 "main.tex" "main.pdf" "main" 1594573879
+["pdflatex"] 1594633468 "main.tex" "main.pdf" "main" 1594634191
   "/dev/null" 1594285270 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1572595918 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1572595918 1328 c834bbb027764024c09d3d2bf908b5f0 ""
@@ -161,15 +161,15 @@
   "UmlProdotto.png" 1594573050 40434 4dfec759c44920df927825b23409a80a ""
   "UmlSpesa.png" 1594573050 53482 5ac5be6552760b871e14236969ce617f ""
   "UseCaseResponsabile.jpg" 1594568214 39737 b5f949774989e0770ad3b4f286c11701 ""
-  "UseCaseUtenteGestioneCarrello.jpg" 1594568214 91755 ca5c523401623df40fb70967736e54e6 ""
+  "UseCaseUtenteGestioneCarrello.jpg" 1594630411 45338 d332865499ff80d864abf1d8857f816a ""
   "UseCaseUtenteGestioneProfilo.jpg" 1594568214 83429 059db708a2c238eae4f0bc4fb21a6f1b ""
-  "main.aux" 1594573741 7294 3b012af9861f24abe7c5fac8610ed3e0 "pdflatex"
-  "main.out" 1594573741 1379 c4099a0a34634adc9ab21115e8e131bc "pdflatex"
-  "main.tex" 1594573877 12003 020c81cca9f276dbff399136b2210542 ""
-  "main.toc" 1594573741 2158 b9cc05d593e74ed8f8a13f83583467a1 "pdflatex"
+  "main.aux" 1594633469 7422 4c6b4ee1d4f259e7133a8085665a2647 "pdflatex"
+  "main.out" 1594633469 1447 b03ca3e94493e9dccff917d8470f0c73 "pdflatex"
+  "main.tex" 1594634188 13324 84236f4cc8e8e0cd110253e99e4144d4 ""
+  "main.toc" 1594633469 2244 985d3323922d67f25b9b2877e6266fa4 "pdflatex"
   (generated)
-  "main.aux"
-  "main.log"
   "main.out"
   "main.pdf"
+  "main.log"
+  "main.aux"
   "main.toc"
