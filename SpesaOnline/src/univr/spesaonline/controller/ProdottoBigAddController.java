@@ -206,26 +206,28 @@ public class ProdottoBigAddController implements Initializable {
     }
 
     public static boolean isInteger(String s) {
+        int i;
         try {
-            Integer.parseInt(s);
+            i = Integer.parseInt(s);
         } catch (NumberFormatException e) {
             return false;
         } catch (NullPointerException e) {
             return false;
         }
         // only got here if we didn't return false
-        return true;
+        return i > 0;
     }
 
     public static boolean isDouble(String s) {
+        double i;
         try {
-            Double.parseDouble(s);
+            i = Double.parseDouble(s);
         } catch (NumberFormatException e) {
             return false;
         } catch (NullPointerException e) {
             return false;
         }
         // only got here if we didn't return false
-        return true;
+        return i > 0;
     }
 }
