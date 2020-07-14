@@ -122,7 +122,7 @@ public class SelectDataOraConsegnaController implements Initializable, Stageable
                     result.setTextFill(Color.web("green"));
 
                     java.sql.Date sDate = new java.sql.Date(date.getTime());
-                    Spesa s = new Spesa(sDate, b, e, sessionStorage.getCarrello().getPrezzoTot(), (int) sessionStorage.getCarrello().getPrezzoTot(), (Utente) sessionStorage.getUtente(), sessionStorage.getCarrello().getProdotti(), "In preparazione");
+                    Spesa s = new Spesa(sDate, b, e, sessionStorage.getCarrello().getPrezzoTot(), (int) sessionStorage.getCarrello().getPrezzoTot(), (Utente) sessionStorage.getUtente(), sessionStorage.getCarrello().getProdotti(), "Confermata");
                     SpesaDaoImpl sdi = new SpesaDaoImpl();
                     TesseraFedeltaDaoImpl fedeltaDaoImpl = new TesseraFedeltaDaoImpl();
                     sessionStorage.setTesseraFedelta(fedeltaDaoImpl.getTesseraFromUser((Utente) sessionStorage.getUtente()));

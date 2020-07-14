@@ -3,13 +3,18 @@ package univr.spesaonline.tests;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
 import univr.spesaonline.model.Caratteristica;
 import univr.spesaonline.model.Prodotto;
 import univr.spesaonline.model.ProdottoDaoImpl;
+import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-class ProdottoTest {
-
-    public static void main(String[] args) throws SQLException {
+public class ProdottoTest {
+    
+    @Test 
+    public void containsProdottoAggiunto() throws SQLException{
         Prodotto prodotto;
         List<Prodotto> prodotti;
         ProdottoDaoImpl prodottoDaoImpl;
@@ -22,22 +27,22 @@ class ProdottoTest {
         prodottoDaoImpl.insertProdotto(prodotto);
         prodotti = prodottoDaoImpl.getAllProdotto();
         //controllo inserimeto
-        for (Prodotto p : prodotti) {
-            if (p.equals(prodotto)) {
-                System.out.println("Protto inserito");
-            }
-        }
+        //assertNotNull(prodotto);
+       Assertions.assertTrue(prodotti.contains(prodotto));
 
-        //modifica prodotto
+    }
+    @Test 
+    public void containsProdottoModificato() throws SQLException{
+        Prodotto prodotto;
+        prodotto = new Prodotto(0, "Mele", "PinkLady", null, "Frutta", "Frutta", true, 1000, 10, 1.75);
+        List<Prodotto> prodotti;
+        ProdottoDaoImpl prodottoDaoImpl;
+
+        prodottoDaoImpl = new ProdottoDaoImpl();
         prodotto.setPrezzo(3.0);
         prodottoDaoImpl.updateProdotto(prodotto);
-        prodotti = prodottoDaoImpl.getAllProdotto();
-        //controllo modifica
-        for (Prodotto p : prodotti) {
-            if (p.equals(prodotto)) {
-                System.out.println("Protto modificato");
-            }
-        }
+        prodotti = prodottoDaoImpl.getAllProdotto(); 
+        Assertions.assertTrue(prodotti.contains(prodotto));
     }
-
+   
 }

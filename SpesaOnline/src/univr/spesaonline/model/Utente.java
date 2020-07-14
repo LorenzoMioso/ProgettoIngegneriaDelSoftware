@@ -169,7 +169,21 @@ public class Utente extends Autenticabile {
         this.pagamentoPreferito = pagamentoPreferito;
         notifyAllObservers();
     }
-
+    @Override
+    public boolean equals(Object o){
+        return o instanceof Utente && this.email.equals(((Utente)o).getEmail())
+                && this.nome.equals(((Utente)o).getNome()) 
+                && this.cognome.equals(((Utente)o).getCognome())
+                && this.password.equals(((Utente)o).getPassword())
+                && this.dataNascita.equals(((Utente)o).getDataNascita())
+                && this.via.equals(((Utente)o).getVia())
+                && this.nCivico.equals(((Utente)o).getnCivico())
+                && this.comune.equals(((Utente)o).getComune())
+                && this.citta.equals(((Utente)o).getCitta())
+                && this.CAP == ((Utente)o).getCAP()
+                && this.telefono.equals(((Utente)o).getTelefono())
+                && this.pagamentoPreferito.equals(((Utente)o).getPagamentoPreferito());
+    }
     @Override
     public String toString() {
         return "Utente{" + "email=" + email + ", password=" + password + ", nome=" + nome + ", cognome=" + cognome + ", dataNascita=" + dataNascita + ", via=" + via + ", nCivico=" + nCivico + ", citta=" + citta + ", comune=" + comune + ", CAP=" + CAP + ", telefono=" + telefono + ", pagamentoPreferito=" + pagamentoPreferito + '}';
