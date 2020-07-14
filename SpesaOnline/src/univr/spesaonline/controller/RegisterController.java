@@ -76,8 +76,6 @@ public class RegisterController implements Stageable, Initializable {
                             reenterPassword.setText("");
                             result.setText("");
                             stage.setScene(Main.getScenes().get(SceneName.FULLREGISTER).getScene());
-
-
                         }
                     } else {
                         result.setText("Le password non coincidono");

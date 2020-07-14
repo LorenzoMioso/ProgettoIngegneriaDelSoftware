@@ -9,16 +9,17 @@
 \BOOKMARK [3][-]{subsubsection.2.2.1}{Pattern MVC}{subsection.2.2}% 9
 \BOOKMARK [2][-]{subsection.2.3}{Pattern Repository}{section.2}% 10
 \BOOKMARK [2][-]{subsection.2.4}{Note su JavaFX}{section.2}% 11
-\BOOKMARK [2][-]{subsection.2.5}{Implementazione e design pattern usati}{section.2}% 12
-\BOOKMARK [3][-]{subsubsection.2.5.1}{Pattern Sigleton}{subsection.2.5}% 13
-\BOOKMARK [3][-]{subsubsection.2.5.2}{Pattern Observer e gestione della sessione}{subsection.2.5}% 14
-\BOOKMARK [3][-]{subsubsection.2.5.3}{Pattern Data Access Object}{subsection.2.5}% 15
-\BOOKMARK [3][-]{subsubsection.2.5.4}{UML delle Classi}{subsection.2.5}% 16
-\BOOKMARK [2][-]{subsection.2.6}{Persistenza dati con Database SQL}{section.2}% 17
-\BOOKMARK [3][-]{subsubsection.2.6.1}{Diagramma ER}{subsection.2.6}% 18
-\BOOKMARK [2][-]{subsection.2.7}{Diagrammi di sequenza del software implementato.}{section.2}% 19
-\BOOKMARK [1][-]{section.3}{Attivit\340 di test e validazione}{}% 20
-\BOOKMARK [2][-]{subsection.3.1}{Ispezione codice e documentazione}{section.3}% 21
-\BOOKMARK [2][-]{subsection.3.2}{Unit test}{section.3}% 22
-\BOOKMARK [2][-]{subsection.3.3}{Test degli sviluppatori}{section.3}% 23
-\BOOKMARK [2][-]{subsection.3.4}{Test utente generico}{section.3}% 24
+\BOOKMARK [3][-]{subsubsection.2.4.1}{CSS}{subsection.2.4}% 12
+\BOOKMARK [2][-]{subsection.2.5}{Implementazione e design pattern usati}{section.2}% 13
+\BOOKMARK [3][-]{subsubsection.2.5.1}{Pattern Sigleton}{subsection.2.5}% 14
+\BOOKMARK [3][-]{subsubsection.2.5.2}{Pattern Observer e gestione della sessione}{subsection.2.5}% 15
+\BOOKMARK [3][-]{subsubsection.2.5.3}{Pattern Data Access Object}{subsection.2.5}% 16
+\BOOKMARK [3][-]{subsubsection.2.5.4}{UML delle Classi}{subsection.2.5}% 17
+\BOOKMARK [2][-]{subsection.2.6}{Diagrammi di sequenza del software implementato.}{section.2}% 18
+\BOOKMARK [2][-]{subsection.2.7}{Persistenza dati con Database SQL}{section.2}% 19
+\BOOKMARK [3][-]{subsubsection.2.7.1}{Diagramma ER}{subsection.2.7}% 20
+\BOOKMARK [1][-]{section.3}{Attivit\340 di test e validazione}{}% 21
+\BOOKMARK [2][-]{subsection.3.1}{Ispezione codice e documentazione}{section.3}% 22
+\BOOKMARK [2][-]{subsection.3.2}{Unit test}{section.3}% 23
+\BOOKMARK [2][-]{subsection.3.3}{Test degli sviluppatori}{section.3}% 24
+\BOOKMARK [2][-]{subsection.3.4}{Test utente generico}{section.3}% 25
