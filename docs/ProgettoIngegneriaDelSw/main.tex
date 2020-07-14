@@ -490,7 +490,6 @@ il Subject cambia stato.
 	\label{fig:UmlSpesa}
 \end{figure}
 
-
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\textwidth]{UmlCatalog.jpg}
@@ -549,9 +548,12 @@ Per verificare la solidità del prototipo prodotto, sono state effettuate le seg
 \noindent
 In questa fase è stato effettuato un confronto dei use case diagram con  il documento delle specifiche. Successivamente si è passati a produrre i sequence diagram relativi ai use case.
 Sulla base della documentazione prodotta è stato sviluppato il codice da cui in seguito sono stati generati i diagrammi delle classi. Infine dopo aver accertato l'uso corretto dei pattern pensati durante la fase di progettazione, è stata fatta una nuova ispezione per trovare infrazioni o mancanze all'interno del codice.
+
 \newpage
+
 \subsection{Unit test}
 Durante questa fase è stata creata una versione alternativa del codice per valutarne il corretto funzionamento. E' stato fatto un test delle classi che presentavano funzionalità più complesse  e per verificare che i dati fossero inseriti correttamente all'interno del database.
+
 \begin{lstlisting}[language = Java , frame = trBL , firstnumber = last , escapeinside={(*@}{@*)}]
 import java.sql.Date;
 import java.sql.SQLException;
@@ -605,6 +607,7 @@ public class TestRunner {
         
     }
 \end{lstlisting}
+
 \subsection{Test degli sviluppatori}
 \subsection{Test utente generico}
 \end{document}
