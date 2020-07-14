@@ -27,6 +27,12 @@ public class ConnectionDb {   //ConnectionDb utilizza il pattern singleton
         return instance;
     }
 
+    public PreparedStatement getPreparedStatement(String query) throws SQLException {
+        this.connection = DriverManager.getConnection(url + dbname, username, password);
+        this.pstmt = connection.prepareStatement(query);
+        return pstmt;
+    }
+
     public void doQuery(String query) throws SQLException {
         this.connection = DriverManager.getConnection(url + dbname + multipleQueries, username, password);
         this.statement = connection.createStatement();
@@ -47,34 +53,7 @@ public class ConnectionDb {   //ConnectionDb utilizza il pattern singleton
         return id;
     }
 
-    public PreparedStatement getPreparedStatement(String query) throws SQLException {
-        this.connection = DriverManager.getConnection(url + dbname, username, password);
-        this.pstmt = connection.prepareStatement(query);
-        return pstmt;
-    }
-
     public ResultSet getResultSet() {
         return resultSet;
     }
-
-    public void setResultSet(ResultSet resultSet) {
-        this.resultSet = resultSet;
-    }
-
-    public Connection getConnection() {
-        return connection;
-    }
-
-    public void setConnection(Connection connection) {
-        this.connection = connection;
-    }
-
-    public Statement getStatement() {
-        return statement;
-    }
-
-    public void setStatement(Statement statement) {
-        this.statement = statement;
-    }
-
 }
