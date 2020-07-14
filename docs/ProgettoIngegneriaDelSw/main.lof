@@ -1,0 +1,18 @@
+\contentsline {figure}{\numberline {1}{\ignorespaces Use case di utente per la gestione del profilo e la registrazione}}{4}{figure.1}% 
+\contentsline {figure}{\numberline {2}{\ignorespaces Sequence Diagram della registrazione}}{5}{figure.2}% 
+\contentsline {figure}{\numberline {3}{\ignorespaces Sequence Diagram dell'autenticazione}}{7}{figure.3}% 
+\contentsline {figure}{\numberline {4}{\ignorespaces Use case del carrello}}{9}{figure.4}% 
+\contentsline {figure}{\numberline {5}{\ignorespaces Sequence Diagramm della gestione del carrello}}{11}{figure.5}% 
+\contentsline {figure}{\numberline {6}{\ignorespaces Sequence Diagramm della conferma dell'ordine}}{12}{figure.6}% 
+\contentsline {figure}{\numberline {7}{\ignorespaces Use case di responsabile reparto per l'autenticazione la gestione delle spese e dei prodotti}}{13}{figure.7}% 
+\contentsline {figure}{\numberline {8}{\ignorespaces UML della classe ConnectionDb}}{18}{figure.8}% 
+\contentsline {figure}{\numberline {9}{\ignorespaces UML delle classi che utilizzano il pattern Observer}}{20}{figure.9}% 
+\contentsline {figure}{\numberline {10}{\ignorespaces UML della classe Prodotto con pattern DAO}}{22}{figure.10}% 
+\contentsline {figure}{\numberline {11}{\ignorespaces UML della classe Spesa e Carrello in relazione con Prodotto presenti nel model.}}{23}{figure.11}% 
+\contentsline {figure}{\numberline {12}{\ignorespaces UML della classi Autenticabile, utente e responsabile.}}{24}{figure.12}% 
+\contentsline {figure}{\numberline {13}{\ignorespaces UML delle classi della vista Catalogo}}{25}{figure.13}% 
+\contentsline {figure}{\numberline {14}{\ignorespaces UML delle Classi di tutte le viste}}{26}{figure.14}% 
+\contentsline {figure}{\numberline {15}{\ignorespaces Diagramma di sequenza di un acquisto.}}{27}{figure.15}% 
+\contentsline {figure}{\numberline {16}{\ignorespaces Sequence Diagram della registrazione.}}{28}{figure.16}% 
+\contentsline {figure}{\numberline {17}{\ignorespaces Diagramma di sequenza dell'ordinamento dei prodotti per marca}}{28}{figure.17}% 
+\contentsline {figure}{\numberline {18}{\ignorespaces Diagramma Entity Relationship}}{32}{figure.18}% 

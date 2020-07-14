@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1594722847 "main.tex" "main.pdf" "main" 1594722847
+["pdflatex"] 1594734208 "main.tex" "main.pdf" "main" 1594741363
   "/dev/null" 1594285270 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc" 1572595918 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1572595918 3332 103109f5612ad95229751940c61aada0 ""
@@ -172,6 +172,7 @@
   "SDautenticazione.jpg" 1594573050 30307 e49e7a0fb4d83f8adfde88747f555747 ""
   "SDregistrazione.jpg" 1594573050 37616 4bc52350942a6b3f3b7a908170b04b87 ""
   "SequenceDiagramRegistrazione.jpg" 1594722816 71195 4e0bba1852a4a9ff81022e79f9e14634 ""
+  "UmlAutenticabile.png" 1594573050 73027 a4842f1da9d89713f5706b2f03f0dbc6 ""
   "UmlCatalog.jpg" 1594573050 43676 39e53d888aa6a04633da9d3f34e8330f ""
   "UmlConnectionDb.png" 1594710999 7935 8d4bff7ca198c70b9f14f2f298c12ccf ""
   "UmlInterfaccie.jpg" 1594573050 227730 4a8859495e78262ad933a0d47c063d9f ""
@@ -181,13 +182,15 @@
   "UseCaseResponsabile.jpg" 1594568214 39737 b5f949774989e0770ad3b4f286c11701 ""
   "UseCaseUtenteGestioneCarrello.jpg" 1594651849 45338 d332865499ff80d864abf1d8857f816a ""
   "UseCaseUtenteGestioneProfilo.jpg" 1594568214 83429 059db708a2c238eae4f0bc4fb21a6f1b ""
-  "main.aux" 1594722719 9710 0deff242c62082ec9ed1c4d11d40b746 "pdflatex"
-  "main.out" 1594722719 1988 219302477d611f6f0634aa4b838b2595 "pdflatex"
-  "main.tex" 1594722846 23784 bc54085d579ac02f8d9340c15de28f65 ""
-  "main.toc" 1594722719 2913 6dadd5631b6557914b17d8fd7fdbb638 "pdflatex"
+  "main.aux" 1594734210 10528 5b7b123555d11f7254998f3f51200143 "pdflatex"
+  "main.lof" 1594734210 2138 9ca47a4695d59dc07965d41155dab55b "pdflatex"
+  "main.out" 1594734210 2292 8ad7fcf26afd423cadf635257de17f68 "pdflatex"
+  "main.tex" 1594734204 32435 9ec482148874ba70d113c295191d3e3c ""
+  "main.toc" 1594734210 3289 1d8c20403bb58698013923e4f35a7a06 "pdflatex"
   (generated)
-  "main.pdf"
-  "main.log"
-  "main.out"
   "main.toc"
+  "main.log"
   "main.aux"
+  "main.pdf"
+  "main.out"
+  "main.lof"

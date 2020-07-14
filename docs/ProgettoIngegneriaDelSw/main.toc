@@ -1,32 +1,36 @@
-\contentsline {section}{\numberline {1}Requisiti ed interazioni utente-sistema}{3}{section.1}% 
-\contentsline {subsection}{\numberline {1.1}Specifiche casi d’uso}{3}{subsection.1.1}% 
-\contentsline {subsubsection}{\numberline {1.1.1}Casi d'uso relativi all'utente}{3}{subsubsection.1.1.1}% 
-\contentsline {paragraph}{Registrazione nel sistema:}{4}{section*.2}% 
-\contentsline {paragraph}{Autenticazione:}{5}{section*.3}% 
-\contentsline {paragraph}{Visualizzazione catalogo:}{5}{section*.4}% 
-\contentsline {paragraph}{Gestione profilo:}{5}{section*.5}% 
-\contentsline {subsubsection}{\numberline {1.1.2}Gestione carrello:}{7}{subsubsection.1.1.2}% 
-\contentsline {subsubsection}{\numberline {1.1.3}Casi d'uso relativi al responsabile reparto}{11}{subsubsection.1.1.3}% 
-\contentsline {paragraph}{Autenticazione:}{11}{section*.6}% 
-\contentsline {paragraph}{Visualizzazione stato spese:}{12}{section*.7}% 
-\contentsline {paragraph}{Gestione prodotti}{12}{section*.8}% 
-\contentsline {section}{\numberline {2}Sviluppo: progetto dell'architettura ed implementazione del sistema}{13}{section.2}% 
-\contentsline {subsection}{\numberline {2.1}Note sul processo di sviluppo}{13}{subsection.2.1}% 
-\contentsline {subsection}{\numberline {2.2}Progettazione e pattern architetturali usati}{13}{subsection.2.2}% 
-\contentsline {subsubsection}{\numberline {2.2.1}Pattern MVC}{13}{subsubsection.2.2.1}% 
-\contentsline {subsection}{\numberline {2.3}Pattern Repository}{14}{subsection.2.3}% 
-\contentsline {subsection}{\numberline {2.4}Note su JavaFX}{14}{subsection.2.4}% 
-\contentsline {subsubsection}{\numberline {2.4.1}CSS}{14}{subsubsection.2.4.1}% 
-\contentsline {subsection}{\numberline {2.5}Implementazione e design pattern usati}{14}{subsection.2.5}% 
-\contentsline {subsubsection}{\numberline {2.5.1}Pattern Sigleton}{15}{subsubsection.2.5.1}% 
-\contentsline {subsubsection}{\numberline {2.5.2}Pattern Observer e gestione della sessione}{16}{subsubsection.2.5.2}% 
-\contentsline {subsubsection}{\numberline {2.5.3}Pattern Data Access Object}{18}{subsubsection.2.5.3}% 
-\contentsline {subsubsection}{\numberline {2.5.4}UML delle Classi}{20}{subsubsection.2.5.4}% 
-\contentsline {subsection}{\numberline {2.6}Diagrammi di sequenza del software implementato.}{23}{subsection.2.6}% 
-\contentsline {subsection}{\numberline {2.7}Persistenza dati con Database SQL}{25}{subsection.2.7}% 
-\contentsline {subsubsection}{\numberline {2.7.1}Diagramma ER}{28}{subsubsection.2.7.1}% 
-\contentsline {section}{\numberline {3}Attività di test e validazione}{29}{section.3}% 
-\contentsline {subsection}{\numberline {3.1}Ispezione codice e documentazione}{29}{subsection.3.1}% 
-\contentsline {subsection}{\numberline {3.2}Unit test}{30}{subsection.3.2}% 
-\contentsline {subsection}{\numberline {3.3}Test degli sviluppatori}{31}{subsection.3.3}% 
-\contentsline {subsection}{\numberline {3.4}Test utente generico}{31}{subsection.3.4}% 
+\contentsline {section}{\numberline {1}Requisiti ed interazioni utente-sistema}{4}{section.1}% 
+\contentsline {subsection}{\numberline {1.1}Specifiche casi d’uso}{4}{subsection.1.1}% 
+\contentsline {subsubsection}{\numberline {1.1.1}Casi d'uso relativi all'utente}{4}{subsubsection.1.1.1}% 
+\contentsline {paragraph}{Registrazione nel sistema:}{5}{section*.3}% 
+\contentsline {paragraph}{Autenticazione:}{6}{section*.4}% 
+\contentsline {paragraph}{Visualizzazione catalogo:}{7}{section*.5}% 
+\contentsline {paragraph}{Gestione profilo:}{8}{section*.6}% 
+\contentsline {subsubsection}{\numberline {1.1.2}Gestione carrello:}{9}{subsubsection.1.1.2}% 
+\contentsline {subsubsection}{\numberline {1.1.3}Casi d'uso relativi al responsabile reparto}{13}{subsubsection.1.1.3}% 
+\contentsline {paragraph}{Autenticazione:}{13}{section*.7}% 
+\contentsline {paragraph}{Visualizzazione stato spese:}{14}{section*.8}% 
+\contentsline {paragraph}{Gestione prodotti}{14}{section*.9}% 
+\contentsline {section}{\numberline {2}Sviluppo: progetto dell'architettura ed implementazione del sistema}{15}{section.2}% 
+\contentsline {subsection}{\numberline {2.1}Note sul processo di sviluppo}{15}{subsection.2.1}% 
+\contentsline {subsubsection}{\numberline {2.1.1}Metodologie di sviluppo}{15}{subsubsection.2.1.1}% 
+\contentsline {subsubsection}{\numberline {2.1.2}Tecnologie per lo sviluppo}{15}{subsubsection.2.1.2}% 
+\contentsline {subsection}{\numberline {2.2}Progettazione e pattern architetturali usati}{16}{subsection.2.2}% 
+\contentsline {subsubsection}{\numberline {2.2.1}Pattern MVC}{16}{subsubsection.2.2.1}% 
+\contentsline {subsubsection}{\numberline {2.2.2}Pattern Repository}{17}{subsubsection.2.2.2}% 
+\contentsline {subsection}{\numberline {2.3}Note su JavaFX}{17}{subsection.2.3}% 
+\contentsline {subsubsection}{\numberline {2.3.1}CSS}{17}{subsubsection.2.3.1}% 
+\contentsline {subsection}{\numberline {2.4}Implementazione e design pattern usati}{17}{subsection.2.4}% 
+\contentsline {subsubsection}{\numberline {2.4.1}Pattern Sigleton}{18}{subsubsection.2.4.1}% 
+\contentsline {subsubsection}{\numberline {2.4.2}Pattern Observer e gestione della sessione}{19}{subsubsection.2.4.2}% 
+\contentsline {subsubsection}{\numberline {2.4.3}Pattern Data Access Object}{21}{subsubsection.2.4.3}% 
+\contentsline {subsubsection}{\numberline {2.4.4}UML delle Classi}{23}{subsubsection.2.4.4}% 
+\contentsline {subsection}{\numberline {2.5}Diagrammi di sequenza del software implementato.}{27}{subsection.2.5}% 
+\contentsline {subsection}{\numberline {2.6}Persistenza dati con Database SQL}{29}{subsection.2.6}% 
+\contentsline {subsubsection}{\numberline {2.6.1}InitDb}{31}{subsubsection.2.6.1}% 
+\contentsline {subsubsection}{\numberline {2.6.2}Diagramma ER}{32}{subsubsection.2.6.2}% 
+\contentsline {subsection}{\numberline {2.7}Sicurezza}{33}{subsection.2.7}% 
+\contentsline {section}{\numberline {3}Attività di test e validazione}{33}{section.3}% 
+\contentsline {subsection}{\numberline {3.1}Ispezione codice e documentazione}{33}{subsection.3.1}% 
+\contentsline {subsection}{\numberline {3.2}Unit test}{33}{subsection.3.2}% 
+\contentsline {subsection}{\numberline {3.3}Test degli sviluppatori}{35}{subsection.3.3}% 
+\contentsline {subsection}{\numberline {3.4}Test utente generico}{36}{subsection.3.4}% 

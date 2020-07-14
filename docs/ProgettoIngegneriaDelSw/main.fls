@@ -263,6 +263,9 @@ INPUT main.toc
 INPUT main.toc
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 OUTPUT main.toc
+INPUT main.lof
+INPUT main.lof
+OUTPUT main.lof
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT UseCaseUtenteGestioneProfilo.jpg
 INPUT ./UseCaseUtenteGestioneProfilo.jpg
@@ -301,6 +304,9 @@ INPUT ./UmlProdotto.png
 INPUT UmlSpesa.png
 INPUT ./UmlSpesa.png
 INPUT ./UmlSpesa.png
+INPUT UmlAutenticabile.png
+INPUT ./UmlAutenticabile.png
+INPUT ./UmlAutenticabile.png
 INPUT UmlCatalog.jpg
 INPUT ./UmlCatalog.jpg
 INPUT ./UmlCatalog.jpg
