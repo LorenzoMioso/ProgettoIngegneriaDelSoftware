@@ -28,7 +28,7 @@
     numberstyle = \tiny,
 }
 
-\author{Zanella Mioso}
+\author{Elisa Zanella e Lorenzo Mioso}
 
 \title{Documentazione progetto Ingegneria del Software}
 
@@ -401,6 +401,44 @@ del sistema.
 \newpage
 \section{Sviluppo: progetto dell'architettura ed implementazione del sistema}
 \subsection{Note sul processo di sviluppo}
+Durante lo sviluppo del software sono state utilizzate le seguenti tecnologie:
+\begin{itemize}
+    \item {\textb{Netbeans}: per scrittura complilazione del codice.}
+    \item {\textb{Maven}: per la gestione e sincronizzazione delle librerie.}
+    \item {\textb{SceneBuilder}: per realizzazione interfaccia grafica.}
+    \item {\textb{Git}: come strumento di controllo versione.}
+    \item {\textb{GitHub}: come servizio di hosting del codice.}
+    \item {\textb{MariaDB}: come sistema della gestione del database.}
+    \item {\textb{PhpMyAdmin}: come strumento di supporto per visualizzare il database durante lo sviluppo.}
+    \item {\textb{Latex}: per scrivere la documentazione.}
+    \item {\textb{draw.io}: per disegnare grafici online.}
+    \item {\textb{EasyUml}: un plug-in di NetBeans per generare l'UML}
+    \item {\textb{}: }
+    \item {\textb{}: }
+    \item {\textb{}: }
+\end{itemize}
+
+tecnologie 
+scenebuilder
+maven per librerie
+git e github vcs
+phpmyadmin
+mariadb
+mysql dbms
+draw.io
+latex
+easy uml
+initdb
+metodo di sviluppo
+sviluppo agile e incrementale
+scrum e trello
+pair programming  
+pair designing
+bozze di design interfaccia
+initdb
+database relazionale
+
+
 
 \subsection{Progettazione e pattern architetturali usati}
 \subsubsection{Pattern MVC}
@@ -435,10 +473,14 @@ piattaforma JavaFX.
 Le motivazioni che hanno portato alla scelta del repository pattern sono la semplicità d'uso e la centralità del sistema di recupero delle informazioni infatti è necessaria una sola classe per creare la connessione con il database ed eseguire le query (vedi classe ConnectionDb).
 \subsection{Note su JavaFX}
 L'implementazione dell'interfaccia grafica è stata fatta utilizzano file fxml costruiti con SceneBuilder.
-Questo permette di comporre in modularmente l'interfaccia grafica.
+Questo permette di comporre in modularmene l'interfaccia grafica.
 In varie parti del progetto si utilizza una vista che viene richiamata più volte per generare un contenuto
 dinamico all'interno di una vista più complessa.(Es. Vedi Catalogo, contiene più istanze di un Prodotto)
+\subsubsection{CSS}
+JavaFX permette di utilizzare file .css per modificare l'aspetto dei componenti grafici.
+Per migliorare l'estetica dell'applicativo é stato utilizzato un tema bootstrap chiamato jbootx.
 \subsection{Implementazione e design pattern usati}
+\newpage
 \subsubsection{Pattern Sigleton}
 Il pattern singleton è stato utilizzato nell'implementazione della classe ConnectionDb, allo scopo di
 instaurare una connessione con il database, eseguire interrogazioni generiche e recuperare i risultati.
@@ -454,7 +496,7 @@ da tutta le classi DaoImpl contenti le interrogazioni effettive.
 
 \subsubsection{Pattern Observer e gestione della sessione}
 Durante lo sviluppo si è presentata la necessita di terner traccia dello stato di alcune istanze di oggetti che
-sono e visualizzati o modificati in più viste.
+sono visualizzati o modificati in più viste.
 Per esempio se aggiungiamo al carrello un prodotto nel catalogo ci aspettiamo che la lista di prodotti nel
 carrello sia aggiornata inserendo il prodotto scelto.
 Per risolvere il problema di un'istanza di un oggetto condivisa tra più viste utilizziamo la classe SessionStorage
@@ -555,6 +597,60 @@ Utilizzare un database ha portato i seguenti vantaggi:
 	      Accesso e modifica dei dati facilitato con l'utilizzo delle interrogazioni.}
 \end{itemize}
 
+
+\noindent \`E stato utilizzato un database relazione e come DBMS MariaDB (fork open source du MySql),
+per implementare la connessione si utilizza \textbf{JDBC}.
+\newpage
+\begin{lstlisting}[language = Java , frame = trBL , firstnumber = last , escapeinside={(*@}{@*)}]
+    private static ConnectionDb instance = new ConnectionDb();
+    private String url = "jdbc:mysql://localhost:3306/";
+    private String dbname = "Spesa";
+    private String username = "spesa";
+    private String password = "spesa";
+    private String multipleQueries = "?allowMultiQueries=true";
+    private Connection connection = null;
+    private Statement statement = null;
+    private PreparedStatement pstmt = null;
+    private ResultSet resultSet = null;
+
+    private ConnectionDb() {
+    }
+
+    public static ConnectionDb getInstance() {
+        return instance;
+    }
+
+    public PreparedStatement getPreparedStatement(String query) throws SQLException {
+        this.connection = DriverManager.getConnection(url + dbname, username, password);
+        this.pstmt = connection.prepareStatement(query);
+        return pstmt;
+    }
+
+    public void doQuery(String query) throws SQLException {
+        this.connection = DriverManager.getConnection(url + dbname + multipleQueries, username, password);
+        this.statement = connection.createStatement();
+        this.resultSet = statement.executeQuery(query);
+        connection.close();
+    }
+
+    public int doSpecificQuery(String query) throws SQLException {
+        this.connection = DriverManager.getConnection(url + dbname + multipleQueries, username, password);
+        this.statement = connection.createStatement(java.sql.ResultSet.TYPE_FORWARD_ONLY,
+                java.sql.ResultSet.CONCUR_UPDATABLE);
+        this.statement.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
+        int id = -1;
+        this.resultSet = this.statement.getGeneratedKeys();
+        if (resultSet.next()) {
+            id = resultSet.getInt(1);
+        }
+        return id;
+    }
+
+    public ResultSet getResultSet() {
+        return resultSet;
+    }
+\end{lstlisting}
+\newpage
 \subsubsection{Diagramma ER}
 \begin{figure}[h!]
 	\centering
