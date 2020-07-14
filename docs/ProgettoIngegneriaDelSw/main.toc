@@ -19,13 +19,13 @@
 \contentsline {subsection}{\numberline {2.5}Implementazione e design pattern usati}{14}{subsection.2.5}% 
 \contentsline {subsubsection}{\numberline {2.5.1}Pattern Sigleton}{14}{subsubsection.2.5.1}% 
 \contentsline {subsubsection}{\numberline {2.5.2}Pattern Observer e gestione della sessione}{15}{subsubsection.2.5.2}% 
-\contentsline {subsubsection}{\numberline {2.5.3}Pattern Data Access Object}{16}{subsubsection.2.5.3}% 
-\contentsline {subsubsection}{\numberline {2.5.4}UML delle Classi}{16}{subsubsection.2.5.4}% 
-\contentsline {subsection}{\numberline {2.6}Persistenza dati con Database SQL}{21}{subsection.2.6}% 
-\contentsline {subsubsection}{\numberline {2.6.1}Diagramma ER}{21}{subsubsection.2.6.1}% 
-\contentsline {subsection}{\numberline {2.7}Diagrammi di sequenza del software implementato.}{21}{subsection.2.7}% 
-\contentsline {section}{\numberline {3}Attività di test e validazione}{21}{section.3}% 
-\contentsline {subsection}{\numberline {3.1}Ispezione codice e documentazione}{22}{subsection.3.1}% 
-\contentsline {subsection}{\numberline {3.2}Unit test}{23}{subsection.3.2}% 
-\contentsline {subsection}{\numberline {3.3}Test degli sviluppatori}{24}{subsection.3.3}% 
-\contentsline {subsection}{\numberline {3.4}Test utente generico}{24}{subsection.3.4}% 
+\contentsline {subsubsection}{\numberline {2.5.3}Pattern Data Access Object}{17}{subsubsection.2.5.3}% 
+\contentsline {subsubsection}{\numberline {2.5.4}UML delle Classi}{19}{subsubsection.2.5.4}% 
+\contentsline {subsection}{\numberline {2.6}Diagrammi di sequenza del software implementato.}{22}{subsection.2.6}% 
+\contentsline {subsection}{\numberline {2.7}Persistenza dati con Database SQL}{24}{subsection.2.7}% 
+\contentsline {subsubsection}{\numberline {2.7.1}Diagramma ER}{24}{subsubsection.2.7.1}% 
+\contentsline {section}{\numberline {3}Attività di test e validazione}{25}{section.3}% 
+\contentsline {subsection}{\numberline {3.1}Ispezione codice e documentazione}{25}{subsection.3.1}% 
+\contentsline {subsection}{\numberline {3.2}Unit test}{26}{subsection.3.2}% 
+\contentsline {subsection}{\numberline {3.3}Test degli sviluppatori}{27}{subsection.3.3}% 
+\contentsline {subsection}{\numberline {3.4}Test utente generico}{27}{subsection.3.4}% 
