@@ -110,7 +110,6 @@ public class ProdottoBigAddController implements Initializable {
                 newCaratteristiche.add(new Caratteristica(c.getText()));
             }
         }
-        prodotto = new Prodotto();
         if (nomeProdotto.getText() != null) {
             if (marcaProdotto.getText() != null) {
                 if (tipoProdotto.getSelectionModel().isEmpty() != true) {

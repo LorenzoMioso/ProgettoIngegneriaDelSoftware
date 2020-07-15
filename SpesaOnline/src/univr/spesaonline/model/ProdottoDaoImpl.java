@@ -137,22 +137,25 @@ public class ProdottoDaoImpl implements ProdottoDao {
 
     @Override
     public void insertProdotto(Prodotto prodotto) throws SQLException {
+        System.out.println(prodotto);
+
         int id = db.doSpecificQuery("INSERT INTO `Prodotto` (`id`, `nome`, `marca`, `tipo` ,`reparto`, `inVendita`, `peso`,`nPezzi`,`prezzo`) VALUES "
                 + "(NULL, '" + prodotto.getNome() + "', '" + prodotto.getMarca() + "', '" + prodotto.getTipo() + "', '" + prodotto.getReparto() + "', '" + (prodotto.isInVendita() ? 1 : 0)
                 + "', '" + prodotto.getPeso() + "', '" + prodotto.getnPezzi() + "', '" + prodotto.getPrezzo() + "')");
 
         prodotto.setId(id);
+
+        String query = String.format("UPDATE Prodotto set immagine = ? WHERE id = %d", prodotto.getId());
+        PreparedStatement pstmt = db.getPreparedStatement(query);
+        pstmt.setBlob(1, prodotto.getImmagine());
+        pstmt.executeUpdate();
+
         for (Caratteristica c : prodotto.getCarattristiche()) {
             db.doQuery("INSERT INTO CaratteristicaProdotto (idProdotto, nomeCaratteristica) "
                     + "VALUES('" + prodotto.getId() + "','" + c.getNome() + "') "
                     + "ON DUPLICATE KEY UPDATE    \n"
                     + "idProdotto='" + prodotto.getId() + "', nomeCaratteristica='" + c.getNome() + "'");
         }
-
-        String query = String.format("UPDATE Prodotto set immagine = ? WHERE id = %d", prodotto.getId());
-        PreparedStatement pstmt = db.getPreparedStatement(query);
-        pstmt.setBlob(1, prodotto.getImmagine());
-        pstmt.executeUpdate();
 
     }
 }

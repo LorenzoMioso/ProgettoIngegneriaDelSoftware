@@ -79,7 +79,7 @@ public class ProdottoSmallEditableController implements Initializable {
         Scene scene = new Scene(prodottoBig);
 
         Stage prodottoBigWindow = new Stage();
-        prodottoBigWindow.setTitle("MOdifica prodotto");
+        prodottoBigWindow.setTitle("Modifica prodotto");
         prodottoBigWindow.setScene(scene);
         prodottoBigWindow.show();
 
